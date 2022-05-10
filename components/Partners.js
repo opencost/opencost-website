@@ -10,33 +10,16 @@ export default function Partners() {
           Founding Partners
         </div>
         <div className="flex flex-wrap justify-around gap-10">
-          {[...Array(7)].map((e, i) => (
-            <div
-              key={i}
-              style={{
-                position: "relative",
-                width: "320px",
-                paddingBottom: "20%",
-              }}
-            >
-              <Image
-                src="/images/cloud-blue.png"
-                alt="Placeholder logo"
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-          ))}
-          {/*  <div
+          <div
             style={{
               position: "relative",
-              width: "150px",
+              width: "330px",
               paddingBottom: "20%",
             }}
           >
             <Image
-              src="/images/aws.png"
-              alt="AWS"
+              src="/images/armory.png"
+              alt="Armory"
               layout="fill"
               objectFit="contain"
             />
@@ -44,129 +27,17 @@ export default function Partners() {
           <div
             style={{
               position: "relative",
-              width: "240px",
+              width: "330px",
               paddingBottom: "20%",
             }}
           >
             <Image
-              src="/images/microsoft-azure.png"
-              alt="Azure"
+              src="/images/google.png"
+              alt="Google Cloud"
               layout="fill"
               objectFit="contain"
             />
           </div>
-          <div
-            style={{
-              position: "relative",
-              width: "300px",
-              paddingBottom: "20%",
-            }}
-          >
-            <Image
-              src="/images/gcp.png"
-              alt="GCP"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div
-            style={{
-              position: "relative",
-              width: "150px",
-              paddingBottom: "20%",
-            }}
-          >
-            <Image
-              src="/images/d2iq.jpg"
-              alt="D2IQ"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div
-            style={{
-              position: "relative",
-              width: "250px",
-              paddingBottom: "20%",
-            }}
-          >
-            <Image
-              src="/images/kubecost-logo.png"
-              alt="Kubecost"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div
-            style={{
-              position: "relative",
-              width: "200px",
-              paddingBottom: "20%",
-            }}
-          >
-            <Image
-              src="/images/mindcurv.png"
-              alt="Mindcurv"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div
-            style={{
-              position: "relative",
-              width: "200px",
-              paddingBottom: "20%",
-            }}
-          >
-            <Image
-              src="/images/new-relic.png"
-              alt="New Relic"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div
-            style={{
-              position: "relative",
-              width: "200px",
-              paddingBottom: "20%",
-            }}
-          >
-            <Image
-              src="/images/ibm.png"
-              alt="IBM"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div
-            style={{
-              position: "relative",
-              width: "200px",
-              paddingBottom: "20%",
-            }}
-          >
-            <Image
-              src="/images/spotify.png"
-              alt="Spotify"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div
-            style={{
-              position: "relative",
-              width: "200px",
-              paddingBottom: "20%",
-            }}
-          >
-            <Image
-              src="/images/ternary.png"
-              alt="Ternary"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>*/}
         </div>
       </div>
     </div>
