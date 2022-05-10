@@ -1,6 +1,6 @@
 # OpenCost website
 
-This repository contains the source code for the informational website for OpenCostnp.
+This repository contains the source code for the informational website for OpenCost.
 
 The website is built using [Next](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/).
 
