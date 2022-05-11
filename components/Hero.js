@@ -24,7 +24,7 @@ export default function Hero() {
         </div>
         <div className="text-center lg:text-left pt-10 lg:pt-0 items-left">
           <Image
-            src="/images/allocation-drilldown.gif"
+            src="/images/static-allocation.jpg"
             alt="dashboard"
             width={700}
             height={350}
