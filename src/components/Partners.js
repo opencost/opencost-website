@@ -30,7 +30,7 @@ export default function Partners() {
             <img src="/img/mindcurv.png" alt="Mindcurv" />
           </div>
           <div className="w-52 h-52 items-center flex pb-1">
-            <img src="/img/new-relic.png" alt="New Relic" />
+            <img src="/img/newrelic.png" alt="New Relic" />
           </div>
         </div>
       </div>
