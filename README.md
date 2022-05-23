@@ -1,20 +1,41 @@
-# OpenCost website
+# Website
 
-This repository contains the source code for the informational website for OpenCost.
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-The website is built using [Next](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/).
-
-## Local Development
-
-Clone the repository to your local machine, and then run the following commands:
+### Installation
 
 ```
-$ npm install
-$ npm run dev
+$ yarn
 ```
 
-## Deployment
+### Local Development
 
-Automatic deploys are NOT configured from this repository.
+```
+$ yarn start
+```
 
-The easiest way to deploy the site is using Vercel. In deploy settings, the Framework Preset should be specified as `Next.js`, and build command as `CI=false npm run build`.
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```
+$ yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+Using SSH:
+
+```
+$ USE_SSH=true yarn deploy
+```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

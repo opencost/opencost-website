@@ -1,17 +1,11 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./blog/**/*.{md,mdx}",
+    "./docs/**/*.{md,mdx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        anek: ["Anek Malayalam", ...defaultTheme.fontFamily.sans],
-      },
-    },
+    extend: {},
   },
-  variants: {},
   plugins: [],
 };

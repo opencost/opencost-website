@@ -1,0 +1,40 @@
+---
+slug: introducing-opencost
+title: Introducing OpenCost 👋🐷
+authors: [team]
+tags: [helloworld, opencost]
+---
+
+We are excited to share the launch of OpenCost, an open source project that provides real-time cost monitoring for teams running Kubernetes workloads!
+
+<!--truncate-->
+
+## **What's the deal?**
+
+As container and Kubernetes adoption grows, navigating the complexities around measuring and allocating cost is becoming a business critical challenge. Born out of the Kubecost project, OpenCost introduces a new community-driven specification and accompanying implementation to solve this monitoring challenge in any Kubernetes environment above 1.12.
+
+OpenCost was developed by a group of contributing partners, including 1, 2, 3, 4, 5. We feel it is important that OpenCost is not driven by any single entity — and that the project continues to evolve and thrive within the broader Kubernetes community. Founding companies of the OpenCost community are all heavy adopters of Kubernetes and have experienced firsthand the gap around Kubernetes cost standards.
+
+Founding contributors consistently heard from our respective customers, partners, and internal teams that standardization across cloud platforms, Kubernetes distributions, and teams is strongly needed. Overspend is a rapidly growing problem among teams scaling their Kubernetes deployments, as a recent CNCF survey showed. Roughly a quarter of organizations have no Kubernetes cost monitoring in place, and 44% rely on inadequate monthly estimates. Our goal is to enable teams using Kubernetes to operate with a single model for measuring and managing cost across all of their environments. OpenCost is specifically intended for DevOps and engineering teams to gain visibility into the black box that is Kubernetes spend. The contributing partners collectively decided to submit the project for review as a CNCF Sandbox project because we believe the CNCF is the best organization to help achieve our goals of standardizing Kubernetes costs. We are currently in the sandbox project queue, and we look forward to hearing feedback from the CNCF TOC. We will continually share updates on this mission as they develop.
+
+Using OpenCost, you can benefit from visibility into current and historical Kubernetes spend and resource allocation. These models provide cost transparency in Kubernetes environments that support multiple applications, teams, departments, etc. OpenCost is platform-agnostic across all clouds, on-premises, and air-gapped environments, and is built to address the following use cases:
+
+<div className="px-10 mb-10">
+  <li>
+    Real-time cost allocation by Kubernetes service, deployment, namespace,
+    label, statefulset, daemonset, pod, and container.
+  </li>
+  <li>
+    Allocation of in-cluster resources such as CPU, GPU, memory, and persistent
+    volumes
+  </li>
+  <li>
+    Dynamic infrastructure pricing enabled by integrations with cloud providers
+    and on-premise pricing and/or billing APIs.
+  </li>
+  <li>Easily export cost data to Prometheus with /metrics endpoints</li>
+</div>
+
+To get started using OpenCost, check us out [on GitHub](https://github.com/opencost)!
+
+If you are interested in contributing to or learning more about joining the OpenCost community on behalf of your organization, please join ourthe [Slack community](https://cloud-native.slack.com/?redir=/archives/C03D56FPD4G) — we’d love to speak with you!
