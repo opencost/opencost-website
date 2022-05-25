@@ -17,7 +17,7 @@ function Footer() {
     >
       <div className="space-y-3">
         <div className="flex justify-center md:justify-start">
-          <img className="w-40" src="/img/logo-white.svg" alt="OpenCost" />
+          <img className="w-40" src="/img/logo-white.png" alt="OpenCost" />
         </div>
         <div className="flex flex-row justify-center md:justify-start font-light text-sm">
           created by

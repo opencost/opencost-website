@@ -19,10 +19,7 @@ export default function Hero() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <button
-            className="text-white py-2 px-4 rounded-md"
-            style={{ width: "200px", backgroundColor: "#00BD74" }}
-          >
+          <button className="text-white py-2 px-4 rounded-md bg-green-400 hover:bg-green-700 transition-colors duration-200">
             <FaGithub className="inline mr-2 mb-1 w-5 h-5" />
             Learn more
           </button>
