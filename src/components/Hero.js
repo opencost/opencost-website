@@ -10,16 +10,23 @@ export default function Hero() {
         </h1>
         <p className="lg:text-left text-base leading-relaxed">
           OpenCost is a vendor-neutral open source project for measuring and
-          allocating infrastructure and container costs. Built by Kubernetes
-          experts, supported by Kubernetes enthusiasts.
+          allocating infrastructure and container costs in real time. Built by
+          Kubernetes experts and supported by Kubernetes practitioners, OpenCost
+          shines a light into the black box of Kubernetes spend.
         </p>
-        <button
-          className="text-white py-2 px-4 rounded-md"
-          style={{ width: "200px", backgroundColor: "#00BD74" }}
+        <a
+          href="https://github.com/kubecost/cost-model"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <FaGithub className="inline mr-2 mb-1 w-5 h-5" />
-          Learn more
-        </button>
+          <button
+            className="text-white py-2 px-4 rounded-md"
+            style={{ width: "200px", backgroundColor: "#00BD74" }}
+          >
+            <FaGithub className="inline mr-2 mb-1 w-5 h-5" />
+            Learn more
+          </button>
+        </a>
       </div>
       <div className="flex flex-col w-full lg:w-1/2">
         <img className="w-full h-auto" src="/img/hero.png" alt="OpenCost" />

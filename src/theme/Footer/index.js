@@ -29,10 +29,37 @@ function Footer() {
         </div>
       </div>
       <div>
-        <div className="flex flex-row justify-center md:justify-end items-start gap-x-16 font-light">
-          <div>Documentation</div>
-          <div>GitHub</div>
-          <div>Blog</div>
+        <div className="flex flex-row justify-center md:justify-end items-start gap-x-3 md:gap-x-16 font-light">
+          <div>
+            <a
+              href="https://guide.kubecost.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Documentation
+            </a>
+          </div>
+          <div>
+            <a
+              href="https://github.com/kubecost/cost-model"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </div>
+          <div>
+            <a href="/blog">Blog</a>
+          </div>
+          <div>
+            <a
+              href="https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Slack
+            </a>
+          </div>
         </div>
         <div className="mt-10 flex flex-row justify-center md:justify-end items-start gap-x-4 font-light">
           <FaTwitter className="inline mr-2 mb-1 w-5 h-5" />

@@ -6,43 +6,40 @@ export default function Features() {
     <div className="px-10 pt-5">
       <div className="flex flex-col gap-y-6">
         <div className="text-4xl md:text-5xl text-black font-semibold text-center flex items-center justify-center">
-          Cost allocation, simplified
+          Cost allocation, simple &amp; standard
         </div>
         <div className="text-lg text-center flex items-center justify-center font-anek mt-5 max-w-2xl mx-auto leading-relaxed">
-          Flexible, customizable cost breakdown and resource allocation for
-          accurate showbacks, chargebacks, and ongoing monitoring.
+          Flexible, customizable cost allocation and resource monitoring for
+          accurate showback, chargeback, and ongoing reporting.
         </div>
         <div className="flex flex-wrap justify-center gap-y-6">
           <FeatureCard
             icon="cost-allocation"
-            description="Real-time cost allocation by Kubernetes service, deployment,
-            namespace, label, statefulset, daemonset, pod, and container"
+            description="Real-time cost allocation, broken down by Kubernetes concepts down to the container level"
           />
           <FeatureCard
-            description="Dynamic asset pricing enabled by integrations with AWS, Azure, and
-            GCP billing APIs"
+            description="Dynamic asset pricing, through integrations with AWS, Azure, and GCP billing APIs"
             icon="asset-pricing"
           />
           <FeatureCard
-            description="Supports on-prem k8s clusters with custom pricing sheets"
+            description="Support for on-prem Kubernetes clusters, using custom pricing sheets"
             icon="custom"
           />
           <FeatureCard
             icon="gpu"
-            description="Allocation for AWS &amp; GCP out-of-cluster resources like RDS instances and S3 buckets with key (optional)"
+            description="Monitoring of AWS &amp; GCP out-of-cluster resources like RDS instances and S3 buckets"
           />
           <FeatureCard
             icon="out-of-cluster"
-            description="Allocation for in-cluster resources like CPU, GPU, memory, and
-            persistent volumes"
+            description="Allocation for in-cluster resources like CPU, GPU, memory, load balancers and persistent volumes"
           />
           <FeatureCard
             icon="export"
-            description="Easily export pricing data to Prometheus with /metrics endpoint"
+            description="Integrations with other open source tooling, such as easy pricing data exports to Prometheus"
           />
           <FeatureCard
             icon="open-source"
-            description="Free and open source distribution under the Apache 2.0 license"
+            description="Forever free and open source, supported and mainted by experts"
           />
         </div>
       </div>

@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Containers in the Cloud, costs down to Earth",
   tagline:
-    "OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs. Built by Kubernetes experts, supported by Kubernetes enthusiasts.",
+    "OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs in real time.",
   url: "https://opencost.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -87,12 +87,12 @@ const config = {
             label: "Documentation",
           },
           {
-            to: "https://github.com/opencost",
+            to: "https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU",
             label: "Join Slack",
             position: "right",
           },
           {
-            to: "https://github.com/opencost",
+            to: "https://github.com/kubecost/cost-model",
             label: "GitHub",
             position: "right",
           },
@@ -114,12 +114,8 @@ const config = {
             title: "Community",
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/opencost",
-              },
-              {
                 label: "Slack",
-                href: "https://discordapp.com/invite/docusaurus",
+                href: "https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU",
               },
               {
                 label: "Twitter",
@@ -136,7 +132,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/opencost",
+                href: "https://github.com/kubecost/cost-model",
               },
             ],
           },
