@@ -8,7 +8,7 @@ export default function Partners() {
     >
       <div className="flex flex-col gap-y-6">
         <div className="text-4xl md:text-5xl text-black font-semibold text-center flex items-center justify-center">
-          Contributors
+          Founding Contributors
         </div>
         <div className="text-lg text-center flex items-center justify-center font-anek mt-5 max-w-5xl mx-auto leading-relaxed">
           OpenCost is led by a network of Kubernetes experts, and supported by a
