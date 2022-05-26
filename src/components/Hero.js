@@ -6,7 +6,7 @@ export default function Hero() {
     <div className="mt-20 md:mt-20 lg:mt-40 flex flex-col-reverse xl:flex-row items-center justify-center gap-x-60 px-10 sm:px-20 xl:px-40">
       <div className="flex flex-col gap-y-8 xl:gap-x-40 xl:w-1/2">
         <h1 className="text-4xl sm:text-5xl font-anek font-semibold leading-snug">
-          Containers in the Cloud, bills down to Earth
+          Free and open source cost monitoring for cloud native environments
         </h1>
         <p className="lg:text-left text-base leading-relaxed">
           OpenCost is a vendor-neutral open source project for measuring and
