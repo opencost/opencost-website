@@ -6,9 +6,9 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Containers in the Cloud, costs down to Earth",
+  title: "OpenCost — open source cost monitoring for cloud native environments",
   tagline:
-    "OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs in real time.",
+    "OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs in real time. Built by Kubernetes experts and supported by Kubernetes practitioners, OpenCost shines a light into the black box of Kubernetes spend.",
   url: "https://opencost.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
