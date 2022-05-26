@@ -17,6 +17,9 @@ export default function Partners() {
       </div>
       <div className="flex justify-center xl:mt-10">
         <div className="flex flex-wrap justify-center gap-x-20 gap-y-2 max-w-5xl mx-auto">
+          <div className="w-56 h-52 pb-3 items-center flex">
+            <img src="/img/adobe.png" alt="Adobe" />
+          </div>
           <div className="w-52 h-52 items-center flex">
             <img src="/img/armory.png" alt="Armory" />
           </div>
