@@ -32,7 +32,7 @@ function Footer() {
         <div className="flex flex-row justify-center md:justify-end items-start gap-x-3 md:gap-x-16 font-light">
           <div>
             <a
-              href="https://guide.kubecost.com"
+              href="/docs"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -62,9 +62,6 @@ function Footer() {
           </div>
         </div>
         <div className="mt-10 flex flex-row justify-center md:justify-end items-start gap-x-4 font-light">
-          <FaTwitter className="inline mr-2 mb-1 w-5 h-5" />
-          <FaSlack className="inline mr-2 mb-1 w-5 h-5" />
-          <FaGithub className="inline mr-2 mb-1 w-5 h-5" />
         </div>
       </div>
     </div>
