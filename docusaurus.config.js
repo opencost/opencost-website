@@ -82,7 +82,7 @@ const config = {
           { to: "/blog", label: "Blog", position: "left" },
           {
             type: "doc",
-            docId: "intro",
+            docId: "index",
             position: "left",
             label: "Documentation",
           },
