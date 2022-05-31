@@ -23,8 +23,8 @@ export default function Partners() {
           <div className="w-52 h-52 items-center flex">
             <img src="/img/armory.png" alt="Armory" />
           </div>
-          <div className="w-52 h-52 items-center flex justify-center">
-            <img src="/img/aws.png" alt="AWS" height={120} width={120} />
+          <div className="w-40 h-30 items-center flex justify-center">
+            <img src="/img/aws.png" alt="AWS" />
           </div>
           <div className="w-52 h-52 items-center flex justify-center">
             <img src="/img/d2iq.png" alt="D2IQ" height={120} width={120} />

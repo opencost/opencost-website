@@ -52,7 +52,8 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          // editUrl: "https://github.com/opencost",
+          editUrl:
+            "https://github.com/kubecost/opencost-website/tree/main/docs",
         },
         blog: {
           showReadingTime: true,

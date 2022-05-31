@@ -21,11 +21,17 @@ function Footer() {
         </div>
         <div className="flex flex-row justify-center md:justify-start font-light text-sm">
           created by
-          <img
-            className="h-8 ml-2 pb-3"
-            src="/img/kubecost-white.png"
-            alt="Kubecost"
-          />
+          <a
+            href="https://www.kubecost.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="h-8 ml-2 pb-3"
+              src="/img/kubecost-white.png"
+              alt="Kubecost"
+            />
+          </a>
         </div>
       </div>
       <div>
@@ -35,6 +41,7 @@ function Footer() {
               href="/docs"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-white hover:text-green-300 hover:no-underline"
             >
               Documentation
             </a>
@@ -44,25 +51,31 @@ function Footer() {
               href="https://github.com/kubecost/cost-model"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-white hover:text-green-300 hover:no-underline"
             >
               GitHub
             </a>
           </div>
           <div>
-            <a href="/blog">Blog</a>
+            <a
+              href="/blog"
+              className="text-white hover:text-green-300 hover:no-underline"
+            >
+              Blog
+            </a>
           </div>
           <div>
             <a
               href="https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-white hover:text-green-300 hover:no-underline"
             >
               Slack
             </a>
           </div>
         </div>
-        <div className="mt-10 flex flex-row justify-center md:justify-end items-start gap-x-4 font-light">
-        </div>
+        <div className="mt-10 flex flex-row justify-center md:justify-end items-start gap-x-4 font-light"></div>
       </div>
     </div>
   );

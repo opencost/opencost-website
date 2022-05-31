@@ -11,7 +11,7 @@ ajay:
   image_url: https://github.com/AjayTripathy.png
 
 team:
-  name: Team
-  title: OpenCost Project
-  url: https://github.com/opencost
-  image_url: https://user-images.githubusercontent.com/22844059/169589618-e7d8ce74-8cd7-42a7-854e-f3101e955c62.png
+  name: OpenCost Authors
+  title: Kubecost Team
+  url: https://github.com/kubecost
+  image_url: https://user-images.githubusercontent.com/22844059/171157390-cf6c69ee-4c6d-484b-a612-c34e451e50d4.png

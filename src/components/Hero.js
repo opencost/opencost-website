@@ -18,11 +18,12 @@ export default function Hero() {
           href="https://github.com/kubecost/cost-model"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:no-underline"
         >
-          <button className="text-white py-2 px-4 rounded-md bg-green-400 hover:bg-green-700 transition-colors duration-200">
-            <FaGithub className="inline mr-2 mb-1 w-5 h-5" />
-            Learn more
-          </button>
+          <div className="text-white w-fit py-2 px-4 rounded-md bg-green-400 hover:bg-green-700 transition-colors duration-200">
+            <FaGithub className="inline mr-2 align-middle mb-1 w-5 h-5" />
+            <span>Learn more</span>
+          </div>
         </a>
       </div>
       <div className="flex flex-col w-full lg:w-1/2">
