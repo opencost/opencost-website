@@ -96,7 +96,7 @@ const config = {
             position: "right",
           },
           {
-            to: "https://github.com/kubecost/cost-model",
+            to: "https://github.com/kubecost/opencost",
             label: "GitHub",
             position: "right",
           },
@@ -136,7 +136,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/kubecost/cost-model",
+                href: "https://github.com/kubecost/opencost",
               },
             ],
           },

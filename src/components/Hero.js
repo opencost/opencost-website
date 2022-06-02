@@ -15,7 +15,7 @@ export default function Hero() {
           shines a light into the black box of Kubernetes spend.
         </p>
         <a
-          href="https://github.com/kubecost/cost-model"
+          href="https://github.com/kubecost/opencost"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:no-underline"
