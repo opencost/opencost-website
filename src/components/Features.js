@@ -39,7 +39,7 @@ export default function Features() {
           />
           <FeatureCard
             icon="open-source"
-            description="Forever free and open source, supported and mainted by experts"
+            description="Forever free and open source, supported and maintained by experts"
           />
         </div>
       </div>
