@@ -16,7 +16,7 @@ You can [install](https://docs.kubecost.com/install) the project in minutes. Com
 
 ### How does Kubecost relate to OpenCost?
 
-OpenCost is the cost allocation engine originally built by Kubecost. It’s actively used in the free Kubecost community version up to the Enterprise Kubecost version for cost allocation.
+The OpenCost implementation is the core cost allocation engine originally built by Kubecost. It’s actively used in the free Kubecost Community version up to the Kubecost Enterprise version for all cost allocation.
 
 ### How does this OpenCost implementation compare with the OpenCost spec?
 
