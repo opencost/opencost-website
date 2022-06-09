@@ -31,7 +31,7 @@ OpenCost supports Kubernetes v1.8 and above.
 OpenCost has core billing integrations with: 
 
 * AWS/EKS
-* Azure/AKE
+* Azure/AKS
 * GCP/GKE
 * On-prem clusters via custom pricing sheets
 
