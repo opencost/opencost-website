@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import NavbarItem from "@theme/NavbarItem";
 import NavbarColorModeToggle from "@theme/Navbar/ColorModeToggle";
 import SearchBar from "@theme/SearchBar";
@@ -11,11 +11,9 @@ import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
 import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
-
-import { AiFillStar } from "react-icons/ai";
+import GitHubButton from "react-github-btn";
 
 function useNavbarItems() {
-  // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
 }
 
@@ -42,59 +40,42 @@ function NavbarContentLayout({ left, right }) {
 export default function NavbarContent() {
   const mobileSidebar = useNavbarMobileSidebar();
   const items = useNavbarItems();
+
+  // using left items from docusaurus.config.js but adding our own right items
   const [leftItems, rightItems] = splitNavbarItems(items);
   const autoAddSearchBar = !items.some(item => item.type === "search");
-
-  const [stargazers, setStargazers] = useState(null);
-
-  useEffect(() => {
-    fetch("https://api.github.com/repos/kubecost/cost-model")
-      .then(res => res.json())
-      .then(data => {
-        setStargazers(data.stargazers_count);
-      });
-  }, []);
 
   return (
     <NavbarContentLayout
       left={
-        // TODO stop hardcoding items?
         <>
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
-          <NavbarLogo />
+          <span className="mb-1.5">
+            <NavbarLogo />
+          </span>
           <NavbarItems items={leftItems} />
         </>
       }
       right={
-        // TODO stop hardcoding items?
-        // Ask the user to add the respective navbar items => more flexible
         <>
-          <NavbarItems items={rightItems} />
-
+          {/* <NavbarItems items={rightItems} />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           {autoAddSearchBar && (
             <NavbarSearch>
               <SearchBar />
             </NavbarSearch>
-          )}
-          <a
-            href="https://github.com/kubecost/cost-model"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:no-underline text-yellow-400 hover:text-green-600"
-          >
-            <span className="">
-              {stargazers && (
-                <>
-                  <AiFillStar
-                    size={20}
-                    className="items-center flex-row align-middle mb-1 mr-1"
-                  />
-                  {stargazers}
-                </>
-              )}
-            </span>
-          </a>
+          )} */}
+          <span className="mt-1">
+            <GitHubButton
+              href="https://github.com/kubecost/opencost"
+              data-color-scheme="no-preference: light_high_contrast; light: light; dark: light;"
+              data-size="large"
+              data-show-count="true"
+              aria-label="Star kubecost/opencost on GitHub"
+            >
+              GitHub
+            </GitHubButton>
+          </span>
         </>
       }
     />

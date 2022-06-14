@@ -1,8 +1,10 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Installation
+
+## Via Helm
 
 The easiest way to get started with OpenCost is to install with the [Kubecost helm chart](https://github.com/kubecost/cost-analyzer-helm-chart/). This can be done with helm 3 using the following commands:
 

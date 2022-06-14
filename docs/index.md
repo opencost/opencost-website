@@ -10,11 +10,11 @@ Below are common documentation pages for the OpenCost Project:
 
 ## Quick Installation
 
-Check out our [Installation options](install.md) to start monitoring and managing your spend in minutes.
+Check out our [Installation options](install) to start monitoring and managing your spend in minutes.
 
 ## Staying in the loop
 
-You can stay up to date with Kubecost by joining us on [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) and watching the project on [GitHub](https://github.com/kubecost/cost-model).
+You can stay up to date with Kubecost by joining us on [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) and watching the project on [GitHub](https://github.com/kubecost/opencost).
 
 ## Getting Started
 

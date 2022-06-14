@@ -93,15 +93,13 @@ const config = {
           {
             to: "https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU",
             label: "Join Slack",
-            position: "right",
-          },
-          {
-            to: "https://github.com/kubecost/opencost",
-            label: "GitHub",
-            position: "right",
+            position: "left",
           },
         ],
       },
+      // the following configures the footer IF you want to use the default footer.
+      // current footer is not using the default footer, you'll instead find it in theme/Footer/index.js.
+      // more on customizing components: https://docusaurus.io/docs/swizzling
       footer: {
         style: "dark",
         links: [

@@ -48,7 +48,7 @@ function Footer() {
           </div>
           <div>
             <a
-              href="https://github.com/kubecost/cost-model"
+              href="https://github.com/kubecost/opencost"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-green-300 hover:no-underline"
