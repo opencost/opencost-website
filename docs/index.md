@@ -10,7 +10,7 @@ Below are common documentation pages for the OpenCost Project:
 
 ## Quick Installation
 
-Check out our [Installation options](https://github.com/kubecost/docs/blob/main/install.md) to start monitoring and managing your spend in minutes.
+Check out our [Installation options](install.md) to start monitoring and managing your spend in minutes.
 
 ## Staying in the loop
 
@@ -20,7 +20,7 @@ You can stay up to date with Kubecost by joining us on [Slack](https://join.slac
 
 Here are a few resources we've gathered to help you get started with OpenCost.
 
-- [Troubleshooting installation with Kubecost helm chart](https://github.com/kubecost/docs/blob/main/troubleshoot-install.md)
+- [Troubleshooting helm chart installation](https://github.com/kubecost/docs/blob/main/troubleshoot-install.md)
 - [Configuration](https://github.com/kubecost/docs/blob/main/getting-started.md)
 - [Understanding cost allocation](https://github.com/kubecost/docs/blob/main/cost-allocation.md)
 - [Cost monitoring best practices](http://blog.kubecost.com/blog/cost-monitoring/)

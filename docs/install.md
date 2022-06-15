@@ -17,6 +17,4 @@ This install method provides access to all OpenCost and Community Kubecost funct
 
 - You can run [helm template](https://helm.sh/docs/helm/helm_template/) against the [Kubecost helm chart](https://github.com/kubecost/cost-analyzer-helm-chart/) to generate local YAML output. This requires extra effort when compared to directly installing the helm chart but is more flexible than deploying static YAML.
 
-- You can install via [flat manifest](https://github.com/kubecost/cost-analyzer-helm-chart/blob/master/README.md#manifest). This install path provides less flexibility for managing your deployment and has several product limitations, e.g. Thanos is not easily enabled.
-
-- Lastly, you can deploy the OpenCost directly as a pod. Directions for this install path are available [here](https://github.com/kubecost/opencost/blob/master/deploying-as-a-pod.md). This install path just deploys the underlying OpenCost allocation model with a limited UI or is not meant to be enterprise-ready.
+- Lastly, you can deploy OpenCost directly as a pod. Directions for this install path are available [here](https://github.com/kubecost/opencost/blob/master/deploying-as-a-pod.md). This install path just deploys the underlying OpenCost allocation model with a basic UI or is not meant to be enterprise-ready.
