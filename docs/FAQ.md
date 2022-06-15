@@ -19,8 +19,7 @@ You can [install](install.md) the project in minutes. Come join the [Slack](http
 No. OpenCost is open source (Apache 2.0) and free to use.
 
 ### How does OpenCost relate to Kubecost?
-
-The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in the all versions of Kubecost for building cost allocation model. The founding members have announced intentions to onboard OpenCost as a CNCF sandbox project. If the CNCF accepts our onboarding application, the CNCF will become the neautral home for OpenCost moving forward and it will be moved from the Kubecost Github organization.
+The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in all versions of Kubecost for building a cost allocation model. Founding OpenCost members have announced intentions to onboard OpenCost as a CNCF sandbox project. If the CNCF accepts our onboarding application, the CNCF will become the neutral home for OpenCost moving forward and it will be moved from the Kubecost Github organization.
 
 ### How does this OpenCost implementation compare with the OpenCost spec?
 
@@ -50,5 +49,4 @@ OpenCost has core billing integrations with:
 - On-prem clusters via custom pricing sheets
 
 ### How can I contribute to Opencost?
-
-Get started on our [open source repo](https://github.com/kubecost/opencost/blob/develop/CONTRIBUTING.md)! Also, come join the [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) community if you have more questions, have input, or want to get involved in other ways.
+Get started with our [open source contributing guide](https://github.com/kubecost/opencost/blob/develop/CONTRIBUTING.md)! Also, come join the [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) community if you have more questions, have input, or want to get involved in other ways. 
