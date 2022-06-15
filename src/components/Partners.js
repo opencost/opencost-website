@@ -41,8 +41,14 @@ export default function Partners() {
           <div className="w-52 h-52 items-center flex pb-1">
             <img src="/img/newrelic.png" alt="New Relic" />
           </div>
+          <div className="w-52 h-52 items-center flex pb-1">
+            <img src="/img/pixie.png" alt="Pixie" />
+          </div>
           <div className="w-72 h-52 items-center flex pb-1">
             <img src="/img/suse.png" alt="Suse" />
+          </div>
+          <div className="w-72 h-52 items-center flex pb-1">
+            <img src="/img/redhat.png" alt="Redhat" />
           </div>
         </div>
       </div>
