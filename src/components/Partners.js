@@ -48,7 +48,7 @@ export default function Partners() {
             <img src="/img/suse.png" alt="Suse" />
           </div>
           <div className="w-72 h-52 items-center flex pb-1">
-            <img src="/img/redhat.png" alt="Redhat" />
+            <img src="/img/redhat.svg" alt="Redhat" height={120} width={120}/>
           </div>
         </div>
       </div>
