@@ -10,7 +10,7 @@ import Hero from "@site/src/components/Hero";
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className="min-h-[70vh] items-center">
+    <header className="items-center">
       <Hero />
     </header>
   );
