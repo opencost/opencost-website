@@ -14,7 +14,7 @@ Check out our [Installation options](install) to start monitoring and managing y
 
 ## Staying in the loop
 
-You can stay up to date with Kubecost by joining us on [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) and watching the project on [GitHub](https://github.com/kubecost/opencost).
+You can stay up to date with Kubecost by joining us on [Slack](https://cloud-native.slack.com/archives/C03D56FPD4G) and watching the project on [GitHub](https://github.com/kubecost/opencost).
 
 ## Getting Started
 
@@ -36,4 +36,4 @@ The OpenCost specification describes a vendor-neutral implementation for Kuberne
 - [Allocating out of cluster costs (GCP)](https://github.com/kubecost/docs/blob/main/gcp-out-of-cluster.md)
 - [AWS Spot feed integration](https://github.com/kubecost/docs/blob/main/getting-started.md#spot-nodes)
 
-Contact us via email (<support@kubecost.com>) or join us on [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) if you have questions!
+Contact us via email (<support@kubecost.com>) or join us on [Slack](https://cloud-native.slack.com/archives/C03D56FPD4G) if you have questions!

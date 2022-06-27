@@ -91,7 +91,7 @@ const config = {
             label: "Documentation",
           },
           {
-            to: "https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU",
+            to: "https://cloud-native.slack.com/archives/C03D56FPD4G",
             label: "Join Slack",
             position: "left",
           },
@@ -117,7 +117,7 @@ const config = {
             items: [
               {
                 label: "Slack",
-                href: "https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU",
+                href: "https://cloud-native.slack.com/archives/C03D56FPD4G",
               },
               {
                 label: "Twitter",
