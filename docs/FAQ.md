@@ -48,5 +48,9 @@ OpenCost has core billing integrations with:
 - GCP/GKE
 - On-prem clusters via custom pricing sheets
 
+### How are costs determined in the OpenCost project? 
+
+The [OpenCost spec](https://github.com/kubecost/opencost/tree/develop/spec) outlines the metholodogy used for how costs are calculated in the project. The OpenCost implementation implements this spec and has public billing API integrations with the providers listed above. 
+
 ### How can I contribute to Opencost?
 Get started with our [open source contributing guide](https://github.com/kubecost/opencost/blob/develop/CONTRIBUTING.md)! Also, come join the [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) community if you have more questions, have input, or want to get involved in other ways. 
