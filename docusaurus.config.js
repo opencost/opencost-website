@@ -91,7 +91,7 @@ const config = {
             label: "Documentation",
           },
           {
-            to: "https://cloud-native.slack.com/archives/C03D56FPD4G",
+            to: "https://slack.cncf.io/",
             label: "Join Slack",
             position: "left",
           },
