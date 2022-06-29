@@ -12,13 +12,14 @@ The project combines the Kubecost core allocation engine with a new community-dr
 
 ### How do I get started with the project?
 
-You can [install](install.md) the project in minutes. Come join the [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) community if you have more questions, have input, or want to get involved in other ways.
+You can [install](install.md) the project in minutes. Come join the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel in the [CNCF Slack](https://slack.cncf.io/) community if you have more questions, have input, or want to get involved in other ways.
 
 ### Do I need to pay to use OpenCost?
 
 No. OpenCost is open source (Apache 2.0) and free to use.
 
 ### How does OpenCost relate to Kubecost?
+
 The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in all versions of Kubecost for building a cost allocation model. Founding OpenCost members have announced intentions to onboard OpenCost as a CNCF sandbox project. If the CNCF accepts our onboarding application, the CNCF will become the neutral home for OpenCost moving forward and it will be moved from the Kubecost Github organization.
 
 ### How does this OpenCost implementation compare with the OpenCost spec?
@@ -37,7 +38,7 @@ We are actively forming our governance model. Our plan is to align with the CNCF
 
 Founding contributors co-authored and contributed feedback to the [OpenCost spec](https://github.com/kubecost/opencost/tree/develop/spec). Moving forward, Founding Contributors will continue to evolve the OpenCost project.
 
-We are actively looking for new contributors if you or your company are interested in getting involved – contact us on [Slack](https://join.slack.com/share/enQtMzY5MDY3NjAyODIyNC0yOWY3Mjc2ZWFhMjNlYWNiZWFhNDAwNWE2MWE1OGY0MzJmNGRlNjlhNjM0MzI4ZDBiYzI1OWZlNjYzY2JhM2Yw)!
+We are actively looking for new contributors if you or your company are interested in getting involved – contact us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel!
 
 ### What providers does OpenCost support?
 
@@ -49,4 +50,5 @@ OpenCost has core billing integrations with:
 - On-prem clusters via custom pricing sheets
 
 ### How can I contribute to Opencost?
-Get started with our [open source contributing guide](https://github.com/kubecost/opencost/blob/develop/CONTRIBUTING.md)! Also, come join the [Slack](https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU) community if you have more questions, have input, or want to get involved in other ways. 
+
+Get started with our [open source contributing guide](https://github.com/kubecost/opencost/blob/develop/CONTRIBUTING.md)! Also, come join us in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel on the [CNCF Slack](https://slack.cncf.io/) community if you have more questions, have input, or want to get involved in other ways.

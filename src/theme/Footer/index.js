@@ -66,7 +66,7 @@ function Footer() {
           </div>
           <div>
             <a
-              href="https://join.slack.com/t/kubecost/shared_invite/enQtNTA2MjQ1NDUyODE5LWFjYzIzNWE4MDkzMmUyZGU4NjkwMzMyMjIyM2E0NGNmYjExZjBiNjk1YzY5ZDI0ZTNhZDg4NjlkMGRkYzFlZTU"
+              href="https://cloud-native.slack.com/archives/C03D56FPD4G"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-green-300 hover:no-underline"
