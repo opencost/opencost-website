@@ -11,33 +11,15 @@ Running OpenCost as a Prometheus metric exporter allows you to export various co
 
 If you would prefer to not use the recommended install option and just deploy the OpenCost open source cost model as a metric exporter, you can follow these steps:
 
+1. This will target a Prometheus Server named my-prometheus-server in the prom namesapace. If yours is somewhere else, you will need to modify accordingly. See `Prerequisites` in [basic-setup.md](./basic-setup.md)
 
 1. Apply the combined YAML:
 
-    1.a.
+```
+kubectl apply -n opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/exporter/exporter.yaml
+```
 
-      ```
-      wget https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/exporter/exporter.yaml
-      ```
-
-    1.b.
-      On the line
-
-      ```
-      value: "{{prometheusEndpoint}}" # The endpoint should have the form http://<service-name>.<namespace-name>.svc
-      ```
-
-      of `exporter.yaml`, substitute your own Prometheus URI for `{{prometheusEndpoint}}`
-
-    1.c.
-
-      ```
-      kubectl apply -f exporter.yaml --namespace opencost
-      ```
-
-    > If you want to use a namespace other than `opencost`, you will have to edit the `ClusterRoleBinding` after applying the YAML to change `subjects[0].namespace`. You can do this with `kubectl edit clusterrolebinding opencost`.
-
-2. To verify that metrics are available:
+1. To verify that metrics are available:
 
     ```
     kubectl port-forward --namespace opencost service/opencost 9003
@@ -46,7 +28,8 @@ If you would prefer to not use the recommended install option and just deploy th
     Visit [http://localhost:9003/metrics](http://localhost:9003/metrics) to see exported metrics
 
 Add Kubecost scrape config to Prom ([more info](https://prometheus.io/docs/introduction/first_steps/#configuring-prometheus))
-```
+
+```yaml
 - job_name: opencost
   scrape_interval: 1m
   scrape_timeout: 10s
