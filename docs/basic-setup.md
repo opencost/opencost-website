@@ -21,15 +21,10 @@ helm install my-prometheus prometheus-community/prometheus --namespace prom --cr
 
 If providing your own Prometheus, set [this environment variable](https://github.com/kubecost/opencost/blob/c211fbc1244a9da9667c7180a9e4c7f988d7978a/kubernetes/deployment.yaml#L33) to the address of your prometheus server.
 
-If you used the Prometheus install command from above, this will install OpenCost on your cluster:
+If you used the Prometheus install command from above, the command below will install OpenCost on your cluster. Otherwise you'll need to edit the [PROMETHEUS_SERVER_ENDPOINT](https://github.com/kubecost/opencost/blob/develop/kubernetes/opencost.yaml#L137).
 
 ```sh
-kubectl create namespace opencost
-kubectl apply --namespace opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/service-account.yaml
-kubectl apply --namespace opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/cluster-role.yaml
-kubectl apply --namespace opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/cluster-role-binding.yaml
-kubectl apply --namespace opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/deployment.yaml
-kubectl apply --namespace opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/service.yaml
+kubectl apply --namespace opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/opencost.yaml
 ```
 
 Wait for the pod to be ready and then port forward with:
@@ -47,7 +42,7 @@ Or use [kubectl cost](kubectl-cost.md):
 ```sh
 kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
     namespace \
-    --window 1m \
+    --window 5m \
     --show-efficiency=true
 ```
 
