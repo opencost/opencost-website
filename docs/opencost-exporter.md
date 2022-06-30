@@ -56,7 +56,7 @@ Done! Kubecost is now exporting cost metrics. See the following sections for dif
 
 By default, all cost metrics are based on public billing APIs. See the Limitations section below about reflecting your precise billing information. Supported platforms are AWS, Azure, and GCP. For on-prem clusters, prices are based on configurable defaults.
 
-More metrics are available in the recommended install path and are described in [PROMETHEUS.md](PROMETHEUS.md).
+More metrics are available in the recommended install path and are described in [PROMETHEUS.md](./prometheus.md).
 
 ## Dashboard examples
 
