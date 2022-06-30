@@ -83,7 +83,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="text-center md:text-center text-sm">
+      <div className="text-left md:text-left text-sm px-10">
         The Linux Foundation® (TLF) has registered trademarks and uses trademarks. 
         For a list of TLF trademarks, see:&nbsp;
         <a
