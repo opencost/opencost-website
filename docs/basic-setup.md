@@ -39,7 +39,7 @@ To test that the server is running, you can hit [http://localhost:9003/allocatio
 
 See more [API Examples](./api.md).
 
-Or use [kubectl cost](kubectl-cost.md):
+Or use [kubectl cost](./kubectl-cost.md):
 
 ```sh
 kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
