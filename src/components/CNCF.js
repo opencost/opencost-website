@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CNCF() {
   return (
-    <div className="flex flex-col gap-y-3 px-10 py-10 md:py-10 mt-20 md:mt-20">
+    <div className="flex flex-col gap-y-3 px-10 py-10 md:py-10 mt-10 md:mt-10 mb-10 md:mb-10">
       <div className="flex flex-col items-center">
         <img className="w-1/4 h-auto" src="/img/cncf-color.png" alt="CNCF Foundation" />
       </div>
@@ -10,6 +10,9 @@ export default function CNCF() {
         OpenCost is a&nbsp;
         <a
           href="https://www.cncf.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-green-300 hover:no-underline"
         >
           Cloud Native Computing Foundation
         </a>
