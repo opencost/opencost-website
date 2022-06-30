@@ -60,7 +60,7 @@ Output:
 +---------+---------------+--------------------+-----------------+
 ```
 
-Other sample queries: [sample-queries.md](./sample-queries.md)
+Other sample queries: [kubectl cost](./kubectl-cost.md)
 
 ## Troubleshooting
 
