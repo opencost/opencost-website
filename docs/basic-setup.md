@@ -21,7 +21,7 @@ helm install my-prometheus prometheus-community/prometheus --namespace prom --cr
 
 If providing your own Prometheus, set [this environment variable](https://github.com/kubecost/opencost/blob/c211fbc1244a9da9667c7180a9e4c7f988d7978a/kubernetes/deployment.yaml#L33) to the address of your prometheus server.
 
-If you used the Prometheus install command from above, the command below will install OpenCost on your cluster. Otherwise you'll need to edit the [PROMETHEUS_SERVER_ENDPOINT](https://github.com/kubecost/opencost/blob/develop/kubernetes/opencost.yaml#L137).
+If you used the Prometheus install command from above, the command below will install OpenCost on your cluster:
 
 ```sh
 kubectl apply --namespace opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/opencost.yaml
@@ -36,6 +36,8 @@ kubectl port-forward --namespace opencost service/opencost 9003
 ## Testing
 
 To test that the server is running, you can hit [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
+
+See more [API Examples](./api.md).
 
 Or use [kubectl cost](kubectl-cost.md):
 
@@ -59,8 +61,6 @@ Output:
 | SUMMED  |               |          47.671200 |                 |
 +---------+---------------+--------------------+-----------------+
 ```
-
-Other sample queries: [kubectl cost](./kubectl-cost.md)
 
 ## Troubleshooting
 
