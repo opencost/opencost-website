@@ -70,7 +70,7 @@ If you get an error like this, check your prometheus target is correct in the Op
 Error: failed to query allocation API: failed to port forward query: received non-200 status code 500 and data: {"code":500,"status":"","data":null,"message":"Error: error computing allocation for ...
 ```
 
-Negative values for idle: ensure you added the [scrape target](extraScrapeConfigs.yaml) for OpenCost.
+Negative values for idle: ensure you added the [scrape target](https://github.com/kubecost/opencost/blob/develop/PROMETHEUS.md) for OpenCost.
 
 ---
 
