@@ -10,7 +10,7 @@ Installation instructions: [kubectl cost](https://github.com/kubecost/kubectl-co
 
 ## kubectl-cost usage
 
-kubectl cost will need to be pointed at the OpenCost service. The below example assumes you followed [basic-setup.md](basic-setup.md).
+kubectl cost will need to be pointed at the OpenCost service. The below example assumes you followed [basic-setup.md](./basic-setup.md).
 
 Potentially set an alias:
 
