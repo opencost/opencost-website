@@ -16,6 +16,8 @@ Check out our [Installation options](install) to start monitoring and managing y
 
 You can stay up to date with Kubecost by joining us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel and by watching the project on [GitHub](https://github.com/kubecost/opencost).
 
+Join our working group and follow along other community events using our [calendar](https://calendar.google.com/calendar/u/0/embed?src=c_c0f7q56e5eeod3j89bb320fvjg@group.calendar.google.com&ctz=America/Los_Angeles). 
+
 ## Getting Started
 
 Here are a few resources we've gathered to help you get started with OpenCost.
