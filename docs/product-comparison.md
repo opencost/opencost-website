@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # OpenCost Product Comparison
 |  | OpenCost | Kubecost Team | Kubecost Business | Kubecost Enterprise |
 |---|:---:|:---:|:---:|:---:|
