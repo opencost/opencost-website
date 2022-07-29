@@ -1,3 +1,4 @@
+# OpenCost Product Comparison
 |  | OpenCost | Kubecost Team | Kubecost Business | Kubecost Enterprise |
 |---|:---:|:---:|:---:|:---:|
 | Description | OpenCost obtains cost, resource allocation, and utilization data. | Users can only leverage this product on a single cluster. | Users with multiple clusters they need to track | Anyone with three or more clusters who needs aggregate metrics, data retention, and security policies |
