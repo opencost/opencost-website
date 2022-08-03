@@ -13,7 +13,7 @@ helm repo add kubecost https://kubecost.github.io/cost-analyzer/
 helm upgrade --install kubecost kubecost/cost-analyzer --namespace kubecost --create-namespace
 ```
 
-This install method provides access to all OpenCost and Community Kubecost functionality, can scale to large clusters, and is available for free.
+This install method provides access to all OpenCost and Kubecost Team functionality, can scale to large clusters, and is available for free.
 
 ## Alternative install options
 
