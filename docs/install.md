@@ -5,7 +5,7 @@ sidebar_position: 2
 # Installation
 
 ## Before you begin
-In order to deploy the Kubecost helm chart, ensure your Helm client is [3.0 or newer](https://helm.sh/docs/intro/install/).
+In order to deploy the Kubecost Helm Chart, ensure your Helm client is [3.0 or newer](https://helm.sh/docs/intro/install/).
 
 ## Via Helm
 The easiest way to get started with OpenCost is to install with the [Kubecost helm chart](https://github.com/kubecost/cost-analyzer-helm-chart/). This can be done with Helm 3 using the following commands:
