@@ -44,7 +44,7 @@ function Footer() {
           <div className="flex flex-row justify-center md:justify-end items-start gap-x-3 md:gap-x-16 font-light">
             <div>
               <a
-                href="/docs"
+                href="/docs/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-green-300 hover:no-underline"
