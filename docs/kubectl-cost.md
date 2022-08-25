@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# Kubectl Cost Queries
+# Kubectl cost queries
 
 `kubectl-cost` is a [kubectl plugin](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/) that provides easy CLI access to Kubernetes cost allocation metrics via the [OpenCost API](./api.md). It allows developers, devops, and others to quickly determine the cost & efficiency for any Kubernetes workload.
 
@@ -18,7 +18,7 @@ Potentially set an alias:
 alias kcac='kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute'
 ```
 
-Find the cost of each namespace based on the last 5 days:
+Find the cost of each namespace based on the last five days:
 
 ```sh
 kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
@@ -31,7 +31,7 @@ kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace op
     --show-efficiency=false
 ```
 
-Find the total projected monthly costs based on the last 2 hours:
+Find the total projected monthly costs based on the last two hours:
 
 ```sh
 kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
@@ -41,7 +41,7 @@ kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace op
 ```
 
 Using the alias, show the total costs of all resources with the label app:
-> Note unallocated represents resources not using the label
+> **Note**: Unallocated represents resources not using the label
 
 ```sh
 kcac label --historical -l app --window 5d
