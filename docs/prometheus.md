@@ -54,7 +54,7 @@ sum(node_total_hourly_cost) * 730
 
 ## Available Metrics
 
-**Note:** metrics today have both *instance* and *node* labels. The *instance* label will be deprecated in a future version.
+> **Note**: Memetrics today have both *instance* and *node* labels. The *instance* label will be deprecated in a future version.
 
 | Metric       | Description                                                                                            |
 | ------------ | ------------------------------------------------------------------------------------------------------ |
