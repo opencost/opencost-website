@@ -4,13 +4,13 @@ sidebar_position: 4
 
 # Basic Setup
 
-Follow the steps below to install OpenCost Open Source.
+Follow the steps below to install OpenCost.
 
 See this page for all [Kubecost install options](http://docs.kubecost.com/install).
 
 ## Prerequisites
 
-Install Prometheus:
+Install Prometheus using the following command:
 
 ```sh
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -64,7 +64,7 @@ Output:
 
 ## Troubleshooting
 
-If you get an error like this, check your prometheus target is correct in the OpenCost deployment.
+If you get an error like this, check your Prometheus target is correct in the OpenCost deployment.
 
 ```bash
 Error: failed to query allocation API: failed to port forward query: received non-200 status code 500 and data: {"code":500,"status":"","data":null,"message":"Error: error computing allocation for ...
