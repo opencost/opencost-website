@@ -7,7 +7,7 @@ sidebar_position: 6
 
 A collection of OpenCost Postman queries: [opencost.postman_collection.json](https://raw.githubusercontent.com/kubecost/opencost/develop/docs/opencost.postman_collection.json)
 
-> Note: Change the hostname in the Collection>Edit>Variables
+> **Note**: Change the hostname in the Collection>Edit>Variables
 
 ## Usage
 
@@ -23,7 +23,7 @@ step | `window` | Duration of a single allocation set. If unspecified, this defa
 aggregate | | Field by which to aggregate the results. Accepts: `cluster`, `namespace`, `controllerKind`, `controller`, `service`, `label:<name>`, and `annotation:<name>`. Also accepts comma-separated lists for multi-aggregation, like `namespace,label:app`.
 accumulate | false | If `true`, sum the entire range of sets into a single set.
 
-## Query Examples
+## Query examples
 
 Allocation data for the last 60m, in steps of 10m, with resolution 1m, aggregated by namespace.
 
