@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 ---
-# OpenCost Exporter
+# OpenCost exporter
 
 Running OpenCost as a Prometheus metric exporter allows you to export various cost metrics to Prometheus without setting up any other OpenCost dependencies. Doing so lets you write PromQL queries to calculate the cost and efficiency of any Kubernetes concept, e.g. namespace, service, label, deployment, etc. You can also calculate the cost of different Kubernetes resources, e.g. nodes, PVs, LoadBalancers, and more. Finally, you can do other interesting things like create custom alerts via AlertManager and custom dashboards via Grafana.
 
@@ -13,13 +13,13 @@ If you would prefer to not use the recommended install option and just deploy th
 
 1. This will target a Prometheus Server named my-prometheus-server in the prom namesapace. If yours is somewhere else, you will need to modify accordingly. See `Prerequisites` in [basic-setup.md](./basic-setup.md)
 
-1. Apply the combined YAML:
+2. Apply the combined YAML:
 
-```
-kubectl apply -n opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/exporter/exporter.yaml
-```
+    ```
+    kubectl apply -n opencost -f https://raw.githubusercontent.com/kubecost/opencost/develop/kubernetes/exporter/exporter.yaml
+    ```
 
-1. To verify that metrics are available:
+3. To verify that metrics are available:
 
     ```
     kubectl port-forward --namespace opencost service/opencost 9003
@@ -27,7 +27,7 @@ kubectl apply -n opencost -f https://raw.githubusercontent.com/kubecost/opencost
 
     Visit [http://localhost:9003/metrics](http://localhost:9003/metrics) to see exported metrics
 
-Add Kubecost scrape config to Prom ([more info](https://prometheus.io/docs/introduction/first_steps/#configuring-prometheus))
+Add Kubecost scrape config to Prometheus ([more info](https://prometheus.io/docs/introduction/first_steps/#configuring-prometheus))
 
 ```yaml
 - job_name: opencost
@@ -41,7 +41,7 @@ Add Kubecost scrape config to Prom ([more info](https://prometheus.io/docs/intro
 
 Done! Kubecost is now exporting cost metrics. See the following sections for different metrics available and query examples.
 
-## Available Prometheus Metrics
+## Available Prometheus metrics
 
 | Metric       | Description                                                                                            |
 | ------------ | ------------------------------------------------------------------------------------------------------ |
@@ -66,29 +66,29 @@ Here’s an example dashboard using Kubecost Prometheus metrics:
 
 You can find other example dashboards at https://grafana.com/orgs/kubecost
 
-## Example Queries
+## Example queries
 
 Once Kubecost’s cost model is running in your cluster and you have added it in your Prometheus scrape configuration, you can hit Prometheus with useful queries like these:
 
-#### Monthly cost of all nodes
+### Monthly cost of all nodes
 
 ```
 sum(node_total_hourly_cost) * 730
 ```
 
-#### Hourly cost of all load balancers broken down by namespace
+### Hourly cost of all load balancers broken down by namespace
 
 ```
 sum(kubecost_load_balancer_cost) by (namespace)
 ```
 
-#### Monthly rate of each namespace’s CPU request
+### Monthly rate of each namespace’s CPU request
 
 ```
 sum(container_cpu_allocation * on (node) group_left node_cpu_hourly_cost) by (namespace) * 730
 ```
 
-#### Historical memory request spend for all `fluentd` pods in the `kube-system` namespace
+### Historical memory request spend for all `fluentd` pods in the `kube-system` namespace
 
 ```
 avg_over_time(container_memory_allocation_bytes{namespace="kube-system",pod=~"fluentd.*"}[1d])
@@ -99,11 +99,11 @@ avg(avg_over_time(node_ram_hourly_cost[1d] )) by (node)
 ```
 
 
-## Setting Cost Alerts
+## Setting cost alerts
 
 Custom cost alerts can be implemented with a set of Prometheus queries and can be used for alerting with AlertManager or Grafana alerts. Below are example alerting rules.
 
-#### Determine in real-time if the monthly cost of all nodes is > $1000
+### Determine in real-time if the monthly cost of all nodes is > $1000
 
 ```
 sum(node_total_hourly_cost) * 730 > 1000
