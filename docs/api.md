@@ -5,7 +5,7 @@ sidebar_position: 6
 
 ## Postman
 
-A collection of OpenCost Postman queries: [opencost.postman_collection.json](https://raw.githubusercontent.com/kubecost/opencost/develop/docs/opencost.postman_collection.json)
+A collection of OpenCost Postman queries: [opencost.postman_collection.json](https://raw.githubusercontent.com/opencost/opencost/develop/docs/opencost.postman_collection.json)
 
 > **Note**: Change the hostname in the Collection>Edit>Variables
 

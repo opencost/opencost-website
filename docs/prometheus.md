@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 4
 ---
 # Prometheus Usage
 
@@ -62,8 +62,8 @@ sum(node_total_hourly_cost) * 730
 | node_gpu_hourly_cost | Hourly cost per GPU on this node  |
 | node_ram_hourly_cost   | Hourly cost per Gb of memory on this node                       |
 | node_total_hourly_cost   | Total node cost per hour                       |
-| kubecost_load_balancer_cost   | Hourly cost of a load balancer                 |
-| kubecost_cluster_management_cost | Hourly management fee per cluster                 |
+| opencost_load_balancer_cost   | Hourly cost of a load balancer                 |
+| opencost_cluster_management_cost | Hourly management fee per cluster                 |
 | pv_hourly_cost   | Hourly cost per GP on a persistent volume                 |
 | node_gpu_count | Number of GPUs available on node |
 | container_cpu_allocation   | Average number of CPUs requested/used over last 1m                      |
