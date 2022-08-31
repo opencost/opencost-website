@@ -17,7 +17,7 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
   --set alertmanager.enabled=false \
   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
 
-kubectl apply --namespace opencost -f https://github.com/opencost/opencost/blob/main/kubernetes/opencost.yaml
+kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/main/kubernetes/opencost.yaml
 ```
 
 ## Prerequisites
@@ -41,7 +41,7 @@ If providing your own Prometheus:
 If you used the Prometheus install command from `Prerequisites`, the command below will install OpenCost on your cluster:
 
 ```sh
-kubectl apply --namespace opencost -f https://github.com/opencost/opencost/blob/main/kubernetes/opencost.yaml
+kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/main/kubernetes/opencost.yaml
 ```
 
 Wait for the pod to be ready and then port forward with:
