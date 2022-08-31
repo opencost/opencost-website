@@ -26,10 +26,6 @@ export default function Features() {
             icon="custom"
           />
           <FeatureCard
-            icon="gpu"
-            description="Monitoring of AWS &amp; GCP out-of-cluster resources like RDS instances and S3 buckets"
-          />
-          <FeatureCard
             icon="out-of-cluster"
             description="Allocation for in-cluster resources like CPU, GPU, memory, load balancers and persistent volumes"
           />

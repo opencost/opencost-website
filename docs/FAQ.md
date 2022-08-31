@@ -19,6 +19,7 @@ You can [install](install.md) the project in minutes.
 No. OpenCost is open source (Apache 2.0) and free to use.
 
 ### How does OpenCost relate to Kubecost?
+
 The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in all versions of Kubecost for building a cost allocation model. Founding OpenCost members have announced intentions to onboard OpenCost as a CNCF sandbox project. If the CNCF accepts our onboarding application, the CNCF will become the neutral home for OpenCost moving forward and it will be moved from the Kubecost Github organization.
 
 ### How does this OpenCost implementation compare with the OpenCost spec?
@@ -47,6 +48,7 @@ OpenCost has core billing integrations with:
 - On-prem clusters via custom pricing sheets
 
 ### How can I contribute to Opencost?
+
 Get started with our [open source contributing guide](https://github.com/opencost/opencost/blob/develop/CONTRIBUTING.md)!
 
 We are actively looking for new contributors if you or your company are interested in getting involved – join us using the links below-
