@@ -8,11 +8,11 @@ sidebar_position: 3
 
 OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs in Kubernetes environments.
 
-The project combines the Kubecost core allocation engine with a new community-driven [spec](https://github.com/kubecost/opencost/tree/develop/spec) on how to monitor costs in Kubernetes land. The allocation engine is a Golang implementation that conforms to spec. Both have now been submitted to the CNCF as a [sandbox project](https://www.cncf.io/sandbox-projects/).
+The project is a combination of the OpenCost core allocation engine with a new community-driven [spec](https://github.com/opencost/opencost/tree/develop/spec) on how to monitor costs in Kubernetes land. The allocation engine is a Golang implementation that conforms to spec. Both have now been submitted to the CNCF as a [sandbox project](https://www.cncf.io/sandbox-projects/).
 
 ### How do I get started with the project?
 
-You can [install](install.md) the project in minutes. Come join the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel in the [CNCF Slack](https://slack.cncf.io/) community if you have more questions, have input, or want to get involved in other ways.
+You can [install](install.md) the project in minutes.
 
 ### Do I need to pay to use OpenCost?
 
@@ -36,9 +36,7 @@ We are actively forming our governance model. Our plan is to align with the CNCF
 
 ### What does it mean to be a “Founding Contributor”?
 
-Founding contributors co-authored and contributed feedback to the [OpenCost spec](https://github.com/kubecost/opencost/tree/develop/spec). Moving forward, Founding Contributors will continue to evolve the OpenCost project.
-
-We are actively looking for new contributors if you or your company are interested in getting involved – contact us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel!
+Founding contributors co-authored and contributed feedback to the [OpenCost spec](https://github.com/opencost/opencost/tree/develop/spec). Moving forward, Founding Contributors will continue to evolve the OpenCost project.
 
 ### What providers does OpenCost support?
 
@@ -51,4 +49,8 @@ OpenCost has core billing integrations with:
 
 ### How can I contribute to Opencost?
 
-Get started with our [open source contributing guide](https://github.com/kubecost/opencost/blob/develop/CONTRIBUTING.md)! Also, come join us in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel on the [CNCF Slack](https://slack.cncf.io/) community if you have more questions, have input, or want to get involved in other ways.
+Get started with our [open source contributing guide](https://github.com/opencost/opencost/blob/develop/CONTRIBUTING.md)!
+
+We are actively looking for new contributors if you or your company are interested in getting involved – join us using the links below-
+
+Contact us via email (<support@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!

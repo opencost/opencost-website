@@ -1,22 +1,98 @@
 ---
 sidebar_position: 2
 ---
+# OpenCost Setup
 
-# Installation
+Follow the steps below to install OpenCost.
 
-## Via Helm
 
-The easiest way to get started with OpenCost is to install with the [Kubecost helm chart](https://github.com/kubecost/cost-analyzer-helm-chart/). This can be done with helm 3 using the following commands:
+## TLDR (for those that just want the commands!)
+
+This is all you need. The guides below this command give more detail.
+
+```sh
+helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
+  --namespace prometheus --create-namespace \
+  --set pushgateway.enabled=false \
+  --set alertmanager.enabled=false \
+  -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
+
+kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/main/kubernetes/opencost.yaml
+```
+
+## Prerequisites
+
+Install Prometheus using the following command:
+
+```sh
+helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
+  --namespace prometheus --create-namespace \
+  --set pushgateway.enabled=false \
+  --set alertmanager.enabled=false \
+  -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
+```
+
+## OpenCost
+
+If providing your own Prometheus:
+ 1. Set the [PROMETHEUS_SERVER_ENDPOINT environment variable](https://github.com/opencost/opencost/blob/main/kubernetes/opencost.yaml#L137) to the address of your prometheus server
+ 2. Add the scrapeConfig `https://raw.githubusercontent.com/opencost/opencost/main/kubernetes/prometheus/extraScrapeConfigs.yaml` to it
+
+If you used the Prometheus install command from `Prerequisites`, the command below will install OpenCost on your cluster:
+
+```sh
+kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/main/kubernetes/opencost.yaml
+```
+
+Wait for the pod to be ready and then port forward with:
+
+```sh
+kubectl port-forward --namespace opencost service/opencost 9003
+```
+
+## Testing
+
+To test that the server is running, you can hit [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
+
+See more [API Examples](./api.md).
+
+Or use [kubectl cost](./kubectl-cost.md):
+
+```sh
+kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
+    namespace \
+    --window 5m \
+    --show-efficiency=true
+```
+
+Output:
 
 ```
-helm repo add kubecost https://kubecost.github.io/cost-analyzer/
-helm upgrade --install kubecost kubecost/cost-analyzer --namespace kubecost --create-namespace
++---------+---------------+--------------------+-----------------+
+| CLUSTER | NAMESPACE     | MONTHLY RATE (ALL) | COST EFFICIENCY |
++---------+---------------+--------------------+-----------------+
+|         | opencost      |          18.295200 |        0.231010 |
+|         | prometheus    |          17.992800 |        0.000000 |
+|         | kube-system   |          11.383200 |        0.033410 |
++---------+---------------+--------------------+-----------------+
+| SUMMED  |               |          47.671200 |                 |
++---------+---------------+--------------------+-----------------+
 ```
 
-This install method provides access to all OpenCost and Kubecost Team functionality, can scale to large clusters, and is available for free.
+## Troubleshooting
 
-## Alternative install options
+If you get an error like this, check your Prometheus target is correct in the OpenCost deployment.
 
-- You can run [helm template](https://helm.sh/docs/helm/helm_template/) against the [Kubecost helm chart](https://github.com/kubecost/cost-analyzer-helm-chart/) to generate local YAML output. This requires extra effort when compared to directly installing the helm chart but is more flexible than deploying static YAML.
+```bash
+Error: failed to query allocation API: failed to port forward query: received non-200 status code 500 and data: {"code":500,"status":"","data":null,"message":"Error: error computing allocation for ...
+```
 
-- Lastly, you can deploy OpenCost directly as a pod. Directions for this install path are available [here](https://github.com/kubecost/opencost/blob/master/deploying-as-a-pod.md). This install path just deploys the underlying OpenCost allocation model with a basic UI or is not meant to be enterprise-ready.
+Negative values for idle: ensure you added the scrape target (above) for OpenCost.
+
+---
+
+## Help
+
+Please let us know if you run into any issues, we are here to help!
+
+Contact us via email (<support@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
