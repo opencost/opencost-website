@@ -6,9 +6,9 @@ sidebar_position: 2
 Follow the steps below to install OpenCost.
 
 
-## TLDR (for those that just want the commands!)
+## Quick Start Installation
 
-This is all you need. The guides below this command give more detail.
+This command will get you started immediately with OpenCost. For a more detailed setup tutorial, continue to the next section.
 
 ```sh
 helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
@@ -32,7 +32,7 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
 ```
 
-## OpenCost
+## Installing OpenCost
 
 If providing your own Prometheus:
  1. Set the [PROMETHEUS_SERVER_ENDPOINT environment variable](https://github.com/opencost/opencost/blob/main/kubernetes/opencost.yaml#L137) to the address of your prometheus server
