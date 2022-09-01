@@ -6,9 +6,9 @@ sidebar_position: 2
 Follow the steps below to install OpenCost.
 
 
-## TLDR (for those that just want the commands!)
+## Quick Start Installation
 
-This is all you need. The guides below this command give more detail.
+This command will get you started immediately with OpenCost. For a more detailed setup tutorial, continue to the next section.
 
 ```sh
 helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
