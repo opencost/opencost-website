@@ -32,7 +32,7 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
 ```
 
-## OpenCost
+## Installing OpenCost
 
 If providing your own Prometheus:
  1. Set the [PROMETHEUS_SERVER_ENDPOINT environment variable](https://github.com/opencost/opencost/blob/main/kubernetes/opencost.yaml#L137) to the address of your prometheus server
