@@ -83,13 +83,7 @@ Output:
 To update your OpenCost to the most recent version, using a previously unmodified opencost.yaml manifest, enter the following command. This will update OpenCost to the latest version.
 
 ```sh
-$ kubectl apply -f opencost.yaml -n opencost
-namespace/opencost created
-serviceaccount/opencost created
-clusterrole.rbac.authorization.k8s.io/opencost created
-clusterrolebinding.rbac.authorization.k8s.io/opencost created
-deployment.apps/opencost created
-service/opencost created
+kubectl -n opencost rollout restart deployment
 ```
 
 To check logs to verify the version of your OpenCost:
@@ -128,7 +122,7 @@ $  kubectl logs -n opencost deployment/opencost | head
 ## Deleting OpenCost
 To delete OpenCost, enter the following command:
 
-`kubectl delete pod opencost -n opencost`
+`kubectl delete -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml`
 
 ## Troubleshooting
 
