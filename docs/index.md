@@ -14,7 +14,7 @@ Check out our [Installation guide](install.md) to start monitoring and managing 
 
 ## Specification
 
-The OpenCost specification describes a vendor-neutral implementation for Kubernetes cost monitoring. The latest release is hosted [here](https://drive.google.com/drive/folders/196Dq_GHOGeva5ojwF2jd3L21ab-Y7wp5).
+The OpenCost specification describes a vendor-neutral implementation for Kubernetes cost monitoring. The latest release is hosted [here](https://github.com/opencost/opencost/tree/develop/spec).
 
 ## Stay in the Loop
 
