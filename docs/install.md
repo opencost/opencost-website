@@ -50,6 +50,17 @@ Wait for the pod to be ready and then port forward with:
 kubectl port-forward --namespace opencost service/opencost 9003
 ```
 
+## Installing Opencost ui dashboard
+By default, when you install opencost by following command, the ui dashboard is installed:
+```sh
+kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml
+```
+So you need to port forward for ui dashboard with:
+```sh
+kubectl port-forward --namespace opencost service/opencost 9090
+```
+And then open your web browser and visit ` http://localhost:9090` to see the dashboard.
+
 ## Testing
 
 To test that the server is running, you can hit [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
