@@ -58,13 +58,7 @@ export default function NavbarContent() {
       }
       right={
         <>
-          {/* <NavbarItems items={rightItems} />
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
-          {autoAddSearchBar && (
-            <NavbarSearch>
-              <SearchBar />
-            </NavbarSearch>
-          )} */}
+          
           <span className="mt-1">
             <GitHubButton
               href="https://github.com/kubecost/opencost"
@@ -76,6 +70,8 @@ export default function NavbarContent() {
               GitHub
             </GitHubButton>
           </span>
+          <NavbarItems items={rightItems} />
+          <NavbarColorModeToggle className={styles.colorModeToggle} />
         </>
       }
     />
