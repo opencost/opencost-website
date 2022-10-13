@@ -5,7 +5,7 @@ export default function Features() {
   return (
     <div className="px-10 pt-5">
       <div className="flex flex-col gap-y-6">
-        <div className="text-4xl md:text-5xl text-black font-semibold text-center flex items-center justify-center">
+        <div className="text-4xl md:text-5xl font-semibold text-center flex items-center justify-center">
           Cost allocation, simple &amp; standard
         </div>
         <div className="text-lg text-center flex items-center justify-center font-anek mt-5 max-w-2xl mx-auto leading-relaxed">
