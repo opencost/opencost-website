@@ -26,7 +26,7 @@ export default function Partners() {
             <img src="/img/armory.png" alt="Armory"/>
           </div></a>
           <a href="https://www.aws.amazon.com/" target="_blank" rel="noopener noreferrer">
-            <div className="w-40 h-30 items-center flex justify-center">
+            <div className="w-52 h-52 items-center flex justify-center">
             <img src="/img/aws.png" alt="AWS" />
           </div></a>
           <a href="https://www.d2iq.com/" target="_blank" rel="noopener noreferrer">
