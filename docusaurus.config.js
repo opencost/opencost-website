@@ -134,7 +134,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/kubecost/opencost",
+                href: "https://github.com/opencost/opencost",
               },
             ],
           },
