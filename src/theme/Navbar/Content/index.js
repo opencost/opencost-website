@@ -67,11 +67,11 @@ export default function NavbarContent() {
           )} */}
           <span className="mt-1">
             <GitHubButton
-              href="https://github.com/kubecost/opencost"
+              href="https://github.com/opencost/opencost"
               data-color-scheme="no-preference: light_high_contrast; light: light; dark: light;"
               data-size="large"
               data-show-count="true"
-              aria-label="Star kubecost/opencost on GitHub"
+              aria-label="Star opencost/opencost on GitHub"
             >
               GitHub
             </GitHubButton>

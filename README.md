@@ -8,7 +8,7 @@ This website is primarily built using [Docusaurus 2](https://docusaurus.io/), a 
 
 ### Proposing new features and fixes
 
-If you are not (yet!) part of the maintainer team and are considering making changes to the website, please first [create an Issue](https://github.com/kubecost/opencost/issues). That way, we can discuss your changes and ensure they're accepted.
+If you are not (yet!) part of the maintainer team and are considering making changes to the website, please first [create an Issue](https://github.com/opencost/opencost/issues). That way, we can discuss your changes and ensure they're accepted.
 
 ### Implementing changes
 
