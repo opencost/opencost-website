@@ -32,7 +32,7 @@ OpenCost supports a Kubernetes environment above 1.8.
 
 ### How is OpenCost governed?
 
-We are actively forming our governance model. Our plan is to align with the CNCF best practices, found [here](https://www.cncf.io/blog/2019/08/30/cncf-technical-principles-and-open-governance-success/). Today, Kubecost’s technical team contributes all of the code submissions to OpenCost based on the inputs and feedback from a working group of founding contributors. The [OpenCost spec](https://github.com/kubecost/opencost/tree/develop/spec) is co-authored by founding members.
+We are actively forming our governance model. Our plan is to align with the CNCF best practices, found [here](https://www.cncf.io/blog/2019/08/30/cncf-technical-principles-and-open-governance-success/). Today, Kubecost’s technical team contributes all of the code submissions to OpenCost based on the inputs and feedback from a working group of founding contributors. The [OpenCost spec](https://github.com/opencost/opencost/tree/develop/spec) is co-authored by founding members.
 
 ### What does it mean to be a “Founding Contributor”?
 
