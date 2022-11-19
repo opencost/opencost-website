@@ -20,9 +20,9 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
 kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml
 ```
 
-## Prerequisites
+## Prerequisites: Prometheus
 
-Install Prometheus using the following command:
+Opencost is relying on metrics scraped by Prometheus. For express installation of Prometheus use the following command:
 
 ```sh
 helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
@@ -31,6 +31,10 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
   --set alertmanager.enabled=false \
   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
 ```
+
+This Prometheus installation is based on Prom community helm chart, and by default your Prometheus will be scraping a lots of unneccessary metrics and taking quite a lot of space. For production purposes you could refer to the Kubecost [user metrics list](https://guide.kubecost.com/hc/en-us/articles/4425134686743-User-Metrics) to filter with 'keep', for reference take a look at scraping config at the ConfigMap section of Kubecost installation [chart](https://github.com/kubecost/cost-analyzer-helm-chart/blob/develop/kubecost.yaml).
+
+If you are going to conect existing Prometheus instance which is already consuming KSM metrics, please consider visiting this page about [KSM metrics emission](https://guide.kubecost.com/hc/en-us/articles/4408095797911), because Opencost currently implements the same architecture and you maight get overlapping metrics.
 
 ## Installing OpenCost
 
