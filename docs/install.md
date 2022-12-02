@@ -22,7 +22,7 @@ kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost
 
 ## Prerequisites: Prometheus
 
-Opencost relies on metrics scraped by Prometheus. For express installation of Prometheus use the following command:
+OpenCost relies on metrics scraped by Prometheus. For express installation of Prometheus use the following command:
 
 ```sh
 helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
@@ -34,7 +34,7 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
 
 This Prometheus installation is based on Prom community helm chart, and by default your Prometheus might scrape unnecessary metrics. For production, you can refer to the Kubecost [user metrics list](https://guide.kubecost.com/hc/en-us/articles/4425134686743-User-Metrics) to filter with 'keep', for reference take a look at scrape config in the Kubecost installation [chart](https://github.com/kubecost/cost-analyzer-helm-chart/blob/v1.98/cost-analyzer/charts/prometheus/values.yaml#L1208).
 
-If you are going to conect existing Prometheus instance which is already consuming KSM metrics, please consider visiting this page about [KSM metrics emission](https://guide.kubecost.com/hc/en-us/articles/4408095797911), because Opencost currently implements the same architecture and you might get overlapping metrics.
+If you are going to connect existing Prometheus instance which is already consuming KSM metrics, please consider visiting this page about [KSM metrics emission](https://guide.kubecost.com/hc/en-us/articles/4408095797911), because OpenCost currently implements the same architecture and you might get overlapping metrics.
 
 ## Installing OpenCost
 
@@ -106,7 +106,7 @@ If you wish to modify OpenCost to a previous version, start with the following c
 In the line `quay.io/kubecost1/kubecost-cost-model:latest`, change `latest` to the desired version number in the format `prod-x.xx.x`. Then enter the following command to apply the updated opencost.yaml manifest:
 
 ```sh
-$ kubectl apply -f opencost.yaml -n opencost         
+$ kubectl apply -f opencost.yaml -n opencost
 namespace/opencost unchanged
 serviceaccount/opencost unchanged
 clusterrole.rbac.authorization.k8s.io/opencost unchanged
