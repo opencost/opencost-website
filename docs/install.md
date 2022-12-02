@@ -144,4 +144,4 @@ Negative values for idle: ensure you added the scrape target (above) for OpenCos
 
 Please let us know if you run into any issues, we are here to help!
 
-Contact us via email (<support@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
+Contact us via email (<opencost@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!

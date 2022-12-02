@@ -20,4 +20,4 @@ The OpenCost specification describes a vendor-neutral implementation for Kuberne
 
 Join our working group and follow along other community events using our [calendar](https://calendar.google.com/calendar/u/0/embed?src=c_c0f7q56e5eeod3j89bb320fvjg@group.calendar.google.com&ctz=America/Los_Angeles).
 
-Contact us via email (<support@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
+Contact us via email (<opencost@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!

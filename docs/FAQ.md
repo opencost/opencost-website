@@ -47,10 +47,10 @@ OpenCost has core billing integrations with:
 - GCP/GKE
 - On-prem clusters via custom pricing sheets
 
-### How can I contribute to Opencost?
+### How can I contribute to OpenCost?
 
 Get started with our [open source contributing guide](https://github.com/opencost/opencost/blob/develop/CONTRIBUTING.md)!
 
 We are actively looking for new contributors if you or your company are interested in getting involved – join us using the links below-
 
-Contact us via email (<support@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
+Contact us via email (<opencost@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
