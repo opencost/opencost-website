@@ -4,11 +4,12 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Enterprise from "@site/src/components/Enterprise";
+import Kubecost from "@site/src/components/Kubecost";
 
 function EnterpriseHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className="min-h-screen items-center">
+    <header className="items-center">
       <Enterprise />
     </header>
   );
@@ -19,10 +20,11 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="ENTERPRISE PAGE"
+      description="OpenCost Enterprise Offerings"
     >
       <EnterpriseHeader />
-      <main>
+         <main>
+          <Kubecost />
       </main>
     </Layout>
   );
