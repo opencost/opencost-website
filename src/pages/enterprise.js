@@ -4,6 +4,7 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Enterprise from "@site/src/components/Enterprise";
+import Enterprises from "@site/src/components/Enterprises";
 import Kubecost from "@site/src/components/Kubecost";
 
 function EnterpriseHeader() {
@@ -24,8 +25,9 @@ export default function Home() {
     >
       <EnterpriseHeader />
          <main>
-          <Kubecost />
-      </main>
+             <Enterprises />
+             <Kubecost />
+         </main>
     </Layout>
   );
 }

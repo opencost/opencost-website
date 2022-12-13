@@ -2,12 +2,9 @@ import React from "react";
 
 export default function Kubecost() {
     return (
-        <div className="mt-20 md:mt-20 lg:mt-40 flex flex-col-reverse xl:flex-row px-10 sm:px-20 xl:px-40">
+        <div className="flex flex-col-reverse xl:flex-row px-10 sm:px-20 xl:px-40">
             <div className="flex flex-col gap-y-8 xl:gap-x-40 xl:w-1/2">
-              <h2 className="text-4xl sm:text-4xl font-anek font-semibold leading-snug">
-                    Enterprise & Support
-                </h2>
-                <a href="https://kubecost.com" className="hover:no-underline">
+                   <a href="https://www.kubecost.com" className="hover:no-underline">
                     <h3 className="text-4xl sm:text-3xl font-anek font-semibold leading-snug">
                         <img src="/img/kubecost/kubecost_graphic_mark.png" alt="Kubecost" height={25} />
                         Kubecost Enterprise
