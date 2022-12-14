@@ -1,6 +1,6 @@
 ---
 title: OpenCost in the News
-description: OpenStack in the News
+description: OpenCost in the News
 hide_table_of_contents: true
 ---
 
