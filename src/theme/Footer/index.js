@@ -44,7 +44,7 @@ function Footer() {
           <div className="flex flex-row justify-center md:justify-end items-start gap-x-3 md:gap-x-16 font-light">
             <div>
               <a
-                href="/docs"
+                href="/docs/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-green-300 hover:no-underline"
@@ -54,7 +54,7 @@ function Footer() {
             </div>
             <div>
               <a
-                href="https://github.com/kubecost/opencost"
+                href="https://github.com/opencost/opencost"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-green-300 hover:no-underline"
@@ -84,7 +84,7 @@ function Footer() {
         </div>
       </div>
       <div className="text-left md:text-left text-sm px-10">
-        The Linux Foundation® (TLF) has registered trademarks and uses trademarks. 
+        The Linux Foundation® (TLF) has registered trademarks and uses trademarks.
         For a list of TLF trademarks, see:&nbsp;
         <a
           href="https://www.linuxfoundation.org/trademark-usage/"

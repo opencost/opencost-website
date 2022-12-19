@@ -73,8 +73,8 @@ const config = {
     ({
       colorMode: {
         defaultMode: "light",
-        disableSwitch: true,
-        respectPrefersColorScheme: false,
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
       navbar: {
         title: "",
@@ -90,6 +90,7 @@ const config = {
             position: "left",
             label: "Documentation",
           },
+          { to: "/press", label: "Press", position: "left" },
           {
             to: "https://slack.cncf.io/",
             label: "Join Slack",
@@ -134,7 +135,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/kubecost/opencost",
+                href: "https://github.com/opencost/opencost",
               },
             ],
           },

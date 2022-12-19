@@ -4,10 +4,10 @@ export default function Partners() {
   return (
     <div
       className="px-10 py-20 md:py-32 mt-20 md:mt-60"
-      style={{ backgroundColor: "#e5e5e5" }}
+      // style={{ backgroundColor: "#e5e5e5" }}
     >
       <div className="flex flex-col gap-y-6">
-        <div className="text-4xl md:text-5xl text-black font-semibold text-center flex items-center justify-center">
+        <div className="text-4xl md:text-5xl font-semibold text-center flex items-center justify-center">
           Founding Contributors
         </div>
         <div className="text-lg text-center flex items-center justify-center font-anek mt-5 max-w-5xl mx-auto leading-relaxed">
@@ -26,7 +26,7 @@ export default function Partners() {
             <img src="/img/armory.png" alt="Armory"/>
           </div></a>
           <a href="https://www.aws.amazon.com/" target="_blank" rel="noopener noreferrer">
-            <div className="w-40 h-30 items-center flex justify-center">
+            <div className="w-40 h-52 items-center flex justify-center">
             <img src="/img/aws.png" alt="AWS" />
           </div></a>
           <a href="https://www.d2iq.com/" target="_blank" rel="noopener noreferrer">
