@@ -90,6 +90,7 @@ const config = {
             position: "left",
             label: "Documentation",
           },
+          { to: "/press", label: "Press", position: "left" },
           {
             to: "https://slack.cncf.io/",
             label: "Join Slack",

@@ -51,12 +51,14 @@ kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost
 Wait for the pod to be ready and then port forward with:
 
 ```sh
-kubectl port-forward --namespace opencost service/opencost 9003
+kubectl port-forward --namespace opencost service/opencost 9003 9090
 ```
 
 ## Testing
 
 To test that the server is running, you can hit [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
+
+You can also access the OpenCost UI at [http://localhost:9090](http://localhost:9090)
 
 See more [API Examples](./api.md).
 
