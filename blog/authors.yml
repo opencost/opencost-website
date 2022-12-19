@@ -10,6 +10,12 @@ ajay:
   url: https://github.com/AjayTripathy
   image_url: https://github.com/AjayTripathy.png
 
+mattray:
+  name: Matt Ray
+  title: OpenCost Community Manager @ Kubecost
+  url: https://github.com/mattray
+  image_url: https://github.com/mattray.png
+
 team:
   name: OpenCost Authors
   title: Kubecost Team
