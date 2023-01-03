@@ -5,7 +5,11 @@ module.exports = {
     "./docs/**/*.{md,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      lineHeight: {
+        11.5: "2.875rem",
+      },
+    },
   },
   plugins: [],
 };
