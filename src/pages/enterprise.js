@@ -1,33 +1,22 @@
 import React from "react";
-import clsx from "clsx";
-import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Enterprise from "@site/src/components/Enterprise";
+import Layout from "@theme/Layout";
+
+import EnterpriseHero from "@site/src/components/EnterpriseHero";
 import Enterprises from "@site/src/components/Enterprises";
 import Kubecost from "@site/src/components/Kubecost";
 
-function EnterpriseHeader() {
+export default function Enterprise() {
   const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className="items-center">
-      <Enterprise />
-    </header>
-  );
-}
 
-export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={`${siteConfig.title}`}
-      description="OpenCost Enterprise Offerings"
-    >
-      <EnterpriseHeader />
-         <main>
-             <Enterprises />
-             <Kubecost />
-         </main>
+    <Layout title={`${siteConfig.title}`} description="OpenCost Enterprise Offerings">
+      <EnterpriseHero className="pt-20 xl:pl-32" />
+      <main className="p-10 pt-20 xl:px-40">
+        <h2 className="pb-6 text-5xl font-anek font-normal leading-snug">Enterprise & Support</h2>
+
+        <Kubecost />
+      </main>
     </Layout>
   );
 }
