@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Enterprise({ className }) {
+export default function EnterpriseHero({ className }) {
   return (
     <section className={`flex flex-col-reverse md:flex-row items-end ${className}`}>
       <hgroup className="px-8">
