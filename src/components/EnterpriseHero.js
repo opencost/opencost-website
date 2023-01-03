@@ -2,7 +2,7 @@ import React from "react";
 
 export default function EnterpriseHero({ className }) {
   return (
-    <section className={`flex flex-col-reverse md:flex-row items-end ${className}`}>
+    <section className={`flex flex-col-reverse md:flex-row items-end md:items-center ${className}`}>
       <hgroup className="px-8">
         <h1 className="text-4xl sm:text-5xl font-anek font-normal pb-6">
           Making cloud costs visible with open source & enterprise solutions
