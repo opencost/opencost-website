@@ -1,11 +1,13 @@
 import React from "react";
+import KubecostEnterprise from "/img/kubecost/kubecost-enterprise.svg";
 
 export default function Kubecost() {
   return (
     <div className="grid grid-cols-3 grid-rows-2 gap-4">
-      <div className="px-8 py-4 col-span-2 row-span-2 rounded-xl border border-solid border-gray-200">
-        <h3 className="my-4 leading-8 -indent-96 overflow-hidden bg-auto bg-no-repeat bg-[url('/img/kubecost/kubecost-enterprise.svg')]">
-          Kubecost Enterprise
+      <div className="px-8 py-4 col-span-2 row-span-2 rounded-xl border border-solid border-gray-200 dark:border-gray-800">
+        <h3 className="my-4">
+          <KubecostEnterprise className="max-w-xs" />
+          <span className="sr-only">Kubecost Enterprise</span>
         </h3>
 
         <p className="pb-4">
@@ -48,7 +50,7 @@ export default function Kubecost() {
         </a>
       </div>
 
-      <div className="px-8 py-4 rounded-xl border border-solid border-gray-200">
+      <div className="px-8 py-4 rounded-xl border border-solid border-gray-200 dark:border-gray-800">
         <h4 className="text-3xl sm:text-2xl font-anek font-normal leading-snug">Getting Started</h4>
         <p>
           Kubecost’s documentation helps to guide onboarding. It’s full of tips, tricks, and useful
@@ -59,7 +61,7 @@ export default function Kubecost() {
         </a>
       </div>
 
-      <div className="px-8 py-4 rounded-xl border border-solid border-gray-200">
+      <div className="px-8 py-4 rounded-xl border border-solid border-gray-200 dark:border-gray-800">
         <h4 className="text-3xl sm:text-2xl font-anek font-normal leading-snug">Tutorials</h4>
         <p>Read Kubecost’s Blog for in-depth tutorials on feature implementations.</p>
         <a href="https://blog.kubecost.com" className="underline">
