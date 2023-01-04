@@ -17,9 +17,9 @@ export default function EnterpriseHero({ className }) {
       </hgroup>
 
       <figure className="pb-10 lg:pb-0 m-0 w-2/3 lg:w-auto flex grow items-end">
-        <EnterpriseStacksImage className="sm:shrink-0 w-full max-w-[455px]" />
+        <EnterpriseStacksImage className="sm:shrink-0 w-full max-w-[455px] stroke-[#231F20] dark:stroke-gray-600" />
 
-        <span className="-ml-1 mb-[46px] h-[5px] grow bg-[#231F20] hidden sm:block" />
+        <span className="-ml-1 mb-[46px] h-[5px] grow bg-[#231F20] dark:bg-gray-600 hidden sm:block" />
       </figure>
     </section>
   );

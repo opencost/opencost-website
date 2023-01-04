@@ -1,13 +1,11 @@
 <svg
   xmlns="http://www.w3.org/2000/svg" 
-  class="text-[#231F20] dark:text-gray-400"
   stroke="currentColor" 
   stroke-linecap="round" 
   stroke-linejoin="round" 
   stroke-miterlimit="2" 
   stroke-width="5" 
   fill="none" 
-  
   viewBox="0 0 450 300"
 >
   <path d="M159.2 265.6H3M298 252h149M190.8 3h40m-73.6 0H179m-9.5 15.5h36.8M78.8 76.2 77 78m-7.8 7.8-1.8 1.8m11.4 0L77 85.8M69.2 78l-1.8-1.8M101 114l-.6-.6m7.6 7.6-.6-.6m0-6.4.5-.6m-7.5 7.6.5-.6M394.2 168l-1.7 1.8m-7.9 7.8-1.8 1.8m11.4 0-1.7-1.8m-7.9-7.8-1.8-1.8M42.6 234.5h49.7m-32.9-14.8h22.4m87.2 6.1c-3.2.2-6.4.4-9.8.4-21.8 0-39.6-6.6-39.6-14.8 0-8.2 17.8-14.9 39.6-14.9 3.4 0 6.6.2 9.7.5"/>
