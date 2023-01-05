@@ -3,8 +3,8 @@ import KubecostEnterprise from "/img/kubecost/kubecost-enterprise.svg";
 
 export default function Kubecost() {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-4">
-      <div className="px-8 py-4 col-span-2 row-span-2 rounded-xl border border-solid border-gray-200 dark:border-gray-800">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-4">
+      <div className="px-8 py-4 sm:col-span-2 row-span-2 rounded-xl border border-solid border-gray-200 dark:border-gray-800">
         <h3 className="my-4">
           <KubecostEnterprise className="max-w-xs" />
           <span className="sr-only">Kubecost Enterprise</span>
@@ -14,7 +14,7 @@ export default function Kubecost() {
           Kubecost provides real-time cost visibility and insights for teams using Kubernetes,
           helping you continuously reduce your cloud costs.
         </p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-4">
           <figure className="flex items-center gap-4 m-0">
             <img src="/img/kubecost/integrations.png" alt="Custom Integrations" className="w-10" />
             <figcaption>Custom Integrations</figcaption>
