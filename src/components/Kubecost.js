@@ -47,7 +47,7 @@ export default function Kubecost() {
 
         <a
           href="https://www.kubecost.com"
-          className="underline block pt-8 text-black group-hover/card:text-green-500 group-hover/card:font-black"
+          className="underline block pt-8 text-black dark:text-white group-hover/card:text-green-500 group-hover/card:font-black"
         >
           Learn more about Kubecost’s mission to improve cost visibility
         </a>
@@ -61,7 +61,7 @@ export default function Kubecost() {
         </p>
         <a
           href="https://docs.kubecost.com"
-          className="underline text-black group-hover/card:text-green-500 group-hover/card:font-black"
+          className="underline text-black dark:text-white group-hover/card:text-green-500 group-hover/card:font-black"
         >
           Check it out
         </a>
@@ -72,7 +72,7 @@ export default function Kubecost() {
         <p>Read Kubecost’s Blog for in-depth tutorials on feature implementations.</p>
         <a
           href="https://blog.kubecost.com"
-          className="underline text-black group-hover/card:text-green-500 group-hover/card:font-black"
+          className="underline text-black dark:text-white group-hover/card:text-green-500 group-hover/card:font-black"
         >
           Check it out
         </a>
