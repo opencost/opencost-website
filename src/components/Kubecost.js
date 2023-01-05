@@ -3,7 +3,7 @@ import KubecostEnterprise from "/img/kubecost/kubecost-enterprise.svg";
 
 export default function Kubecost() {
   return (
-    <div className="grid grid-cols-3 grid-rows-2 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-4">
       <div className="px-8 py-4 col-span-2 row-span-2 rounded-xl border border-solid border-gray-200 dark:border-gray-800">
         <h3 className="my-4">
           <KubecostEnterprise className="max-w-xs" />
