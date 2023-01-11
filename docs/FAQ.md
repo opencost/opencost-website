@@ -57,4 +57,4 @@ Get started with our [open source contributing guide](https://github.com/opencos
 
 We are actively looking for new contributors if you or your company are interested in getting involved – join us using the links below-
 
-Contact us via email (<support@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
+Contact us via email (<opencost@kubecost.com>) or join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
