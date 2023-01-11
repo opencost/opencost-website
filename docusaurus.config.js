@@ -83,6 +83,7 @@ const config = {
           src: "img/logo.png",
         },
         items: [
+          { to: "/enterprise", label: "Enterprise", position: "left" },
           { to: "/blog", label: "Blog", position: "left" },
           {
             type: "doc",
