@@ -57,10 +57,6 @@ export default function Partners() {
             <div className="w-52 h-52 items-center flex pb-2.5">
             <img src="/img/pixie.png" alt="Pixie" />
           </div></a>
-          <a href="https://www.redhat.com/" target="_blank" rel="noopener noreferrer">
-          <div className="w-64 h-52 items-center flex pb-0.5">
-            <img src="/img/redhat.svg" alt="Redhat" />
-          </div></a>
           <a href="https://www.suse.com/" target="_blank" rel="noopener noreferrer">
           <div className="w-72 h-52 items-center flex pb-1">
             <img src="/img/suse.png" alt="Suse" />
