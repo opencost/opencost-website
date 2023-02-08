@@ -3,12 +3,13 @@ sidebar_position: 2
 ---
 # OpenCost Setup
 
-Follow the steps below to install OpenCost.
-
+OpenCost requires Prometheus for scraping metrics and data storage. Follow the steps below to install OpenCost.
 
 ## Quick Start Installation
 
-This command will get you started immediately with OpenCost. For a more detailed setup tutorial, continue to the next section.
+These commands will get you started immediately with OpenCost.
+
+### Install Prometheus
 
 ```sh
 helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
@@ -16,13 +17,21 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
   --set pushgateway.enabled=false \
   --set alertmanager.enabled=false \
   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
+```
 
+### Install OpenCost
+
+```sh
 kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml
 ```
 
+That is all that is required for most installations. You can proceed to [testing](#testing) for verifying your installation.
+
+For a more detailed setup tutorial, continue to the next section.
+
 ## Prerequisites: Prometheus
 
-OpenCost relies on metrics scraped by Prometheus. For express installation of Prometheus use the following command:
+For express installation of Prometheus use the following command:
 
 ```sh
 helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
@@ -32,15 +41,17 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
 ```
 
-This Prometheus installation is based on Prom community helm chart, and by default your Prometheus might scrape unnecessary metrics. For production, you can refer to the Kubecost [user metrics list](https://guide.kubecost.com/hc/en-us/articles/4425134686743-User-Metrics) to filter with 'keep', for reference take a look at scrape config in the Kubecost installation [chart](https://github.com/kubecost/cost-analyzer-helm-chart/blob/v1.98/cost-analyzer/charts/prometheus/values.yaml#L1208).
+This Prometheus installation is based on the [Prometheus Community Kubernetes Helm Chart](https://prometheus-community.github.io/helm-charts) and by default your Prometheus may scrape unnecessary metrics. For production, you may refer to the Kubecost [user metrics list](https://guide.kubecost.com/hc/en-us/articles/4425134686743-User-Metrics) to filter with `keep` and for reference look at the scrape config in the Kubecost installation [chart](https://github.com/kubecost/cost-analyzer-helm-chart/blob/v1.98/cost-analyzer/charts/prometheus/values.yaml#L1208).
 
-If you are going to connect existing Prometheus instance which is already consuming KSM metrics, please consider visiting this page about [KSM metrics emission](https://guide.kubecost.com/hc/en-us/articles/4408095797911), because OpenCost currently implements the same architecture and you might get overlapping metrics.
+If you are going to connect existing Prometheus instance which is already consuming KSM metrics, please consider visiting this page about [KSM metrics emission](https://guide.kubecost.com/hc/en-us/articles/4408095797911) because OpenCost currently implements the same architecture and you might get overlapping metrics.
+
+### Providing your own Prometheus
+
+If you want to use your own Prometheus:
+ 1. Set the PROMETHEUS_SERVER_ENDPOINT [environment variable](https://github.com/opencost/opencost/blob/develop/kubernetes/opencost.yaml#L154) to the address of your Prometheus server.
+ 2. Add the [scrapeConfig](https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml) to it, using the preferred means for your Prometheus install (ie. ```-f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml```).
 
 ## Installing OpenCost
-
-If providing your own Prometheus:
- 1. Set the PROMETHEUS_SERVER_ENDPOINT [environment variable](https://github.com/opencost/opencost/blob/develop/kubernetes/opencost.yaml#L154) to the address of your prometheus server
- 2. Add the [scrapeConfig](https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml) to it
 
 If you used the Prometheus install command from `Prerequisites`, the command below will install OpenCost on your cluster:
 
@@ -48,21 +59,19 @@ If you used the Prometheus install command from `Prerequisites`, the command bel
 kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml
 ```
 
-Wait for the pod to be ready and then port forward with:
+## Testing
+
+Once your OpenCost has been installed, wait for the pod to be ready and port forward with:
 
 ```sh
 kubectl port-forward --namespace opencost service/opencost 9003 9090
 ```
 
-## Testing
+To verify that the UI and server are running, you may access the OpenCost UI at [http://localhost:9090](http://localhost:9090).
 
-To test that the server is running, you can hit [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
+To verify that the server is running, access [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
 
-You can also access the OpenCost UI at [http://localhost:9090](http://localhost:9090)
-
-See more [API Examples](./api.md).
-
-Or use [kubectl cost](./kubectl-cost.md):
+You can see more [API Examples](./api.md) or use [kubectl cost](./kubectl-cost.md):
 
 ```sh
 kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
@@ -86,7 +95,7 @@ Output:
 ```
 
 ## Updating OpenCost
-To update your OpenCost to the most recent version, using a previously unmodified opencost.yaml manifest, enter the following command. This will update OpenCost to the latest version.
+To update your OpenCost to the most recent version, using a previously unmodified `opencost.yaml` manifest, enter the following command. This will update OpenCost to the latest version.
 
 ```sh
 kubectl -n opencost rollout restart deployment
@@ -101,11 +110,9 @@ $  kubectl logs -n opencost deployment/opencost | head
 ```
 
 ### Sidegrading OpenCost
-If you wish to modify OpenCost to a previous version, start with the following command in order to modify the opencost.yaml manifest:
+If you wish to modify OpenCost to a previous version, start with the following command in order to modify the `opencost.yaml` manifest:
 
-`$ vim opencost.yaml`
-
-In the line `quay.io/kubecost1/kubecost-cost-model:latest`, change `latest` to the desired version number in the format `prod-x.xx.x`. Then enter the following command to apply the updated opencost.yaml manifest:
+In the line `quay.io/kubecost1/kubecost-cost-model:latest`, change `latest` to the desired version number in the format `prod-x.xx.x`. Then enter the following command to apply the updated `opencost.yaml` manifest:
 
 ```sh
 $ kubectl apply -f opencost.yaml -n opencost
@@ -141,6 +148,28 @@ Error: failed to query allocation API: failed to port forward query: received no
 Negative values for idle: ensure you added the scrape target (above) for OpenCost.
 
 ---
+
+## Managing OpenCost with Helm
+
+There is now a [community-supported Helm chart](https://github.com/opencost/opencost-helm-chart) with extensive customization settings exposed via the [values.yaml](https://github.com/opencost/opencost-helm-chart/blob/main/values.yaml). The Helm installation still assumes an existing Prometheus installation. The following commands work with the https://github.com/opencost/opencost-helm-chart repository checked-out locally and modified the `values.yaml` with your own local changes (alternatively you may keep them in a separate, source-controlled file).
+
+### Installing OpenCost with Helm
+
+```
+helm install opencost . --namespace opencost --create-namespace -f values.yaml
+```
+
+### Upgrading OpenCost with Helm
+
+```
+helm upgrade opencost . --namespace opencost -f values.yaml
+```
+
+### Deleting with Helm
+
+```
+helm uninstall opencost
+```
 
 ## Help
 
