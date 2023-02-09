@@ -140,6 +140,16 @@ Error: failed to query allocation API: failed to port forward query: received no
 
 Negative values for idle: ensure you added the scrape target (above) for OpenCost.
 
+## Enabling Debugging
+
+With the [v1.100 release](https://github.com/opencost/opencost/releases/tag/v1.100.0) you can temporarily set the log level of the OpenCost container without restarting the Pod. You can send a POST request to /logs/level with one of the valid log levels. This does not persist between Pod restarts, Helm deployments, etc. Here's an example:
+```
+curl -X POST \
+    'http://localhost:9003/logs/level' \
+    -d '{"level": "debug"}'
+```
+A GET request can be sent to the same endpoint to retrieve the current log level.
+
 ---
 
 ## Help
