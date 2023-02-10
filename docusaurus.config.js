@@ -91,6 +91,7 @@ const config = {
             position: "left",
             label: "Documentation",
           },
+          { to: "/api", label: "API", position: "left" },
           { to: "/press", label: "Press", position: "left" },
           {
             to: "https://slack.cncf.io/",
