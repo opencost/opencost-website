@@ -50,3 +50,7 @@ To create a new standalone documentation page, create a new file in `/docs`. The
 Each document needs some metadata about the page, e.g. `sidebar_position`, `slug`, `title`, etc. Check out the [full list of metadata keys](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs).
 
 Documentation can also be organized into [hierarchical sections](https://docusaurus.io/docs/docs-introduction), using the same pattern as for blog posts.
+
+#### Importing Swagger into /api
+
+The OpenCost [swagger.json](https://github.com/opencost/opencost/blob/develop/docs/swagger.json) is incorporated on the `API` tab through [Redoc](https://redocly.com/redoc/).
