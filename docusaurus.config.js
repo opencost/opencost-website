@@ -81,6 +81,7 @@ const config = {
         logo: {
           alt: "OpenCost Logo",
           src: "img/logo.png",
+          srcDark: "img/logo-white.png",
         },
         items: [
           { to: "/enterprise", label: "Enterprise", position: "left" },
