@@ -54,3 +54,9 @@ Documentation can also be organized into [hierarchical sections](https://docusau
 #### Importing Swagger into /api
 
 The OpenCost [swagger.json](https://github.com/opencost/opencost/blob/develop/docs/swagger.json) is incorporated on the `API` tab through [Redoc](https://redocly.com/redoc/).
+
+## Licenses
+
+All code in this repository is made available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+All documentation in this repository is made available by the CNCF under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

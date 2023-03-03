@@ -84,6 +84,15 @@ function Footer() {
         </div>
       </div>
       <div className="text-left md:text-left text-sm px-10">
+        Documentation Distributed under&nbsp;
+        <a
+          href="https://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:text-green-300 hover:no-underline"
+        >
+          CC BY 4.0
+        </a>.&nbsp;
         The Linux Foundation® (TLF) has registered trademarks and uses trademarks.
         For a list of TLF trademarks, see:&nbsp;
         <a
@@ -93,7 +102,7 @@ function Footer() {
           className="text-white hover:text-green-300 hover:no-underline"
         >
           Trademark Usage
-        </a>
+        </a>.
       </div>
       <div className="mt-10 flex flex-row justify-center md:justify-end items-start gap-x-4 font-light"></div>
     </div>
