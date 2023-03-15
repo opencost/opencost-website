@@ -28,7 +28,7 @@ accumulate | false | If `true`, sum the entire range of sets into a single set.
 Allocation data for the last 60m, in steps of 10m, with resolution 1m, aggregated by namespace.
 
 ```sh
-curl http://localhost:9090/allocation/compute \
+curl http://localhost:9003/allocation/compute \
   -d window=60m \
   -d resolution=1m \
   -d aggregate=namespace \
@@ -52,7 +52,7 @@ curl http://localhost:9090/allocation/compute \
 Allocation data for the last 9d, in steps of 3d, with a 10m resolution, aggregated by namespace.
 
 ```sh
-curl http://localhost:9090/allocation/compute \
+curl http://localhost:9003/allocation/compute \
   -d window=9d \
   -d step=3d \
   -d resolution=10m
