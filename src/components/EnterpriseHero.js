@@ -11,8 +11,7 @@ export default function EnterpriseHero({ className }) {
         <p className="text-xl sm:text-2xl leading-relaxed sm:leading-11.5">
           OpenCost is an open source, CNCF project developed to help teams manage Kubernetes cloud
           costs in an environment that embraces community collaboration. With unified cost
-          monitoring, customized alerts and so much more, we are on a mission to simplify cost
-          management.
+          monitoring, commercial offerings may use OpenCost to drive their solutions.
         </p>
       </hgroup>
 
