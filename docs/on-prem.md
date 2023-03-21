@@ -81,3 +81,44 @@ curl -s 'http://localhost:9003/api/v1/query?query=node_cpu_hourly_cost' | jq '.d
 ```
 
 This is reflected in the OpenCost UI with substantially higher CPU, RAM and PV costs than before the update.
+
+## Custom pricing using the OpenCost Helm Chart
+
+Create a configmap with custom pricing
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: opencost-conf
+data:
+  default.json: |
+    {
+      "provider": "custom",
+      "description": "Modified prices based on arbitrary whims",
+      "CPU": "1.25",
+      "spotCPU": "0.006655",
+      "RAM": "0.50",
+      "spotRAM": "0.000892",
+      "GPU": "0.95",
+      "storage": "0.25",
+      "zoneNetworkEgress": "0.01",
+      "regionNetworkEgress": "0.01",
+      "internetNetworkEgress": "0.12"
+    }
+```
+
+Attach and reference the configmap by providing helm overrides during install. 
+```yaml
+opencost:
+  exporter:
+    extraEnv:
+      # The default config path is read only, for customizing we have to swap spots.
+      CONFIG_PATH: "/tmp/custom-config"  
+    extraVolumeMounts:
+      - mountPath: /tmp/custom-config
+        name: custom-configs
+extraVolumes:
+  - name: custom-configs
+    configMap:
+      name: opencost-conf
+```
