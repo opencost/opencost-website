@@ -4,12 +4,12 @@ sidebar_position: 9
 
 # CSV Export
 
-Opencost supports CSV export to a local file, Azure Blob Storage, AWS S3, and Google Cloud Storage.
+Opencost supports data export in a CSV format to a local file, Azure Blob Storage, AWS S3, and Google Cloud Storage.
 
 The data is aggregated at a day level and exported every day after 00:10 UTC.
 The first export includes all available data, while subsequent launches only export data for dates not present in the existing export file.
 
-Check example of [export file](/export-sample.csv).
+An example of export file can be found [here](/export-sample.csv).
 
 
 ## Configuration
@@ -43,7 +43,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi # amount of required storage is based on cluster size and type of the workload running on it, adjust if required
+      storage: 1Gi # amount of required storage is based on amount of containers running on the cluster, adjust if required
 ---
 # Update the opencost deployment
 apiVersion: apps/v1
