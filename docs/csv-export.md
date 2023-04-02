@@ -4,7 +4,7 @@ sidebar_position: 9
 
 # CSV Export
 
-Opencost supports data export in a CSV format to a local file, Azure Blob Storage, AWS S3, and Google Cloud Storage.
+OpenCost supports data export in a CSV format to a local file, Azure Blob Storage, AWS S3, and Google Cloud Storage.
 
 The data is aggregated at a day level and exported every day after 00:10 UTC.
 The first export includes all available data, while subsequent launches only export data for dates not present in the existing export file.
@@ -28,7 +28,7 @@ To enable export, set the `COST_EXPORT_FILE` environment variable to the path of
 
 ### Export data to a persistent volume.
 
-There is an example of a change required for the opencost deployment to export data to a persistent volume.
+There is an example of a change required for the OpenCost deployment to export data to a persistent volume.
 
 ```yaml
 ---
@@ -45,7 +45,7 @@ spec:
     requests:
       storage: 1Gi # amount of required storage is based on amount of containers running on the cluster, adjust if required
 ---
-# Update the opencost deployment
+# Update the OpenCost deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -58,7 +58,7 @@ spec:
     spec:
       # ...
       securityContext:
-        fsGroup: 1001 # opencost is running as a non-root user, this gives container permission to write to the pvc
+        fsGroup: 1001 # OpenCost is running as a non-root user, this gives container permission to write to the pvc
       containers:
         # ...
         - name: opencost
@@ -78,11 +78,11 @@ spec:
 
 ### Export data to a cloud storage
 
-To export data to cloud storage, you need to add download and upload permissions to the Opencost pod. Opencost uses default credentials from cloud provider SDK's. Each cloud provider has a different way of authenticating the pod.
+To export data to cloud storage, you need to add download and upload permissions to the OpenCost pod. OpenCost uses default credentials from cloud provider SDK's. Each cloud provider has a different way of authenticating the pod.
 
 For example, it can be done using environment variables such as `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID` for Azure Blob Storage, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` for AWS S3, `GOOGLE_APPLICATION_CREDENTIALS` for Google Cloud Storage. Alternatively, it can be achieved using a service account. Check your provider's documentation for more details.
 
-There is an example of a change required for the opencost deployment to export data to an Azure Blob Storage.
+There is an example of a change required for the OpenCost deployment to export data to an Azure Blob Storage.
 
 ```yaml
 ---
@@ -130,4 +130,4 @@ spec:
 ```
 
 Note. Export requires data for a full day (between 00:00 and 23:59 UTC). This is required to avoid writing incomplete data.
-If you just installed opencost you may need to wait between 24 and 48 hours before the data is available.
+If you just installed OpenCost you may need to wait between 24 and 48 hours before the data is available.
