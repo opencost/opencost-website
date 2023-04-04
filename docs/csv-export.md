@@ -40,8 +40,7 @@ Follow the steps below to export data to a persistent volume:
 1. Create a persistent volume claim for storing the data.
 2. Attach the persistent volume claim to the OpenCost deployment and set `EXPORT_CSV_FILE` environment variable to the path of the file in the persistent volume.
 
-Here is an example of the changes required to export data to a persistent volume:
-
+As a result of these steps, the OpenCost deployment should look like this:
 
 ```yaml
 ---
@@ -93,11 +92,12 @@ spec:
 
 ## Export data to Azure Blob Storage
 
+Follow the steps below to export data to Azure Blob Storage:
 1. Create a storage account and a container in the Azure portal.
 2. Create a service principal with `Storage Blob Data Contributor` role for the storage account.
 3. Create a secret with the service principal's `appId`, `password`, and `tenant` values.
 4. Set the `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID` environment variables of OpenCost deployment to the values of the service principal secret.
-5. Set the `EXPORT_CSV_FILE` environment variable of OpenCost deployment to the path of the file in the Azure Blob Storage.
+5. Set the `EXPORT_CSV_FILE` environment variable of OpenCost deployment to the path of the file in the Azure Blob Storage. Ensure the path contains `*.blob.core.windows.net` and the container name.
 
 As a result of these steps, the OpenCost deployment should look like this:
 ```yaml
