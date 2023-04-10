@@ -175,6 +175,24 @@ helm install opencost . --namespace opencost --create-namespace -f values.yaml
 helm upgrade opencost . --namespace opencost -f values.yaml
 ```
 
+### Sidegrading with Helm
+
+If you wish to override the version of OpenCost installed by the Helm chart (downgrading or alternate versions), update the `values.yaml` to set the tag of the downloaded image (you can also change the registry and repository if necessary).
+
+```
+opencost:
+  exporter:
+    image:
+      registry: quay.io
+      repository: kubecost1/kubecost-cost-model
+      tag: prod-1.101.3
+  ui:
+    image:
+      registry: quay.io
+      repository: kubecost1/opencost-ui
+      tag: prod-1.101.3
+```
+
 ### Deleting with Helm
 
 ```
