@@ -17,7 +17,9 @@ Please note that to avoid exporting incomplete data, OpenCost requires data to a
 
 # Configuration
 
-To enable CSV export, you need to set the EXPORT_CSV_FILE environment variable to the path of the file. The file can be a local file or a storage object in one of the clouds. Here are some usage examples:
+To enable CSV export, you need to set the EXPORT_CSV_FILE environment variable to the path of the file. The file can be a local file or a storage object in one of the clouds.\
+If the file doesn't exist, it will automatically be created. If the file already exists, the data will be appended to it.
+Here are some usage examples:
 
 | Provider             | Value                                                                        |
 |----------------------|------------------------------------------------------------------------------|
@@ -105,9 +107,11 @@ As a result of these steps, the OpenCost deployment should look like this:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: opencost-service-principle
+  name: opencost-service-principal
 type: Opaque
-data:
+# These are non-encoded values
+# Use "data" instead of "stringData" if you want to write base64 encoded secrets
+stringData:
   AZURE_CLIENT_ID: CHANGE_ME
   AZURE_TENANT_ID: CHANGE_ME
   AZURE_CLIENT_SECRET: CHANGE_ME
@@ -127,7 +131,7 @@ spec:
           # ...
           envFrom:
             - secretRef:
-                name: opencost-service-principle
+                name: opencost-service-principal
           env:
             - name: EXPORT_CSV_FILE
               value: "https://accountstorage.blob.core.windows.net/opencost/path/to/file.csv"
