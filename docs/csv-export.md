@@ -17,8 +17,7 @@ Please note that to avoid exporting incomplete data, OpenCost requires data to a
 
 # Configuration
 
-To enable CSV export, you need to set the EXPORT_CSV_FILE environment variable to the path of the file. The file can be a local file or a storage object in one of the clouds.\
-If the file doesn't exist, it will automatically be created. If the file already exists, the data will be appended to it.
+To enable CSV export, you need to set the EXPORT_CSV_FILE environment variable to the path of the file. The file can be a local file or a storage object in one of the clouds. If the file doesn't exist, it will automatically be created. If the file already exists, the data will be appended to it.
 Here are some usage examples:
 
 | Provider             | Value                                                                        |
