@@ -4,7 +4,7 @@ sidebar_position: 9
 
 # CSV Export
 
-OpenCost provides the ability to export data in CSV format to a local file, Azure Blob Storage, AWS S3, or Google Cloud Storage. This feature allows you to archive and analyze your data outside of OpenCost.
+OpenCost provides the ability to export cost allocation data in CSV format to a local file, Azure Blob Storage, AWS S3, or Google Cloud Storage. This feature allows you to archive and analyze your data outside of OpenCost.
 
 An example of export file can be found [here](/export-sample.csv).
 
