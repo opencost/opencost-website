@@ -1,3 +1,9 @@
+---
+sidebar_position: 8
+---
+Azure Opencost Integration
+============
+
 As announced in the recent Azure blog post, AKS has made several contributions to augment OpenCost and enable support with AKS. See the following steps to enable this new functionality: 
 
 1. Install OpenCost with the Kubecon 2023 build:
