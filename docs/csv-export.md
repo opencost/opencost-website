@@ -8,9 +8,9 @@ Install OpenCost with the Kubecon 2023 build:
 
 ```
  helm repo add opencost https://opencost.github.io/opencost-helm-chart
- helm install opencost opencost/opencost  --set opencost.exporter.image.registry=gcr.io --set  opencost.exporter.image.repository=kubecost1/opencost --set opencost.exporter.image.tag=kc-eu-2023
+ helm install opencost opencost/opencost --set opencost.exporter.image.registry=gcr.io --set opencost.exporter.image.repository=kubecost1/opencost --set opencost.exporter.image.tag=kc-eu-2023
 ```
-
+This will be generally available in production builds in opencost v103 currently scheduled for May 2, 2023.
 
 # CSV Export
 
