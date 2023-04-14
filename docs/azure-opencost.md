@@ -9,7 +9,7 @@ As announced in the recent Azure blog post, AKS has made several contributions t
 1. Install OpenCost with the Kubecon 2023 build:
 
 ```
- helm repo add opencost https://opencost.github.io/opencost-helm-chart
+ helm repo add opencost https://opencost.github.io/opencost-helm-chart &&
  helm install opencost opencost/opencost  --set opencost.exporter.image.registry=gcr.io --set  opencost.exporter.image.repository=kubecost1/opencost --set opencost.exporter.image.tag=kc-eu-2023
 ```
 
