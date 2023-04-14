@@ -12,7 +12,8 @@ Install OpenCost with the Kubecon 2023 build:
 ```
 This will be generally available in production builds in OpenCost v103 currently scheduled for May 2, 2023.
 
-# CSV Export
+
+# CSV Export (Available with OpenCost 1.103)
 
 OpenCost provides the ability to export cost allocation data in CSV format to a local file, Azure Blob Storage, AWS S3, or Google Cloud Storage. This feature allows you to archive and analyze your data outside of OpenCost.
 
@@ -148,6 +149,6 @@ spec:
 
 Alternatively, access to the storage can be configured using workload identity. Check [this page](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview) for more details.
 
-## Disable export job.
+## Disable Export Job
 
 To stop export, unset the `EXPORT_CSV_FILE` environment variable.
