@@ -16,7 +16,7 @@ As announced in the recent Azure blog post, AKS has made several contributions t
 This will be generally available in production builds in OpenCost v103 currently scheduled for May 2, 2023.
 
 2. Optionally enable customer-specific Azure pricing:
-https://www.opencost.io/docs/csv-export/docs/azure-prices
+https://www.opencost.io/docs/azure-prices
 
 3. Enable CSV export to Azure storage:
 https://www.opencost.io/docs/csv-export
