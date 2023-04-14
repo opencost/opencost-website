@@ -2,6 +2,16 @@
 sidebar_position: 9
 ---
 
+As announced in the recent Azure blog post, AKS has made several contributions to augment OpenCost and enable support with AKS. See the following steps to enable this new functionality: 
+
+Install OpenCost with the Kubecon 2023 build:
+
+```
+ helm repo add opencost https://opencost.github.io/opencost-helm-chart
+ helm install opencost opencost/opencost  --set opencost.exporter.image.registry=gcr.io --set  opencost.exporter.image.repository=kubecost1/opencost --set opencost.exporter.image.tag=kc-eu-2023
+```
+
+
 # CSV Export
 
 OpenCost provides the ability to export cost allocation data in CSV format to a local file, Azure Blob Storage, AWS S3, or Google Cloud Storage. This feature allows you to archive and analyze your data outside of OpenCost.
