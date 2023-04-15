@@ -243,7 +243,7 @@ read -r SP_ID TENANT_ID < <(az ad sp list --display-name "${SP_NAME}" --query '[
 # Get bearer token for talking to API.
 ACCESS_TOKEN="$(az account get-access-token --query accessToken -o tsv)"
 
-URL="https://management.azure.com/providers/Microsoft.Billing/billingAccounts/${BILLING_ACCOUNT_NAME}/billingRoleAssignments/${ROLE_ASSIGNMENT_NAME}?api-version=2019-10-01-preview"
+URL="https://management.azure.com/providers/Microsoft.Billing/billingAccounts/${BILLING_ACCOUNT_ID}/billingRoleAssignments/${ROLE_ASSIGNMENT_NAME}?api-version=2019-10-01-preview"
 
 echo "Creating EnrollmentReader role assignment for SP ${SP_NAME} (${SP_ID}) in billing account ${BILLING_ACCOUNT_ID}"
 echo "Role assignment name: ${ROLE_ASSIGNMENT_NAME}"
