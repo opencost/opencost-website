@@ -1,0 +1,22 @@
+---
+slug: azure-opencost
+title: Microsoft joins the OpenCost community to bring open-source cost monitoring to AKS customers
+authors: [mattray]
+tags: [opencost, microsoft, azure, aks, cncf]
+---
+
+Understanding Kubernetes cloud costs can be a challenge that many teams lack the necessary tools and visibility to solve. In response to this challenge, the [CNCF](https://www.cncf.io/) launched the OpenCost project with code provided by [Kubecost](https://www.kubecost.com/), which provides an open-source Kubernetes and cloud cost monitoring standard for the industry. Microsoft is now giving users of [Azure Kubernetes Service](https://azure.microsoft.com/en-au/products/kubernetes-service/) (AKS) better cost transparency and contributing to the OpenCost project on behalf of their customers. Without proper cost monitoring tools like OpenCost, teams using Kubernetes may struggle to grasp their expenditure and the factors driving their costs, making it difficult to optimize their infrastructure. By leveraging OpenCost, teams can take their first step towards understanding and improving the efficiency of their Kubernetes cloud spend.
+
+![Microsoft Azure](./img/azure.png)
+
+We’re excited to announce that [Microsoft has joined the OpenCost community](http://aka.ms/aks/OpenCost-AKS) as a contributing partner and is bringing new functionality to both AKS and OpenCost. Microsoft’s initial contributions improve the accuracy of their cost reporting and make it easier to export OpenCost data to other reporting platforms.
+
+<!--truncate-->
+
+Microsoft has provided new OpenCost functionality that generates a daily CSV export of Kubernetes cost allocation data (namespace, controller, service, pod) to your Azure Storage Account leveraging a new Azure Consumption Price Sheet API built by the Azure team. This new pricing API provides more accurate pricing for customers without requiring reconciliation with the customer’s actual bill. On first run all data currently in Prometheus is exported, then each day is exported subsequently.
+
+The CSV format is user-friendly and allows you to archive and analyze your data outside of OpenCost. You can easily incorporate it into other tools like Excel, SQL databases, or any ETL pipeline. The CSV export data can go to Azure Blob Storage, other cloud providers, or even local storage.
+
+As part of the work they’re doing, Microsoft has already contributed additional patches and documentation enhancements to make OpenCost more accessible and robust. Microsoft is participating in the OpenCost community and engineering discussions and is investing their time and resources in OpenCost, we look forward to their contributions.
+
+If you would like to get started monitoring your Kubernetes cloud spend with OpenCost, go to the [OpenCost installation instructions](https://www.opencost.io/docs/install). The code, Helm chart, and specification are available at <https://github.com/opencost>. To get involved with the OpenCost community, join the #opencost channel in the [CNCF Slack](https://slack.cncf.io/) or subscribe to the [OpenCost community calendar](https://bit.ly/opencost-calendar) and attend the working group meetings. As OpenCost continues to gain new contributors and users there is still lots of room for improvement, we welcome your patches, documentation, and feedback. We’re looking forward to working with you and the broader Azure community!
