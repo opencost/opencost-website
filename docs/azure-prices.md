@@ -192,10 +192,8 @@ If you installed OpenCost using the [community-supported Helm chart](https://git
 opencost:
   exporter:
     extraEnv:
-      - name: AZURE_BILLING_ACCOUNT
-        value: <your billing account id>
-      - name: AZURE_OFFER_ID
-        value: <your offer id>
+      AZURE_BILLING_ACCOUNT: <your billing account id>
+      AZURE_OFFER_ID: <your offer id>
 ```
 
 Apply those changes with:
