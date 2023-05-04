@@ -1,0 +1,3 @@
+Date,Namespace,ControllerKind,ControllerName,Pod,Container,CPUCoreUsageAverage,CPUCoreRequestAverage,RAMBytesUsageAverage,RAMBytesRequestAverage,NetworkReceiveBytes,NetworkTransferBytes,GPUs,PVBytes,CPUCost,RAMCost,NetworkCost,PVCost,GPUCost,TotalCost
+2023-01-01,opencost,deployment,opencost,opencost-8fd7f8778-s7flr,opencost,0.004746252978724761,0.01,145796482.84444442,55000000,218111585.010404,57502870.15291049,0,0,0.00838296,0.002110786736011505,0,0,0,0.010493746736011505
+2023-01-02,opencost,deployment,opencost,opencost-8fd7f8778-s7flr,opencost,0.004602987115836583,0.01,144941027.5555558,55000000,212036692.55668178,57170568.83113373,0,0,0.00838296,0.002110786736011505,0,0,0,0.010493746736011505
