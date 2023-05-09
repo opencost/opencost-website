@@ -5,9 +5,9 @@ sidebar_position: 4
 
 OpenCost allows you to export pricing data to Prometheus and then write custom queries for cost insights. Below are instructions for accomplishing this and a set of example queries to get you started.
 
+> **Note**: Configuring a Prometheus client is not necessary to emit cost metrics.
+
 ## Configuration
-
-
 
 ```
 - job_name: opencost
