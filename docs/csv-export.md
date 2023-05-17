@@ -2,18 +2,9 @@
 sidebar_position: 9
 ---
 
-As announced in the recent Azure blog post, AKS has made several contributions to augment OpenCost and enable support with AKS. See the following steps to enable this new functionality: 
+# CSV Export
 
-Install OpenCost with the Kubecon 2023 build:
-
-```
- helm repo add opencost https://opencost.github.io/opencost-helm-chart
- helm install opencost opencost/opencost --set opencost.exporter.image.registry=gcr.io --set opencost.exporter.image.repository=kubecost1/opencost --set opencost.exporter.image.tag=kc-eu-2023
-```
-This will be generally available in production builds in OpenCost v103 currently scheduled for May 2, 2023.
-
-
-# CSV Export (Available with OpenCost 1.103)
+As announced in the recent Azure blog post, AKS has made several contributions to augment OpenCost and enable support with AKS. See the following steps to enable this new functionality:
 
 OpenCost provides the ability to export cost allocation data in CSV format to a local file, Azure Blob Storage, AWS S3, or Google Cloud Storage. This feature allows you to archive and analyze your data outside of OpenCost.
 
@@ -33,7 +24,7 @@ Here are some usage examples:
 
 | Provider             | Value                                                                        |
 |----------------------|------------------------------------------------------------------------------|
-| Local File           | `/path/to/file.csv `                                                         |
+| Local File           | `/path/to/file.csv`                                                          |
 | Azure Blob Storage   | `https://azblobaccount.blob.core.windows.net/containername/path/to/file.csv` |
 | AWS S3               | `s3://bucketname/path/to/file.csv `                                          |
 | Google Cloud Storage | `gs://bucket-name/path/to/file.csv`                                          |
@@ -101,7 +92,6 @@ spec:
             claimName: opencost-export
 ```
 
-
 ## Export data to Azure Blob Storage
 
 Follow the steps below to export data to Azure Blob Storage:
@@ -147,7 +137,13 @@ spec:
               value: "https://accountstorage.blob.core.windows.net/opencost/path/to/file.csv"
 ```
 
-Alternatively, access to the storage can be configured using workload identity. Check [this page](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview) for more details.
+Alternatively, access to the storage can be configured using workload identity.
+Check [this page](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview) for more details.
+
+## Export Labels.
+
+- `EXPORT_CSV_LABELS_LIST` accept a comma-separated list of desired labels. For example `EXPORT_CSV_LABELS_LIST=app,team`. For each label a new column will be created in the CSV file.
+- `EXPORT_CSV_LABELS_ALL` accepts a boolean. If set to `true`, all available labels will be exported in a JSON format to `Labels` column.
 
 ## Disable Export Job
 
