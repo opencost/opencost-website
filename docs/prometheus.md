@@ -60,20 +60,20 @@ sum(node_total_hourly_cost) * 730
 |---|---|
 | node_cpu_hourly_cost | Hourly cost per vCPU on this node |
 | node_gpu_hourly_cost | Hourly cost per GPU on this node |
-| node_ram_hourly_cost | Hourly cost per Gb of memory on this node |
+| node_ram_hourly_cost | Hourly cost per GiB of memory on this node |
 | node_total_hourly_cost | Total node cost per hour |
 | kubecost_load_balancer_cost | Hourly cost of a load balancer |
 | kubecost_cluster_management_cost | Hourly cost paid as a cluster management fee |
-| pv_hourly_cost | Hourly cost per GP on a persistent volume |
+| pv_hourly_cost | Hourly cost per GiB on a persistent volume |
 | node_gpu_count | Number of GPUs available on node |
 | container_cpu_allocation | Average number of CPUs requested/used over last 1m |
 | container_gpu_allocation | Average number of GPUs requested over last 1m |
 | container_memory_allocation_bytes | Average bytes of RAM requested/used over last 1m |
 | pod_pvc_allocation | Bytes provisioned for a PVC attached to a pod |
 | kubecost_node_is_spot | Cloud provider info about node preemptibility |
-| kubecost_network_zone_egress_cost | Total cost per GB egress across zones |
-| kubecost_network_region_egress_cost | Total cost per GB egress across regions |
-| kubecost_network_internet_egress_cost | Total cost per GB of internet egress |
+| kubecost_network_zone_egress_cost | Total cost per GiB egress across zones |
+| kubecost_network_region_egress_cost | Total cost per GiB egress across regions |
+| kubecost_network_internet_egress_cost | Total cost per GiB of internet egress |
 | service_selector_labels | Service Selector Labels |
 | deployment_match_labels | Deployment Match Labels |
 | statefulSet_match_labels | StatefulSet Match Labels |
