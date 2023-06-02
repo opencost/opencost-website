@@ -2,32 +2,36 @@
 sidebar_position: 8
 ---
 
-# AWS Integration
+# AWS integration
 
-OpenCost will automatically read node information 'node.spec.providerID' to determine the Cloud Provider in use. If it detects the provider is AWS, it will attempt to pull data for the following:
-* AWS On Demand Pricing from the configured public api url
+OpenCost will automatically read node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull data for the following:
+* AWS On-Demand pricing from the configured public API URL
 * AWS [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) from the configured S3 bucket
 
-## AWS On Demand Pricing configuration
+## AWS On-Demand pricing configuration
 
-OpenCost will request pricing data from us-east-1 using the template:
+OpenCost will request pricing data from the us-east-1 region using the template:
 ```sh
 https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node_region}/index.json
 ```
 
-This url can be overwritten using environment variable: 'AWS_PRICING_URL'
+This URL can be overwritten using the environment variable `AWS_PRICING_URL`.
 
-## AWS Spot Instance Data Feed configuration
+## AWS Spot instance data feed configuration
 
-Prerequisite: Set up [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html).
+### Prerequisites
 
-The data feed will provide specific pricing information about any spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the aws provider configuration file.
-* awsSpotDataBucket - The name of the S3 bucket Spot Instance Data Feed is publishing to.
-* awsSpotDataRegion - The region configured for Spot Instance Data Feed
-* awsSpotDataPrefix - The prefix (if any) configured for Spot Instance Data Feed
-* projectID - The AWS Account ID
+* Set up [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html).
 
-Example Configuration:
+### Configuration
+
+The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the AWS provider configuration file.
+* `awsSpotDataBucket` - The name of the S3 bucket Spot Instance Data Feed is publishing to.
+* `awsSpotDataRegion` - The region configured for Spot Instance Data Feed
+* `awsSpotDataPrefix` - The prefix (if any) configured for Spot Instance Data Feed
+* `projectID` - The AWS Account ID
+
+Example configuration:
 ```json
 {
     "provider": "aws",
@@ -51,13 +55,14 @@ Example Configuration:
 
 ```
 
-### Security for AWS Integration
+### Security for AWS integration
 
-OpenCost uses the AWS go SDK to pull Spot Data Feed Information. There are multiple supported ways to [configure security](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/#specifying-credentials).
+OpenCost uses the [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) to pull Spot data feed information. There are multiple supported ways to [configure security](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/#specifying-credentials).
 
 The recommeded setup is to leverage [IAM roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). 
 
-After creating the role and policy, attach the role as an annotation on the service account.
+After creating the role and policy, attach the role as an annotation on the service account:
+
 ```sh
 serviceAccount:
   create: true
