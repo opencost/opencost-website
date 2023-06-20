@@ -3,6 +3,8 @@ sidebar_position: 6
 ---
 # API Usage
 
+The API is available as a [swagger.json](https://github.com/opencost/opencost/blob/develop/docs/swagger.json) and may be viewed at [opencost.io/api](https://opencost.io/api).
+
 ## Postman
 
 A collection of OpenCost Postman queries: [opencost.postman_collection.json](https://raw.githubusercontent.com/opencost/opencost/develop/docs/opencost.postman_collection.json)
