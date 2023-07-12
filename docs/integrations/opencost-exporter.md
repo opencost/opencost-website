@@ -1,16 +1,16 @@
 ---
-sidebar_position: 8
+sidebar_position: 6
 ---
 
-# Running OpenCost as a Prometheus metric exporter
+# OpenCost as a Prometheus metric exporter
 
 Running OpenCost as a Prometheus metric exporter allows you to export various cost metrics to Prometheus without setting up any other OpenCost dependencies. Doing so lets you write PromQL queries to calculate the cost and efficiency of any Kubernetes concept, e.g. namespace, service, label, deployment, etc. You can also calculate the cost of different Kubernetes resources, e.g. nodes, PVs, LoadBalancers, and more. Finally, you can do other interesting things like create custom alerts via AlertManager and custom dashboards via Grafana.
 
 ## Installing
 
-> Note: all deployments of OpenCost function as a Prometheus metric exporter. [View recommended install](install.md).
+> Note: all deployments of OpenCost function as a Prometheus metric exporter. [View recommended install](../installation/install).
 
-Follow these steps to setup OpenCost exporter-only:
+Follow these steps to set up OpenCost as exporter-only:
 
 1. Apply the combined YAML:
 
@@ -63,7 +63,7 @@ OpenCost is now exporting cost metrics. See the following sections for different
 | pod_pvc_allocation | Bytes used by a PVC attached to a pod |
 | pv_hourly_cost | Cost per GB per hour on a persistent disk |
 
-By default, all cost metrics are based on public billing APIs. See the Limitations section below about reflecting your precise billing information. Supported platforms are AWS, Azure, and GCP. For on-prem clusters, prices are based on configurable defaults.
+By default, all cost metrics are based on public billing APIs. See the [Limitations](#limitations) section below about reflecting your precise billing information. Supported platforms are AWS, Azure, and GCP. For on-prem clusters, prices are based on configurable defaults.
 
 ## Dashboard examples
 

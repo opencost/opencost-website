@@ -1,12 +1,10 @@
 ---
-sidebar_position: 9
+sidebar_position: 4
 ---
 
 # CSV Export
 
-As announced in the recent Azure blog post, AKS has made several contributions to augment OpenCost and enable support with AKS. See the following steps to enable this new functionality:
-
-OpenCost provides the ability to export cost allocation data in CSV format to a local file, Azure Blob Storage, AWS S3, or Google Cloud Storage. This feature allows you to archive and analyze your data outside of OpenCost.
+As announced in the [recent Azure blog post](http://aka.ms/aks/OpenCost-AKS), Microsoft has made several contributions to augment OpenCost and enable support with AKS. Part of this new OpenCost functionality is the ability to export cost allocation data in CSV format to a local file, Azure Blob Storage, AWS S3, or Google Cloud Storage. This feature allows you to archive and analyze your data outside of OpenCost.
 
 An example of export file can be found [here](/export-sample.csv).
 
@@ -19,7 +17,7 @@ Please note that to avoid exporting incomplete data, OpenCost requires data to a
 
 # Configuration
 
-To enable CSV export, you need to set the EXPORT_CSV_FILE environment variable to the path of the file. The file can be a local file or a storage object in one of the clouds. If the file doesn't exist, it will automatically be created. If the file already exists, the data will be appended to it.
+To enable CSV export, you need to set the `EXPORT_CSV_FILE` environment variable to the path of the file. The file can be a local file or a storage object in one of the clouds. If the file doesn't exist, it will automatically be created. If the file already exists, the data will be appended to it.
 Here are some usage examples:
 
 | Provider             | Value                                                                        |

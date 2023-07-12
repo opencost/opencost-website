@@ -8,11 +8,11 @@ sidebar_position: 3
 
 OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs in Kubernetes environments.
 
-The project is a combination of the OpenCost core allocation engine with a new community-driven [spec](https://github.com/opencost/opencost/tree/develop/spec) on how to monitor costs in Kubernetes land. The allocation engine is a Golang implementation that conforms to spec. Both have now been submitted to the CNCF as a [sandbox project](https://www.cncf.io/sandbox-projects/).
+The project is a combination of the OpenCost core allocation engine with the community-driven [OpenCost Specification](specification) on how to monitor costs in Kubernetes land. The allocation engine is a Golang implementation that conforms to spec. Both have been submitted to the CNCF as a [sandbox project](https://www.cncf.io/sandbox-projects/).
 
 ### How do I get started with the project?
 
-You can [install](install.md) the project in minutes.
+You can [install](installation/install) the project in minutes.
 
 ### Do I need to pay to use OpenCost?
 
@@ -20,11 +20,11 @@ No. OpenCost is open source (Apache 2.0) and free to use.
 
 ### How does OpenCost relate to Kubecost?
 
-The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in all versions of Kubecost for building a cost allocation model. Founding OpenCost members have announced intentions to onboard OpenCost as a CNCF sandbox project. If the CNCF accepts our onboarding application, the CNCF will become the neutral home for OpenCost moving forward and it will be moved from the Kubecost Github organization.
+The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in all versions of Kubecost for building a cost allocation model, to which they add additional features on top of in their commercial offering. OpenCost is a CNCF sandbox project, so it is free to use and open to contributions from all community members.
 
-### How does this OpenCost implementation compare with the OpenCost spec?
+### How does this OpenCost implementation compare with the OpenCost Specification?
 
-The OpenCost project provides an implementation of the spec for AWS, Azure, GCP, and on-prem Kubernetes environments. It meets all the requirements of the current OpenCost spec and also includes other functionality for monitoring external cloud costs, e.g. storage buckets, external databases, etc.
+The OpenCost project provides an implementation of the specification for AWS, Azure, GCP, and on-prem Kubernetes environments. It meets all the requirements of the current [OpenCost Specification](specification) and is working towards including other functionality for monitoring external cloud costs, e.g. storage buckets, external databases, etc.
 
 ### What Kubernetes versions does OpenCost support?
 
@@ -32,11 +32,11 @@ OpenCost supports a Kubernetes environment above 1.8.
 
 ### How is OpenCost governed?
 
-We are actively forming our governance model. Our plan is to align with the CNCF best practices, found [here](https://www.cncf.io/blog/2019/08/30/cncf-technical-principles-and-open-governance-success/). Today, Kubecost’s technical team contributes all of the code submissions to OpenCost based on the inputs and feedback from a working group of founding contributors. The [OpenCost spec](https://github.com/opencost/opencost/tree/develop/spec) is co-authored by founding members.
+OpenCost has a published [governance model](https://github.com/opencost/opencost/blob/develop/GOVERNANCE.md) and is working towards being managed by our community of contributors. We are aligning with the [CNCF best practices](https://www.cncf.io/blog/2019/08/30/cncf-technical-principles-and-open-governance-success/) and encouraging contributors to participate in managing the project. Today, Kubecost’s technical team contributes most of the code submissions to OpenCost based on the inputs and feedback from the community, contributors, and their customers. The [OpenCost Specification](specification) was co-authored by founding members.
 
 ### What does it mean to be a “Founding Contributor”?
 
-Founding contributors co-authored and contributed feedback to the [OpenCost spec](https://github.com/opencost/opencost/tree/develop/spec). Moving forward, Founding Contributors will continue to evolve the OpenCost project.
+Founding contributors co-authored and contributed feedback to the [OpenCost Specification](specification). Moving forward the greater OpenCost community will continue to evolve the OpenCost project.
 
 ### What providers does OpenCost support?
 
@@ -47,9 +47,9 @@ OpenCost has core billing integrations with:
 - GCP/GKE
 - On-prem clusters via custom pricing sheets
 
-### How are costs determined in the OpenCost project? 
+### How are costs determined in the OpenCost project?
 
-The [OpenCost spec](https://github.com/kubecost/opencost/tree/develop/spec) outlines the metholodogy used for how costs are calculated in the project. The OpenCost implementation implements this spec and has public billing API integrations with the providers listed above. 
+The [OpenCost Specification](specification) outlines the metholodogy used for how costs are calculated in the project. The OpenCost implementation implements this spec and has public billing API integrations with the providers listed above.
 
 ### How can I contribute to OpenCost?
 
@@ -57,4 +57,4 @@ Get started with our [open source contributing guide](https://github.com/opencos
 
 We are actively looking for new contributors if you or your company are interested in getting involved – join us using the links below-
 
-Contact us via email (<opencost@kubecost.com>), join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel, or subscribe to the [OpenCost Community Calendar](https://bit.ly/opencost-calendar) and attend a [Working Group Session](https://bit.ly/opencost-meeting) if you have questions!
+Contact us via email (<opencost@kubecost.com>), join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel, or subscribe to the [OpenCost Community Calendar](https://bit.ly/opencost-calendar) and attend a [Community Meeting](https://bit.ly/opencost-meeting) if you have questions!
