@@ -69,7 +69,7 @@ Next, create a secret for the Azure Service Principal
 > **Note**: When managing the service account key as a Kubernetes secret, the secret must reference the service account key JSON file, and that file must be named `service-key.json`.
 
 ```shell
-kubectl create secret generic azure-service-key -n kubecost --from-file=service-key.json
+kubectl create secret generic azure-service-key -n opencost --from-file=service-key.json
 ```
 
 Now the OpenCost deployment can be configured to mount that secret as a volume. The exact method will depend on how OpenCost was installed.
