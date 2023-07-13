@@ -19,8 +19,8 @@ Additional cloud-specific configurations are documented:
 
 * [AWS](configuration/AWS)
 * [Azure](configuration/azure-prices)
-* [On Premises](configuration/on-prem)
-* GCP - **documentation needed**
+* [GCP](configuration/gcp-opencost)
+* [On-Premises](configuration/on-prem)
 * Alibaba - **documentation needed**
 * Scaleway - **documentation needed**
 
