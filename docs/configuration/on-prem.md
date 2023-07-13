@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 4
 ---
 # On-Premises Pricing
 
@@ -84,7 +84,7 @@ This is reflected in the OpenCost UI with substantially higher CPU, RAM and PV c
 
 ## Custom pricing using the OpenCost Helm Chart
 
-Create a configmap with custom pricing
+Create a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) with custom pricing
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -107,13 +107,13 @@ data:
     }
 ```
 
-Attach and reference the configmap by providing helm overrides during install. 
+Attach and reference the ConfigMap by providing helm overrides during install.
 ```yaml
 opencost:
   exporter:
     extraEnv:
       # The default config path is read only, for customizing we have to swap spots.
-      CONFIG_PATH: "/tmp/custom-config"  
+      CONFIG_PATH: "/tmp/custom-config"
     extraVolumeMounts:
       - mountPath: /tmp/custom-config
         name: custom-configs

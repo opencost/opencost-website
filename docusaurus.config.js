@@ -53,7 +53,7 @@ const config = {
           anonymizeIP: true,
         },
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          sidebarPath: require.resolve("./docs/sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/opencost/opencost-website/tree/main",

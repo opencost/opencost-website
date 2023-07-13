@@ -1,7 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
-# Prometheus Usage
+# Working with Prometheus
 
 OpenCost allows you to export pricing data to Prometheus and then write custom queries for cost insights. Below are instructions for accomplishing this and a set of example queries to get you started.
 

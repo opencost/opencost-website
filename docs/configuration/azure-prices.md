@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 2
 ---
 Azure Price Configuration
 ============
@@ -76,7 +76,7 @@ Now the OpenCost deployment can be configured to mount that secret as a volume. 
 
 ### Installed from YAML
 
-If you installed OpenCost using the [provided YAML](install#install-opencost), save that YAML and edit the `opencost` deployment to add:
+If you installed OpenCost using the [provided YAML](../installation/install#install-opencost), save that YAML and edit the `opencost` deployment to add:
 
 * A [`volumes` object](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#volumes) under `spec.template.spec`, with a `service-key-secret` volume referring to the `azure-service-key` secret:
 ```yaml
@@ -167,7 +167,7 @@ The billing account and offer ID need to be passed to OpenCost in environment va
 How you do this will depend on the method used to install OpenCost.
 
 #### Installed from YAML
-If you installed OpenCost using the [provided YAML](install#install-opencost), open that YAML and edit the `opencost` deployment to add two more items to the `opencost` container environment variables (under `.spec.template.spec.containers[0].env`):
+If you installed OpenCost using the [provided YAML](../installation/install#install-opencost), open that YAML and edit the `opencost` deployment to add two more items to the `opencost` container environment variables (under `.spec.template.spec.containers[0].env`):
 ```yaml
             - name: AZURE_BILLING_ACCOUNT
               value: <your billing account id>
