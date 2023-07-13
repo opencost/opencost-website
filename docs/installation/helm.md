@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # Managing with Helm
 
-There is a [community-supported Helm chart](https://github.com/opencost/opencost-helm-chart) with extensive customization settings exposed via the [values.yaml](https://github.com/opencost/opencost-helm-chart/blob/main/values.yaml). The Helm installation still assumes an existing [Prometheus](prometheus) installation. The following commands work with the https://github.com/opencost/opencost-helm-chart repository checked-out locally and modified the `values.yaml` with your own local changes (alternatively you may keep them in a separate, source-controlled file).
+There is a [community-supported Helm chart](https://github.com/opencost/opencost-helm-chart) with extensive customization settings exposed via the [values.yaml](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/values.yaml). The Helm installation still assumes an existing [Prometheus](prometheus) installation. The following commands work with the [opencost/opencost-helm-chart](https://github.com/opencost/opencost-helm-chart) repository checked-out locally and with the `values.yaml` modified for your own local changes (alternatively you may keep them in a separate, source-controlled file).
 
 ### Installing OpenCost with Helm
 
@@ -19,7 +19,7 @@ helm upgrade opencost . --namespace opencost -f values.yaml
 
 ### Sidegrading with Helm
 
-If you wish to override the version of OpenCost installed by the Helm chart (downgrading or alternate versions), update the `values.yaml` to set the tag of the downloaded image (you can also change the registry and repository if necessary).
+If you wish to override the version of OpenCost installed by the Helm chart (e.g. downgrading or alternative versions), update the `values.yaml` to set the tag of the downloaded image (you can also change the registry and repository if necessary).
 
 ```
 opencost:

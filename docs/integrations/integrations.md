@@ -6,7 +6,7 @@ sidebar_position: 1
 OpenCost may be integrated with a wide variety of technologies. Below is a list of known OpenCost integrations.
 
 ## Cloud Integrations
-* [Azure](http://aka.ms/aks/OpenCost-AKS)
+* [Azure](../configuration/azure-prices)
 * [AWS](../configuration/AWS)
 * [GCP](https://cloud.google.com/)
 * [Alibaba](https://alibabacloud.com/)
@@ -20,7 +20,7 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 
 ## Cost visualization
 * [Grafana](https://grafana.com/orgs/kubecost)
-* [Grafana Labs](https://grafana.com/blog/2023/06/26/rein-in-spending-with-kubernetes-cost-monitoring-in-grafana-cloud/)
+* [Grafana Cloud](https://grafana.com/blog/2023/06/26/rein-in-spending-with-kubernetes-cost-monitoring-in-grafana-cloud/)
 
 ## Miscellaneous
 * [Backstage](https://github.com/backstage/backstage/pull/18383)

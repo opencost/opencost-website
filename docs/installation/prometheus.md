@@ -22,6 +22,6 @@ At this point you can proceed to [installing OpenCost](install#install-opencost)
 ### Providing your own Prometheus
 
 If you want to use your own Prometheus:
- 1. Set the PROMETHEUS_SERVER_ENDPOINT [environment variable](https://github.com/opencost/opencost/blob/develop/kubernetes/opencost.yaml#L154) to the address of your Prometheus server.
+ 1. Set the `PROMETHEUS_SERVER_ENDPOINT` [environment variable](https://github.com/opencost/opencost/blob/eadd55d5fcee528547492df4baf29497dc019470/kubernetes/opencost.yaml#L154) to the address of your Prometheus server.
  2. Add the [scrapeConfig](https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml) to it, using the preferred means for your Prometheus install (ie. ```-f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml```).
  3. Consider using the [OpenCost Helm Chart](https://github.com/opencost/opencost-helm-chart) for additional Prometheus configuration options.
