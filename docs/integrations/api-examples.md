@@ -29,6 +29,7 @@ This is the default query for the OpenCost UI and produces [output similar to th
 ```sh
 curl http://localhost:9003/allocation/compute \
   -d window=60m \
+  -d step=10m \
   -d resolution=1m \
   -d aggregate=namespace \
   -d accumulate=true \
