@@ -84,21 +84,20 @@ const config = {
           srcDark: "img/logo-white.png",
         },
         items: [
-          { to: "/enterprise", label: "Enterprise", position: "left" },
           { to: "/blog", label: "Blog", position: "left" },
+          {
+            to: "/docs/community",
+            label: "Community",
+            position: "left",
+          },
           {
             type: "doc",
             docId: "index",
             position: "left",
             label: "Documentation",
           },
-          { to: "/api", label: "API", position: "left" },
+          { to: "/enterprise", label: "Enterprise", position: "left" },
           { to: "/press", label: "Press", position: "left" },
-          {
-            to: "https://slack.cncf.io/",
-            label: "Join Slack",
-            position: "left",
-          },
         ],
       },
       // the following configures the footer IF you want to use the default footer.
