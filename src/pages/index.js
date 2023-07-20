@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import CNCF from "../components/CNCF"
+import CNCF from "../components/CNCF";
 import Partners from "../components/Partners";
 import Features from "@site/src/components/Features";
 import Hero from "@site/src/components/Hero";
