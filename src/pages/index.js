@@ -3,8 +3,8 @@ import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import CNCF from "../components/CNCF";
 import Partners from "../components/Partners";
-import Features from "@site/src/components/Features";
-import Hero from "@site/src/components/Hero";
+import Features from "../components/Features";
+import Hero from "../components/Hero";
 
 function HomepageHeader() {
   return (

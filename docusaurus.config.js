@@ -54,8 +54,6 @@ const config = {
         },
         docs: {
           sidebarPath: require.resolve("./docs/sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/opencost/opencost-website/tree/main",
         },
         blog: {
@@ -100,9 +98,6 @@ const config = {
           { to: "/press", label: "Press", position: "left" },
         ],
       },
-      // the following configures the footer IF you want to use the default footer.
-      // current footer is not using the default footer, you'll instead find it in theme/Footer/index.js.
-      // more on customizing components: https://docusaurus.io/docs/swizzling
       footer: {
         style: "dark",
         links: [
@@ -124,7 +119,7 @@ const config = {
               },
               {
                 label: "Twitter",
-                href: "https://twitter.com/opencost",
+                href: "https://twitter.com/open_cost",
               },
             ],
           },
