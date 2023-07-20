@@ -1,7 +1,6 @@
 import React from "react";
 import NavbarItem from "@theme/NavbarItem";
 import NavbarColorModeToggle from "@theme/Navbar/ColorModeToggle";
-import SearchBar from "@theme/SearchBar";
 import {
   splitNavbarItems,
   useNavbarMobileSidebar,
@@ -9,7 +8,6 @@ import {
 } from "@docusaurus/theme-common";
 import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle";
 import NavbarLogo from "@theme/Navbar/Logo";
-import NavbarSearch from "@theme/Navbar/Search";
 import styles from "./styles.module.css";
 import GitHubButton from "react-github-btn";
 
@@ -43,7 +41,6 @@ export default function NavbarContent() {
 
   // using left items from docusaurus.config.js but adding our own right items
   const [leftItems, rightItems] = splitNavbarItems(items);
-  const autoAddSearchBar = !items.some(item => item.type === "search");
 
   return (
     <NavbarContentLayout
@@ -58,7 +55,7 @@ export default function NavbarContent() {
       }
       right={
         <>
-          
+
           <span className="mt-1">
             <GitHubButton
               href="https://github.com/opencost/opencost"
