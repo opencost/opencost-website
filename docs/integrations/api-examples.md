@@ -15,12 +15,11 @@ Throughout our API documentation, we use `localhost:9003` as the default OpenCos
 Here is an example of an OpenCost API query:
 
 ```sh
-$ curl http://localhost:9003/allocation \
+$ curl -G http://localhost:9003/allocation \
   -d window=7d \
   -d aggregate=namespace \
   -d accumulate=false \
   -d resolution=1m
-  -G
 ```
 
 This is the default query for the OpenCost UI and produces [output similar to this](/example-output.json).
