@@ -1,90 +1,119 @@
 ---
 sidebar_position: 2
 ---
-# API Usage
+# API
 
-The API is available as a [swagger.json](https://github.com/opencost/opencost/blob/develop/docs/swagger.json) and may be viewed at [opencost.io/api](https://opencost.io/api).
+The OpenCost API provides real-time and historical reporting of Kubernetes cloud costs. The `/allocation/compute` endpoint is the primary API for OpenCost, accessed via HTTP GET.
 
-## Postman
+:::note
+Throughout our API documentation, we use `localhost:9003` as the default OpenCost API URL, but your OpenCost instance may be exposed by a service or ingress. To reach the OpenCost API at port 9003, run: `kubectl -n opencost port-forward deployment/opencost 9003`. You may also expose the OpenCost UI on port 9090 with the command `kubectl -n opencost port-forward deployment/opencost 9003 9090`.
+:::
 
-A collection of OpenCost Postman queries: [opencost.postman_collection.json](https://raw.githubusercontent.com/opencost/opencost/develop/docs/opencost.postman_collection.json)
+## Quick Start Example
 
-> **Note**: Change the hostname in the Collection>Edit>Variables
-
-## Usage
-
-```
-GET /allocation/compute
-```
-
-Argument | Default | Description
---: | :--: | :--
-window (required) | — | Duration of time over which to query. Accepts: words like `today`, `week`, `month`, `yesterday`, `lastweek`, `lastmonth`; durations like `30m`, `12h`, `7d`; RFC3339 date pairs like `2021-01-02T15:04:05Z,2021-02-02T15:04:05Z`; unix timestamps like `1578002645,1580681045`.
-resolution | 1m | Duration to use as resolution in Prometheus queries. Smaller values (i.e. higher resolutions) will provide better accuracy, but worse performance (i.e. slower query time, higher memory use). Larger values (i.e. lower resolutions) will perform better, but at the expense of lower accuracy for short-running workloads. (See [error bounds](#theoretical-error-bounds) for details.)
-step | `window` | Duration of a single allocation set. If unspecified, this defaults to the `window`, so that you receive exactly one set for the entire window. If specified, it works chronologically backward, querying in durations of `step` until the full window is covered.
-aggregate | | Field by which to aggregate the results. Accepts: `cluster`, `namespace`, `controllerKind`, `controller`, `service`, `label:<name>`, and `annotation:<name>`. Also accepts comma-separated lists for multi-aggregation, like `namespace,label:app`.
-accumulate | false | If `true`, sum the entire range of sets into a single set.
-
-## Query examples
-
-Allocation data for the last 60m, in steps of 10m, with resolution 1m, aggregated by namespace.
+Here is an example of an OpenCost API query:
 
 ```sh
-curl http://localhost:9003/allocation/compute \
-  -d window=60m \
-  -d resolution=1m \
-  -d aggregate=namespace \
-  -d accumulate=true \
-  -G
-```
-
-```json
-{
-  "code": 200,
-  "data": [
-    {
-      "kube-system": { ... },
-      "default": { ... },
-      "cost-model": { ... }
-    }
-  ]
-}
-```
-
-Allocation data for the last 9d, in steps of 3d, with a 10m resolution, aggregated by namespace.
-
-```sh
-curl http://localhost:9003/allocation/compute \
-  -d window=9d \
-  -d step=3d \
-  -d resolution=10m
+$ curl http://localhost:9003/allocation \
+  -d window=7d \
   -d aggregate=namespace \
   -d accumulate=false \
+  -d resolution=1m
   -G
 ```
 
-```json
-{
-  "code": 200,
-  "data": [
-    {
-      "default": { ... },
-      "open-cost": { ... },
-      "kube-system": { ... }
-    },
-    {
-      "default": { ... },
-      "open-cost": { ... },
-      "kube-system": { ... }
-    },
-    {
-      "default": { ... },
-      "open-cost": { ... },
-      "kube-system": { ... }
-    }
-  ]
-}
-```
+This is the default query for the OpenCost UI and produces [output similar to this](/example-output.json). More examples are available on the [API Examples](api-examples) page.
+
+## Allocation API
+
+The standard OpenCost API query for costs and resources allocated to Kubernetes workloads. You may specify the `window` date range, the Kubernetes primitive(s) to `aggregate` on, the `step` for the duration of returned sets, and the `resolution` for the duration to use for Prometheus queries.
+
+### `/allocation/compute`
+QUERY PARAMETERS
+<table>
+<tr>
+<th id="window">window<a class="hash-link" href="#window" title="window">​</a></th>
+<th align="left">string</th>
+</tr>
+<tr>
+<td valign="top"><b>required</b></td>
+<td>
+Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
+<br/><br/>
+Examples:<br/>
+<ul>
+<li><code>window=today</code> - The current day</li>
+<li><code>window=month</code> - The month-to-date</li>
+<li><code>window=lastweek</code> - The previous week</li>
+<li><code>window=30m</code> - The last 30 minutes</li>
+<li><code>window=12h</code> - The last 12 hours</li>
+<li><code>window=7d</code> - The previous 7 days</li>
+<li><code>window=2023-01-18T10:30:00Z,2023-01-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
+<li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th id="aggregate">aggregate<a class="hash-link" href="#aggregate" title="aggregate">​</a></th>
+<th align="left">string</th>
+</tr>
+<tr>
+<td/>
+<td>
+Field by which to aggregate the results. Accepts: <code>cluster</code>, <code>node</code>, <code>namespace</code>, <code>controllerKind</code>, <code>controller</code>, <code>service</code>, <code>pod</code>, <code>container</code>, <code>label:name</code>, and <code>annotation:name</code>. Also accepts comma-separated lists for multi-aggregation, like <code>namespace,label:app</code>.
+<br/><br/>
+Examples:<br/>
+<ul>
+<li><code>aggregate=cluster</code> - Aggregates by the cluster.</li>
+<li><code>aggregate=node</code> - Aggregates by the compute nodes in the cluster.</li>
+<li><code>aggregate=namespace</code> - Aggregates by the namespaces in the cluster.</li>
+<li><code>aggregate=controllerKind</code> - Aggregates by the kinds of controllers present in the cluster.</li>
+<li><code>aggregate=controller</code> - Aggregates by the individual controllers within the cluster.</li>
+<li><code>aggregate=service</code> - Aggregates by the services within the cluster.</li>
+<li><code>aggregate=pod</code> - Aggregates by the individual pods within the cluster.</li>
+<li><code>aggregate=container</code> - Aggregates by the containers present in the cluster.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th id="step">step<a class="hash-link" href="#step" title="step">​</a></th>
+<th align="left">string</th>
+</tr>
+<tr>
+<td/>
+<td>
+Duration of a single allocation set. If unspecified, this defaults to the window, so that you receive exactly one set for the entire window. If specified, it works chronologically backward, querying in durations of step until the full window is covered. Default is <code>window</code>.
+<br/><br/>
+Examples:<br/>
+<ul>
+<li><code>step=30m</code> - 30 minute steps over the duration of the window.</li>
+<li><code>step=2h</code> - 2 hour steps over the duration of the window</li>
+<li><code>step=1d</code> - Daily steps over the duration of the window (ie. <code>lastweek</code> or <code>month</code></li>
+</ul>
+</td>
+</tr>
+<tr>
+<th id="resolution">resolution<a class="hash-link" href="#resolution" title="resolution">​</a></th>
+<th align="left">string</th>
+</tr>
+<tr>
+<td/>
+<td>
+Duration to use as resolution in Prometheus queries. Smaller values (i.e. higher resolutions) will provide better accuracy, but worse performance (i.e. slower query time, higher memory use). Larger values (i.e. lower resolutions) will perform better, but at the expense of lower accuracy for short-running workloads. Default is <code>1m</code>.
+<br/><br/>
+Examples:<br/>
+<ul>
+<li><code>resolution=1m</code> - Highly accurate, slower query.</li>
+<li><code>resolution=30m</code> - Less accurate, faster query. Not recommended for short-lived workloads.</li>
+</ul>
+</td>
+</tr>
+</table>
+
+## OpenAPI Swagger
+
+The source for the OpenCost API is available as an OpenAPI [swagger.json](https://github.com/opencost/opencost/blob/develop/docs/swagger.json).
+The OpenCost API is available under the [Apache 2.0 License](https://github.com/opencost/opencost/blob/develop/LICENSE).
 
 ## Theoretical error bounds
 
