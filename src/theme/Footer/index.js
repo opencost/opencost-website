@@ -1,6 +1,5 @@
 import React from "react";
 import { useThemeConfig } from "@docusaurus/theme-common";
-import { FaSlack, FaGithub, FaTwitter } from "react-icons/fa";
 
 function Footer() {
   const { footer } = useThemeConfig();
@@ -9,7 +8,6 @@ function Footer() {
     return null;
   }
 
-  const { copyright, links, logo, style } = footer;
   return (
     <div className="grid grid-cols-1 md:grid-cols-1 text-white"
       style={{ backgroundColor: "#092626" }}>

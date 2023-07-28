@@ -2,8 +2,8 @@ import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 
-import EnterpriseHero from "@site/src/components/EnterpriseHero";
-import Kubecost from "@site/src/components/Kubecost";
+import EnterpriseHero from "../components/EnterpriseHero";
+import Kubecost from "../components/Kubecost";
 
 export default function Enterprise() {
   const { siteConfig } = useDocusaurusContext();
