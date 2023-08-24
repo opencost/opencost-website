@@ -104,7 +104,15 @@ sort_desc(
 - `sum by (type, namespace)`  controls the grouping, available options are `container, namespace, node, pod, type`
 
 
+__Hourly memory cost for the *default* namespace__
 
+```
+sum(
+  avg(container_memory_allocation_bytes{namespace="default"}) by (instance) / 1024 / 1024 / 1024
+  *
+  on(instance) group_left() avg(node_ram_hourly_cost) by (instance)
+)
+```
 
 __Monthly cost of provisioned nodes__
 
