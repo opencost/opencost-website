@@ -23,32 +23,93 @@ OpenCost allows you to export pricing data to Prometheus and then write custom q
 
 ## Example queries
 
+
 Below are a set of sample queries that can be run after Prometheus begins ingesting OpenCost data:
 
-__Monthly cost of top 5 containers__
+__Total cost of the cluster workload the last 30 days__
 
 ```
-topk( 5,
-  container_memory_allocation_bytes* on(instance) group_left() node_ram_hourly_cost  / 1024 / 1024 / 1024 * 730
-  +
-  container_cpu_allocation * on(instance) group_left() node_cpu_hourly_cost * 730
+sort_desc(
+  sum by (type, namespace) (
+          sum_over_time(
+            (
+                    label_replace(
+                      (
+                          (
+                              avg by (container, node, namespace, pod) (container_memory_allocation_bytes)
+                            * on (node) group_left ()
+                              avg by (node) (node_ram_hourly_cost)
+                          )
+                        /
+                          (1024 * 1024 * 1024)
+                      ),
+                      "type",
+                      "ram",
+                      "",
+                      ""
+                    )
+                  or
+                    label_replace(
+                      (
+                          avg by (container, node, namespace, pod) (container_cpu_allocation)
+                        * on (node) group_left ()
+                          avg by (node) (node_cpu_hourly_cost)
+                      ),
+                      "type",
+                      "cpu",
+                      "",
+                      ""
+                    )
+                or
+                  label_replace(
+                    (
+                        avg by (container, node, namespace, pod) (container_gpu_allocation)
+                      * on (node) group_left ()
+                        avg by (node) (node_gpu_hourly_cost)
+                    ),
+                    "type",
+                    "gpu",
+                    "",
+                    ""
+                  )
+              or
+                label_replace(
+                  (
+                      (
+                          avg by (persistentvolume, namespace, pod) (pod_pvc_allocation)
+                        * on (persistentvolume) group_left ()
+                          avg by (persistentvolume) (pv_hourly_cost)
+                      )
+                    /
+                      (1024 * 1024 * 1024)
+                  ),
+                  "type",
+                  "storage",
+                  "",
+                  ""
+                )
+            )[30d:5m]
+          )
+        /
+          scalar(count_over_time(vector(1)[30d:5m]))
+      * 24 * 30
+  )
 )
 ```
 
-__Hourly memory cost for the *default* namespace__
+- `30` defines amount of date to export
+- `5m` Defines the accuracy of the data. Modify this to adjust precision:
+  - **Decrease** (e.g., to `1m`): Enhances accuracy. It's typically not recommended to set it below the Prometheus scraping interval (`1m` by default)
+  - **Increase** Enhances the performance of the query.
+- `sum by (type, namespace)`  controls the grouping key, available options are `container, namespace, node, pod, type`
+
+
+
+
+__Monthly cost of provisioned nodes__
 
 ```
-sum(
-  avg(container_memory_allocation_bytes{namespace="default"}) by (instance) / 1024 / 1024 / 1024
-  *
-  on(instance) group_left() avg(node_ram_hourly_cost) by (instance)
-)
-```
-
-__Monthly cost of currently provisioned nodes__
-
-```
-sum(node_total_hourly_cost) * 730
+sum(sum_over_time(node_total_hourly_cost[30d:1h]))
 ```
 
 
