@@ -97,11 +97,11 @@ sort_desc(
 )
 ```
 
-- `30` defines amount of date to export
+- `30` Represents the duration over which the data is aggregated, which is 30 days in this case.
 - `5m` Defines the accuracy of the data. Modify this to adjust precision:
   - **Decrease** (e.g., to `1m`): Enhances accuracy. It's typically not recommended to set it below the Prometheus scraping interval (`1m` by default)
   - **Increase** Enhances the performance of the query.
-- `sum by (type, namespace)`  controls the grouping key, available options are `container, namespace, node, pod, type`
+- `sum by (type, namespace)`  controls the grouping, available options are `container, namespace, node, pod, type`
 
 
 
