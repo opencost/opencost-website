@@ -70,7 +70,7 @@ function Footer() {
             </div>
             <div>
               <a
-                href="https://cloud-native.slack.com/archives/C03D56FPD4G"
+                href="https://slack.cncf.io"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-green-300 hover:no-underline"
