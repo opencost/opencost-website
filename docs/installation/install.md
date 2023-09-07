@@ -12,7 +12,7 @@ These commands will get you started immediately with OpenCost.
 ### Install Prometheus
 
 ```sh
-helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
+helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus-community/prometheus \
   --namespace prometheus --create-namespace \
   --set prometheus-pushgateway.enabled=false \
   --set alertmanager.enabled=false \
