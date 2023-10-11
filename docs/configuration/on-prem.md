@@ -84,12 +84,15 @@ This is reflected in the OpenCost UI with substantially higher CPU, RAM and PV c
 
 ## Custom pricing using the OpenCost Helm Chart
 
-Create a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) with custom pricing
+### Method 1
+
+You can either create your own [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) containing your own pricing as structured below:
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: opencost-conf
+  name: CONFIGMAP_NAME_HERE
 data:
   default.json: |
     {
@@ -107,18 +110,44 @@ data:
     }
 ```
 
-Attach and reference the ConfigMap by providing helm overrides during install.
+then reference the ConfigMap created previously by providing helm overrides during install.
+
 ```yaml
 opencost:
-  exporter:
-    extraEnv:
-      # The default config path is read only, for customizing we have to swap spots.
-      CONFIG_PATH: "/tmp/custom-config"
-    extraVolumeMounts:
-      - mountPath: /tmp/custom-config
-        name: custom-configs
-extraVolumes:
-  - name: custom-configs
-    configMap:
-      name: opencost-conf
+  customPricing:
+    # -- Enables custom pricing for on-premise setup.
+    enabled: true
+    configmapName: CONFIGMAP_NAME_HERE
+    # -- Path for the pricing configuration.
+    configPath: /tmp/custom-config
+    # -- Configures the pricing model provided in the values file.
+    createConfigmap: false
+```
+
+### Method 2
+
+Provide your custom pricing via helm overrides during install.
+
+```yaml
+opencost:
+  customPricing:
+    # -- Enables custom pricing for on-premise setup.
+    enabled: true
+    configmapName: custom-pricing-model
+    # -- Path for the pricing configuration.
+    configPath: /tmp/custom-config
+    # -- Configures the pricing model provided in the values file.
+    createConfigmap: true
+    # -- More information about these values here: https://www.opencost.io/docs/configuration/on-prem#custom-pricing-using-the-opencost-helm-chart
+    costModel:
+      description: Modified prices based on your internal pricing
+      CPU: 1.25
+      spotCPU: 0.006655
+      RAM: 0.50
+      spotRAM: 0.000892
+      GPU: 0.95
+      storage: 0.25
+      zoneNetworkEgress: 0.01
+      regionNetworkEgress: 0.01
+      internetNetworkEgress: 0.12
 ```
