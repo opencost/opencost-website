@@ -34,6 +34,16 @@ OpenCost supports a Kubernetes environment above 1.8.
 
 OpenCost has a published [governance model](https://github.com/opencost/opencost/blob/develop/GOVERNANCE.md) and is working towards being managed by our community of contributors. We are aligning with the [CNCF best practices](https://www.cncf.io/blog/2019/08/30/cncf-technical-principles-and-open-governance-success/) and encouraging contributors to participate in managing the project. Today, Kubecost’s technical team contributes most of the code submissions to OpenCost based on the inputs and feedback from the community, contributors, and their customers. The [OpenCost Specification](specification) was co-authored by founding members.
 
+### What is the OpenCost release schedule?
+
+OpenCost repositories follow the [Semantic Versioning 2.0.0](https://semver.org/) convention. So far there have been 12 OpenCost minor releases, with the initial OpenCost 1.94 released in June 2022 and as of September 2023 the current release is 1.106.2. The 1.x series are considered stable and have been in production for years.
+
+The release cadence is:
+* There have been no additional major releases since OpenCost was added to the CNCF.
+* Minor versions are released every month.
+* Patch versions are released as necessary.
+* The releases are announced using GitHub’s releases, followed by Slack (CNCF/#opencost), Mastodon, Twitter, and discussion in the fortnightly Community Meetings.
+
 ### What does it mean to be a “Founding Contributor”?
 
 Founding contributors co-authored and contributed feedback to the [OpenCost Specification](specification). Moving forward the greater OpenCost community will continue to evolve the OpenCost project.
