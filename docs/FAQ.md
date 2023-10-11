@@ -18,6 +18,12 @@ You can [install](installation/install) the project in minutes.
 
 No. OpenCost is open source (Apache 2.0) and free to use.
 
+### What's the difference between OpenCost and Kubecost?
+
+OpenCost provides real-time monitoring of your Kubernetes cluster and provides the on-demand list pricing for the cloud resources in use by your cluster. OpenCost is a CNCF sandbox project, so it is free to use and open to contributions from all community members. OpenCost has a UI, but the goal of OpenCost is to become the "Prometheus of cloud cost monitoring" and allow other solutions to be built on top of that data.
+
+OpenCost is the cost allocation engine for Kubecost which adds integration with your cloud provider bill and any negotiated discounts within. Kubecost will provide more accurate cost numbers for your cluster after reconciling the differences between your bill and the on-demand pricing (if any). Kubecost allows you to associate cloud costs outside your cluster from your bill with applications within the cluster (ie. object storage, DBaaS, etc.), OpenCost does not support this yet. Kubecost also provides recommendations, governance, alerting, federated clusters, a SaaS version, and support for their commercial offering.
+
 ### How does OpenCost relate to Kubecost?
 
 The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in all versions of Kubecost for building a cost allocation model, to which they add additional features in their commercial offering. OpenCost is a CNCF sandbox project, so it is free to use and open to contributions from all community members.
