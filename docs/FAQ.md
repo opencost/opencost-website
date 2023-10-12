@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ### What is OpenCost?
 
-OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs in Kubernetes environments.
+OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure, container and cloud costs in Kubernetes environments.
 
 The project is a combination of the OpenCost core allocation engine with the community-driven [OpenCost Specification](specification) on how to monitor costs in Kubernetes land. The allocation engine is a Golang implementation that conforms to spec. Both have been submitted to the CNCF as a [sandbox project](https://www.cncf.io/sandbox-projects/).
 
@@ -24,11 +24,15 @@ The OpenCost implementation is the cost allocation engine originally built by Ku
 
 ### What's the difference between OpenCost and Kubecost?
 
-OpenCost provides real-time monitoring of your Kubernetes cluster and provides the on-demand list pricing for the cloud resources in use by your cluster. OpenCost is a CNCF sandbox project, so it is free to use and open to contributions from all community members. OpenCost has a UI, but the goal of OpenCost is to become the "Prometheus of cloud cost monitoring" and allow other solutions to be built on top of that data.
+OpenCost provides real-time monitoring of your Kubernetes cluster and provides the on-demand list pricing for the cloud resources in use by your cluster. It integrates with cloud billing to provide visibility into the cost of cloud resources linked to your Kubernetes usage. OpenCost is a CNCF sandbox project, so it is free to use and open to contributions from all community members. OpenCost has a UI, but the goal of OpenCost is to become the "Prometheus of cloud cost monitoring" and allow other solutions to be built on top of that data.
 
-OpenCost is the cost allocation engine for Kubecost which adds integration with your cloud provider bill and any negotiated discounts within. Kubecost will provide more accurate cost numbers for your cluster after reconciling the differences between your bill and the on-demand pricing (if any). Kubecost allows you to associate cloud costs outside your cluster from your bill with applications within the cluster (ie. object storage, DBaaS, etc.), OpenCost does not support this yet. Kubecost also provides recommendations, governance, alerting, federated clusters, a SaaS version, and support for their commercial offering.
+OpenCost is the cost allocation engine for Kubecost. Kubecost provides more accurate cost numbers for your cluster after reconciling the differences between your published bill with any negotiated discounts and the on-demand pricing (if any). Kubecost also provides recommendations, governance, alerting, federated clusters, a SaaS platform, and support for their commercial offering.
 
-### How does this OpenCost implementation compare with the OpenCost Specification?
+### How are costs determined in the OpenCost project?
+
+The [OpenCost Specification](specification) outlines the metholodogy used for how costs are calculated in the project. The OpenCost implementation implements this spec and has public billing API integrations with the providers listed above.
+
+### How does the OpenCost implementation compare with the OpenCost Specification?
 
 The OpenCost project provides an implementation of the specification for AWS, Azure, GCP, and on-prem Kubernetes environments. It meets all the requirements of the current [OpenCost Specification](specification) and is working towards including other functionality for monitoring external cloud costs, e.g. storage buckets, external databases, etc.
 
@@ -62,10 +66,6 @@ OpenCost has core billing integrations with:
 - Azure/AKS
 - GCP/GKE
 - On-prem clusters via custom pricing sheets
-
-### How are costs determined in the OpenCost project?
-
-The [OpenCost Specification](specification) outlines the metholodogy used for how costs are calculated in the project. The OpenCost implementation implements this spec and has public billing API integrations with the providers listed above.
 
 ### How can I contribute to OpenCost?
 
