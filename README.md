@@ -51,10 +51,6 @@ Each document needs some metadata about the page, e.g. `sidebar_position`, `slug
 
 Documentation can also be organized into [hierarchical sections](https://docusaurus.io/docs/docs-introduction), using the same pattern as for blog posts.
 
-#### Importing Swagger into /api
-
-The OpenCost [swagger.json](https://github.com/opencost/opencost/blob/develop/docs/swagger.json) is incorporated on the `API` tab through [Redoc](https://redocly.com/redoc/).
-
 ## Licenses
 
 All code in this repository is made available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
