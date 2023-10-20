@@ -2,11 +2,11 @@
 sidebar_position: 3
 ---
 
-# GCP integration
+# Google Cloud Platform Configuration
 
 OpenCost is designed to automatically identify the cloud service provider (CSP) in use by reading node information from `node.spec.providerID`. When Google Cloud Platform (GCP) is detected as the provider, OpenCost attempts to retrieve data for node pricing. This process utilizes the [GCP Cloud Billing API](https://cloud.google.com/billing/), which necessitates an API key.
 
-## Configuring GCP Pricing 
+## Configuring GCP Pricing
 
 To enable OpenCost to fetch pricing information from your GCP project, you need to:
 
@@ -27,9 +27,9 @@ You must generate an API key to replace the default key in the `CLOUD_PROVIDER_A
 1. To create an API key, Follow the steps outlined in [Authenticate using API keys](https://cloud.google.com/docs/authentication/api-keys).
 2. Optionally, you can edit the key to restrict its access to the Cloud Billing API.
 
-## Known Issues 
+## Known Issues
 
-### Failure of OpenCost's PromQL Queries 
+### Failure of OpenCost's PromQL Queries
 
 If you use *GCP Managed Prometheus*, OpenCost's Prometheus queries may fail. This issue arises due to the relabeling performed by *GCP Managed Prometheus*, which renames the namespace label as exported_namespace, disrupting OpenCost's operation.
 
