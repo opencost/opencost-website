@@ -94,7 +94,7 @@ data:
     }
 ```
 
-Ref: [AWS Configuration Documentation](https://github.com/opencost/opencost-website/blob/main/docs/configuration/AWS.md)
+Ref: [AWS Configuration Documentation](https://github.com/opencost/opencost-website/blob/main/docs/configuration/aws.md)
 
 ### Troubleshooting
 * Sometimes you don't find cost reports from OpenCost for certain resources. In such scenarios, check whether Prometheus is scraping the metrics. If Prometheus is not scraping any metrics, then ensure whether Service monitors are enabled in that service.
@@ -165,4 +165,3 @@ opencost:
 ```
 helm uninstall opencost
 ```
-

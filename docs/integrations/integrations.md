@@ -7,7 +7,7 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 
 ## Cloud Integrations
 * [Azure](../configuration/azure-prices)
-* [AWS](../configuration/AWS)
+* [AWS](../configuration/aws)
 * [GCP](https://cloud.google.com/)
 * [Alibaba](https://alibabacloud.com/)
 * [Scaleway](https://www.scaleway.com/en/)

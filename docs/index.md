@@ -17,7 +17,7 @@ Check out our [Installation guide](installation/install) to start monitoring and
 
 Additional cloud-specific configurations are documented:
 
-* [AWS](configuration/AWS)
+* [AWS](configuration/aws)
 * [Azure](configuration/azure-prices)
 * [GCP](configuration/gcp-opencost)
 * [On-Premises](configuration/on-prem)
