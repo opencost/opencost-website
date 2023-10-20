@@ -13,7 +13,7 @@ We’re excited to announce that [Microsoft has joined the OpenCost community](h
 
 <!--truncate-->
 
-Microsoft has provided new OpenCost functionality that generates a [daily CSV export](https://www.opencost.io/docs/integrations/csv-export) of Kubernetes cost allocation data (namespace, controller, service, pod) to your Azure Storage Account leveraging a new [Azure Consumption Price Sheet API](https://www.opencost.io/docs/configuration/azure-prices) built by the Azure team. This new pricing API provides more accurate pricing for customers without reconciliation with the customer’s actual bill. On first run all data currently in Prometheus is exported, then each day is exported subsequently.
+Microsoft has provided new OpenCost functionality that generates a [daily CSV export](https://www.opencost.io/docs/integrations/csv-export) of Kubernetes cost allocation data (namespace, controller, service, pod) to your Azure Storage Account leveraging a new [Azure Consumption Price Sheet API](https://www.opencost.io/docs/configuration/azure) built by the Azure team. This new pricing API provides more accurate pricing for customers without reconciliation with the customer’s actual bill. On first run all data currently in Prometheus is exported, then each day is exported subsequently.
 
 The CSV format is user-friendly and allows you to archive and analyze your data outside of OpenCost. You can easily incorporate it into other tools like Excel, SQL databases, or an ETL pipeline. The CSV export data can go to Azure Blob Storage, other cloud providers, or even local storage.
 

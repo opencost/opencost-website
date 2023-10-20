@@ -18,7 +18,7 @@ Check out our [Installation guide](installation/install) to start monitoring and
 Additional cloud-specific configurations are documented:
 
 * [AWS](configuration/aws)
-* [Azure](configuration/azure-prices)
+* [Azure](configuration/azure)
 * [GCP](configuration/gcp-opencost)
 * [On-Premises](configuration/on-prem)
 * Alibaba - **documentation needed**
