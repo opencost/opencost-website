@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 ---
-# On-Premises Pricing
+# On-Premises Pricing Configuration
 
 On-premises cluster pricing is supported in OpenCost by providing default prices for node data via the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json).
 

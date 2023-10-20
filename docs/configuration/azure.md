@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-Azure Configuration
+Microsoft Azure Configuration
 ============
 
 OpenCost needs access to the Microsoft Azure Billing Rate Card API to access accurate pricing data for your Kubernetes resources.
