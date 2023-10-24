@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# AWS integration
+# Amazon Web Services Configuration
 
 OpenCost will automatically read node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull data for the following:
 * AWS On-Demand pricing from the configured public API URL
