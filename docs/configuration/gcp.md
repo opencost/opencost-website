@@ -8,24 +8,11 @@ OpenCost is designed to automatically identify the cloud service provider (CSP) 
 
 ## Configuring GCP Pricing
 
-To enable OpenCost to fetch pricing information from your GCP project, you need to:
+To enable OpenCost to fetch pricing information from your GCP project, you must generate an API key to replace the default key in the `CLOUD_PROVIDER_API_KEY` environment variable. You will need to follow the instructions provided in [Get Google Cloud pricing information](https://cloud.google.com/billing/v1/how-tos/catalog-api):
 
-1. Activate the Cloud Billing API.
-2. Generate an API key with the appropriate access permissions.
-
-### Activating the Cloud Billing API
-
-Follow these steps to activate the Cloud Billing API:
-
-1. Click on the **Enable the API** button.
-2. Follow the instructions provided in [Get Google Cloud pricing information](https://cloud.google.com/billing/v1/how-tos/catalog-api).
-
-### Generating an API Key
-
-You must generate an API key to replace the default key in the `CLOUD_PROVIDER_API_KEY` environment variable.
-
-1. To create an API key, Follow the steps outlined in [Authenticate using API keys](https://cloud.google.com/docs/authentication/api-keys).
-2. Optionally, you can edit the key to restrict its access to the Cloud Billing API.
+1. [Activate the Cloud Billing API](https://console.cloud.google.com/flows/enableapi?apiid=cloudbilling.googleapis.com).
+2. [Generate an API key with the appropriate access permissions](https://cloud.google.com/docs/authentication/api-keys#create).
+3. Optionally, you can edit the key to restrict its access to the Cloud Billing API.
 
 ## Known Issues
 
