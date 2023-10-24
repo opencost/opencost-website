@@ -261,3 +261,7 @@ RESPONSE="$(curl --silent --show-error -X PUT "${URL}" \
 
 echo "Response: ${RESPONSE}"
 ```
+
+## Azure Cloud Cost Configuration
+
+*** DETAIL AZURE CONFIGURATION HERE ***

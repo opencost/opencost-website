@@ -151,3 +151,7 @@ opencost:
       regionNetworkEgress: 0.01
       internetNetworkEgress: 0.12
 ```
+
+## On Premises Cloud Cost Configuration
+
+*** There is currently no support for integrating external cloud cost provider pricing??? ***
