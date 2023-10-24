@@ -3,30 +3,17 @@ sidebar_position: 2
 ---
 # API
 
-The OpenCost API provides real-time and historical reporting of Kubernetes cloud costs. The `/allocation/compute` endpoint is the primary API for OpenCost, accessed via HTTP GET.
+The OpenCost API provides real-time and historical reporting of Kubernetes cloud costs based on on-demand list pricing as well as the cloud costs retrieved from cloud providers through their cost and usage reports.
 
 :::note
 Throughout our API documentation, we use `localhost:9003` as the default OpenCost API URL, but your OpenCost instance may be exposed by a service or ingress. To reach the OpenCost API at port 9003, run: `kubectl -n opencost port-forward deployment/opencost 9003`. You may also expose the OpenCost UI on port 9090 with the command `kubectl -n opencost port-forward deployment/opencost 9003 9090`.
 :::
 
-## Quick Start Example
-
-Here is an example of an OpenCost API query:
-
-```sh
-$ curl http://localhost:9003/allocation \
-  -d window=7d \
-  -d aggregate=namespace \
-  -d accumulate=false \
-  -d resolution=1m
-  -G
-```
-
-This is the default query for the OpenCost UI and produces [output similar to this](/example-output.json). More examples are available on the [API Examples](api-examples) page.
+Examples using the API endpoints are provided in the [API Examples](api-examples) page.
 
 ## Allocation API
 
-The standard OpenCost API query for costs and resources allocated to Kubernetes workloads. You may specify the `window` date range, the Kubernetes primitive(s) to `aggregate` on, the `step` for the duration of returned sets, and the `resolution` for the duration to use for Prometheus queries.
+The standard OpenCost API query for costs and resources allocated to Kubernetes workloads based on on-demand list pricing. You may specify the `window` date range, the Kubernetes primitive(s) to `aggregate` on, the `step` for the duration of returned sets, and the `resolution` for the duration to use for Prometheus queries.
 
 ### `/allocation/compute`
 QUERY PARAMETERS
@@ -109,6 +96,166 @@ Examples:<br/>
 </td>
 </tr>
 </table>
+
+## Cloud Costs API
+
+The Cloud Costs API retrieves cloud cost data from cloud providers by reading cost and usage reports. You will need additional [configuration](../configuration/) for supporting the billing integration with your cloud provider.
+
+### `/cloudCost`
+
+Endpoints
+
+GET /cloudCost
+Params:
+window
+aggregate
+accumulate
+filter
+Return:
+
+{
+window: Window
+sets: []CloudCostSet
+}
+
+GET /cloudCost/view/graph
+Params:
+window
+aggregate
+accumulate
+filter
+costMetric
+Return:
+
+[]{
+start: Time
+end: Time
+items: []{
+	name: string
+	value: float
+}
+}
+
+
+
+GET /cloudCost/view/totals
+Params:
+window
+aggregate
+accumulate
+filter
+costMetric
+Return:
+
+{
+numResults: int // total number of results
+combined: {
+	name: stirng
+	kubernetesPercent: float
+	cost: float
+}
+
+
+
+GET /cloudCost/view/table
+Params:
+window
+aggregate
+accumulate
+filter
+costMetric
+limit
+offset
+sortBy
+sortByOrder
+Return:
+
+[]{
+name: stirng
+kubernetesPercent: float
+cost: float
+}
+
+
+
+Param Descriptions
+
+Param
+Description
+Default
+Valid Values
+window
+Standard window
+No default, field is required
+
+
+aggregate
+Comma separated list of values to aggregate on
+"invoiceEntityID,
+accountID,
+proider,
+providerID,
+category”
+"invoiceEntityID"
+"accountID"
+"proider"
+"providerID"
+"category"
+“label:<LABEL_NAME>”
+accumulate
+accumulate step size
+“day”
+“”
+“all”
+“hour”
+“day”
+“week”
+“month”
+“quarter”
+filter
+V2 filter param
+
+
+"invoiceEntityID"
+"accountID"
+"proider"
+"providerID"
+"category"
+“label:<LABEL_NAME>”
+costMetric
+Cost metric which will be used as cost and kubernetes % in view api
+“AmortizedCost”
+“ListCost”
+“NetCost”
+“AmortizedNetCost”
+“InvoicedCost”
+“AmortizedCost”
+limit
+Number of results to be returned
+0
+
+
+offset
+Number of results skipped before return (page * numPerPage)
+0
+
+
+sortBy
+the value to be ordered
+“cost”
+“cost”
+“name”
+“kubernetesPercent”
+sortByOrder
+ordering of result by cost
+“desc”
+“desc”
+“asc”
+
+
+
+
+
 
 ## OpenAPI Swagger
 
