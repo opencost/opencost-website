@@ -19,7 +19,7 @@ The standard OpenCost API query for costs and resources allocated to Kubernetes 
 QUERY PARAMETERS
 <table>
 <tr>
-<th id="window">window<a class="hash-link" href="#window" title="window">​</a></th>
+<th id="window">window<a class="hash-link" href="#a_window" title="window">​</a></th>
 <th align="left">string</th>
 </tr>
 <tr>
@@ -41,13 +41,13 @@ Examples:<br/>
 </td>
 </tr>
 <tr>
-<th id="aggregate">aggregate<a class="hash-link" href="#aggregate" title="aggregate">​</a></th>
+<th id="aggregate">aggregate<a class="hash-link" href="#a_aggregate" title="aggregate">​</a></th>
 <th align="left">string</th>
 </tr>
 <tr>
 <td/>
 <td>
-Field by which to aggregate the results. Accepts: <code>cluster</code>, <code>node</code>, <code>namespace</code>, <code>controllerKind</code>, <code>controller</code>, <code>service</code>, <code>pod</code>, <code>container</code>, <code>label:name</code>, and <code>annotation:name</code>. Also accepts comma-separated lists for multi-aggregation, like <code>namespace,label:app</code>.
+Field by which to aggregate the results. Accepts: <code>cluster</code>, <code>node</code>, <code>namespace</code>, <code>controllerKind</code>, <code>controller</code>, <code>service</code>, <code>pod</code>, <code>container</code>, <code>label:LABEL_NAME</code>, and <code>annotation:name</code>. Also accepts comma-separated lists for multi-aggregation, like <code>namespace,label:app</code>.
 <br/><br/>
 Examples:<br/>
 <ul>
@@ -63,7 +63,7 @@ Examples:<br/>
 </td>
 </tr>
 <tr>
-<th id="step">step<a class="hash-link" href="#step" title="step">​</a></th>
+<th id="step">step<a class="hash-link" href="#a_step" title="step">​</a></th>
 <th align="left">string</th>
 </tr>
 <tr>
@@ -80,7 +80,7 @@ Examples:<br/>
 </td>
 </tr>
 <tr>
-<th id="resolution">resolution<a class="hash-link" href="#resolution" title="resolution">​</a></th>
+<th id="resolution">resolution<a class="hash-link" href="#a_resolution" title="resolution">​</a></th>
 <th align="left">string</th>
 </tr>
 <tr>
@@ -102,160 +102,88 @@ Examples:<br/>
 The Cloud Costs API retrieves cloud cost data from cloud providers by reading cost and usage reports. You will need additional [configuration](../configuration/) for supporting the billing integration with your cloud provider.
 
 ### `/cloudCost`
+QUERY PARAMETERS
+<table>
+<tr>
+<th id="window">window<a class="hash-link" href="#c_window" title="window">​</a></th>
+<th align="left">string</th>
+</tr>
+<tr>
+<td valign="top"><b>required</b></td>
+<td>
+Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
+<br/><br/>
 
-Endpoints
+Examples:<br/>
+<ul>
+<li><code>window=today</code> - The current day</li>
+<li><code>window=month</code> - The month-to-date</li>
+<li><code>window=lastweek</code> - The previous week</li>
+<li><code>window=30m</code> - The last 30 minutes</li>
+<li><code>window=12h</code> - The last 12 hours</li>
+<li><code>window=7d</code> - The previous 7 days</li>
+<li><code>window=2023-01-18T10:30:00Z,2023-01-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
+<li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
+</ul>
+</td>
+</tr>
 
-GET /cloudCost
-Params:
-window
-aggregate
-accumulate
-filter
-Return:
+<tr>
+<th id="aggregate">aggregate<a class="hash-link" href="#c_aggregate" title="aggregate">​</a></th>
+<th align="left">string</th>
+</tr>
+<tr>
+<td/>
+<td>
+Field by which to aggregate the results.
+Accepts: <code>invoiceEntityID</code>, <code>accountID</code>, <code>provider</code>, <code>providerID</code>, <code>category</code>, and <code>label:LABEL_NAME</code>.
+Also accepts comma-separated lists for multi-aggregation, like <code>invoiceEntityID,accountID</code>.
+<br/><br/>
+Default: <code>invoiceEntityID,accountID,provider,providerID,category</code>
+<br/><br/>
+Examples:<br/>
+<ul>
+<li></li>
+</ul>
+</td>
+</tr>
 
-{
-window: Window
-sets: []CloudCostSet
-}
+<tr>
+<th id="accumulate">accumulate<a class="hash-link" href="#c_accumulate" title="accumulate">​</a></th>
+<th align="left">string</th>
+</tr>
+<tr>
+<td/>
+<td>
+Step size of the accumulation.
+Accepts: <code>all</code>, <code>hour</code>, <code>day</code>, <code>week</code>, <code>month</code>, and <code>quarter</code>.
+<br/><br/>
+Default: <code>day</code>
+<br/><br/>
+Examples:<br/>
+<ul>
+<li></li>
+</ul>
+</td>
+</tr>
 
-GET /cloudCost/view/graph
-Params:
-window
-aggregate
-accumulate
-filter
-costMetric
-Return:
+<tr>
+<th id="filter">filter<a class="hash-link" href="#c_filter" title="filter">​</a></th>
+<th align="left">string</th>
+</tr>
+<tr>
+<td/>
+<td>
+<a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameter</a>.
+<br/><br/>
+Examples:<br/>
+<ul>
+<li></li>
+</ul>
+</td>
+</tr>
 
-[]{
-start: Time
-end: Time
-items: []{
-	name: string
-	value: float
-}
-}
-
-
-
-GET /cloudCost/view/totals
-Params:
-window
-aggregate
-accumulate
-filter
-costMetric
-Return:
-
-{
-numResults: int // total number of results
-combined: {
-	name: stirng
-	kubernetesPercent: float
-	cost: float
-}
-
-
-
-GET /cloudCost/view/table
-Params:
-window
-aggregate
-accumulate
-filter
-costMetric
-limit
-offset
-sortBy
-sortByOrder
-Return:
-
-[]{
-name: stirng
-kubernetesPercent: float
-cost: float
-}
-
-
-
-Param Descriptions
-
-Param
-Description
-Default
-Valid Values
-window
-Standard window
-No default, field is required
-
-
-aggregate
-Comma separated list of values to aggregate on
-"invoiceEntityID,
-accountID,
-proider,
-providerID,
-category”
-"invoiceEntityID"
-"accountID"
-"proider"
-"providerID"
-"category"
-“label:<LABEL_NAME>”
-accumulate
-accumulate step size
-“day”
-“”
-“all”
-“hour”
-“day”
-“week”
-“month”
-“quarter”
-filter
-V2 filter param
-
-
-"invoiceEntityID"
-"accountID"
-"proider"
-"providerID"
-"category"
-“label:<LABEL_NAME>”
-costMetric
-Cost metric which will be used as cost and kubernetes % in view api
-“AmortizedCost”
-“ListCost”
-“NetCost”
-“AmortizedNetCost”
-“InvoicedCost”
-“AmortizedCost”
-limit
-Number of results to be returned
-0
-
-
-offset
-Number of results skipped before return (page * numPerPage)
-0
-
-
-sortBy
-the value to be ordered
-“cost”
-“cost”
-“name”
-“kubernetesPercent”
-sortByOrder
-ordering of result by cost
-“desc”
-“desc”
-“asc”
-
-
-
-
-
+</table>
 
 ## OpenAPI Swagger
 
