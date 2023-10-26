@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+title: Google Cloud Platform
 ---
 
 # Google Cloud Platform Configuration

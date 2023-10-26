@@ -1,13 +1,14 @@
 ---
 sidebar_position: 1
+title: Amazon Web Services
 ---
 
 # Amazon Web Services Configuration
 
-OpenCost will automatically read node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull data for the following:
+OpenCost will automatically read node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is Amazon Web Services (AWS), it will attempt to pull data for the following:
 * AWS On-Demand pricing from the configured public API URL
 * AWS [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) from the configured S3 bucket
-* XXX Cloud Cost details XXX
+* AWS cloud costs if configured [(see below)](#aws-cloud-cost-configuration).
 
 ## AWS On-Demand pricing configuration
 
@@ -17,10 +18,6 @@ https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node
 ```
 
 This URL can be overwritten using the environment variable `AWS_PRICING_URL`.
-
-## AWS Cloud Cost Configuration
-
-*** DETAIL AWS CONFIGURATION HERE ***
 
 ## AWS Spot instance data feed configuration
 
@@ -74,3 +71,7 @@ serviceAccount:
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/S3Access
 ```
+
+## AWS Cloud Cost Configuration
+
+*** DETAIL AWS CONFIGURATION HERE ***

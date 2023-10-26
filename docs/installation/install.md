@@ -29,7 +29,7 @@ That is all that is required for most initial installations.
 
 ### Integrating Cloud Costs
 
-If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Integrating Cloud Costs and Configuration](../configuration/) page.
+If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Cloud Service Provider Configuration](../configuration/) page. You will need to manage your deployment with the [Helm](helm) chart to configure this.
 
 ## Testing
 
