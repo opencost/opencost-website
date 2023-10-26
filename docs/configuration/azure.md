@@ -273,14 +273,14 @@ The following values can be found in the Azure Portal under *Cost Management > E
 * `<CONTAINER_PATH>` is an optional value which should be used if there is more than one billing report that is exported to the configured container. The path provided should have only one billing export because OpenCost will retrieve the most recent billing report for a given month found within the path.
 * `<CLOUD>` is an optional value which denotes the cloud where the storage account exists. Possible values are `public` and `gov`. The default is `public`
 
-Set these values into the following object and add them to the Azure array:
+Set these values into the to the Azure array in the `cloud-integration.json`:
 
 ``` json
 {
   "azure": {
     "storage": [
       {
-        "subscriptionID": "0bd50fdf-c923-4e1e-850c-196dd3dcc5d3",
+        "subscriptionID": "<SUBSCRIPTON_ID>",
         "account": "<STORAGE_ACCOUNT>",
         "container": "<STORAGE_CONTAINER>",
         "path": "<CONTAINER_PATH>",
@@ -304,6 +304,6 @@ Set these values into the following object and add them to the Azure array:
         }
       }
     ]
-  },
+  }
 }
 ```

@@ -86,7 +86,7 @@ To configure OpenCost for your AWS account, create an Access Key for the OpenCos
 * `<ATHENA_PROJECT_ID>` is the AWS AccountID where the Athena CUR is. For example: `530337586277`.
 * `<MASTER_PAYER_ARN>` is an optional value which should be set if you are using a multi-account billing set-up and are not accessing Athena through the primary account. It should be set to the ARN of the role in the management (formerly master payer) account, for example: `arn:aws:iam::530337586275:role/OpenCostRole`.
 
-Set these values into the following object and add them to the AWS array in the `cloud-integration.json`:
+Set these values into the AWS array in the `cloud-integration.json`:
 
 ``` json
 {
