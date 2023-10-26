@@ -74,4 +74,38 @@ serviceAccount:
 
 ## AWS Cloud Cost Configuration
 
-*** DETAIL AWS CONFIGURATION HERE ***
+To configure OpenCost for your AWS account, create an Access Key for the OpenCost user who has access to the Cost and Usage Report (CUR). Navigate to the [IAM Management Console dashboard](https://console.aws.amazon.com/iam), and select *Access Management > Users*. Find the OpenCost user and select *Security Credentials > Create Access Key*. Note the Access Key ID and Secret access key.
+
+* `<ACCESS_KEY_ID>` is the ID of the Access Key created in the previous step.
+* `<ACCESS_KEY_SECRET>` is the secret of the Access Key created in the
+* `<ATHENA_BUCKET_NAME>` is the S3 bucket storing Athena query results which OpenCost has permission to access. The name of the bucket should match `s3://aws-athena-query-results-*`, so the IAM roles defined above will automatically allow access to it. The bucket can have a canned ACL set to Private or other permissions as needed.
+* `<ATHENA_REGION>` is the AWS region Athena is running in
+* `<ATHENA_DATABASE>` is the name of the database created by the Athena setup. The Athena database name is available as the value (physical id) of `AWSCURDatabase` in the CloudFormation stack created above.
+* `<ATHENA_TABLE>` is the name of the table created by the Athena setup The table name is typically the database name with the leading `athenacurcfn_` removed (but is not available as a CloudFormation stack resource).
+* `<ATHENA_WORKGROUP>` is the workgroup assigned to be used with Athena. Default value is `Primary`.
+* `<ATHENA_PROJECT_ID>` is the AWS AccountID where the Athena CUR is. For example: `530337586277`.
+* `<MASTER_PAYER_ARN>` is an optional value which should be set if you are using a multi-account billing set-up and are not accessing Athena through the primary account. It should be set to the ARN of the role in the management (formerly master payer) account, for example: `arn:aws:iam::530337586275:role/OpenCostRole`.
+
+Set these values into the following object and add them to the AWS array in the `cloud-integration.json`:
+
+``` json
+{
+  "aws": {
+    "athena": [
+      {
+        "bucket": "<ATHENA_BUCKET_NAME>",
+        "region": "<ATHENA_REGION>",
+        "database": "<ATHENA_DATABASE>",
+        "table": "<ATHENA_TABLE>",
+        "workgroup": "<ATHENA_WORKGROUP>",
+        "account": "<ACCOUNT_NUMBER>",
+        "authorizer": {
+          "authorizerType": "AWSAccessKey",
+          "id": "AKXXXXXXXXXXXXXXXXXXXX",
+          "secret": "superdupersecret/superdupersecret"
+        }
+      }
+    ]
+  }
+}
+```
