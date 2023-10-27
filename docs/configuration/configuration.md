@@ -33,6 +33,6 @@ Once you have filled in the configuration object, use the command:
 kubectl create secret generic <SECRET_NAME> --from-file=cloud-integration.json -n opencost
 ```
 
-Once the secret is created, set `.Values.opencost.cloudIntegrationSecret` to `<SECRET_NAME>` and upgrade OpenCost via [Helm](installation/helm).
+Once the secret is created, set `.Values.opencost.cloudIntegrationSecret` to `<SECRET_NAME>` and upgrade OpenCost via [Helm](../installation/helm).
 
 Please note that the cloud costs become available as soon as they appear in the cloud service provider's billing data, with usually several hours to a 24-hour delay. There is currently no reconciliation of the on-demand pricing with the billing data's actual costs.
