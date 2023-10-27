@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ### What is OpenCost?
 
-OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure, container and cloud costs in Kubernetes environments.
+OpenCost is a vendor-neutral open source project for measuring and allocating Kubernetes and cloud infrastructure costs.
 
 The project is a combination of the OpenCost core allocation engine with the community-driven [OpenCost Specification](specification) on how to monitor costs in Kubernetes land. The allocation engine is a Golang implementation that conforms to spec. Both have been submitted to the CNCF as a [sandbox project](https://www.cncf.io/sandbox-projects/).
 
