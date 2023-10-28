@@ -7,18 +7,20 @@ There is a [community-supported Helm chart](https://github.com/opencost/opencost
 
 ## Get Repository Info
 
+Start by giving your local helm installation access to the helm chart.
+
 ```bash
 helm repo add opencost-charts https://opencost.github.io/opencost-helm-chart
 helm repo update
 ```
 
-### Installing OpenCost with Helm
-
+## Installing OpenCost with Helm
+Create a values file ([example](#installing-opencost-with-helm)) then install into your kubernetes cluster.
 ```
 helm install opencost opencost-charts/opencost --namespace opencost --create-namespace -f values.yaml
 ```
 
-### Installing OpenCost with Helm - Example configuration
+### Example Configuration
 
 The full list of installation options can be found [here](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/values.yaml).
 
@@ -91,7 +93,37 @@ opencost:
       <Configuration Options>
 ```
 
-### Troubleshooting
+### Upgrading OpenCost with Helm
+
+```
+helm upgrade opencost opencost-charts/opencost --namespace opencost -f values.yaml
+```
+
+### Side-grading with Helm
+
+If you wish to override the version of OpenCost installed by the Helm chart (e.g. downgrading or alternative versions), update the `values.yaml` to set the tag of the downloaded image (you can also change the registry and repository if necessary).
+
+```
+opencost:
+  exporter:
+    image:
+      registry: quay.io
+      repository: kubecost1/kubecost-cost-model
+      tag: prod-1.101.3
+  ui:
+    image:
+      registry: quay.io
+      repository: kubecost1/opencost-ui
+      tag: prod-1.101.3
+```
+
+### Deleting with Helm
+
+```
+helm uninstall opencost
+```
+
+# Troubleshooting
 * Sometimes you don't find cost reports from OpenCost for certain resources. In such scenarios, check whether Prometheus is scraping the metrics. If Prometheus is not scraping any metrics, then ensure whether Service monitors are enabled in that service.
 
 example:
@@ -130,33 +162,3 @@ kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace op
 ```
 
 The reason for this could be low usage within a specific time window. You might need to wait for a period, possibly one or more days, to allow it to accumulate the metrics and display the data in the OpenCost report.
-
-### Upgrading OpenCost with Helm
-
-```
-helm upgrade opencost opencost-charts/opencost --namespace opencost -f values.yaml
-```
-
-### Side-grading with Helm
-
-If you wish to override the version of OpenCost installed by the Helm chart (e.g. downgrading or alternative versions), update the `values.yaml` to set the tag of the downloaded image (you can also change the registry and repository if necessary).
-
-```
-opencost:
-  exporter:
-    image:
-      registry: quay.io
-      repository: kubecost1/kubecost-cost-model
-      tag: prod-1.101.3
-  ui:
-    image:
-      registry: quay.io
-      repository: kubecost1/opencost-ui
-      tag: prod-1.101.3
-```
-
-### Deleting with Helm
-
-```
-helm uninstall opencost
-```
