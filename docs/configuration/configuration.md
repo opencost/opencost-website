@@ -22,7 +22,7 @@ To access general cloud costs you will need to set up cost data exports for your
 }
 ```
 
-OpenCost is currently single cluster with a single provider, despite the format of the file. The content for your cloud provider's configuration are listed on their specific pages:
+The content for your cloud providers' configuration are listed on their specific pages:
 
 * [AWS](aws#aws-cloud-cost-configuration)
 * [Azure](azure#azure-cloud-cost-configuration)
