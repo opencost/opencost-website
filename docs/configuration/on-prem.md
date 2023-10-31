@@ -154,4 +154,4 @@ opencost:
 
 ## On Premises Cloud Cost Configuration
 
-*** There is currently no support for integrating external cloud cost provider pricing??? ***
+*** There is currently no support for integrating on premises pricing. ***
