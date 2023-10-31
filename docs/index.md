@@ -39,4 +39,4 @@ Contact us via email (<opencost@kubecost.com>) if there's anything else you need
 
 The OpenCost UI provides a visualization of the Kubernetes allocations and the related Cloud Costs.
 
-** SCREENSHOTS AND WALKTHROUGH VIDEO **
+[Read our Announcement!](https://www.opencost.io/blog/cloud-costs)
