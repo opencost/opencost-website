@@ -9,9 +9,9 @@ export default function Hero() {
         </h1>
         <p className="lg:text-left text-xl leading-relaxed">
           OpenCost is a vendor-neutral open source project for measuring and
-          allocating infrastructure and container costs in real time. Built by
-          Kubernetes experts and supported by Kubernetes practitioners, OpenCost
-          shines a light into the black box of Kubernetes spend.
+          allocating cloud infrastructure and container costs in real time.
+          Built by Kubernetes experts and supported by Kubernetes practitioners,
+          OpenCost shines a light into the black box of Kubernetes spend.
         </p>
         <a href="/docs/installation/install" className="hover:no-underline">
           <div className="text-white w-fit py-2 px-4 rounded-md bg-green-400 hover:bg-green-700 transition-colors duration-200">

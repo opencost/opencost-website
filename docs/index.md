@@ -4,7 +4,7 @@ slug: /
 
 # Overview
 
-OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs. It’s built for Kubernetes cost monitoring to power real-time cost monitoring, showback, and chargeback.
+OpenCost is a vendor-neutral open source project for measuring and allocating cloud infrastructure and container costs. It’s built for Kubernetes cost monitoring to power real-time cost monitoring, showback, and chargeback.
 
 Below are common documentation pages for the OpenCost Project:
 
@@ -12,10 +12,9 @@ Below are common documentation pages for the OpenCost Project:
 
 Check out our [Installation guide](installation/install) to start monitoring and managing your spend in minutes. Additional documentation is available for [configuring Prometheus](installation/prometheus) and managing your [OpenCost with Helm](installation/helm).
 
+## Integrating Cloud Costs and Configuration
 
-## Configuration
-
-Additional cloud-specific configurations are documented:
+If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Integrating Cloud Costs and Configuration](configuration/) page or jump directly to your cloud-specific configuration:
 
 * [AWS](configuration/aws)
 * [Azure](configuration/azure)
@@ -35,3 +34,9 @@ Join the [OpenCost Community](community) and follow along other community events
 Join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
 
 Contact us via email (<opencost@kubecost.com>) if there's anything else you need.
+
+## Using the UI
+
+The OpenCost UI provides a visualization of the Kubernetes allocations and the related Cloud Costs.
+
+[Read our Announcement!](https://www.opencost.io/blog/cloud-costs)

@@ -25,7 +25,11 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
 kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml
 ```
 
-That is all that is required for most installations. You can proceed to [testing](#testing) for verifying your installation.
+That is all that is required for most initial installations.
+
+### Integrating Cloud Costs
+
+If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Cloud Service Provider Configuration](../configuration/) page. You will need to manage your deployment with the [Helm](helm) chart to configure this.
 
 ## Testing
 
