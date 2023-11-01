@@ -3,6 +3,8 @@ sidebar_position: 1
 ---
 # OpenCost Setup
 
+OpenCost requires a Kubernetes cluster to be deployed. Users should be running Kubernetes 1.20+ and Kubernetes 1.28 is officially supported as of v1.105.
+
 OpenCost requires [Prometheus](prometheus) for scraping metrics and data storage. Follow the steps below to install OpenCost.
 
 ## Quick Start Installation
