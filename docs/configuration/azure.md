@@ -264,6 +264,12 @@ echo "Response: ${RESPONSE}"
 
 ## Azure Cloud Cost Configuration
 
+:::info
+
+The Cloud Costs feature is not in the current stable release yet. Please use the OpenCost image `gcr.io/kubecost1/opencost:cloudcost` and the OpenCost UI image `gcr.io/kubecost1/opencost-ui:cloudcost` to access this beta feature.
+
+:::
+
 The following values can be found in the Azure Portal under *Cost Management > Exports*, or *Storage* accounts:
 
 * `<SUBSCRIPTION_ID>` is the Subscription ID belonging to the Storage account which stores your exported Azure cost report data.
