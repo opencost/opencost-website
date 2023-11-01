@@ -266,7 +266,7 @@ echo "Response: ${RESPONSE}"
 
 :::info
 
-The Cloud Costs feature is not in the current stable release yet. Please use the OpenCost image `gcr.io/kubecost1/opencost:cloudcost` and the OpenCost UI image `gcr.io/kubecost1/opencost-ui:cloudcost` in the meantime.
+The Cloud Costs feature is not in the current stable release yet. Please use the OpenCost image `gcr.io/kubecost1/opencost:cloudcost` and the OpenCost UI image `gcr.io/kubecost1/opencost-ui:cloudcost` to access this beta feature.
 
 :::
 
