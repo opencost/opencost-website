@@ -33,6 +33,12 @@ That is all that is required for most initial installations.
 
 If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Cloud Service Provider Configuration](../configuration/) page. You will need to manage your deployment with the [Helm](helm) chart to configure this.
 
+:::info
+
+The Cloud Costs feature is not in the current stable release yet. Please use the OpenCost image `gcr.io/kubecost1/opencost:cloudcost` and the OpenCost UI image `gcr.io/kubecost1/opencost-ui:cloudcost` in the meantime.
+
+:::
+
 ## Testing
 
 Once your OpenCost has been installed, wait for the pod to be ready and port forward with:
