@@ -33,12 +33,6 @@ The OpenCost UI provides a visualization of the Kubernetes allocations and the r
 
 <iframe width="840" height="472" src="https://www.youtube.com/embed/lCP4Ci9Kcdg?si=RuDM3e0cKNFgWvpE" title="OpenCost UI Tour" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-The OpenCost UI is deployed as part of the default OpenCost installation. You may access the UI by port forwarding:
-```
-kubectl port-forward --namespace opencost service/opencost 9090
-```
-and connecting to [http://localhost:9090](http://localhost:9090)
-
 ## Stay in the Loop
 
 Join the [OpenCost Community](community) and follow along other community events using our [calendar](https://calendar.google.com/calendar/u/0/embed?src=c_c0f7q56e5eeod3j89bb320fvjg@group.calendar.google.com&ctz=America/Los_Angeles).
