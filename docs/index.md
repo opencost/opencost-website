@@ -27,6 +27,18 @@ If you want more accurate results or Cloud Costs from your provider's bill pleas
 
 The [OpenCost Specification](specification) describes a vendor-neutral implementation for Kubernetes cost monitoring.
 
+## Using the UI
+
+The OpenCost UI provides a visualization of the Kubernetes allocations and the related Cloud Costs. This walkthrough highlights some of the components of the OpenCost UI:
+
+<iframe width="840" height="472" src="https://www.youtube.com/embed/j_4aaE5zk7M?si=N01C23OyAx3qa12b" title="OpenCost UI walkthrough" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+The OpenCost UI is deployed as part of the default OpenCost installation. You may access the UI by port forwarding:
+```
+kubectl port-forward --namespace opencost service/opencost 9090
+```
+and connecting to [http://localhost:9090](http://localhost:9090)
+
 ## Stay in the Loop
 
 Join the [OpenCost Community](community) and follow along other community events using our [calendar](https://calendar.google.com/calendar/u/0/embed?src=c_c0f7q56e5eeod3j89bb320fvjg@group.calendar.google.com&ctz=America/Los_Angeles).
@@ -34,9 +46,3 @@ Join the [OpenCost Community](community) and follow along other community events
 Join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
 
 Contact us via email (<opencost@kubecost.com>) if there's anything else you need.
-
-## Using the UI
-
-The OpenCost UI provides a visualization of the Kubernetes allocations and the related Cloud Costs.
-
-[Read our Announcement!](https://www.opencost.io/blog/cloud-costs)
