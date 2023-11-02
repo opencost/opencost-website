@@ -17,6 +17,12 @@ To enable OpenCost to fetch pricing information from your GCP project, you must 
 
 ## GCP Cloud Cost Configuration
 
+:::info
+
+The Cloud Costs feature is not in the current stable release yet. Please use the OpenCost image `gcr.io/kubecost1/opencost:cloudcost` and the OpenCost UI image `gcr.io/kubecost1/opencost-ui:cloudcost` to access this beta feature.
+
+:::
+
 To configure OpenCost for your GCP account, create a GCP service key with the following commands in your command line to generate and export one. Make sure your GCP project is where your external costs are being run.
 
 ``` sh

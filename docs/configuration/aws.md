@@ -74,6 +74,12 @@ serviceAccount:
 
 ## AWS Cloud Cost Configuration
 
+:::info
+
+The Cloud Costs feature is not in the current stable release yet. Please use the OpenCost image `gcr.io/kubecost1/opencost:cloudcost` and the OpenCost UI image `gcr.io/kubecost1/opencost-ui:cloudcost` to access this beta feature.
+
+:::
+
 To configure OpenCost for your AWS account, create an Access Key for the OpenCost user who has access to the Cost and Usage Report (CUR). Navigate to the [IAM Management Console dashboard](https://console.aws.amazon.com/iam), and select *Access Management > Users*. Find the OpenCost user and select *Security Credentials > Create Access Key*. Note the Access Key ID and Secret access key.
 
 * `<ACCESS_KEY_ID>` is the ID of the Access Key created in the previous step.

@@ -12,6 +12,12 @@ Kubernetes cloud cost allocation utilizes on-demand APIs for pricing data, but a
 
 ## Cloud Costs
 
+:::info
+
+The Cloud Costs feature is not in the current stable release yet. Please use the OpenCost image `gcr.io/kubecost1/opencost:cloudcost` and the OpenCost UI image `gcr.io/kubecost1/opencost-ui:cloudcost` to access this beta feature.
+
+:::
+
 To access general cloud costs you will need to set up cost data exports for your cloud provider. Your account details and credentials will be kept in a secret file named `cloud-integration.json` with the following format only containing applicable CSPs for your installation:
 ```
 {
