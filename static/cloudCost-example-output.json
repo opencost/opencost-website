@@ -1,0 +1,652 @@
+{
+  "code": 200,
+  "data": {
+    "sets": [
+      {
+        "cloudCosts": {
+          "AWS": {
+            "properties": {
+              "provider": "AWS",
+              "invoiceEntityID": "123445954695"
+            },
+            "window": {
+              "start": "2023-10-27T00:00:00Z",
+              "end": "2023-10-28T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1143.6968755312012,
+              "kubernetesPercent": 0.6673361360127961
+            },
+            "netCost": {
+              "cost": 1143.6968755312012,
+              "kubernetesPercent": 0.6673361360127961
+            },
+            "amortizedNetCost": {
+              "cost": 1143.6968755312012,
+              "kubernetesPercent": 0.6673361360127961
+            },
+            "invoicedCost": {
+              "cost": 1143.6968755312012,
+              "kubernetesPercent": 0.6673361360127961
+            },
+            "amortizedCost": {
+              "cost": 1143.6968755312012,
+              "kubernetesPercent": 0.6673361360127961
+            }
+          },
+          "Azure": {
+            "properties": {
+              "provider": "Azure"
+            },
+            "window": {
+              "start": "2023-10-27T00:00:00Z",
+              "end": "2023-10-28T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 99.58662202364755,
+              "kubernetesPercent": 0.9733192108939183
+            },
+            "netCost": {
+              "cost": 99.58662202550363,
+              "kubernetesPercent": 0.9733192108944155
+            },
+            "amortizedNetCost": {
+              "cost": 99.58662202550363,
+              "kubernetesPercent": 0.9733192108944155
+            },
+            "invoicedCost": {
+              "cost": 99.58662202550363,
+              "kubernetesPercent": 0.9733192108944155
+            },
+            "amortizedCost": {
+              "cost": 99.58662202550363,
+              "kubernetesPercent": 0.9733192108944155
+            }
+          },
+          "GCP": {
+            "properties": {
+              "provider": "GCP",
+              "invoiceEntityID": "ABEEFC-C6F51B-690771"
+            },
+            "window": {
+              "start": "2023-10-27T00:00:00Z",
+              "end": "2023-10-28T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1081.3712689999952,
+              "kubernetesPercent": 0.6946459967395355
+            },
+            "netCost": {
+              "cost": 967.3477159999978,
+              "kubernetesPercent": 0.6711321753924522
+            },
+            "amortizedNetCost": {
+              "cost": 967.3477159999978,
+              "kubernetesPercent": 0.6711321753924522
+            },
+            "invoicedCost": {
+              "cost": 967.3477159999978,
+              "kubernetesPercent": 0.6711321753924522
+            },
+            "amortizedCost": {
+              "cost": 967.3477159999978,
+              "kubernetesPercent": 0.6711321753924522
+            }
+          }
+        },
+        "window": {
+          "start": "2023-10-27T00:00:00Z",
+          "end": "2023-10-28T00:00:00Z"
+        },
+        "aggregationProperties": [
+          "provider"
+        ]
+      },
+      {
+        "cloudCosts": {
+          "AWS": {
+            "properties": {
+              "provider": "AWS",
+              "invoiceEntityID": "123445954695"
+            },
+            "window": {
+              "start": "2023-10-28T00:00:00Z",
+              "end": "2023-10-29T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1150.7347542304997,
+              "kubernetesPercent": 0.6668070685621287
+            },
+            "netCost": {
+              "cost": 1150.7347542304997,
+              "kubernetesPercent": 0.6668070685621287
+            },
+            "amortizedNetCost": {
+              "cost": 1150.7347542304997,
+              "kubernetesPercent": 0.6668070685621287
+            },
+            "invoicedCost": {
+              "cost": 1150.7347542304997,
+              "kubernetesPercent": 0.6668070685621287
+            },
+            "amortizedCost": {
+              "cost": 1150.7347542304997,
+              "kubernetesPercent": 0.6668070685621287
+            }
+          },
+          "Azure": {
+            "properties": {
+              "provider": "Azure"
+            },
+            "window": {
+              "start": "2023-10-28T00:00:00Z",
+              "end": "2023-10-29T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 99.39195647291442,
+              "kubernetesPercent": 0.9753973526352063
+            },
+            "netCost": {
+              "cost": 99.39195647719535,
+              "kubernetesPercent": 0.9753973526362659
+            },
+            "amortizedNetCost": {
+              "cost": 99.39195647719535,
+              "kubernetesPercent": 0.9753973526362659
+            },
+            "invoicedCost": {
+              "cost": 99.39195647719535,
+              "kubernetesPercent": 0.9753973526362659
+            },
+            "amortizedCost": {
+              "cost": 99.39195647719535,
+              "kubernetesPercent": 0.9753973526362659
+            }
+          },
+          "GCP": {
+            "properties": {
+              "provider": "GCP",
+              "invoiceEntityID": "ABEEFC-C6F51B-690771"
+            },
+            "window": {
+              "start": "2023-10-28T00:00:00Z",
+              "end": "2023-10-29T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1041.2335389999964,
+              "kubernetesPercent": 0.751904726150011
+            },
+            "netCost": {
+              "cost": 927.1889939999958,
+              "kubernetesPercent": 0.7344310473987375
+            },
+            "amortizedNetCost": {
+              "cost": 927.1889939999958,
+              "kubernetesPercent": 0.7344310473987375
+            },
+            "invoicedCost": {
+              "cost": 927.1889939999958,
+              "kubernetesPercent": 0.7344310473987375
+            },
+            "amortizedCost": {
+              "cost": 927.1889939999958,
+              "kubernetesPercent": 0.7344310473987375
+            }
+          }
+        },
+        "window": {
+          "start": "2023-10-28T00:00:00Z",
+          "end": "2023-10-29T00:00:00Z"
+        },
+        "aggregationProperties": [
+          "provider"
+        ]
+      },
+      {
+        "cloudCosts": {
+          "AWS": {
+            "properties": {
+              "provider": "AWS",
+              "invoiceEntityID": "123445954695"
+            },
+            "window": {
+              "start": "2023-10-29T00:00:00Z",
+              "end": "2023-10-30T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1134.0525014912998,
+              "kubernetesPercent": 0.6771101742372851
+            },
+            "netCost": {
+              "cost": 1134.0525014912998,
+              "kubernetesPercent": 0.6771101742372851
+            },
+            "amortizedNetCost": {
+              "cost": 1134.0525014912998,
+              "kubernetesPercent": 0.6771101742372851
+            },
+            "invoicedCost": {
+              "cost": 1134.0525014912998,
+              "kubernetesPercent": 0.6771101742372851
+            },
+            "amortizedCost": {
+              "cost": 1134.0525014912998,
+              "kubernetesPercent": 0.6771101742372851
+            }
+          },
+          "Azure": {
+            "properties": {
+              "provider": "Azure"
+            },
+            "window": {
+              "start": "2023-10-29T00:00:00Z",
+              "end": "2023-10-30T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 99.42598773890403,
+              "kubernetesPercent": 0.9745382264278031
+            },
+            "netCost": {
+              "cost": 99.42598773286856,
+              "kubernetesPercent": 0.9745382264262574
+            },
+            "amortizedNetCost": {
+              "cost": 99.42598773286856,
+              "kubernetesPercent": 0.9745382264262574
+            },
+            "invoicedCost": {
+              "cost": 99.42598773286856,
+              "kubernetesPercent": 0.9745382264262574
+            },
+            "amortizedCost": {
+              "cost": 99.42598773286856,
+              "kubernetesPercent": 0.9745382264262574
+            }
+          },
+          "GCP": {
+            "properties": {
+              "provider": "GCP",
+              "invoiceEntityID": "ABEEFC-C6F51B-690771"
+            },
+            "window": {
+              "start": "2023-10-29T00:00:00Z",
+              "end": "2023-10-30T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1013.1096289999908,
+              "kubernetesPercent": 0.7366902540810807
+            },
+            "netCost": {
+              "cost": 899.0980299999953,
+              "kubernetesPercent": 0.7167137425492963
+            },
+            "amortizedNetCost": {
+              "cost": 899.0980299999953,
+              "kubernetesPercent": 0.7167137425492963
+            },
+            "invoicedCost": {
+              "cost": 899.0980299999953,
+              "kubernetesPercent": 0.7167137425492963
+            },
+            "amortizedCost": {
+              "cost": 899.0980299999953,
+              "kubernetesPercent": 0.7167137425492963
+            }
+          }
+        },
+        "window": {
+          "start": "2023-10-29T00:00:00Z",
+          "end": "2023-10-30T00:00:00Z"
+        },
+        "aggregationProperties": [
+          "provider"
+        ]
+      },
+      {
+        "cloudCosts": {
+          "AWS": {
+            "properties": {
+              "provider": "AWS",
+              "invoiceEntityID": "123445954695"
+            },
+            "window": {
+              "start": "2023-10-30T00:00:00Z",
+              "end": "2023-10-31T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1151.6934003790016,
+              "kubernetesPercent": 0.6699496063064967
+            },
+            "netCost": {
+              "cost": 1151.6934003790016,
+              "kubernetesPercent": 0.6699496063064967
+            },
+            "amortizedNetCost": {
+              "cost": 1151.6934003790016,
+              "kubernetesPercent": 0.6699496063064967
+            },
+            "invoicedCost": {
+              "cost": 1151.6934003790016,
+              "kubernetesPercent": 0.6699496063064967
+            },
+            "amortizedCost": {
+              "cost": 1151.6934003790016,
+              "kubernetesPercent": 0.6699496063064967
+            }
+          },
+          "Azure": {
+            "properties": {
+              "provider": "Azure"
+            },
+            "window": {
+              "start": "2023-10-30T00:00:00Z",
+              "end": "2023-10-31T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 99.65905328282159,
+              "kubernetesPercent": 0.9725507603384835
+            },
+            "netCost": {
+              "cost": 99.65905328010854,
+              "kubernetesPercent": 0.9725507603377364
+            },
+            "amortizedNetCost": {
+              "cost": 99.65905328010854,
+              "kubernetesPercent": 0.9725507603377364
+            },
+            "invoicedCost": {
+              "cost": 99.65905328010854,
+              "kubernetesPercent": 0.9725507603377364
+            },
+            "amortizedCost": {
+              "cost": 99.65905328010854,
+              "kubernetesPercent": 0.9725507603377364
+            }
+          },
+          "GCP": {
+            "properties": {
+              "provider": "GCP",
+              "invoiceEntityID": "ABEEFC-C6F51B-690771"
+            },
+            "window": {
+              "start": "2023-10-30T00:00:00Z",
+              "end": "2023-10-31T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1137.573791999999,
+              "kubernetesPercent": 0.6861006692390411
+            },
+            "netCost": {
+              "cost": 1023.4962349999937,
+              "kubernetesPercent": 0.660899564520624
+            },
+            "amortizedNetCost": {
+              "cost": 1023.4962349999937,
+              "kubernetesPercent": 0.660899564520624
+            },
+            "invoicedCost": {
+              "cost": 1023.4962349999937,
+              "kubernetesPercent": 0.660899564520624
+            },
+            "amortizedCost": {
+              "cost": 1023.4962349999937,
+              "kubernetesPercent": 0.660899564520624
+            }
+          }
+        },
+        "window": {
+          "start": "2023-10-30T00:00:00Z",
+          "end": "2023-10-31T00:00:00Z"
+        },
+        "aggregationProperties": [
+          "provider"
+        ]
+      },
+      {
+        "cloudCosts": {
+          "AWS": {
+            "properties": {
+              "provider": "AWS",
+              "invoiceEntityID": "123445954695"
+            },
+            "window": {
+              "start": "2023-10-31T00:00:00Z",
+              "end": "2023-11-01T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1188.0187388685943,
+              "kubernetesPercent": 0.6424350652456486
+            },
+            "netCost": {
+              "cost": 1188.0187388685943,
+              "kubernetesPercent": 0.6424350652456486
+            },
+            "amortizedNetCost": {
+              "cost": 1188.0187388685943,
+              "kubernetesPercent": 0.6424350652456486
+            },
+            "invoicedCost": {
+              "cost": 1188.0187388685943,
+              "kubernetesPercent": 0.6424350652456486
+            },
+            "amortizedCost": {
+              "cost": 1188.0187388685943,
+              "kubernetesPercent": 0.6424350652456486
+            }
+          },
+          "Azure": {
+            "properties": {
+              "provider": "Azure"
+            },
+            "window": {
+              "start": "2023-10-31T00:00:00Z",
+              "end": "2023-11-01T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 99.4917968161776,
+              "kubernetesPercent": 0.9719572314272815
+            },
+            "netCost": {
+              "cost": 99.49179682831165,
+              "kubernetesPercent": 0.9719572314307013
+            },
+            "amortizedNetCost": {
+              "cost": 99.49179682831165,
+              "kubernetesPercent": 0.9719572314307013
+            },
+            "invoicedCost": {
+              "cost": 99.49179682831165,
+              "kubernetesPercent": 0.9719572314307013
+            },
+            "amortizedCost": {
+              "cost": 99.49179682831165,
+              "kubernetesPercent": 0.9719572314307013
+            }
+          },
+          "GCP": {
+            "properties": {
+              "provider": "GCP",
+              "invoiceEntityID": "ABEEFC-C6F51B-690771"
+            },
+            "window": {
+              "start": "2023-10-31T00:00:00Z",
+              "end": "2023-11-01T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1341.8599049999991,
+              "kubernetesPercent": 0.7266776444892709
+            },
+            "netCost": {
+              "cost": 1218.8593600000013,
+              "kubernetesPercent": 0.709144007393927
+            },
+            "amortizedNetCost": {
+              "cost": 1218.8593600000013,
+              "kubernetesPercent": 0.709144007393927
+            },
+            "invoicedCost": {
+              "cost": 1218.8593600000013,
+              "kubernetesPercent": 0.709144007393927
+            },
+            "amortizedCost": {
+              "cost": 1218.8593600000013,
+              "kubernetesPercent": 0.709144007393927
+            }
+          }
+        },
+        "window": {
+          "start": "2023-10-31T00:00:00Z",
+          "end": "2023-11-01T00:00:00Z"
+        },
+        "aggregationProperties": [
+          "provider"
+        ]
+      },
+      {
+        "cloudCosts": {
+          "AWS": {
+            "properties": {
+              "provider": "AWS",
+              "invoiceEntityID": "123445954695"
+            },
+            "window": {
+              "start": "2023-11-01T00:00:00Z",
+              "end": "2023-11-02T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1125.6231736996021,
+              "kubernetesPercent": 0.5488765130892562
+            },
+            "netCost": {
+              "cost": 1125.6231736996021,
+              "kubernetesPercent": 0.5488765130892562
+            },
+            "amortizedNetCost": {
+              "cost": 1125.6231736996021,
+              "kubernetesPercent": 0.5488765130892562
+            },
+            "invoicedCost": {
+              "cost": 1125.6231736996021,
+              "kubernetesPercent": 0.5488765130892562
+            },
+            "amortizedCost": {
+              "cost": 1125.6231736996021,
+              "kubernetesPercent": 0.5488765130892562
+            }
+          },
+          "Azure": {
+            "properties": {
+              "provider": "Azure"
+            },
+            "window": {
+              "start": "2023-11-01T00:00:00Z",
+              "end": "2023-11-02T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 73.96316536187176,
+              "kubernetesPercent": 0.9692173512874873
+            },
+            "netCost": {
+              "cost": 71.79485274683589,
+              "kubernetesPercent": 0.9852284379809284
+            },
+            "amortizedNetCost": {
+              "cost": 71.79485274683589,
+              "kubernetesPercent": 0.9852284379809284
+            },
+            "invoicedCost": {
+              "cost": 71.79485274683589,
+              "kubernetesPercent": 0.9852284379809284
+            },
+            "amortizedCost": {
+              "cost": 71.79485274683589,
+              "kubernetesPercent": 0.9852284379809284
+            }
+          },
+          "GCP": {
+            "properties": {
+              "provider": "GCP",
+              "invoiceEntityID": "ABEEFC-C6F51B-690771"
+            },
+            "window": {
+              "start": "2023-11-01T00:00:00Z",
+              "end": "2023-11-02T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 1258.8986709999954,
+              "kubernetesPercent": 0.7594311845929343
+            },
+            "netCost": {
+              "cost": 1178.398327999996,
+              "kubernetesPercent": 0.7533696195129026
+            },
+            "amortizedNetCost": {
+              "cost": 1178.398327999996,
+              "kubernetesPercent": 0.7533696195129026
+            },
+            "invoicedCost": {
+              "cost": 1178.398327999996,
+              "kubernetesPercent": 0.7533696195129026
+            },
+            "amortizedCost": {
+              "cost": 1178.398327999996,
+              "kubernetesPercent": 0.7533696195129026
+            }
+          }
+        },
+        "window": {
+          "start": "2023-11-01T00:00:00Z",
+          "end": "2023-11-02T00:00:00Z"
+        },
+        "aggregationProperties": [
+          "provider"
+        ]
+      },
+      {
+        "cloudCosts": {
+          "GCP": {
+            "properties": {
+              "provider": "GCP",
+              "invoiceEntityID": "ABEEFC-C6F51B-690771"
+            },
+            "window": {
+              "start": "2023-11-02T00:00:00Z",
+              "end": "2023-11-03T00:00:00Z"
+            },
+            "listCost": {
+              "cost": 57.01878400000021,
+              "kubernetesPercent": 0.5474822998680512
+            },
+            "netCost": {
+              "cost": 54.7663110000002,
+              "kubernetesPercent": 0.5401806778623409
+            },
+            "amortizedNetCost": {
+              "cost": 54.7663110000002,
+              "kubernetesPercent": 0.5401806778623409
+            },
+            "invoicedCost": {
+              "cost": 54.7663110000002,
+              "kubernetesPercent": 0.5401806778623409
+            },
+            "amortizedCost": {
+              "cost": 54.7663110000002,
+              "kubernetesPercent": 0.5401806778623409
+            }
+          }
+        },
+        "window": {
+          "start": "2023-11-02T00:00:00Z",
+          "end": "2023-11-03T00:00:00Z"
+        },
+        "aggregationProperties": [
+          "provider"
+        ]
+      }
+    ],
+    "window": {
+      "start": "null",
+      "end": "null"
+    }
+  }
+}
