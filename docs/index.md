@@ -29,7 +29,7 @@ The [OpenCost Specification](specification) describes a vendor-neutral implement
 
 ## Using the UI
 
-The OpenCost UI provides a visualization of the Kubernetes allocations and the related Cloud Costs. This walkthrough highlights some of the components of the OpenCost UI:
+The OpenCost UI provides a visualization of the Kubernetes allocations and the related Cloud Costs. This walkthrough highlights some of the components of the [OpenCost UI](installation/ui).
 
 <iframe width="840" height="472" src="https://www.youtube.com/embed/lCP4Ci9Kcdg?si=RuDM3e0cKNFgWvpE" title="OpenCost UI Tour" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
