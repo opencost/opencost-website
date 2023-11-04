@@ -151,25 +151,34 @@ QUERY PARAMETERS
     </td>
   </tr>
 
+
   <tr>
-    <th id="costMetric">costMetric<a class="hash-link" href="#c_costmetric" title="costmetric">​</a></th>
+    <th id="accumulate">accumulate<a class="hash-link" href="#c_accumulate" title="accumulate">​</a></th>
     <th align="left">string</th>
   </tr>
   <tr>
     <td/>
     <td>
-    Determines which cloud cost metric type will be returned.
-    Accepts: <code>AmortizedNetCost</code>, <code>InvoicedCost</code>, <code>ListCost</code>, and <code>NetCost</code>.
-    <br/><br/>
-    Default: <code>AmortizedNetCost</code>.
-    <br/><br/>
-    Examples:<br/>
+      Step size of the accumulation.
+      Accepts: <code>all</code>, <code>hour</code>, <code>day</code>, <code>week</code>, <code>month</code>, and <code>quarter</code>.
+      <br/><br/>
+      Default: <code>day</code>
+      <br/><br/>
+      Examples:<br/>
       <ul>
-        <li><code>costMetric=AmortizedNetCost</code> - Returns the Amortized Net Costs.</li>
-        <li><code>costMetric=InvoicedCost</code> - Returns the Invoiced Costs.</li>
-        <li><code>costMetric=ListCost</code> - Returns the List Costs.</li>
-        <li><code>costMetric=NetCost</code> - Returns the Net Costs.</li>
+        <li></li>
       </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="filter">filter<a class="hash-link" href="#c_filter" title="filter">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      <a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameter</a>.
     </td>
   </tr>
 

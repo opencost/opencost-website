@@ -86,7 +86,7 @@ curl -G http://localhost:9003/allocation/compute \
 
 ## `/cloudCost` Examples
 
-The OpenCost `/cloudCost` API has query parameters for `window`, `aggregate`, and `costMetric`. Below are several examples of queries using this API. Please refer to the [OpenCost API](api#cloudcost) for the full API specifics.
+The OpenCost `/cloudCost` API has query parameters for `window`, `aggregate`, and `filter`. Below are several examples of queries using this API. Please refer to the [OpenCost API](api#cloudcost) for the full API specifics.
 
 ### Default OpenCost UI Cloud Cost request
 
@@ -95,8 +95,7 @@ Amortized Net Cost per Provider for the last 7 days
 ```sh
 curl -G http://localhost:9003/cloudCost \
   -d window=7d \
-  -d aggregate=provider \
-  -d costMetric=AmortizedNetCost
+  -d aggregate=provider
 ```
 
 This is the default query for the OpenCost UI Cloud Costs and produces [output similar to this](/cloudCost-example-output.json).
@@ -108,8 +107,7 @@ This example shows list cost multi-aggregation by Provider and Service.
 ```sh
 curl -G http://localhost:9003/cloudCost \
   -d window=14d \
-  -d aggregate=provider,service \
-  -d costMetric=listCost
+  -d aggregate=provider,service
 ```
 
 ```json
