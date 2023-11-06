@@ -15,86 +15,86 @@ Examples using the API endpoints are provided in the [API Examples](api-examples
 
 The standard OpenCost API query for costs and resources allocated to Kubernetes workloads based on on-demand list pricing. You may specify the `window` date range, the Kubernetes primitive(s) to `aggregate` on, the `step` for the duration of returned sets, and the `resolution` for the duration to use for Prometheus queries.
 
-### `/allocation/compute`
+### `/allocation`
 QUERY PARAMETERS
 <table>
-<tr>
-<th id="window">window<a class="hash-link" href="#a_window" title="window">​</a></th>
-<th align="left">string</th>
-</tr>
-<tr>
-<td valign="top"><b>required</b></td>
-<td>
-Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
-<br/><br/>
-Examples:<br/>
-<ul>
-<li><code>window=today</code> - The current day</li>
-<li><code>window=month</code> - The month-to-date</li>
-<li><code>window=lastweek</code> - The previous week</li>
-<li><code>window=30m</code> - The last 30 minutes</li>
-<li><code>window=12h</code> - The last 12 hours</li>
-<li><code>window=7d</code> - The previous 7 days</li>
-<li><code>window=2023-01-18T10:30:00Z,2023-01-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
-<li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
-</ul>
-</td>
-</tr>
-<tr>
-<th id="aggregate">aggregate<a class="hash-link" href="#a_aggregate" title="aggregate">​</a></th>
-<th align="left">string</th>
-</tr>
-<tr>
-<td/>
-<td>
-Field by which to aggregate the results. Accepts: <code>cluster</code>, <code>node</code>, <code>namespace</code>, <code>controllerKind</code>, <code>controller</code>, <code>service</code>, <code>pod</code>, <code>container</code>, <code>label:LABEL_NAME</code>, and <code>annotation:name</code>. Also accepts comma-separated lists for multi-aggregation, like <code>namespace,label:app</code>.
-<br/><br/>
-Examples:<br/>
-<ul>
-<li><code>aggregate=cluster</code> - Aggregates by the cluster.</li>
-<li><code>aggregate=node</code> - Aggregates by the compute nodes in the cluster.</li>
-<li><code>aggregate=namespace</code> - Aggregates by the namespaces in the cluster.</li>
-<li><code>aggregate=controllerKind</code> - Aggregates by the kinds of controllers present in the cluster.</li>
-<li><code>aggregate=controller</code> - Aggregates by the individual controllers within the cluster.</li>
-<li><code>aggregate=service</code> - Aggregates by the services within the cluster.</li>
-<li><code>aggregate=pod</code> - Aggregates by the individual pods within the cluster.</li>
-<li><code>aggregate=container</code> - Aggregates by the containers present in the cluster.</li>
-</ul>
-</td>
-</tr>
-<tr>
-<th id="step">step<a class="hash-link" href="#a_step" title="step">​</a></th>
-<th align="left">string</th>
-</tr>
-<tr>
-<td/>
-<td>
-Duration of a single allocation set. If unspecified, this defaults to the window, so that you receive exactly one set for the entire window. If specified, it works chronologically backward, querying in durations of step until the full window is covered. Default is <code>window</code>.
-<br/><br/>
-Examples:<br/>
-<ul>
-<li><code>step=30m</code> - 30 minute steps over the duration of the window.</li>
-<li><code>step=2h</code> - 2 hour steps over the duration of the window</li>
-<li><code>step=1d</code> - Daily steps over the duration of the window (ie. <code>lastweek</code> or <code>month</code></li>
-</ul>
-</td>
-</tr>
-<tr>
-<th id="resolution">resolution<a class="hash-link" href="#a_resolution" title="resolution">​</a></th>
-<th align="left">string</th>
-</tr>
-<tr>
-<td/>
-<td>
-Duration to use as resolution in Prometheus queries. Smaller values (i.e. higher resolutions) will provide better accuracy, but worse performance (i.e. slower query time, higher memory use). Larger values (i.e. lower resolutions) will perform better, but at the expense of lower accuracy for short-running workloads. Default is <code>1m</code>.
-<br/><br/>
-Examples:<br/>
-<ul>
-<li><code>resolution=1m</code> - Highly accurate, slower query.</li>
-<li><code>resolution=30m</code> - Less accurate, faster query. Not recommended for short-lived workloads.</li>
-</ul>
-</td>
-</tr>
+  <tr>
+    <th id="window">window<a class="hash-link" href="#a_window" title="window">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td valign="top"><b>required</b></td>
+    <td>
+      Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>window=today</code> - The current day</li>
+        <li><code>window=month</code> - The month-to-date</li>
+        <li><code>window=lastweek</code> - The previous week</li>
+        <li><code>window=30m</code> - The last 30 minutes</li>
+        <li><code>window=12h</code> - The last 12 hours</li>
+        <li><code>window=7d</code> - The previous 7 days</li>
+        <li><code>window=2023-01-18T10:30:00Z,2023-01-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
+        <li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th id="aggregate">aggregate<a class="hash-link" href="#a_aggregate" title="aggregate">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Field by which to aggregate the results. Accepts: <code>cluster</code>, <code>node</code>, <code>namespace</code>, <code>controllerKind</code>, <code>controller</code>, <code>service</code>, <code>pod</code>, <code>container</code>, <code>label:LABEL_NAME</code>, and <code>annotation:name</code>. Also accepts comma-separated lists for multi-aggregation, like <code>namespace,label:app</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>aggregate=cluster</code> - Aggregates by the cluster.</li>
+        <li><code>aggregate=node</code> - Aggregates by the compute nodes in the cluster.</li>
+        <li><code>aggregate=namespace</code> - Aggregates by the namespaces in the cluster.</li>
+        <li><code>aggregate=controllerKind</code> - Aggregates by the kinds of controllers present in the cluster.</li>
+        <li><code>aggregate=controller</code> - Aggregates by the individual controllers within the cluster.</li>
+        <li><code>aggregate=service</code> - Aggregates by the services within the cluster.</li>
+        <li><code>aggregate=pod</code> - Aggregates by the individual pods within the cluster.</li>
+        <li><code>aggregate=container</code> - Aggregates by the containers present in the cluster.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th id="step">step<a class="hash-link" href="#a_step" title="step">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Duration of a single allocation set. If unspecified, this defaults to the `window`, so that you receive exactly one set for the entire window. If specified, it works chronologically backward, querying in durations of step until the full window is covered. Default is <code>window</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>step=30m</code> - 30 minute steps over the duration of the window.</li>
+        <li><code>step=2h</code> - 2 hour steps over the duration of the window</li>
+        <li><code>step=1d</code> - Daily steps over the duration of the window (ie. <code>lastweek</code> or <code>month</code></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th id="resolution">resolution<a class="hash-link" href="#a_resolution" title="resolution">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Duration to use as resolution in Prometheus queries. Smaller values (i.e. higher resolutions) will provide better accuracy, but worse performance (i.e. slower query time, higher memory use). Larger values (i.e. lower resolutions) will perform better, but at the expense of lower accuracy for short-running workloads. Default is <code>1m</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>resolution=1m</code> - Highly accurate, slower query.</li>
+        <li><code>resolution=30m</code> - Less accurate, faster query. Not recommended for short-lived workloads.</li>
+      </ul>
+    </td>
+  </tr>
 </table>
 
 ## Cloud Costs API
@@ -104,84 +104,83 @@ The Cloud Costs API retrieves cloud cost data from cloud providers by reading co
 ### `/cloudCost`
 QUERY PARAMETERS
 <table>
-<tr>
-<th id="window">window<a class="hash-link" href="#c_window" title="window">​</a></th>
-<th align="left">string</th>
-</tr>
-<tr>
-<td valign="top"><b>required</b></td>
-<td>
-Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
-<br/><br/>
+  <tr>
+    <th id="window">window<a class="hash-link" href="#c_window" title="window">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td valign="top"><b>required</b></td>
+    <td>
+      Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>window=today</code> - The current day</li>
+        <li><code>window=month</code> - The month-to-date</li>
+        <li><code>window=lastweek</code> - The previous week</li>
+        <li><code>window=30m</code> - The last 30 minutes</li>
+        <li><code>window=12h</code> - The last 12 hours</li>
+        <li><code>window=7d</code> - The previous 7 days</li>
+        <li><code>window=2023-10-18T10:30:00Z,2023-10-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
+        <li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
+      </ul>
+    </td>
+  </tr>
 
-Examples:<br/>
-<ul>
-<li><code>window=today</code> - The current day</li>
-<li><code>window=month</code> - The month-to-date</li>
-<li><code>window=lastweek</code> - The previous week</li>
-<li><code>window=30m</code> - The last 30 minutes</li>
-<li><code>window=12h</code> - The last 12 hours</li>
-<li><code>window=7d</code> - The previous 7 days</li>
-<li><code>window=2023-01-18T10:30:00Z,2023-01-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
-<li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
-</ul>
-</td>
-</tr>
+  <tr>
+    <th id="aggregate">aggregate<a class="hash-link" href="#c_aggregate" title="aggregate">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Field by which to aggregate the results.
+      Accepts: <code>invoiceEntityID</code>, <code>accountID</code>, <code>provider</code>, <code>providerID</code>, <code>category</code>, and <code>service</code>.
+      Also accepts comma-separated lists for multi-aggregation, like <code>provider,service</code>.
+      If no value is provided, the entire list of items is returned.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>aggregate=accountID</code> - Aggregates by the Account.</li>
+        <li><code>aggregate=category</code> - Aggregates by the individual controllers within the cluster.</li>
+        <li><code>aggregate=invoiceEntityID</code> - Aggregates by the Invoice Entity.</li>
+        <li><code>aggregate=provider</code> - Aggregates by the Provider.</li>
+        <li><code>aggregate=providerID</code> - Aggregates by the Provider ID.</li>
+        <li><code>aggregate=service</code> - Aggregates by the Service.</li>
+      </ul>
+    </td>
+  </tr>
 
-<tr>
-<th id="aggregate">aggregate<a class="hash-link" href="#c_aggregate" title="aggregate">​</a></th>
-<th align="left">string</th>
-</tr>
-<tr>
-<td/>
-<td>
-Field by which to aggregate the results.
-Accepts: <code>invoiceEntityID</code>, <code>accountID</code>, <code>provider</code>, <code>providerID</code>, <code>category</code>, and <code>label:LABEL_NAME</code>.
-Also accepts comma-separated lists for multi-aggregation, like <code>invoiceEntityID,accountID</code>.
-<br/><br/>
-Default: <code>invoiceEntityID,accountID,provider,providerID,category</code>
-<br/><br/>
-Examples:<br/>
-<ul>
-<li></li>
-</ul>
-</td>
-</tr>
 
-<tr>
-<th id="accumulate">accumulate<a class="hash-link" href="#c_accumulate" title="accumulate">​</a></th>
-<th align="left">string</th>
-</tr>
-<tr>
-<td/>
-<td>
-Step size of the accumulation.
-Accepts: <code>all</code>, <code>hour</code>, <code>day</code>, <code>week</code>, <code>month</code>, and <code>quarter</code>.
-<br/><br/>
-Default: <code>day</code>
-<br/><br/>
-Examples:<br/>
-<ul>
-<li></li>
-</ul>
-</td>
-</tr>
+  <tr>
+    <th id="accumulate">accumulate<a class="hash-link" href="#c_accumulate" title="accumulate">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Step size of the accumulation.
+      Accepts: <code>all</code>, <code>hour</code>, <code>day</code>, <code>week</code>, <code>month</code>, and <code>quarter</code>.
+      <br/><br/>
+      Default: <code>day</code>
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li></li>
+      </ul>
+    </td>
+  </tr>
 
-<tr>
-<th id="filter">filter<a class="hash-link" href="#c_filter" title="filter">​</a></th>
-<th align="left">string</th>
-</tr>
-<tr>
-<td/>
-<td>
-<a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameter</a>.
-<br/><br/>
-Examples:<br/>
-<ul>
-<li></li>
-</ul>
-</td>
-</tr>
+  <tr>
+    <th id="filter">filter<a class="hash-link" href="#c_filter" title="filter">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      <a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameter</a>.
+    </td>
+  </tr>
 
 </table>
 

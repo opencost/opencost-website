@@ -67,7 +67,7 @@
           "controller": "opencost",
           "controllerKind": "deployment",
           "namespace": "opencost",
-          "providerID": "i-064548f89b9d35c11",
+          "providerID": "i-123458f89b9d35c11",
           "namespaceLabels": {
             "kubernetes_io_metadata_name": "opencost",
             "name": "opencost"
