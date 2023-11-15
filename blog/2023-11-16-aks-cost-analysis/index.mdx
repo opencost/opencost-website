@@ -7,9 +7,17 @@ tags: [opencost, microsoft, azure, aks]
 
 Kubecost and the OpenCost project are pleased to announce that Microsoft’s new [AKS Cost Analysis tool](https://aka.ms/aks/cost-analysis) is built on [OpenCost](https://opencost.io) and integrates Kubernetes cost data into the Azure Cost Management experience. AKS Cost Analysis is an add-on for Standard and Premium-tier AKS clusters offered to customers at no additional cost. It provides cost allocation reports directly in the Azure Portal. AKS customers can now easily visualize their Kubernetes cost allocations as the foundation for further optimization and anomaly detection.
 
+![AKS Cost Analysis: Cluster View](./img/cluster.png)
+
+<!--truncate-->
+
 AKS is also the first Azure service that drills down into the specifics of the service’s granular cost details. These Kubernetes-specific views will surface cost allocation across AKS cluster resources (i.e. VMs, public IPs, disks, etc.). "Our goal in Azure is to build Kubernetes-centric experiences on top of vendor-neutral open-source solutions, ensuring that our customers can take advantage of the innovation and portability of the CNCF ecosystem natively in Azure,” said Sean McKenna, Director of Product Management for Azure Cloud Native. "We've really enjoyed partnering with the OpenCost community on this project and are excited to get it in the hands of our customers." AKS customers will be able to configure how shared costs are allocated across namespaces.
 
+![AKS Cost Analysis: Namespaces View](./img/namespaces.png)
+
 OpenCost is the open source CNCF sandbox project and specification for the real-time monitoring of cloud costs and associated Kubernetes deployments. It models and tracks current and historical Kubernetes cloud spend and resource allocation as well as general cloud costs, which may be used as the basis for cost observability and optimizations. Check out the [code on GitHub](https://github.com/opencost/opencost) or [join the community](https://www.opencost.io/docs/community).
+
+![AKS Cost Analysis: Assets View](./img/assets.png)
 
 Microsoft [announced their involvement with OpenCost](https://www.opencost.io/blog/azure-opencost) earlier this year and have been active in the community ever since. Today’s announcement is just another great step in our journey together. Microsoft has committed to helping establish OpenCost as the open source standard for Kubernetes and cloud costs monitoring. If you want to run your own OpenCost deployment, we have [Azure-specific instructions](https://www.opencost.io/docs/configuration/azure), including accessing your own [Price Sheet API](https://www.opencost.io/docs/configuration/azure#customer-specific-pricing) and configuring [Azure Cloud Cost](https://www.opencost.io/docs/configuration/azure#azure-cloud-cost-configuration) access.
 
