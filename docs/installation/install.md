@@ -51,7 +51,9 @@ To verify that the UI and server are running, you may access the OpenCost UI at 
 
 To verify that the server is running, access [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
 
-You can see more [API Examples](../integrations/api) or use [kubectl cost](../integrations/kubectl-cost):
+### Testing with Kubectl Cost Plugin
+
+For a curated, command line output, we recommend installing [kubectl cost](../integrations/kubectl-cost) plugin:
 
 ```sh
 kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
@@ -73,6 +75,10 @@ Output:
 | SUMMED  |               |          47.671200 |                 |
 +---------+---------------+--------------------+-----------------+
 ```
+
+### Testing with OpenCost API
+
+You can see here more [API Examples](../integrations/api)
 
 ## Updating OpenCost
 To update your OpenCost to the most recent version, using a previously unmodified `opencost.yaml` manifest, enter the following command. This will update OpenCost to the latest version.
