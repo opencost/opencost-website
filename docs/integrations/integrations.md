@@ -24,5 +24,6 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 
 ## Miscellaneous
 * [Backstage](https://github.com/backstage/backstage/tree/master/plugins/opencost)
+* [Prometheus OpenCost Exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-opencost-exporter)
 * [Kubefirst](https://kubefirst.io/blog/release2-2/)
 * [Vantage](https://www.vantage.sh/blog/vantage-launches-opencost-kubernetes-monitoring-support)
