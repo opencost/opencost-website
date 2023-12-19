@@ -58,6 +58,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          blogSidebarCount: 10,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
