@@ -8,6 +8,10 @@ hide_table_of_contents: true
 
 ---
 
+* ITPro Today: [OpenCost Project Expands Open Source Across Multicloud Deployments](https://www.itprotoday.com/cloudops/opencost-project-expands-open-source-across-multicloud-deployments) (November 4, 2023)
+* The New Stack: [Grafana Wants to Help You Avoid Getting Dinged by Kubernetes Costs](https://thenewstack.io/grafana-wants-to-help-you-avoid-getting-dinged-by-kubernetes-costs/) (November 2, 2023)
+* Yahoo! Finance: [Kubecost Launches Cloud Cost Optimization and Support Through OpenCost and the FinOps Foundation’s FOCUS™ Specification](https://finance.yahoo.com/news/kubecost-launches-cloud-cost-optimization-080000850.html) (October 31, 2023)
+* Infoworld: [Kubernetes cost management for the real world](https://www.infoworld.com/article/3695569/kubernetes-cost-management-for-the-real-world.html) (May 8, 2023)
 * ITPro Today: [5 Simple Ways to Reduce Kubernetes Costs](https://www.itprotoday.com/hybrid-cloud-and-multicloud/5-simple-ways-reduce-kubernetes-costs) (December 15, 2022)
 * CNCF Blog: [OpenCost: A new CNCF Sandbox Project for real-time Kubernetes cost monitoring](https://www.cncf.io/blog/2022/12/06/opencost-a-new-cncf-sandbox-project-for-real-time-kubernetes-cost-monitoring/) (December 6, 2022)
 * Is it Observable?: [What happened in Kubecon North America 2022](https://youtu.be/Oeg5d2lIiMg?t=1651) (December 2, 2022)
