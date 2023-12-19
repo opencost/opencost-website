@@ -32,6 +32,9 @@ OpenCost is the cost allocation engine for Kubecost. Kubecost provides more accu
 
 The [OpenCost Specification](specification) outlines the metholodogy used for how costs are calculated in the project. The OpenCost implementation implements this spec and has public billing API integrations with the providers listed above.
 
+For a low-level investigation of how OpenCost calculates the cost of Kubernetes workloads, check out the [OpenCost Kubernetes cost monitoring deep dive](https://www.youtube.com/watch?v=P46g6go2KEk)
+<iframe width="840" height="472" src="https://www.youtube.com/embed/P46g6go2KEk?si=h63Nv_9mXTgFJxcb" title="OpenCost Kubernetes cost monitoring deep dive" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### How does the OpenCost implementation compare with the OpenCost Specification?
 
 The OpenCost project provides an implementation of the specification for AWS, Azure, GCP, and on-prem Kubernetes environments. It meets all the requirements of the current [OpenCost Specification](specification) and is working towards including other functionality for monitoring external cloud costs, e.g. storage buckets, external databases, etc.
