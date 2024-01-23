@@ -24,6 +24,30 @@ This URL can be overwritten using the environment variable `AWS_PRICING_URL`.
 ### Prerequisites
 
 * Set up [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html).
+* Create a role for OpenCost with access to the spot feed bucket.  Attach the policy below to the role and replace CHANGE-ME with your spot bucket name.
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket",
+                "s3:HeadBucket",
+                "s3:HeadObject",
+                "s3:List*",
+                "s3:Get*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::CHANGE-ME"
+            ],
+            "Effect": "Allow",
+            "Sid": "SpotDataAccess"
+        }
+    ]
+}
+```
+
 
 ### Configuration
 
