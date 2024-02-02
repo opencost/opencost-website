@@ -124,6 +124,18 @@ opencost:
     createConfigmap: false
 ```
 
+You can us this to overwrite pricings for your cloud provider in case you want to consider custom pricing agreements and/or benefits like reserved instances or licensing cost. In case you decide to to this make sure to provide the "correct" `configmapName` since OpenCost relies on distinct names for pricing configuration.
+
+| Provider | Filename |
+|----------|----------|
+| Azure | azure.json |
+| AWS    | aws.json |
+| GCP    | gcp.json |
+| Scaleway | scaleway.json |
+| Alibaba | alibaba.json |
+| Oracle | oracle.json |
+
+
 ### Method 2
 
 Provide your custom pricing via helm overrides during install.
