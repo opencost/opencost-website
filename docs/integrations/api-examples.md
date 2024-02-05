@@ -10,7 +10,7 @@ Throughout our API documentation, we use `localhost:9003` as the default OpenCos
 
 ## `/allocation` Examples
 
-The OpenCost `/allocation` API has query parameters for `window`, `aggregate`, `accumulate`, and `resolution`. Below are several examples of queries using this API. Please refer to the [OpenCost API](api#allocation) for the full API specifics.
+The OpenCost `/allocation` API has query parameters for `window`, `aggregate`, `step`, and `resolution`. Below are several examples of queries using this API. Please refer to the [OpenCost API](api#allocation) for the full API specifics.
 
 ### Default OpenCost UI Allocation request
 
@@ -20,7 +20,6 @@ Here is an example of an OpenCost API query for the last 7 days of namespaces ev
 curl -G http://localhost:9003/allocation \
   -d window=7d \
   -d aggregate=namespace \
-  -d accumulate=false \
   -d resolution=1m
 ```
 
@@ -33,8 +32,7 @@ curl -G http://localhost:9003/allocation \
   -d window=60m \
   -d step=10m \
   -d resolution=1m \
-  -d aggregate=namespace \
-  -d accumulate=true
+  -d aggregate=namespace
 ```
 
 ```json
@@ -57,8 +55,7 @@ curl -G http://localhost:9003/allocation/compute \
   -d window=9d \
   -d step=3d \
   -d resolution=10m
-  -d aggregate=namespace \
-  -d accumulate=false
+  -d aggregate=namespace
 ```
 
 ```json
