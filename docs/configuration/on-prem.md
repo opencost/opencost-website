@@ -133,8 +133,6 @@ You can us this to overwrite pricings for your cloud provider in case you want t
 | GCP    | gcp.json |
 | Scaleway | scaleway.json |
 | Alibaba | alibaba.json |
-| Oracle | oracle.json |
-
 
 ### Method 2
 
