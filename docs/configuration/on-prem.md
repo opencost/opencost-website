@@ -23,7 +23,7 @@ On-premises cluster pricing is supported in OpenCost by providing default prices
 
 This file is loaded when the OpenCost starts up, providing default prices. You may verify these values by querying Prometheus:
 ```
-kubectl port-forward -n prometheus service/my-prometheus-server 9003:80
+kubectl port-forward -n prometheus-system service/prometheus-server 9003:80
 curl -s 'http://localhost:9003/api/v1/query?query=node_cpu_hourly_cost' | jq '.data.result[0]'
 {
   "metric": {
@@ -62,7 +62,7 @@ You can update the prices in the `default.json` file and rebuild your container 
 ```
 produces output similar to
 ```
-kubectl port-forward -n prometheus service/my-prometheus-server 9003:80
+kubectl port-forward -n prometheus-system service/prometheus-server 9003:80
 curl -s 'http://localhost:9003/api/v1/query?query=node_cpu_hourly_cost' | jq '.data.result[0]'
 {
   "metric": {
