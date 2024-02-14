@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 ---
+import InstallPrometheus from './_install_prometheus.mdx';
+
 # OpenCost Setup
 
 OpenCost requires a Kubernetes cluster to be deployed. Users should be running Kubernetes 1.20+ and Kubernetes 1.28 is officially supported as of v1.105.
@@ -13,13 +15,7 @@ These commands will get you started immediately with OpenCost.
 
 ### Install Prometheus
 
-```sh
-helm install prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
-  --namespace prometheus-system --create-namespace \
-  --set prometheus-pushgateway.enabled=false \
-  --set alertmanager.enabled=false \
-  -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
-```
+<InstallPrometheus/>
 
 ### Install OpenCost
 
