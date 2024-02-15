@@ -96,7 +96,7 @@ serviceAccount:
     eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/S3Access
 ```
 
-## AWS Cloud Cost Configuration
+## AWS Cloud Costs Configuration
 
 :::info
 

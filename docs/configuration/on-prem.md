@@ -162,6 +162,6 @@ opencost:
       internetNetworkEgress: 0.12
 ```
 
-## On Premises Cloud Cost Configuration
+## On Premises Cloud Costs Configuration
 
 *** There is currently no support for integrating on premises pricing. ***

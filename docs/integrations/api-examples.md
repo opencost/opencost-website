@@ -85,7 +85,7 @@ curl -G http://localhost:9003/allocation/compute \
 
 The OpenCost `/cloudCost` API has query parameters for `window`, `aggregate`, and `filter`. Below are several examples of queries using this API. Please refer to the [OpenCost API](api#cloudcost) for the full API specifics.
 
-### Default OpenCost UI Cloud Cost request
+### Default OpenCost UI Cloud Costs request
 
 Amortized Net Cost per Provider for the last 7 days
 
