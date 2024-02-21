@@ -13,7 +13,7 @@ Examples using the API endpoints are provided in the [API Examples](api-examples
 
 ## Allocation API
 
-The standard OpenCost API query for costs and resources allocated to Kubernetes workloads based on on-demand list pricing. You may specify the `window` date range, the Kubernetes primitive(s) to `aggregate` on, the `step` for the duration of returned sets, and the `resolution` for the duration to use for Prometheus queries.
+The standard OpenCost API query for costs and resources allocated to Kubernetes workloads based on on-demand list pricing. You may specify the `window` date range, the Kubernetes primitive(s) to `aggregate` on, the `step` for the duration of returned sets, the `resolution` for the duration to use for Prometheus queries, and `includeIdle` for whether to include the `__idle__` usage for the cluster.
 
 ### `/allocation`
 QUERY PARAMETERS
@@ -92,6 +92,21 @@ QUERY PARAMETERS
       <ul>
         <li><code>resolution=1m</code> - Highly accurate, slower query.</li>
         <li><code>resolution=30m</code> - Less accurate, faster query. Not recommended for short-lived workloads.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th id="includeidle">includeIdle<a class="hash-link" href="#a_includeidle" title="includeIdle">​</a></th>
+    <th align="left">boolean</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Whether to return the calculated <code>__idle__</code> field for the query. Default is <code>false</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>includeIdle=true</code></li>
       </ul>
     </td>
   </tr>
