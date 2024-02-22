@@ -51,14 +51,14 @@ Set these values into the to the GCP array in the `cloud-integration.json`:
   "gcp": {
     "bigQuery": [
       {
-        "project_id": "<GCP_PROJECT_ID>",
+        "projectID": "<GCP_PROJECT_ID>",
         "dataset": "detailedbilling",
         "table": "gcp_billing_export_resource_v1_0121AC_C6F51B_690771",
         "authorizer": {
           "authorizerType": "GCPServiceAccountKey",
           "key": {
             "type": "service_account",
-            "projectID": "<GCP_PROJECT_ID>",
+            "project_id": "<GCP_PROJECT_ID>",
             "private_key_id": "<PRIVATE_KEY_ID>",
             "private_key": "<PRIVATE_KEY>",
             "client_email": "<CLIENT_EMAIL>",
