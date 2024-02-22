@@ -5,11 +5,24 @@ import InstallPrometheus from './_install_prometheus.mdx';
 
 # OpenCost Setup
 
-OpenCost requires a Kubernetes cluster to be deployed. Users should be running Kubernetes 1.20+ and Kubernetes 1.28 is officially supported as of v1.105.
+There are several supported ways of deploying OpenCost, depending on your use case and environment. Each cloud provider has different configuration requirements depending on your deployment. For full OpenCost functionality (Kubernetes Cost Allocations, Cloud Costs, and the web UI), we recommend deploying with Helm and following the instructions specific to your cloud provider:
+* Amazon Web Services
+* Microsoft Azure
+* Google Cloud Platform
+* Oracle Cloud Infrastructure
+* On-premises deployments
 
-OpenCost requires [Prometheus](prometheus) for scraping metrics and data storage. Follow the steps below to install OpenCost.
+## Requirements
 
-## Quick Start Installation
+OpenCost requires a Kubernetes cluster to be deployed. Users should be running Kubernetes 1.21+ and Kubernetes 1.28 is officially supported as of v1.105.
+
+OpenCost requires [Prometheus](prometheus) for scraping metrics and data storage.
+
+# Quick Start Installation
+
+* Quick install: `kubectl manifest` for basic Kubernetes Cost Allocations without Cloud Costs on AWS or on-premises.
+* Docker instructions: for accessing Cloud Costs without Kubernetes Cost Allocations.
+* Prometheus OpenCost Exporter: Running OpenCost as a Prometheus metric exporter allows you to export various cost metrics to Prometheus, this does not include Cloud Costs or a web UI.
 
 These commands will get you started immediately with OpenCost.
 
