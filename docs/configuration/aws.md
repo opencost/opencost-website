@@ -85,7 +85,9 @@ Example configuration:
 
 OpenCost uses the [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) to pull Spot data feed information. There are multiple supported ways to [configure security](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/#specifying-credentials).
 
-The recommeded setup is to leverage [IAM roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
+The recommended setup is to leverage [IAM roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) or [EKS Pod Identities](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
+
+### IAM Roles for Service Accounts
 
 After creating the role and policy, attach the role as an annotation on the service account:
 
@@ -94,6 +96,23 @@ serviceAccount:
   create: true
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/S3Access
+```
+
+### EKS Pod Identities
+
+See [AWS Documentation on EKS Pod Identities](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html)
+
+To use EKS Pod Identities with OpenCost:
+
+1) Configure the EKS Pod Identities add on: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html
+2) Create the EKS Pod Identity association: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-association.html
+3) Update helm values file with:
+```sh
+serviceAccount:
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/S3Access
+  name: name-of-service-account-from-step-2  # can be omitted if the name of the service account is exactly 'opencost'
 ```
 
 ## AWS Cloud Cost Configuration
