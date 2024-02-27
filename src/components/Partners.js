@@ -21,17 +21,9 @@ export default function Partners() {
           <div className="w-56 h-52 items-center flex">
             <img src="/img/adobe.png" alt="Adobe"/>
           </div></a>
-        <a href="https://www.armory.io/" target="_blank" rel="noopener noreferrer">
-          <div className="w-52 h-52 items-center flex">
-            <img src="/img/armory.png" alt="Armory"/>
-          </div></a>
         <a href="https://www.aws.amazon.com/" target="_blank" rel="noopener noreferrer">
           <div className="w-40 h-52 items-center flex">
             <img src="/img/aws.png" alt="AWS" />
-          </div></a>
-        <a href="https://www.d2iq.com/" target="_blank" rel="noopener noreferrer">
-          <div className="w-52 h-52 items-center flex">
-            <img src="/img/d2iq.png" alt="D2IQ" height={120} width={120} />
           </div></a>
         <a href="https://cloud.google.com/" target="_blank" rel="noopener noreferrer">
           <div className="w-72 h-52 items-center flex">

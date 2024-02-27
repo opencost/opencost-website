@@ -21,6 +21,8 @@ Contact us via email (<opencost@kubecost.com>)
 
 ## Social Media
 
+* [YouTube](https://www.youtube.com/@OpenCost)
 * [LinkedIn](https://www.linkedin.com/showcase/opencost/)
 * [Mastodon](https://hachyderm.io/@opencost)
 * [Twitter](https://twitter.com/open_cost)
+* [YouTube](https://www.youtube.com/@OpenCost)

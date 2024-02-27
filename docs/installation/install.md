@@ -3,6 +3,8 @@ sidebar_position: 1
 ---
 # OpenCost Setup
 
+OpenCost requires a Kubernetes cluster to be deployed. Users should be running Kubernetes 1.20+ and Kubernetes 1.28 is officially supported as of v1.105.
+
 OpenCost requires [Prometheus](prometheus) for scraping metrics and data storage. Follow the steps below to install OpenCost.
 
 ## Quick Start Installation
@@ -12,8 +14,8 @@ These commands will get you started immediately with OpenCost.
 ### Install Prometheus
 
 ```sh
-helm install my-prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
-  --namespace prometheus --create-namespace \
+helm install prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
+  --namespace prometheus-system --create-namespace \
   --set prometheus-pushgateway.enabled=false \
   --set alertmanager.enabled=false \
   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
@@ -25,7 +27,17 @@ helm install my-prometheus --repo https://prometheus-community.github.io/helm-ch
 kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml
 ```
 
-That is all that is required for most installations. You can proceed to [testing](#testing) for verifying your installation.
+That is all that is required for most initial installations.
+
+### Integrating Cloud Costs
+
+If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Cloud Service Provider Configuration](../configuration/) page. You will need to manage your deployment with the [Helm](helm) chart to configure this.
+
+:::info
+
+The Cloud Costs feature is included in the stable releases as of 1.108.0. Please ensure you have the latest release to access this new feature.
+
+:::
 
 ## Testing
 
@@ -39,7 +51,9 @@ To verify that the UI and server are running, you may access the OpenCost UI at 
 
 To verify that the server is running, access [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
 
-You can see more [API Examples](../integrations/api) or use [kubectl cost](../integrations/kubectl-cost):
+### Testing with Kubectl Cost Plugin
+
+For a curated, command line output, we recommend installing [kubectl cost](../integrations/kubectl-cost) plugin:
 
 ```sh
 kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
@@ -61,6 +75,10 @@ Output:
 | SUMMED  |               |          47.671200 |                 |
 +---------+---------------+--------------------+-----------------+
 ```
+
+### Testing with OpenCost API
+
+You can see here more [API Examples](../integrations/api)
 
 ## Updating OpenCost
 To update your OpenCost to the most recent version, using a previously unmodified `opencost.yaml` manifest, enter the following command. This will update OpenCost to the latest version.

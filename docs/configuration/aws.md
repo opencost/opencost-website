@@ -1,12 +1,14 @@
 ---
 sidebar_position: 1
+title: Amazon Web Services
 ---
 
 # Amazon Web Services Configuration
 
-OpenCost will automatically read node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull data for the following:
+OpenCost will automatically read node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is Amazon Web Services (AWS), it will attempt to pull data for the following:
 * AWS On-Demand pricing from the configured public API URL
 * AWS [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) from the configured S3 bucket
+* AWS cloud costs if configured [(see below)](#aws-cloud-cost-configuration).
 
 ## AWS On-Demand pricing configuration
 
@@ -22,6 +24,30 @@ This URL can be overwritten using the environment variable `AWS_PRICING_URL`.
 ### Prerequisites
 
 * Set up [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html).
+* Create a role for OpenCost with access to the spot feed bucket.  Attach the policy below to the role and replace CHANGE-ME with your spot bucket name.
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket",
+                "s3:HeadBucket",
+                "s3:HeadObject",
+                "s3:List*",
+                "s3:Get*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::CHANGE-ME"
+            ],
+            "Effect": "Allow",
+            "Sid": "SpotDataAccess"
+        }
+    ]
+}
+```
+
 
 ### Configuration
 
@@ -59,7 +85,9 @@ Example configuration:
 
 OpenCost uses the [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) to pull Spot data feed information. There are multiple supported ways to [configure security](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/#specifying-credentials).
 
-The recommeded setup is to leverage [IAM roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
+The recommended setup is to leverage [IAM roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) or [EKS Pod Identities](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
+
+### IAM Roles for Service Accounts
 
 After creating the role and policy, attach the role as an annotation on the service account:
 
@@ -68,4 +96,65 @@ serviceAccount:
   create: true
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/S3Access
+```
+
+### EKS Pod Identities
+
+See [AWS Documentation on EKS Pod Identities](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html)
+
+To use EKS Pod Identities with OpenCost:
+
+1) Configure the EKS Pod Identities add on: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html
+2) Create the EKS Pod Identity association: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-association.html
+3) Update helm values file with:
+```sh
+serviceAccount:
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/S3Access
+  name: name-of-service-account-from-step-2  # can be omitted if the name of the service account is exactly 'opencost'
+```
+
+## AWS Cloud Cost Configuration
+
+:::info
+
+The Cloud Costs feature is included in the stable releases as of 1.108.0. Please ensure you have the latest release to access this new feature.
+
+:::
+
+To configure OpenCost for your AWS account, create an Access Key for the OpenCost user who has access to the Cost and Usage Report (CUR). Navigate to the [IAM Management Console dashboard](https://console.aws.amazon.com/iam), and select *Access Management > Users*. Find the OpenCost user and select *Security Credentials > Create Access Key*. Note the Access Key ID and Secret access key.
+
+* `<ACCESS_KEY_ID>` is the ID of the Access Key created in the previous step.
+* `<ACCESS_KEY_SECRET>` is the secret of the Access Key created in the
+* `<ATHENA_BUCKET_NAME>` is the S3 bucket storing Athena query results which OpenCost has permission to access. The name of the bucket should match `s3://aws-athena-query-results-*`, so the IAM roles defined above will automatically allow access to it. The bucket can have a canned ACL set to Private or other permissions as needed.
+* `<ATHENA_REGION>` is the AWS region Athena is running in
+* `<ATHENA_DATABASE>` is the name of the database created by the Athena setup. The Athena database name is available as the value (physical id) of `AWSCURDatabase` in the CloudFormation stack created above.
+* `<ATHENA_TABLE>` is the name of the table created by the Athena setup The table name is typically the database name with the leading `athenacurcfn_` removed (but is not available as a CloudFormation stack resource).
+* `<ATHENA_WORKGROUP>` is the workgroup assigned to be used with Athena. Default value is `Primary`.
+* `<ATHENA_PROJECT_ID>` is the AWS AccountID where the Athena CUR is. For example: `530337586277`.
+* `<MASTER_PAYER_ARN>` is an optional value which should be set if you are using a multi-account billing set-up and are not accessing Athena through the primary account. It should be set to the ARN of the role in the management (formerly master payer) account, for example: `arn:aws:iam::530337586275:role/OpenCostRole`.
+
+Set these values into the AWS array in the `cloud-integration.json`:
+
+``` json
+{
+  "aws": {
+    "athena": [
+      {
+        "bucket": "<ATHENA_BUCKET_NAME>",
+        "region": "<ATHENA_REGION>",
+        "database": "<ATHENA_DATABASE>",
+        "table": "<ATHENA_TABLE>",
+        "workgroup": "<ATHENA_WORKGROUP>",
+        "account": "<ACCOUNT_NUMBER>",
+        "authorizer": {
+          "authorizerType": "AWSAccessKey",
+          "id": "AKXXXXXXXXXXXXXXXXXXXX",
+          "secret": "superdupersecret/superdupersecret"
+        }
+      }
+    ]
+  }
+}
 ```

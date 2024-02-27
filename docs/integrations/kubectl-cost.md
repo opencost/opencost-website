@@ -6,7 +6,23 @@ sidebar_position: 4
 
 `kubectl-cost` is a [kubectl plugin](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/) that provides easy CLI access to Kubernetes cost allocation metrics via the [OpenCost API](api). It allows developers, devops, and others to quickly determine the cost and efficiency for any Kubernetes workload.
 
-Installation instructions: [kubectl cost](https://github.com/kubecost/kubectl-cost):
+Installation instructions:
+
+If you have [Krew](https://krew.sigs.k8s.io/), the `kubectl` plugin manager, installed:
+``` sh
+kubectl krew install cost
+```
+Otherwise, you can run the following commands:
+
+``` sh
+os=$(uname | tr '[:upper:]' '[:lower:]') && \
+arch=$(uname -m | tr '[:upper:]' '[:lower:]' | sed -e s/x86_64/amd64/) && \
+curl -s -L https://github.com/kubecost/kubectl-cost/releases/latest/download/kubectl-cost-$os-$arch.tar.gz | tar xz -C /tmp && \
+chmod +x /tmp/kubectl-cost && \
+sudo mv /tmp/kubectl-cost /usr/local/bin/kubectl-cost
+```
+
+For more information on installation please access [kubectl cost](https://github.com/kubecost/kubectl-cost).
 
 ## kubectl-cost usage
 

@@ -1,13 +1,24 @@
 ---
 sidebar_position: 2
+title: Microsoft Azure
 ---
-Microsoft Azure Configuration
-============
+
+# Microsoft Azure Configuration
+
+The following Microsoft documents are a helpful reference for pricing and billing questions:
+
+* [Microsoft Azure Offer Details](https://azure.microsoft.com/en-us/support/legal/offer-details/)
+* [Azure Pricing FAQ](https://azure.microsoft.com/en-us/pricing/faq/)
+* [Geographic availability and currency support for the commercial marketplace](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-geo-availability-currencies)
+* [Azure Portal > Cost Management + Billing > Billing Account Properties](https://portal.azure.com/#view/Microsoft_Azure_GTM/ModernBillingMenuBlade/~/Properties)
+* [Understand Cost Management data](https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/understand-cost-mgt-data)
+
+## Microsoft Azure Pricing Configuration
 
 OpenCost needs access to the Microsoft Azure Billing Rate Card API to access accurate pricing data for your Kubernetes resources.
 > **Note:** The prices used will be accurate at the time of access, but they can still change over time.
 
-## Create a Custom Azure role
+### Create a Custom Azure role
 
 Start by creating an Azure role definition. Below is an example definition, replace `YOUR_SUBSCRIPTION_ID` with the ID of the subscription containing your Kubernetes cluster.
 ([How to find your subscription ID.](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription))
@@ -38,7 +49,7 @@ Next, you'll want to register that role with Azure:
 az role definition create --verbose --role-definition @myrole.json
 ```
 
-## Create an Azure Service Principal
+### Create an Azure Service Principal
 
 Next, create an Azure Service Principal.
 
@@ -48,7 +59,7 @@ az ad sp create-for-rbac --name "OpenCostAccess" --role "OpenCostRole" --scope "
 
 Keep this information which is used in the service-key.json below.
 
-## Supply Azure Service Principal details to OpenCost
+### Supply Azure Service Principal details to OpenCost
 
 Create a file called [`service-key.json`](https://github.com/kubecost/poc-common-configurations/blob/main/azure/service-key.json) and update it with the Service Principal details from the above steps:
 
@@ -74,7 +85,7 @@ kubectl create secret generic azure-service-key -n opencost --from-file=service-
 
 Now the OpenCost deployment can be configured to mount that secret as a volume. The exact method will depend on how OpenCost was installed.
 
-### Installed from YAML
+#### Installed from YAML
 
 If you installed OpenCost using the [provided YAML](../installation/install#install-opencost), save that YAML and edit the `opencost` deployment to add:
 
@@ -104,7 +115,7 @@ deployment.apps/opencost configured
 service/opencost unchanged
 ```
 
-### Installed with Helm
+#### Installed with Helm
 
 If you installed OpenCost using the [community-supported Helm chart](https://github.com/opencost/opencost-helm-chart), you can update your `values.yaml` file to add a volume for the secret and mount it into the exporter container:
 ```yaml
@@ -201,18 +212,7 @@ Apply those changes with:
 helm upgrade opencost . --namespace opencost -f values.yaml
 ```
 
-## Useful links
-
-The following Microsoft documents are a helpful reference for pricing and billing questions:
-
-* [Microsoft Azure Offer Details](https://azure.microsoft.com/en-us/support/legal/offer-details/)
-* [Azure Pricing FAQ](https://azure.microsoft.com/en-us/pricing/faq/)
-* [Geographic availability and currency support for the commercial marketplace](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-geo-availability-currencies)
-* [Azure Portal > Cost Management + Billing > Billing Account Properties](https://portal.azure.com/#view/Microsoft_Azure_GTM/ModernBillingMenuBlade/~/Properties)
-* [Understand Cost Management data](https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/understand-cost-mgt-data)
-
-
-## Script to assign billing role
+### Script to assign billing role
 
 ```bash
 #!/bin/bash
@@ -260,4 +260,56 @@ RESPONSE="$(curl --silent --show-error -X PUT "${URL}" \
 }")"
 
 echo "Response: ${RESPONSE}"
+```
+
+## Azure Cloud Costs Configuration
+
+:::info
+
+The Cloud Costs feature is included in the stable releases as of 1.108.0. Please ensure you have the latest release to access this new feature.
+
+:::
+
+The following values can be found in the Azure Portal under *Cost Management > Exports*, or *Storage* accounts:
+
+* `<SUBSCRIPTION_ID>` is the Subscription ID belonging to the Storage account which stores your exported Azure cost report data.
+* `<STORAGE_ACCOUNT>` is the name of the Storage account where the exported Azure cost report data is being stored.
+* `<STORAGE_ACCESS_KEY>` can be found by selecting *Access Keys* from the navigation sidebar then selecting Show keys. Using either of the two keys will work.
+* `<STORAGE_CONTAINER>` is the name that you chose for the exported cost report when you set it up. This is the name of the container where the CSV cost reports are saved in your Storage account.
+* `<CONTAINER_PATH>` is an optional value which should be used if there is more than one billing report that is exported to the configured container. The path provided should have only one billing export because OpenCost will retrieve the most recent billing report for a given month found within the path.
+* `<CLOUD>` is an optional value which denotes the cloud where the storage account exists. Possible values are `public` and `gov`. The default is `public`
+
+Set these values into the to the Azure array in the `cloud-integration.json`:
+
+``` json
+{
+  "azure": {
+    "storage": [
+      {
+        "subscriptionID": "<SUBSCRIPTON_ID>",
+        "account": "<STORAGE_ACCOUNT>",
+        "container": "<STORAGE_CONTAINER>",
+        "path": "<CONTAINER_PATH>",
+        "cloud": "<CLOUD>",
+        "authorizer": {
+          "accessKey": "<STORAGE_ACCESS_KEY>",
+          "account": "<ACCOUNT>",
+          "authorizerType": "AzureAccessKey"
+        }
+      },
+      {
+        "subscriptionID": "<SUBSCRIPTION_ID>",
+        "account": "<ACCOUNT>",
+        "container": "<EXPORT_CONTAINER>",
+        "path": "",
+        "cloud": "<CLOUD>",
+        "authorizer": {
+          "accessKey": "<ACCOUNT_ACCESS_KEY>",
+          "account": "<ACCOUNT>",
+          "authorizerType": "AzureAccessKey"
+        }
+      }
+    ]
+  }
+}
 ```
