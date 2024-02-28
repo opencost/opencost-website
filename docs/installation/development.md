@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Setting up a Development Environment
@@ -35,4 +35,4 @@ Tilt is a great way to run OpenCost on a local or remote Kubernetes environment.
 ## Attach Debugger to the Back End
 The OpenCost back end auto starts with delve by default. Configure your IDE or text editor to attach to `http://localhost:40000`.
 
-If you want to attach the debugger at startup, remove the `--continue` flag from the entrypoint in the `docker_build_with_restart` function in the `Tiltfile`, then connect the debugger. Once connected, the OpenCost back end will start. 
+If you want to attach the debugger at startup, remove the `--continue` flag from the entrypoint in the `docker_build_with_restart` function in the `Tiltfile`, then connect the debugger. Once connected, the OpenCost back end will start.
