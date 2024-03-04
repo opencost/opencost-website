@@ -1,0 +1,14 @@
+---
+slug: opencost-1.109
+title: OpenCost 1.109 Brings Docker and Oracle Cloud Infrastructure Support
+authors: [mattray]
+tags: [opencost, oci, docker, github, cloud]
+---
+
+[OpenCost 1.109.0](https://github.com/opencost/opencost/releases/tag/v1.109.0) is now available and has a host of new features, enhancements, and bug fixes. This release has over 200 commits from 24 individuals and 8 of them are from first-time contributors. This is also the first release with a [non-Kubecost Maintainer](https://github.com/opencost/opencost/blob/develop/MAINTAINERS.md). Highlights from the release include:
+* [Oracle Cloud Infrastructure](https://www.opencost.io/docs/configuration/oracle) support has been added, enabling Oracle Cloud Infrastructure [Container Engine for Kubernetes](https://docs.oracle.com/en-us/iaas/Content/ContEng/home.htm) (OKE) users to track their Cost Allocations across their deployments.
+* Additional patches for [Docker](https://www.opencost.io/docs/installation/docker) have been merged, making it easier to track Cloud Costs without requiring Kubernetes to be installed. This will allow Cloud Costs and other non-Kubernetes functionality to be accessed wherever you may need it.
+* The [OpenCost](https://github.com/opencost/opencost/pkgs/container/opencost) and [OpenCost-UI](https://github.com/opencost/opencost/pkgs/container/opencost-ui) containers have been moved to the [GitHub Container Registry](https://github.com/orgs/opencost/packages). The [OpenCost Helm Chart](https://github.com/opencost/opencost-helm-chart), the [Prometheus OpenCost Exporter](https://www.opencost.io/docs/integrations/opencost-exporter), and the OpenCost [manifest](https://github.com/opencost/opencost/blob/develop/kubernetes/opencost.yaml) are all being updated to reflect the new download location.
+* The OpenCost UI now shows the version of OpenCost being used in the footer. This is included in the startup logging of each container as well, but it should help make debugging a little easier.
+
+There were many more community-provided enhancements, fixes, and additional tests that were added to continue improving OpenCost. Please join us in the [OpenCost community](https://www.opencost.io/docs/community) and help build our next great release!

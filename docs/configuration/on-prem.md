@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 # On-Premises Pricing Configuration
 
@@ -23,7 +23,7 @@ On-premises cluster pricing is supported in OpenCost by providing default prices
 
 This file is loaded when the OpenCost starts up, providing default prices. You may verify these values by querying Prometheus:
 ```
-kubectl port-forward -n prometheus service/my-prometheus-server 9003:80
+kubectl port-forward -n prometheus-system service/prometheus-server 9003:80
 curl -s 'http://localhost:9003/api/v1/query?query=node_cpu_hourly_cost' | jq '.data.result[0]'
 {
   "metric": {
@@ -62,7 +62,7 @@ You can update the prices in the `default.json` file and rebuild your container 
 ```
 produces output similar to
 ```
-kubectl port-forward -n prometheus service/my-prometheus-server 9003:80
+kubectl port-forward -n prometheus-system service/prometheus-server 9003:80
 curl -s 'http://localhost:9003/api/v1/query?query=node_cpu_hourly_cost' | jq '.data.result[0]'
 {
   "metric": {
@@ -124,6 +124,16 @@ opencost:
     createConfigmap: false
 ```
 
+You can us this to overwrite pricings for your cloud provider in case you want to consider custom pricing agreements and/or benefits like reserved instances or licensing cost. In case you decide to to this make sure to provide the "correct" `configmapName` since OpenCost relies on distinct names for pricing configuration.
+
+| Provider | Filename |
+|----------|----------|
+| Azure | azure.json |
+| AWS    | aws.json |
+| GCP    | gcp.json |
+| Scaleway | scaleway.json |
+| Alibaba | alibaba.json |
+
 ### Method 2
 
 Provide your custom pricing via helm overrides during install.
@@ -152,6 +162,6 @@ opencost:
       internetNetworkEgress: 0.12
 ```
 
-## On Premises Cloud Cost Configuration
+## On Premises Cloud Costs Configuration
 
 *** There is currently no support for integrating on premises pricing. ***

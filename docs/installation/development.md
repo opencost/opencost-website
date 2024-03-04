@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Setting up a Development Environment
@@ -91,3 +91,4 @@ Options defined from the CLI will override those from `tilt_config.json`.
 ## Attach Debugger to the Back End
 The OpenCost back end auto starts with delve by default. Configure your IDE or text editor to attach to `http://localhost:40000` (or specified value of the `port-debug` option).
 
+If you want to attach the debugger at startup, remove the `--continue` flag from the entrypoint in the `docker_build_with_restart` function in the `Tiltfile`, then connect the debugger. Once connected, the OpenCost back end will start.

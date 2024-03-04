@@ -9,6 +9,7 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 * [Azure](../configuration/azure)
 * [AWS](../configuration/aws)
 * [GCP](../configuration/gcp)
+* [Oracle Cloud Infrastructure](../configuration/oracle)
 * [Alibaba](https://alibabacloud.com/)
 * [Scaleway](https://www.scaleway.com/en/)
 
@@ -26,4 +27,5 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 * [Backstage](https://github.com/backstage/backstage/tree/master/plugins/opencost)
 * [Prometheus OpenCost Exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-opencost-exporter)
 * [Kubefirst](https://kubefirst.io/blog/release2-2/)
-* [Vantage](https://www.vantage.sh/blog/vantage-launches-opencost-kubernetes-monitoring-support)
+* [Port](https://docs.getport.io/build-your-software-catalog/sync-data-to-catalog/cloud-cost/opencost/#cost)
+* [Vantage](https://docs.vantage.sh/opencost/)

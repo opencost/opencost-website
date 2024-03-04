@@ -15,7 +15,7 @@ To enable OpenCost to fetch pricing information from your GCP project, you must 
 2. [Generate an API key with the appropriate access permissions](https://cloud.google.com/docs/authentication/api-keys#create).
 3. Optionally, you can edit the key to restrict its access to the Cloud Billing API.
 
-## GCP Cloud Cost Configuration
+## GCP Cloud Costs Configuration
 
 :::info
 
@@ -51,14 +51,14 @@ Set these values into the to the GCP array in the `cloud-integration.json`:
   "gcp": {
     "bigQuery": [
       {
-        "project_id": "<GCP_PROJECT_ID>",
+        "projectID": "<GCP_PROJECT_ID>",
         "dataset": "detailedbilling",
         "table": "gcp_billing_export_resource_v1_0121AC_C6F51B_690771",
         "authorizer": {
           "authorizerType": "GCPServiceAccountKey",
           "key": {
             "type": "service_account",
-            "projectID": "<GCP_PROJECT_ID>",
+            "project_id": "<GCP_PROJECT_ID>",
             "private_key_id": "<PRIVATE_KEY_ID>",
             "private_key": "<PRIVATE_KEY>",
             "client_email": "<CLIENT_EMAIL>",
