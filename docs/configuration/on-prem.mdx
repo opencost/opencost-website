@@ -1,6 +1,19 @@
 ---
 sidebar_position: 5
+title: On-Premises
 ---
+import InstallPrometheus from '../installation/_install_prometheus.mdx';
+
+# Installing On-Premises
+
+OpenCost may be installed on-premises and provides default pricing that may be overridden.
+
+## On-Premises Configuration
+
+### Cost Allocation
+
+### Custom Pricing
+
 # On-Premises Pricing Configuration
 
 On-premises cluster pricing is supported in OpenCost by providing default prices for node data via the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json).
@@ -162,6 +175,18 @@ opencost:
       internetNetworkEgress: 0.12
 ```
 
-## On Premises Cloud Costs Configuration
+### Cloud Costs
 
-*** There is currently no support for integrating on premises pricing. ***
+*** There is currently no support for on-premises Cloud Costs pricing. ***
+
+BUT!!!!
+
+## Installing Prometheus
+
+<InstallPrometheus/>
+
+## Installing OpenCost
+
+### OpenCost Helm Chart
+
+### Installing with the OpenCost Manifest

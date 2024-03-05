@@ -2,27 +2,30 @@
 sidebar_position: 1
 title: Amazon Web Services
 ---
+import InstallPrometheus from '../installation/_install_prometheus.mdx';
 
-# Amazon Web Services Configuration
+# Installing on Amazon Web Services (AWS)
 
-OpenCost will automatically read node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is Amazon Web Services (AWS), it will attempt to pull data for the following:
-* AWS On-Demand pricing from the configured public API URL
-* AWS [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) from the configured S3 bucket
-* AWS cloud costs if configured [(see below)](#aws-cloud-cost-configuration).
+OpenCost may be installed on Kubernetes clusters running on EC2 or on Elastic Kubernetes Service (EKS).
 
-## AWS On-Demand pricing configuration
+## AWS Configuration
+
+### Cost Allocation
+
+OpenCost will automatically read the node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull the AWS on-demand pricing from the configured public API URL with no further configuration required.
 
 OpenCost will request pricing data from the us-east-1 region using the template:
 ```sh
 https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node_region}/index.json
 ```
 
-This URL can be overwritten using the environment variable `AWS_PRICING_URL`.
+<!-- The location should but automatically detected, but this URL can be overwritten using the environment variable `AWS_PRICING_URL`. -->
 
-## AWS Spot instance data feed configuration
+### Custom Pricing
 
-### Prerequisites
+### AWS Spot Instance Data Feed
 
+AWS [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) from the configured S3 bucket
 * Set up [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html).
 * Create a role for OpenCost with access to the spot feed bucket.  Attach the policy below to the role and replace CHANGE-ME with your spot bucket name.
 ```
@@ -48,8 +51,7 @@ This URL can be overwritten using the environment variable `AWS_PRICING_URL`.
 }
 ```
 
-
-### Configuration
+#### Configuration
 
 The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the AWS provider configuration file.
 * `awsSpotDataBucket` - The name of the S3 bucket Spot Instance Data Feed is publishing to.
@@ -81,7 +83,7 @@ Example configuration:
 
 ```
 
-### Security for AWS integration
+#### Security for AWS integration
 
 OpenCost uses the [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) to pull Spot data feed information. There are multiple supported ways to [configure security](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/#specifying-credentials).
 
@@ -115,7 +117,7 @@ serviceAccount:
   name: name-of-service-account-from-step-2  # can be omitted if the name of the service account is exactly 'opencost'
 ```
 
-## AWS Cloud Cost Configuration
+### Cloud Costs
 
 :::info
 
@@ -158,3 +160,13 @@ Set these values into the AWS array in the `cloud-integration.json`:
   }
 }
 ```
+
+## Installing Prometheus
+
+<InstallPrometheus/>
+
+## Installing OpenCost
+
+### OpenCost Helm Chart
+
+### Installing with the OpenCost Manifest
