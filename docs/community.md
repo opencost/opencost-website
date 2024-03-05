@@ -8,7 +8,7 @@ OpenCost is a [CNCF Sandbox project](https://www.cncf.io/projects/opencost/) and
 * CNCF Slack: https://slack.cncf.io/ #opencost
 * OpenCost Community Meetings
   * [Calendar](https://bit.ly/opencost-calendar)
-  * [Community Meetings every other Thursday at 1pm Pacific](https://meet.google.com/cgz-ymoa-aip)
+  * [Community Meetings every other Thursday at 1pm Pacific](https://bit.ly/opencost-community-meeting)
   * [Community Meeting Notes](https://bit.ly/opencost-meeting)
 
 Contact us via email (<opencost@kubecost.com>)
@@ -17,11 +17,13 @@ Contact us via email (<opencost@kubecost.com>)
 
 * https://github.com/opencost/opencost
 * https://github.com/opencost/opencost-helm-chart
+* https://github.com/opencost/opencost-parquet-exporter
+* https://github.com/opencost/opencost-plugins
 * https://github.com/opencost/opencost-website
 
 ## Social Media
 
-* [YouTube](https://www.youtube.com/@OpenCost)
+* [Bluesky](https://bsky.app/profile/opencost.bsky.social)
 * [LinkedIn](https://www.linkedin.com/showcase/opencost/)
 * [Mastodon](https://hachyderm.io/@opencost)
 * [Twitter](https://twitter.com/open_cost)
