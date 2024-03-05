@@ -22,7 +22,7 @@ Tilt is a great way to run OpenCost on a local or remote Kubernetes environment.
 1. In a terminal, run: `helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
 2. Update `tilt-values.yaml` or create a new yaml file to contain desired attributes - [see Helm chart.](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/README.md)
 3. Optional - configure JSON files for cloud integration(s) and a service key [(see configuration documentation for more).](../configuration)
-4. Update `Tiltfile` to allow your remote Kubernetes contexts, if desired. See comment block near top of the `Tiltfile`. [See tilt documentation here.](https://docs.tilt.dev/api#api.allow_k8s_contexts)
+4. Update `Tiltfile` to allow your remote Kubernetes contexts, if desired. See comment block near top of the `Tiltfile`. [See Tilt documentation here.](https://docs.tilt.dev/api#api.allow_k8s_contexts)
 5. If using `kind`, in a terminal, run `kind create cluster` to create local cluster, or set your Kubernetes context to the desired cluster.
 6. Configure a `tilt_config.json` file - [see Tilt Command Options below.](#tilt-command-options)
 7. In a terminal, run `tilt up` at the root of the OpenCost repository. See [Tilt Command Options below for more options.](#options)
@@ -34,7 +34,7 @@ Tilt is a great way to run OpenCost on a local or remote Kubernetes environment.
 ## Tilt Command Options
 
 ### via `tilt_config.json`
-The best way to configure OpenCost to use tilt is with a `tilt_config.json` file in the root of the OpenCost repository. The file must live there; a symlink is thebest alternative if you wish to store it elsewhere. This file is automatically reloaded in tilt when updated. Omitted values will use defaults.
+The best way to configure OpenCost to use Tilt is with a `tilt_config.json` file in the root of the OpenCost repository. The file must live there; a symlink is an alternative if you wish to store it elsewhere. This file is automatically reloaded in Tilt when updated. Omitted values will use defaults.
 Example file:
 ```JSON
 {
@@ -66,7 +66,7 @@ Options defined from the CLI will override those from `tilt_config.json`.
   The value is prepended to the docker image names (the -t flag in a Docker build command). [See Docker Documentation](https://docs.docker.com/engine/reference/commandline/build/#tag).
 - `helm-values`
   Optional. Defaults to `./tilt-values.yaml`
-  This is the path to the values.yaml file that will be used for the OpenCost helm chart.
+  This is the path to the values.yaml file that will be used for the OpenCost Helm chart.
 - `service-key`
   Value: Path to a JSON file for a service key
   Optional. Defaults to an empty string.
