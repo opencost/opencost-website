@@ -63,7 +63,7 @@ Options defined from the CLI will override those from `tilt_config.json`.
   Value: Docker Hub username or repository, defaults to an empty string.
   Required for a remote cluster, optional for local. 
   Optional. This is the CPU architecture of the desired node(s) on the cluster.
-  The value is prepended to the docker image names (the -t flag in a Docker build command). [See Docker Documentation](https://docs.docker.com/engine/reference/commandline/build/#tag).
+  The value is prepended to the Docker image names (the -t flag in a Docker build command). [See Docker Documentation](https://docs.docker.com/engine/reference/commandline/build/#tag).
 - `helm-values`
   Optional. Defaults to `./tilt-values.yaml`
   This is the path to the values.yaml file that will be used for the OpenCost Helm chart.
