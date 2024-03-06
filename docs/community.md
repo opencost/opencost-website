@@ -1,6 +1,3 @@
----
-sidebar_position: 3
----
 # Community
 
 OpenCost is a [CNCF Sandbox project](https://www.cncf.io/projects/opencost/) and we want to build and expand our community of users and contributors. The best way to get involved or to ask questions is to reach out on:

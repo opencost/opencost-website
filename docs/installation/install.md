@@ -123,26 +123,6 @@ To delete OpenCost, enter the following command:
 
 `kubectl delete -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml`
 
-## Troubleshooting
-
-If you get an error like this, check your Prometheus target is correct in the OpenCost deployment.
-
-```bash
-Error: failed to query allocation API: failed to port forward query: received non-200 status code 500 and data: {"code":500,"status":"","data":null,"message":"Error: error computing allocation for ...
-```
-
-Negative values for idle: ensure you added the scrape target (above) for OpenCost.
-
-## Enabling Debugging
-
-With the [v1.100 release](https://github.com/opencost/opencost/releases/tag/v1.100.0) you can temporarily set the log level of the OpenCost container without restarting the Pod. You can send a POST request to /logs/level with one of the valid log levels. This does not persist between Pod restarts, Helm deployments, etc. Here's an example:
-```
-curl -X POST \
-    'http://localhost:9003/logs/level' \
-    -d '{"level": "debug"}'
-```
-A GET request can be sent to the same endpoint to retrieve the current log level.
-
 ## Help
 
 Please let us know if you run into any issues, we are here to help!

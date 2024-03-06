@@ -16,9 +16,10 @@ Check out our [Installation guide](installation/install) to start monitoring and
 
 If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Integrating Cloud Costs and Configuration](configuration/) page or jump directly to your cloud-specific configuration:
 
-* [AWS](configuration/aws)
-* [Azure](configuration/azure)
-* [GCP](configuration/gcp)
+* [Amazon Web Services](configuration/aws)
+* [Microsoft Azure](configuration/azure)
+* [Google Cloud Platform](configuration/gcp)
+* [Oracle Cloud Infrastructure](configuration/oracle)
 * [On-Premises](configuration/on-prem)
 * Alibaba - **documentation needed**
 * Scaleway - **documentation needed**
