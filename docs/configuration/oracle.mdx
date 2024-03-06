@@ -2,17 +2,19 @@
 sidebar_position: 4
 title: Oracle Cloud Infrastructure
 ---
+import CloudCosts from './_cloud_costs.mdx';
 import CustomPrometheus from './_custom_prometheus.mdx';
+import Installing from './_installing.mdx';
 import InstallPrometheus from '../installation/_install_prometheus.mdx';
 
 # Installing on Oracle Cloud Infrastructure (OCI)
 
-OpenCost may be installed on Kubernetes clusters running on OCI or on the Container Engine for Kubernetes (OKE). You will need to install Prometheus, configure your cluster, and then install OpenCost.
+OpenCost may be installed on Kubernetes clusters running on OCI or on the Container Engine for Kubernetes (OKE).
+<Installing/>
 
 ## Installing Prometheus
 
 <InstallPrometheus/>
-
 <CustomPrometheus/>
 
 ## OCI Configuration
@@ -35,11 +37,11 @@ If your cluster is an OKE cluster, OpenCost will apply enhanced cluster pricing 
 
 :::note
 
-*** There is currently no support for OCI Cloud Costs. ***
+*** Cloud Costs are not currently supported for OCI. ***
 
 :::
 
-BUT!!!!
+<CloudCosts/>
 
 ## Installing OpenCost
 

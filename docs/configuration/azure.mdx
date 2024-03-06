@@ -2,8 +2,22 @@
 sidebar_position: 2
 title: Microsoft Azure
 ---
+import CloudCosts from './_cloud_costs.mdx';
+import CustomPrometheus from './_custom_prometheus.mdx';
+import Installing from './_installing.mdx';
+import InstallPrometheus from '../installation/_install_prometheus.mdx';
 
-# Microsoft Azure Configuration
+# Installing on Microsoft Azure
+
+OpenCost may be installed on Kubernetes clusters running on Azure Compute or on the Azure Kubernetes Service (AKS).
+<Installing/>
+
+## Installing Prometheus
+
+<InstallPrometheus/>
+<CustomPrometheus/>
+
+## Azure Configuration
 
 The following Microsoft documents are a helpful reference for pricing and billing questions:
 
@@ -13,7 +27,7 @@ The following Microsoft documents are a helpful reference for pricing and billin
 * [Azure Portal > Cost Management + Billing > Billing Account Properties](https://portal.azure.com/#view/Microsoft_Azure_GTM/ModernBillingMenuBlade/~/Properties)
 * [Understand Cost Management data](https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/understand-cost-mgt-data)
 
-## Microsoft Azure Pricing Configuration
+## Azure Pricing Configuration
 
 OpenCost needs access to the Microsoft Azure Billing Rate Card API to access accurate pricing data for your Kubernetes resources.
 > **Note:** The prices used will be accurate at the time of access, but they can still change over time.
@@ -262,6 +276,8 @@ RESPONSE="$(curl --silent --show-error -X PUT "${URL}" \
 echo "Response: ${RESPONSE}"
 ```
 
+### Custom Pricing
+
 ## Azure Cloud Costs Configuration
 
 :::info
@@ -313,3 +329,9 @@ Set these values into the to the Azure array in the `cloud-integration.json`:
   }
 }
 ```
+
+<CloudCosts/>
+
+## Installing OpenCost
+
+### OpenCost Helm Chart

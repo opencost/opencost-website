@@ -2,12 +2,15 @@
 sidebar_position: 1
 title: Amazon Web Services
 ---
+import CloudCosts from './_cloud_costs.mdx';
 import CustomPrometheus from './_custom_prometheus.mdx';
+import Installing from './_installing.mdx';
 import InstallPrometheus from '../installation/_install_prometheus.mdx';
 
 # Installing on Amazon Web Services (AWS)
 
-OpenCost may be installed on Kubernetes clusters running on EC2 or on Elastic Kubernetes Service (EKS). You will need to install Prometheus, configure your cluster, and then install OpenCost.
+OpenCost may be installed on Kubernetes clusters running on EC2 or on Elastic Kubernetes Service (EKS).
+<Installing/>
 
 ## Installing Prometheus
 
@@ -167,6 +170,8 @@ Set these values into the AWS array in the `cloud-integration.json`:
   }
 }
 ```
+
+<CloudCosts/>
 
 ## Installing OpenCost
 
