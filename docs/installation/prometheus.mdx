@@ -5,8 +5,6 @@ import InstallPrometheus from './_install_prometheus.mdx';
 
 # Prometheus
 
-Prometheus is a prerequisite for OpenCost installation. OpenCost requires Prometheus for scraping metrics and data storage. For express installation of Prometheus use the following command:
-
 <InstallPrometheus/>
 
 This Prometheus installation is based on the [Prometheus Community Kubernetes Helm Chart](https://prometheus-community.github.io/helm-charts) and by default your Prometheus may scrape unnecessary metrics. For production, you may refer to the Kubecost [user metrics list](https://docs.kubecost.com/architecture/user-metrics) to filter with `keep` and for reference look at the scrape config in the Kubecost installation [chart](https://github.com/kubecost/cost-analyzer-helm-chart/blob/v1.98/cost-analyzer/charts/prometheus/values.yaml#L1208).
