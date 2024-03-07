@@ -29,7 +29,7 @@ To verify that the UI and server are running, you may connect to the OpenCost UI
 
 To verify that the server is running, access [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
 
-### Data Access
+### Accessing OpenCost Data
 
 Beyond the OpenCost UI, you may access the cost monitoring data for OpenCost through:
 * [OpenCost API](../integrations/api) and [API examples](../integrations/api-examples)
@@ -38,45 +38,23 @@ Beyond the OpenCost UI, you may access the cost monitoring data for OpenCost thr
 * [Parquet Exports](../integrations/parquet-export)
 
 ## Updating OpenCost
-To update your OpenCost to the most recent version, using a previously unmodified `opencost.yaml` manifest, enter the following command. This will update OpenCost to the latest version.
 
-```sh
-kubectl -n opencost rollout restart deployment
+Depending on how you installed OpenCost, it may be a matter of updating the [Helm chart](helm) to the latest version or updating the version number in your `values.yaml` or manifest. Data is stored in Prometheus, so upgrading/downgrading should not impact the recorded data.
+
+## Uninstalling OpenCost
+
+Depending on how you installed OpenCost, you may uninstall the release and delete the `opencost` namespace.
+```
+$ helm uninstall opencost
+$ kubectl delete namespace opencost
+```
+If you wish to delete the Prometheus data, uninstall the release and delete the `prometheus-server` namespace.
+```
+$ helm uninstall prometheus
+$ kubectl delete namespace prometheus-system
 ```
 
-To check logs to verify the version of your OpenCost:
-
-```sh
-$  kubectl logs -n opencost deployment/opencost | head
-2022-09-02T18:20:34.327989163Z ??? Log level set to info
-2022-09-02T18:20:34.328206357Z INF Starting cost-model (git commit "x.xx.x")
-```
-
-### Sidegrading OpenCost
-If you wish to modify OpenCost to a previous version, start with the following command in order to modify the `opencost.yaml` manifest:
-
-In the line `quay.io/kubecost1/kubecost-cost-model:latest`, change `latest` to the desired version number in the format `prod-x.xx.x`. Then enter the following command to apply the updated `opencost.yaml` manifest:
-
-```sh
-$ kubectl apply -f opencost.yaml -n opencost
-namespace/opencost unchanged
-serviceaccount/opencost unchanged
-clusterrole.rbac.authorization.k8s.io/opencost unchanged
-clusterrolebinding.rbac.authorization.k8s.io/opencost unchanged
-deployment.apps/opencost configured
-service/opencost unchanged
-```
-
-Finally, check the logs to verify the version of your OpenCost has successfully been changed:
-
-```sh
-$  kubectl logs -n opencost deployment/opencost | head
-2022-09-02T18:20:34.327989163Z ??? Log level set to info
-2022-09-02T18:20:34.328206357Z INF Starting cost-model (git commit "x.xx.x")
-```
-
-## Deleting OpenCost
-To delete OpenCost, enter the following command:
+If you installed with the manifest, enter the following command:
 
 `kubectl delete -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml`
 

@@ -4,10 +4,22 @@
 
 When asking a question in [Slack](community) or raising an issue in [GitHub](https://github.com/opencost/opencost/issues), make sure you can answer the following questions:
 * Where are you running Kubernetes and which version are you using?
-* What version of OpenCost are you running? You can find this in the beginning of the container logs or in the OpenCost UI at the bottom of the page.
+* [What version of OpenCost are you running](#getting-the-opencost-version)?
 * How did you install OpenCost and what configurations did you apply?
 * How did you install Prometheus? Did you do something custom?
 * Are there any messages in the logging or UI that may indicate the source of issue?
+
+## Getting the OpenCost version
+
+You can find this in the beginning of the container logs or in the OpenCost UI at the bottom of the page.
+
+```sh
+$ kubectl logs -n opencost deployment/opencost | head
+
+Defaulted container "opencost" out of: opencost, opencost-ui
+2024-02-29T05:58:36.68395851Z ??? Log level set to info
+2024-02-29T05:58:36.68436741Z INF Starting cost-model version 1.109.0 (fa84614)
+```
 
 ## Enabling Debugging
 
