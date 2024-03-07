@@ -24,12 +24,39 @@ Defaulted container "opencost" out of: opencost, opencost-ui
 ## Enabling Debugging
 
 You can temporarily set the log level of the OpenCost container without restarting the Pod. You can send a POST request to /logs/level with one of the valid log levels. This does not persist between Pod restarts, Helm deployments, etc. Here's an example:
-```
+
+```sh
 curl -X POST \
     'http://localhost:9003/logs/level' \
     -d '{"level": "debug"}'
 ```
 A GET request can be sent to the same endpoint to retrieve the current log level.
+
+## Verifying Pricing
+
+Prices are loaded when the OpenCost starts up and may be overridden with custom settings. You may verify these values by querying Prometheus:
+
+```sh
+kubectl port-forward -n prometheus-system service/prometheus-server 9003:80
+curl -s 'http://localhost:9003/api/v1/query?query=node_cpu_hourly_cost' | jq '.data.result[0]'
+Handling connection for 9003
+{
+  "metric": {
+    "__name__": "node_cpu_hourly_cost",
+    "arch": "arm64",
+    "instance": "kind-control-plane",
+    "job": "opencost",
+    "node": "kind-control-plane",
+    "provider_id": "kind://docker/kind/kind-control-plane"
+  },
+  "value": [
+    1709811921.978,
+    "1.25"
+  ]
+}
+```
+
+In the example above, we had a custom CPU price of `1.25`. Similarly you can query `node_ram_hourly_cost`, `node_total_hourly_cost`, and `pv_hourly_cost`.
 
 ## "Error: failed to query allocation API" error message
 

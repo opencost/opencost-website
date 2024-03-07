@@ -3,19 +3,29 @@ sidebar_position: 2
 title: Microsoft Azure
 ---
 import CloudCosts from './_cloud_costs.mdx';
+import CloudCostsInfo from './_cloud_costs_info.mdx';
 import CustomPrometheus from './_custom_prometheus.mdx';
-import Installing from './_installing.mdx';
+import Helm from './_helm.mdx';
+import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
 import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
 
 # Installing on Microsoft Azure
 
 OpenCost may be installed on Kubernetes clusters running on Azure Compute or on the Azure Kubernetes Service (AKS).
 <Installing/>
 
-## Installing Prometheus
+## Install Prometheus
 
 <InstallPrometheus/>
 <CustomPrometheus/>
+
+## Create the OpenCost Namespace
+
+<Namespace/>
 
 ## Azure Configuration
 
@@ -27,12 +37,12 @@ The following Microsoft documents are a helpful reference for pricing and billin
 * [Azure Portal > Cost Management + Billing > Billing Account Properties](https://portal.azure.com/#view/Microsoft_Azure_GTM/ModernBillingMenuBlade/~/Properties)
 * [Understand Cost Management data](https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/understand-cost-mgt-data)
 
-## Azure Pricing Configuration
+### Azure Pricing Configuration
 
 OpenCost needs access to the Microsoft Azure Billing Rate Card API to access accurate pricing data for your Kubernetes resources.
 > **Note:** The prices used will be accurate at the time of access, but they can still change over time.
 
-### Create a Custom Azure role
+#### Create a Custom Azure role
 
 Start by creating an Azure role definition. Below is an example definition, replace `YOUR_SUBSCRIPTION_ID` with the ID of the subscription containing your Kubernetes cluster.
 ([How to find your subscription ID.](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription))
@@ -63,7 +73,7 @@ Next, you'll want to register that role with Azure:
 az role definition create --verbose --role-definition @myrole.json
 ```
 
-### Create an Azure Service Principal
+#### Create an Azure Service Principal
 
 Next, create an Azure Service Principal.
 
@@ -73,7 +83,7 @@ az ad sp create-for-rbac --name "OpenCostAccess" --role "OpenCostRole" --scope "
 
 Keep this information which is used in the service-key.json below.
 
-### Supply Azure Service Principal details to OpenCost
+#### Supply Azure Service Principal details to OpenCost
 
 Create a file called [`service-key.json`](https://github.com/kubecost/poc-common-configurations/blob/main/azure/service-key.json) and update it with the Service Principal details from the above steps:
 
@@ -149,7 +159,7 @@ Apply those changes with:
 helm upgrade opencost . --namespace opencost -f values.yaml
 ```
 
-## Customer-specific pricing
+### Customer-specific pricing
 
 The Rate Card prices retrieved with the setup above are the standard prices for Azure resources offered to all customers.
 If your organisation has an Enterprise Agreement or Partner Agreement with Azure you may have discounts for some of the resources used by your clusters.
@@ -157,7 +167,7 @@ In that case you can configure OpenCost to use the [Consumption Price Sheet API]
 
 > **Note**: Calling the Price Sheet API uses the service principal secret created above - those steps are prerequisites for this section.
 
-### Find your billing account ID
+#### Find your billing account ID
 You can [find your billing account ID in the Azure portal](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/view-all-accounts),
 or using the `az` CLI:
 
@@ -165,7 +175,7 @@ or using the `az` CLI:
 az billing account list --query "[].{name:name, displayName:displayName}"
 ```
 
-### Grant billing access to your Service Principal
+#### Grant billing access to your Service Principal
 To call the Price Sheet API the service principal you created above needs to be granted the EnrollmentReader billing role.
 You can do this by following [this Azure guide](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals#assign-enrollment-account-role-permission-to-the-spn)
 and using the [Role Assignments API reference page](https://learn.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/role-assignments/put?tabs=HTTP).
@@ -182,11 +192,11 @@ chmod u+x assign-billing-role.bash
 ./assign-billing-role.bash
 ```
 
-### Find the offer ID for your subscription
+#### Find the offer ID for your subscription
 As well as the billing account ID, OpenCost also needs the offer ID for your subscription to query the price sheet.
 You can find this on the [subscription page in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).
 
-### Configure OpenCost to use the Price Sheet API
+#### Configure OpenCost to use the Price Sheet API
 
 The billing account and offer ID need to be passed to OpenCost in environment variables.
 How you do this will depend on the method used to install OpenCost.
@@ -226,7 +236,7 @@ Apply those changes with:
 helm upgrade opencost . --namespace opencost -f values.yaml
 ```
 
-### Script to assign billing role
+#### Script to assign billing role
 
 ```bash
 #!/bin/bash
@@ -278,13 +288,9 @@ echo "Response: ${RESPONSE}"
 
 ### Custom Pricing
 
-## Azure Cloud Costs Configuration
+## Azure Cloud Costs
 
-:::info
-
-The Cloud Costs feature is included in the stable releases as of 1.108.0. Please ensure you have the latest release to access this new feature.
-
-:::
+<CloudCostsInfo/>
 
 The following values can be found in the Azure Portal under *Cost Management > Exports*, or *Storage* accounts:
 
@@ -332,6 +338,14 @@ Set these values into the to the Azure array in the `cloud-integration.json`:
 
 <CloudCosts/>
 
-## Installing OpenCost
+## Install OpenCost
 
-### OpenCost Helm Chart
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>

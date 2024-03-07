@@ -1,6 +1,5 @@
-For basic Kubernetes basic Kubernetes Cost Allocations _without_ Cloud Costs or any customizations you may use the OpenCost manifest. Prometheus is still required and the Helm chart installation is recommended for anything beyond this simple use case.
+For basic Kubernetes Cost Allocations _without_ Cloud Costs or any customizations you may use the OpenCost manifest. Prometheus is still required and the Helm chart installation is recommended for anything beyond this simple use case.
 
 ```sh
-kubectl create namespace opencost
 kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml
 ```

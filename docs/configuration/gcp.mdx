@@ -3,20 +3,24 @@ sidebar_position: 3
 title: Google Cloud Platform
 ---
 import CloudCosts from './_cloud_costs.mdx';
+import CloudCostsInfo from './_cloud_costs_info.mdx';
 import CustomPrometheus from './_custom_prometheus.mdx';
-import Installing from './_installing.mdx';
+import Helm from './_helm.mdx';
+import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
 import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
 
 # Installing on Google Cloud Platform (GCP)
 
 OpenCost may be installed on Kubernetes clusters running on EC2 or on Elastic Kubernetes Service (EKS). You will need to install Prometheus, configure your cluster, and then install OpenCost.
-
 <Installing/>
 
-## Installing Prometheus
+## Install Prometheus
 
 <InstallPrometheus/>
-
 <CustomPrometheus/>
 
 ### GCP Managed Prometheus
@@ -43,6 +47,10 @@ To resolve this issue, you need to edit the CRD's PodMonitoring and ClusterPodMo
 
 For more details, please refer to this [discussion](https://cloud-native.slack.com/archives/C03D56FPD4G/p1695898103041549).
 
+## Create the OpenCost Namespace
+
+<Namespace/>
+
 ## GCP Configuration
 
 ### Cost Allocation
@@ -57,13 +65,9 @@ To enable OpenCost to fetch pricing information from your GCP project, you must 
 2. [Generate an API key with the appropriate access permissions](https://cloud.google.com/docs/authentication/api-keys#create).
 3. Optionally, you can edit the key to restrict its access to the Cloud Billing API.
 
-## GCP Cloud Costs Configuration
+## GCP Cloud Costs
 
-:::info
-
-The Cloud Costs feature is included in the stable releases as of 1.108.0. Please ensure you have the latest release to access this new feature.
-
-:::
+<CloudCostsInfo/>
 
 To configure OpenCost for your GCP account, create a GCP service key with the following commands in your command line to generate and export one. Make sure your GCP project is where your external costs are being run.
 
@@ -119,6 +123,14 @@ Set these values into the to the GCP array in the `cloud-integration.json`:
 
 <CloudCosts/>
 
-## Installing OpenCost
+## Install OpenCost
 
-### OpenCost Helm Chart
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>

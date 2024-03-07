@@ -4,30 +4,33 @@ title: On-Premises
 ---
 import CloudCosts from './_cloud_costs.mdx';
 import CustomPrometheus from './_custom_prometheus.mdx';
+import Helm from './_helm.mdx';
 import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
 import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
 
 # Installing On-Premises (on-prem)
 
-OpenCost may be installed on-prem and provides default pricing that may be overridden. You will need to install Prometheus, configure your cluster, and then install OpenCost.
+OpenCost may be installed on-prem and provides default pricing that may be overridden.
+<Installing/>
 
-## Installing Prometheus
+## Install Prometheus
 
 <InstallPrometheus/>
-
 <CustomPrometheus/>
+
+## Create the OpenCost Namespace
+
+<Namespace/>
 
 ## On-Prem Configuration
 
-### Cost Allocation
+On-prem cluster pricing is supported in OpenCost by providing default prices for node data via the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json). Here are the default prices:
 
-### Custom Pricing
-
-## On-Prem Pricing Configuration
-
-On-prem cluster pricing is supported in OpenCost by providing default prices for node data via the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json).
-
-```
+```json
 {
     "provider": "custom",
     "description": "Default prices based on GCP us-central1",
@@ -43,158 +46,44 @@ On-prem cluster pricing is supported in OpenCost by providing default prices for
 }
 ```
 
-This file is loaded when the OpenCost starts up, providing default prices. You may verify these values by querying Prometheus:
-```
-kubectl port-forward -n prometheus-system service/prometheus-server 9003:80
-curl -s 'http://localhost:9003/api/v1/query?query=node_cpu_hourly_cost' | jq '.data.result[0]'
-{
-  "metric": {
-    "__name__": "node_cpu_hourly_cost",
-    "instance": "mom.bottlebru.sh",
-    "instance_type": "k3s",
-    "job": "opencost",
-    "node": "mom.bottlebru.sh",
-    "provider_id": "k3s://mom.bottlebru.sh"
-  },
-  "value": [
-    1675411231.44,
-    "0.031611"
-  ]
-}
-```
-Similarly you can query `node_ram_hourly_cost`, `node_total_hourly_cost`, and `pv_hourly_cost`.
+### Custom pricing using the OpenCost Helm Chart
 
-## Modified Default.json Example
-
-You can update the prices in the `default.json` file and rebuild your container with the modified source (make sure permissions are 644 on the `default.json`).
-```
-{
-    "provider": "custom",
-    "description": "Modified prices based on arbitrary whims",
-    "CPU": "1.25",
-    "spotCPU": "0.006655",
-    "RAM": "0.50",
-    "spotRAM": "0.000892",
-    "GPU": "0.95",
-    "storage": "0.25",
-    "zoneNetworkEgress": "0.01",
-    "regionNetworkEgress": "0.01",
-    "internetNetworkEgress": "0.12"
-}
-```
-produces output similar to
-```
-kubectl port-forward -n prometheus-system service/prometheus-server 9003:80
-curl -s 'http://localhost:9003/api/v1/query?query=node_cpu_hourly_cost' | jq '.data.result[0]'
-{
-  "metric": {
-    "__name__": "node_cpu_hourly_cost",
-    "instance": "mom.bottlebru.sh",
-    "instance_type": "k3s",
-    "job": "opencost",
-    "node": "ndnd.bottlebru.sh",
-    "provider_id": "k3s://mom.bottlebru.sh"
-  },
-  "value": [
-    1675416174.822,
-    "1.25"
-  ]
-}
-```
-
-This is reflected in the OpenCost UI with substantially higher CPU, RAM and PV costs than before the update.
-
-## Custom pricing using the OpenCost Helm Chart
-
-### Method 1
-
-You can either create your own [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) containing your own pricing as structured below:
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: CONFIGMAP_NAME_HERE
-data:
-  default.json: |
-    {
-      "provider": "custom",
-      "description": "Modified prices based on arbitrary whims",
-      "CPU": "1.25",
-      "spotCPU": "0.006655",
-      "RAM": "0.50",
-      "spotRAM": "0.000892",
-      "GPU": "0.95",
-      "storage": "0.25",
-      "zoneNetworkEgress": "0.01",
-      "regionNetworkEgress": "0.01",
-      "internetNetworkEgress": "0.12"
-    }
-```
-
-then reference the ConfigMap created previously by providing helm overrides during install.
+Custom pricing may be applied by updating your OpenCost Helm chart's local values file. Any values not overridden will default to the values provided by the Helm chart, which match those in the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json).
 
 ```yaml
 opencost:
   customPricing:
-    # -- Enables custom pricing for on-prem setup.
     enabled: true
-    configmapName: CONFIGMAP_NAME_HERE
-    # -- Path for the pricing configuration.
-    configPath: /tmp/custom-config
-    # -- Configures the pricing model provided in the values file.
-    createConfigmap: false
-```
-
-You can us this to overwrite pricings for your cloud provider in case you want to consider custom pricing agreements and/or benefits like reserved instances or licensing cost. In case you decide to to this make sure to provide the "correct" `configmapName` since OpenCost relies on distinct names for pricing configuration.
-
-| Provider | Filename |
-|----------|----------|
-| Azure | azure.json |
-| AWS    | aws.json |
-| GCP    | gcp.json |
-| Scaleway | scaleway.json |
-| Alibaba | alibaba.json |
-
-### Method 2
-
-Provide your custom pricing via helm overrides during install.
-
-```yaml
-opencost:
-  customPricing:
-    # -- Enables custom pricing for on-prem setup.
-    enabled: true
-    configmapName: custom-pricing-model
-    # -- Path for the pricing configuration.
-    configPath: /tmp/custom-config
-    # -- Configures the pricing model provided in the values file.
-    createConfigmap: true
-    # -- More information about these values here: https://www.opencost.io/docs/configuration/on-prem#custom-pricing-using-the-opencost-helm-chart
     costModel:
       description: Modified prices based on your internal pricing
       CPU: 1.25
-      spotCPU: 0.006655
       RAM: 0.50
-      spotRAM: 0.000892
-      GPU: 0.95
       storage: 0.25
-      zoneNetworkEgress: 0.01
-      regionNetworkEgress: 0.01
-      internetNetworkEgress: 0.12
 ```
 
-### Cloud Costs
+The values in the example above will be reflected in the OpenCost with substantially higher CPU, RAM, and PV costs compared to the default pricing.
+
+## On-Prem Cloud Costs
 
 :::note
 
-*** Cloud Costs are not currently supported for on-prem. ***
+*** Cloud Costs are not currently supported for on-prem, but you may configure OpenCost to view costs associated with other cloud service providers.***
 
 :::
 
 <CloudCosts/>
 
-## Installing OpenCost
+## Install OpenCost
+
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>
 
 ### Installing with the OpenCost Manifest
 

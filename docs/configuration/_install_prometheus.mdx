@@ -1,4 +1,4 @@
-Prometheus is a prerequisite for OpenCost installation. OpenCost requires Prometheus for scraping metrics and data storage. For the default installation of Prometheus please use the following command:
+Prometheus is a prerequisite for OpenCost installation. OpenCost requires Prometheus for scraping metrics and data storage. For the installation of Prometheus please use the following command:
 
 ```sh
 helm install prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
@@ -7,3 +7,5 @@ helm install prometheus --repo https://prometheus-community.github.io/helm-chart
   --set alertmanager.enabled=false \
   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
 ```
+
+This will install Prometheus in the `prometheus-system` namespace with default settings for use with OpenCost.
