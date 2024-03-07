@@ -1,8 +1,6 @@
 ---
 sidebar_position: 1
 ---
-import InstallPrometheus from './_install_prometheus.mdx';
-
 # OpenCost Setup
 
 There are several supported ways of deploying OpenCost, depending on your use case and environment. Each cloud provider has different configuration requirements depending on your deployment. For full OpenCost functionality (Kubernetes Cost Allocations, Cloud Costs, and the web UI), we recommend deploying with Helm and following the instructions specific to your cloud provider:
@@ -11,6 +9,7 @@ There are several supported ways of deploying OpenCost, depending on your use ca
 * [Google Cloud Platform](../configuration/gcp)
 * [Oracle Cloud Infrastructure](../configuration/oracle)
 * [On-premises deployments](../configuration/on-prem)
+* [Docker (no Kubernetes support)](docker)
 
 ## Requirements
 
@@ -18,76 +17,25 @@ OpenCost requires a Kubernetes cluster to be deployed. Users should be running K
 
 OpenCost requires [Prometheus](prometheus) for scraping metrics and data storage.
 
-# Quick Start Installation
+## Accessing OpenCost
 
-* Quick install: `kubectl manifest` for basic Kubernetes Cost Allocations without Cloud Costs on AWS or on-premises.
-* Docker instructions: for accessing Cloud Costs without Kubernetes Cost Allocations.
-* Prometheus OpenCost Exporter: Running OpenCost as a Prometheus metric exporter allows you to export various cost metrics to Prometheus, this does not include Cloud Costs or a web UI.
-
-These commands will get you started immediately with OpenCost.
-
-### Install Prometheus
-
-<InstallPrometheus/>
-
-### Install OpenCost
-
-```sh
-kubectl apply --namespace opencost -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml
-```
-
-That is all that is required for most initial installations.
-
-### Integrating Cloud Costs
-
-If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Cloud Service Provider Configuration](../configuration/) page. You will need to manage your deployment with the [Helm](helm) chart to configure this.
-
-:::info
-
-The Cloud Costs feature is included in the stable releases as of 1.108.0. Please ensure you have the latest release to access this new feature.
-
-:::
-
-## Testing
-
-Once your OpenCost has been installed, wait for the pod to be ready and port forward with:
+Once your OpenCost has been installed, wait for the pods to be ready and port forward with:
 
 ```sh
 kubectl port-forward --namespace opencost service/opencost 9003 9090
 ```
 
-To verify that the UI and server are running, you may access the OpenCost UI at [http://localhost:9090](http://localhost:9090).
+To verify that the UI and server are running, you may connect to the OpenCost UI at [http://localhost:9090](http://localhost:9090).
 
 To verify that the server is running, access [http://localhost:9003/allocation/compute?window=60m](http://localhost:9003/allocation/compute?window=60m)
 
-### Testing with Kubectl Cost Plugin
+### Data Access
 
-For a curated, command line output, we recommend installing [kubectl cost](../integrations/kubectl-cost) plugin:
-
-```sh
-kubectl cost --service-port 9003 --service-name opencost --kubecost-namespace opencost --allocation-path /allocation/compute  \
-    namespace \
-    --window 5m \
-    --show-efficiency=true
-```
-
-Output:
-
-```
-+---------+---------------+--------------------+-----------------+
-| CLUSTER | NAMESPACE     | MONTHLY RATE (ALL) | COST EFFICIENCY |
-+---------+---------------+--------------------+-----------------+
-|         | opencost      |          18.295200 |        0.231010 |
-|         | prometheus    |          17.992800 |        0.000000 |
-|         | kube-system   |          11.383200 |        0.033410 |
-+---------+---------------+--------------------+-----------------+
-| SUMMED  |               |          47.671200 |                 |
-+---------+---------------+--------------------+-----------------+
-```
-
-### Testing with OpenCost API
-
-You can see here more [API Examples](../integrations/api)
+Beyond the OpenCost UI, you may access the cost monitoring data for OpenCost through:
+* [OpenCost API](../integrations/api) and [API examples](../integrations/api-examples)
+* [kubectl cost](../integrations/kubectl-cost) plugin
+* [CSV Exports](../integrations/csv-export)
+* [Parquet Exports](../integrations/parquet-export)
 
 ## Updating OpenCost
 To update your OpenCost to the most recent version, using a previously unmodified `opencost.yaml` manifest, enter the following command. This will update OpenCost to the latest version.
