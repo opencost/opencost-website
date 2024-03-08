@@ -6,6 +6,7 @@ import CloudCosts from './_cloud_costs.mdx';
 import CloudCostsInfo from './_cloud_costs_info.mdx';
 import CustomPrometheus from './_custom_prometheus.mdx';
 import Helm from './_helm.mdx';
+import InstallCloudCosts from './_install_cloud_costs.mdx';
 import InstallManifest from './_install_manifest.mdx';
 import InstallOpenCost from './_install_opencost.mdx';
 import InstallPrometheus from './_install_prometheus.mdx';
@@ -286,7 +287,7 @@ RESPONSE="$(curl --silent --show-error -X PUT "${URL}" \
 echo "Response: ${RESPONSE}"
 ```
 
-### Custom Pricing
+<!-- ### Custom Pricing -->
 
 ## Azure Cloud Costs
 
@@ -336,6 +337,7 @@ Set these values into the to the Azure array in the `cloud-integration.json`:
 }
 ```
 
+<InstallCloudCosts/>
 <CloudCosts/>
 
 ## Install OpenCost

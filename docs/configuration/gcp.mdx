@@ -6,6 +6,7 @@ import CloudCosts from './_cloud_costs.mdx';
 import CloudCostsInfo from './_cloud_costs_info.mdx';
 import CustomPrometheus from './_custom_prometheus.mdx';
 import Helm from './_helm.mdx';
+import InstallCloudCosts from './_install_cloud_costs.mdx';
 import InstallManifest from './_install_manifest.mdx';
 import InstallOpenCost from './_install_opencost.mdx';
 import InstallPrometheus from './_install_prometheus.mdx';
@@ -65,13 +66,27 @@ To enable OpenCost to fetch pricing information from your GCP project, you must 
 2. [Generate an API key with the appropriate access permissions](https://cloud.google.com/docs/authentication/api-keys#create).
 3. Optionally, you can edit the key to restrict its access to the Cloud Billing API.
 
+### Add the GCP API Key to OpenCost
+
+```yaml
+opencost:
+  exporter:
+    cloudProviderApiKey: "op3nco57op3Nco57OP3Nco57op3nco57op3Nco57"
+```
+
+Or you can pass it from the CLI to Helm with the following flag:
+
+```sh
+--set opencost.exporter.cloudProviderApiKey='op3nco57op3Nco57OP3Nco57op3nco57op3Nco57'
+```
+
 ## GCP Cloud Costs
 
 <CloudCostsInfo/>
 
 To configure OpenCost for your GCP account, create a GCP service key with the following commands in your command line to generate and export one. Make sure your GCP project is where your external costs are being run.
 
-``` sh
+```sh
 export PROJECT_ID=$(gcloud config get-value project)
 gcloud iam service-accounts create compute-viewer-opencost --display-name "Compute Read Only Account Created For Opencost" --format json
 gcloud projects add-iam-policy-binding $PROJECT_ID --member serviceAccount:compute-viewer-opencost@$PROJECT_ID.iam.gserviceaccount.com --role roles/compute.viewer
@@ -82,7 +97,8 @@ gcloud iam service-accounts keys create ./compute-viewer-opencost-key.json --iam
 ```
 
 You can then get your service account key:
-```
+
+```sh
 cat compute-viewer-opencost-key.json
 ```
 
@@ -121,6 +137,7 @@ Set these values into the to the GCP array in the `cloud-integration.json`:
 }
 ```
 
+<InstallCloudCosts/>
 <CloudCosts/>
 
 ## Install OpenCost
