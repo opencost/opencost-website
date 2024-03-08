@@ -24,8 +24,7 @@ The documentation for each cloud service provider covers the specifics of config
 {
   "azure": [],
   "gcp": [],
-  "aws": [],
-  "alibaba": []
+  "aws": []
 }
 ```
 
