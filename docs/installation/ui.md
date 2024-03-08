@@ -41,7 +41,7 @@ spec:
               service:
                 name: opencost
                 port:
-                  name: http-ui
+                  name: opencost-ui
 ```
 
 This is also supported in the [Helm chart](helm), add the following to the relevant section of your `local.yaml` and apply via Helm.
