@@ -68,6 +68,10 @@ Error: failed to query allocation API: failed to port forward query: received no
 
 Negative values for idle: ensure you added the scrape target (above) for OpenCost.
 
+## "There are no Cloud Cost integrations currently configured."
+
+If you see this in the web interface, please step through the instructions for configuring [Cloud Costs](configuration/#cloud-costs) for your cloud provider(s). You can check the `opencost` container logs for error messages.
+
 ## "Address family not supported by protocol" error message
 
 If you receive this error message from the OpenCost container, there may be an issue with your default NGINX config.
@@ -75,6 +79,49 @@ If you receive this error message from the OpenCost container, there may be an i
 Copy this [default config](https://github.com/opencost/opencost/blob/develop/ui/default.nginx.conf.template) into your ConfigMap. Replace [this line](https://github.com/opencost/opencost/blob/develop/ui/default.nginx.conf.template#L62) in the config with `listen ${UI_PORT};` and mount it to your container.
 
 If you are still receiving errors, you may need to reconfigure your firewall/network policies.
+
+## Prometheus on EKS PVC stuck in "Pending" state
+
+If you have deployed the default Prometheus on EKS and have not configured the default `gp2` storage provider properly, you may have your PVCs stuck in the `Pending` state. Following the instructions from [Mastering EKS Cluster Monitoring: Harness the Power of Prometheus, Grafana, and EFK Stack](https://blog.devops.dev/mastering-eks-cluster-monitoring-harness-the-power-of-prometheus-grafana-and-efk-stack-98372f5822ce), you can fix this with the following (where our cluster name is `opencost-01`).
+
+> AWS EKS uses IAM roles for service accounts (IRSA) to authenticate and authorize pods in the cluster. This involves creating an IAM OIDC identity provider (IDP) for your EKS cluster. IAM OpenID Connect Provider for a cluster allows Kubernetes to authenticate users and obtain AWS IAM roles for access control to AWS resources within the cluster and since we haven't given the necessary permission hence the reason the pods are in a pending state.
+
+> This command will help us to do just that.
+
+```sh
+eksctl utils associate-iam-oidc-provider --cluster opencost-01 --approve
+```
+
+> Next, we have to create an Amazon EBS CSI driver IAM role. The Amazon EBS CSI (Container Storage Interface) driver IAM role is a security role in AWS that provides the necessary permissions for the Kubernetes cluster to manage and interact with Amazon Elastic Block Store (EBS) volumes using the CSI driver, enabling dynamic provisioning and attachment of storage volumes to pods in the cluster.
+
+```sh
+eksctl create iamserviceaccount \
+    --name ebs-csi-controller-sa \
+    --namespace kube-system \
+    --cluster opencost-01 \
+    --role-name AmazonEKS_EBS_CSI_DriverRole \
+    --role-only \
+    --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+    --approve
+```
+
+> The last step in fixing this is adding the AWS EBS DRIVER add-on; we will run this command to do that. Input your AWS account number in the number section of the arn:
+
+```sh
+eksctl create addon --name aws-ebs-csi-driver --cluster opencost-02 --service-account-role-arn arn:aws:iam::111111111112:role/AmazonEKS_EBS_CSI_DriverRole --force
+```
+
+Upgrade your Prometheus deployment with the `storageClass` set to `gp2`.
+
+```sh
+helm upgrade prometheus --repo https://prometheus-community.github.io/helm-charts prometheus \
+  --namespace prometheus-system \
+  --set prometheus-pushgateway.enabled=false \
+  --set alertmanager.persistentVolume.storageClass="gp2" \
+  --set server.persistentVolume.storageClass="gp2"\
+  --set alertmanager.enabled=false \
+  -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml
+```
 
 ## Help
 
