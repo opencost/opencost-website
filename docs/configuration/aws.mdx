@@ -2,30 +2,87 @@
 sidebar_position: 1
 title: Amazon Web Services
 ---
+import CloudCosts from './_cloud_costs.mdx';
+import CloudCostsInfo from './_cloud_costs_info.mdx';
+import CustomPrometheus from './_custom_prometheus.mdx';
+import Helm from './_helm.mdx';
+import InstallCloudCosts from './_install_cloud_costs.mdx';
+import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
+import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
 
-# Amazon Web Services Configuration
+# Installing on Amazon Web Services (AWS)
 
-OpenCost will automatically read node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is Amazon Web Services (AWS), it will attempt to pull data for the following:
-* AWS On-Demand pricing from the configured public API URL
-* AWS [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) from the configured S3 bucket
-* AWS cloud costs if configured [(see below)](#aws-cloud-cost-configuration).
+OpenCost may be installed on Kubernetes clusters running on EC2 or on Elastic Kubernetes Service (EKS).
+<Installing/>
 
-## AWS On-Demand pricing configuration
+## Install Prometheus
 
-OpenCost will request pricing data from the us-east-1 region using the template:
+<InstallPrometheus/>
+<CustomPrometheus/>
+
+## Create the OpenCost Namespace
+
+<Namespace/>
+
+## AWS Configuration
+
+### Cost Allocation
+
+OpenCost will automatically read the node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull the AWS on-demand pricing from the configured public API URL with no further configuration required.
+
+OpenCost will request pricing data from the us-east-1 region for your `node_region` using the template:
 ```sh
 https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node_region}/index.json
 ```
 
-This URL can be overwritten using the environment variable `AWS_PRICING_URL`.
+The location should but automatically detected, but this URL can be overwritten using the environment variable `AWS_PRICING_URL`.
 
-## AWS Spot instance data feed configuration
+<!-- ### Custom Pricing -->
 
-### Prerequisites
+<!-- opencost: -->
+<!--   customPricing: -->
+<!--     enabled: true -->
+<!--     configmapName: pricing-configs -->
+<!--     provider: aws -->
+<!--     costModel: -->
+<!--       description: Modified AWS prices -->
+<!--       CPU: 1000.25 -->
+<!--       RAM: 0.50 -->
+<!--       storage: 0.25 -->
+<!--       GPU: 0.95 -->
+<!--       spotCPU: 0.006655 -->
+<!--       spotRAM: 0.000892 -->
+<!--       zoneNetworkEgress: 0.01 -->
+<!--       regionNetworkEgress: 0.01 -->
+<!--       internetNetworkEgress: 0.143 -->
+<!--       spotLabel: 'kops.k8s.io/instancegroup' -->
+<!--       spotLabelValue: 'spotinstance-nodes' -->
+<!--       awsServiceKeyName: '' -->
+<!--       awsServiceKeySecret: '' -->
+<!--       awsSpotDataRegion: '' -->
+<!--       awsSpotDataBucket: '' -->
+<!--       awsSpotDataPrefix: '' -->
+<!--       athenaBucketName: '' -->
+<!--       athenaRegion: '' -->
+<!--       athenaDatabase: '' -->
+<!--       athenaTable: '' -->
+<!--       projectID: 899852633618 -->
 
+<!--   exporter: -->
+<!--     extraEnv: -->
+<!--       KUBECOST_NAMESPACE: 'opencost' -->
+
+### AWS Spot Instance Data Feed
+
+AWS [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) from the configured S3 bucket
 * Set up [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html).
-* Create a role for OpenCost with access to the spot feed bucket.  Attach the policy below to the role and replace CHANGE-ME with your spot bucket name.
-```
+* Create a role for OpenCost with access to the spot feed bucket. Attach the policy below to the role and replace CHANGE-ME with your spot bucket name.
+
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -48,8 +105,7 @@ This URL can be overwritten using the environment variable `AWS_PRICING_URL`.
 }
 ```
 
-
-### Configuration
+#### Configuration
 
 The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the AWS provider configuration file.
 * `awsSpotDataBucket` - The name of the S3 bucket Spot Instance Data Feed is publishing to.
@@ -58,6 +114,7 @@ The data feed will provide specific pricing information about any Spot instances
 * `projectID` - The AWS Account ID
 
 Example configuration:
+
 ```json
 {
     "provider": "aws",
@@ -81,7 +138,9 @@ Example configuration:
 
 ```
 
-### Security for AWS integration
+<!-- Use the above configMap for configuration -->
+
+#### Security for AWS integration
 
 OpenCost uses the [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) to pull Spot data feed information. There are multiple supported ways to [configure security](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/#specifying-credentials).
 
@@ -89,9 +148,9 @@ The recommended setup is to leverage [IAM roles for Service Accounts](https://do
 
 ### IAM Roles for Service Accounts
 
-After creating the role and policy, attach the role as an annotation on the service account:
+After creating the role and policy, attach the role as an annotation on the service account in your local OpenCost Helm values file:
 
-```sh
+```yaml
 serviceAccount:
   create: true
   annotations:
@@ -104,10 +163,11 @@ See [AWS Documentation on EKS Pod Identities](https://docs.aws.amazon.com/eks/la
 
 To use EKS Pod Identities with OpenCost:
 
-1) Configure the EKS Pod Identities add on: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html
-2) Create the EKS Pod Identity association: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-association.html
-3) Update helm values file with:
-```sh
+1. Configure the EKS Pod Identities add on: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html
+2. Create the EKS Pod Identity association: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-association.html
+3. Update your local OpenCost Helm values file with:
+
+```yaml
 serviceAccount:
   create: true
   annotations:
@@ -115,13 +175,9 @@ serviceAccount:
   name: name-of-service-account-from-step-2  # can be omitted if the name of the service account is exactly 'opencost'
 ```
 
-## AWS Cloud Cost Configuration
+## AWS Cloud Costs
 
-:::info
-
-The Cloud Costs feature is included in the stable releases as of 1.108.0. Please ensure you have the latest release to access this new feature.
-
-:::
+<CloudCostsInfo/>
 
 To configure OpenCost for your AWS account, create an Access Key for the OpenCost user who has access to the Cost and Usage Report (CUR). Navigate to the [IAM Management Console dashboard](https://console.aws.amazon.com/iam), and select *Access Management > Users*. Find the OpenCost user and select *Security Credentials > Create Access Key*. Note the Access Key ID and Secret access key.
 
@@ -158,3 +214,24 @@ Set these values into the AWS array in the `cloud-integration.json`:
   }
 }
 ```
+
+<InstallCloudCosts/>
+<CloudCosts/>
+
+## Install OpenCost
+
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>
+
+### Installing with the OpenCost Manifest
+
+Installing from the OpenCost manifest is supported on AWS.
+
+<InstallManifest/>

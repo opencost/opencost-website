@@ -1,0 +1,92 @@
+---
+sidebar_position: 5
+title: On-Premises
+---
+import CloudCosts from './_cloud_costs.mdx';
+import CustomPrometheus from './_custom_prometheus.mdx';
+import Helm from './_helm.mdx';
+import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
+import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
+
+# Installing On-Premises (on-prem)
+
+OpenCost may be installed on-prem and provides default pricing that may be overridden.
+<Installing/>
+
+## Install Prometheus
+
+<InstallPrometheus/>
+<CustomPrometheus/>
+
+## Create the OpenCost Namespace
+
+<Namespace/>
+
+## On-Prem Configuration
+
+On-prem cluster pricing is supported in OpenCost by providing default prices for node data via the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json). Here are the include default prices:
+
+```json
+{
+    "provider": "custom",
+    "description": "Default prices based on GCP us-central1",
+    "CPU": "0.031611",
+    "spotCPU": "0.006655",
+    "RAM": "0.004237",
+    "spotRAM": "0.000892",
+    "GPU": "0.95",
+    "storage": "0.00005479452",
+    "zoneNetworkEgress": "0.01",
+    "regionNetworkEgress": "0.01",
+    "internetNetworkEgress": "0.12"
+}
+```
+
+### Custom pricing using the OpenCost Helm Chart
+
+Custom pricing may be applied by updating your local OpenCost Helm values file. Any values not overridden will default to the values provided by the Helm chart, which match those in the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json).
+
+```yaml
+opencost:
+  customPricing:
+    enabled: true
+    costModel:
+      description: Modified prices based on your internal pricing
+      CPU: 1.25
+      RAM: 0.50
+      storage: 0.25
+```
+
+The values in the example above will be reflected in the OpenCost with substantially higher CPU, RAM, and PV costs compared to the default pricing.
+
+## On-Prem Cloud Costs
+
+:::note
+
+*** Cloud Costs are not currently supported for on-prem, but you may configure OpenCost to view costs associated with other cloud service providers.***
+
+:::
+
+<CloudCosts/>
+
+## Install OpenCost
+
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>
+
+### Installing with the OpenCost Manifest
+
+Installing from the OpenCost manifest is supported for on-prem.
+
+<InstallManifest/>

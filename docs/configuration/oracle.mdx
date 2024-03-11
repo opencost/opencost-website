@@ -1,0 +1,71 @@
+---
+sidebar_position: 4
+title: Oracle Cloud Infrastructure
+---
+import CloudCosts from './_cloud_costs.mdx';
+import CustomPrometheus from './_custom_prometheus.mdx';
+import Helm from './_helm.mdx';
+import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
+import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
+
+# Installing on Oracle Cloud Infrastructure (OCI)
+
+OpenCost may be installed on Kubernetes clusters running on OCI or on the Container Engine for Kubernetes (OKE).
+<Installing/>
+
+## Install Prometheus
+
+<InstallPrometheus/>
+<CustomPrometheus/>
+
+## Create the OpenCost Namespace
+
+<Namespace/>
+
+## OCI Configuration
+
+### Cost Allocation
+
+OpenCost will automatically detect OCI as the cloud service provider (CSP) by reading node information from `node.spec.providerID`. When OCI is detected as the CSP, OpenCost attempts to retrieve pricing data from the [OCI Price List API](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/signingup_topic-Estimating_Costs.htm#accessing_list_pricing).
+
+No API key is required to retrieve the public pricing data.
+
+:::note
+
+If your cluster is an OKE cluster, OpenCost will apply enhanced cluster pricing by default.
+
+:::
+
+<!-- ### Custom Pricing -->
+
+## OCI Cloud Costs
+
+:::note
+
+*** Cloud Costs are not currently supported for OCI. ***
+
+:::
+
+<CloudCosts/>
+
+## Install OpenCost
+
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>
+
+### Installing with the OpenCost Manifest
+
+Installing from the OpenCost manifest is supported on OCI.
+
+<InstallManifest/>

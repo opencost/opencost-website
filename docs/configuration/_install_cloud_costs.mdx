@@ -1,0 +1,14 @@
+Load the `cloud-integration.json` into a Kubernetes secret in your `opencost` namespace.
+
+```sh
+kubectl create secret generic cloud-costs --from-file=./cloud-integration.json --namespace opencost
+```
+
+Update your local OpenCost Helm values file to match the name of the secret and enable Cloud Costs:
+
+```yaml
+opencost:
+  cloudIntegrationSecret: cloud-costs
+  cloudCost:
+    enabled: true
+```
