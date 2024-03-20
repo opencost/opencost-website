@@ -1,0 +1,40 @@
+---
+slug: datadog
+title: Introducing OpenCost Plugins and Datadog Integration
+authors: [mattray]
+tags: [opencost, plugins, datadog]
+---
+
+We are excited to announce that the CNCF [OpenCost](https://opencost.io) project has significantly expanded its scope and capabilities beyond the existing Kubernetes and cloud costs into Datadog and other external costs. OpenCost now integrates with Datadog’s cost APIs, providing comprehensive cost monitoring capabilities to developers, FinOps practitioners, platform engineers, and anyone else who might value access to this data in your organization.This expansion is the next major step in OpenCost’s journey to empower teams of all sizes with unified cost monitoring and insights into their infrastructure spending across their platforms.
+
+![Datadog](./img/datadog.png)
+
+The Datadog integration is built on the new [OpenCost Plugins](https://github.com/opencost/opencost-plugins) repository that makes extending OpenCost’s coverage into new external cost sources (monitoring, data platforms, cloud services and other SaaSes) available to the open source community. Support is currently in the mainline [develop branch of OpenCost](https://github.com/opencost/opencost) and it will be available in the upcoming OpenCost 1.110 release. Initial installation instructions are [available here](https://www.opencost.io/docs/integrations/datadog). We’re working on supporting it in the UI and here is an early look at the API.
+
+<!--truncate-->
+
+**API Usage:**
+* `customCost/total`
+  * Used to grab a summary of custom costs over a window
+  * Available aggregations:
+    * `zone`
+    * `accountName`
+    * `chargeCategory`
+    * `description`
+    * `resourceName`
+    * `resourceType`
+    * `providerId`
+    * `usageUnit`
+    * `domain`
+    * `costSource`
+  * The available filters are the same as the available aggregations. For example:
+    * `filter=domain:”datadog”`
+    * `filter=zone:”us”`
+    * `filter=resourceType:”infra_hosts”`
+* `customCost/timeseries`
+  * Essentially equivalent to calling /total over a range of time steps. For example, querying for the past 7 days will give you a /total response for each of those days, individually
+  * All available aggregations and filters are the same as with /total
+
+By ingesting Datadog costs, OpenCost enables users to gain granular visibility into their Datadog usage and associated costs. This enhancement equips developers with the tools they need to optimize resource allocation, identify cost inefficiencies, and ultimately drive more cost-effective operations. With OpenCost's web interface and data access capabilities, developers can effortlessly track and manage their Datadog expenses alongside their Kubernetes and cloud costs, streamlining cost monitoring efforts and facilitating smarter decision-making processes.
+
+Datadog is just the first of many expected integrations. If there are other external data sources you would like (or would like to work on), join us in the OpenCost Community Slack (https://slack.cncf.io #opencost) or open an Issue or Pull Request on the [OpenCost Plugins repository](https://github.com/opencost/opencost-plugins). Let’s build something together!
