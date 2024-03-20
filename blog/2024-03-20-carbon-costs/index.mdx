@@ -1,0 +1,61 @@
+---
+slug: carbon-costs
+title: OpenCost Introduces Carbon Costs
+authors: [mattray]
+tags: [opencost, cncf, kubecon, carbon]
+---
+
+The CNCF [OpenCost](https://opencost.io) project is increasing its scope to help environmental sustainability within the tech industry by introducing carbon cost emissions tracking across Kubernetes and cloud spend. This initiative comes as a response to the recognition of the growing environmental impact associated with cloud computing. By integrating carbon cost tracking into its framework, OpenCost aims to empower organizations to make informed decisions about their technology usage, taking into account not only the financial expenses but also the environmental impact.
+
+[Kubecost](https://kubecost.com/) joined efforts with [ThoughtWorks](https://www.thoughtworks.com/) and their open source [Cloud Carbon Footprint](https://cloudcarbonfootprint.org/) tool to bring resource-level carbon footprint monitoring data into OpenCost.
+
+[![Cloud Carbon Footprint](./img/opencost-ccf.png)](https://cloudcarbonfootprint.org/)
+
+<!--truncate-->
+
+"We are delighted to see Cloud Carbon Footprint integrated with Kubecost, a phenomenal cost management tool, and the underlying open source OpenCost project" said Ajay Chankramath, Head of Platform Engineering, responsible for the FinOps/GreenOps at Thoughtworks. "As organizations increasingly prioritize sustainability alongside financial efficiency, this integration empowers users to make informed decisions that benefit both their bottom line and the environment."
+
+Cloud Carbon Footprint provides carbon costs across AWS, Azure, and GCP. OpenCost carbon costs support is currently in the mainline [develop branch of OpenCost](https://github.com/opencost/opencost) and will be available in the upcoming OpenCost 1.110 release. The OpenCost API has been extended to enable access and the OpenCost UI will be extended to support carbon costs.
+
+**Example /allocation/carbon API  response data: **
+```json
+{
+  "code": 200,
+  "data": [
+    {
+      "cluster-one/gke-dev-1-kc-cloud-pool-80a91fb4-fbjy/alan-prom/alan-prom-prometheus-server-6d7bfd6f8d-gp2qc/prometheus-server": {
+        "co2e": 0.00021789412060017551
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-021v/alan-prom/alan-prom-cost-analyzer-86c75db68f-j4clf/cost-analyzer-frontend": {
+        "co2e": 5.8024376361348894e-06
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-021v/alan-prom/alan-prom-cost-analyzer-86c75db68f-j4clf/cost-model": {
+        "co2e": 0.00011605019011287359
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-021v/nick/kubecost-nick-aggregator-0/aggregator": {
+        "co2e": 0.0005701628137437462
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-021v/nick/kubecost-nick-cost-analyzer-7bbd5f4b6c-z4pqc/cost-analyzer-frontend": {
+        "co2e": 5.801292027651357e-06
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-021v/nick/kubecost-nick-cost-analyzer-7bbd5f4b6c-z4pqc/cost-model": {
+        "co2e": 0.00011602584055302713
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-kb6f/nick/kubecost-nick-aggregator-0/aggregator": {
+        "co2e": 7.461035614569218e-05
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-nz03/alex-sonarqube/sonarqube-sonarqube-0/sonarqube": {
+        "co2e": 0.0002412874789797606
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-nz03/ingress-nginx/ingress-nginx-controller-6859dbc4dc-cfjd8/controller": {
+        "co2e": 5.802438122382271e-05
+      },
+      "cluster-one/gke-dev-1-n2-standard-8-c01e010c-nz03/kaelan/kaelan-kc-cost-analyzer-89658f954-ggsmp/aggregator": {
+        "co2e": 7.249046165488723e-05
+      }
+    }
+  ]
+}
+```
+
+Through the incorporation of carbon emissions tracking, OpenCost provides a valuable tool for organizations to assess and mitigate their environmental impact in line with sustainability goals. By quantifying the carbon footprint of cloud-based services and digital infrastructures, organizations can optimize resource allocation, minimize waste, and prioritize eco-friendly solutions. Moreover, this initiative fosters collaboration and knowledge-sharing within the tech community, encouraging the development of best practices for reducing carbon emissions across the industry. We look forward to expanding our coverage and sharing our findings with other tools and platforms for both a more sustainable digital ecosystem and the planet as a whole.
