@@ -27,6 +27,40 @@ and run it with
 
 `docker run -e CLOUD_COST_ENABLED=true -e CLOUD_COST_CONFIG_PATH=/tmp/cloud-integration.json -p 9003:9003 -d -v /tmp:/tmp ghcr.io/opencost/opencost:1.109.0`
 
+#### Docker Compose
+
+If you prefer to use `docker compose`, you may tailor the following for your environment and OpenCost version:
+
+```yaml title="opencost.yml"
+name: opencost
+version: '3'
+
+services:
+ opencost-cost-model:
+  image: "ghcr.io/opencost/opencost:1.109.0"
+  ports:
+   - "9003:9003"
+  volumes:
+   - type: bind
+     source: /tmp
+     target: /tmp
+  environment:
+   - CLOUD_COST_ENABLED=true
+   - CLOUD_COST_CONFIG_PATH=/path/to/cloud-integration.json
+ opencost-ui:
+  image: "ghcr.io/opencost/opencost-ui:1.109.0"
+  ports:
+   - "9090:9090"
+  environment:
+   - API_SERVER=host.docker.internal
+```
+
+and run with
+```
+docker compose -f opencost.yml up
+```
+
+
 #### Accessing the Cloud Costs API
 
 The OpenCost [Cloud Cost API](https://www.opencost.io/docs/integrations/api#cloudcost) is now exposed on port 9003, you can test with
