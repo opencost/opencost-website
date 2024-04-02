@@ -8,6 +8,9 @@ hide_table_of_contents: true
 
 ---
 
+* OpenSource.net: [What scaling startups need to understand about Open Source FinOps](https://opensource.net/startups-open-source-finops/) (March 19, 2024)
+* ITPro: [Five ways to reduce Kubernetes costs](https://www.itpro.com/development/containers/370050/how-to-reduce-kubernetes-costs) (March 5, 2024)
+* FLOSS Weekly: [Episode 769: OpenCost — We Spent How Much?](https://hackaday.com/2024/02/07/floss-weekly-episode-769-opencost-we-spent-how-much/) (February 7, 2024)
 * ITPro Today: [OpenCost Project Expands Open Source Across Multicloud Deployments](https://www.itprotoday.com/cloudops/opencost-project-expands-open-source-across-multicloud-deployments) (November 4, 2023)
 * The New Stack: [Grafana Wants to Help You Avoid Getting Dinged by Kubernetes Costs](https://thenewstack.io/grafana-wants-to-help-you-avoid-getting-dinged-by-kubernetes-costs/) (November 2, 2023)
 * Yahoo! Finance: [Kubecost Launches Cloud Cost Optimization and Support Through OpenCost and the FinOps Foundation’s FOCUS™ Specification](https://finance.yahoo.com/news/kubecost-launches-cloud-cost-optimization-080000850.html) (October 31, 2023)
