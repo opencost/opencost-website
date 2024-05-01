@@ -103,6 +103,28 @@ Used to grab a summary of custom costs over a window.
 Available aggregations:
 <table>
 <tr>
+<th id="window">window=<a class="hash-link" href="#a_window" title="window">​</a></th>
+<th/>
+</tr>
+<tr>
+<td valign="top"><b>required</b></td>
+<td>
+      Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>window=today</code> - The current day</li>
+        <li><code>window=month</code> - The month-to-date</li>
+        <li><code>window=lastweek</code> - The previous week</li>
+        <li><code>window=30m</code> - The last 30 minutes</li>
+        <li><code>window=12h</code> - The last 12 hours</li>
+        <li><code>window=7d</code> - The previous 7 days</li>
+        <li><code>window=2023-01-18T10:30:00Z,2023-01-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
+        <li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
+      </ul>
+    </td>
+  </tr>
+<tr>
   <th id="aggregate">aggregate=<a class="hash-link" href="#a_aggregate" title="aggregate">​</a></th>
   <th/>
 </tr>
@@ -156,13 +178,9 @@ domain
 costSource
 </td>
 </tr>
-</table>
-
-The available filters are the same as the available aggregations. For example:
-<table>
 <tr>
   <th id="filter">filter=<a class="hash-link" href="#a_filter" title="filter">​</a></th>
-  <th/>
+  <td>The available filters are the same as the available aggregations. For example:</td>
 </tr>
 <tr>
 <td/><td>
