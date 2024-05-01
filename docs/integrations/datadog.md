@@ -91,3 +91,195 @@ opencost:
      tag: plugin-spike-03062024
 ```
 3. Confirm that looking at the pod logs shows Datadog queries going through
+
+
+
+## Datadog API
+
+### `customCost/total`
+
+Used to grab a summary of custom costs over a window.
+
+Available aggregations:
+<table>
+<tr>
+  <th id="aggregate">aggregate=<a class="hash-link" href="#a_aggregate" title="aggregate">​</a></th>
+  <th/>
+</tr>
+<tr>
+<td/><td>
+zone
+</td>
+</tr>
+<tr>
+<td/><td>
+accountName
+</td>
+</tr>
+<tr>
+<td/><td>
+chargeCategory
+</td>
+</tr>
+<tr>
+<td/><td>
+description
+</td>
+</tr>
+<tr>
+<td/><td>
+resourceName
+</td>
+</tr>
+<tr>
+<td/><td>
+resourceType
+</td>
+</tr>
+<tr>
+<td/><td>
+providerId
+</td>
+</tr>
+<tr>
+<td/><td>
+usageUnit
+</td>
+</tr>
+<tr>
+<td/><td>
+domain
+</td>
+</tr>
+<tr>
+<td/><td>
+costSource
+</td>
+</tr>
+</table>
+
+The available filters are the same as the available aggregations. For example:
+<table>
+<tr>
+  <th id="filter">filter=<a class="hash-link" href="#a_filter" title="filter">​</a></th>
+  <th/>
+</tr>
+<tr>
+<td/><td>
+filter=domain:"datadog"
+</td>
+</tr>
+<tr>
+<td/><td>
+filter=zone:"us"
+</td>
+</tr>
+<tr>
+<td/><td>
+filter=resourceType:"infra_hosts"
+</td>
+</tr>
+</table>
+
+### `customCost/timeseries`
+
+Essentially equivalent to calling `/total` over a range of time steps. For example, querying for the past 7 days will give you a `/total` response for each of those days, individually. All available aggregations and filters are the same as with `/total`
+
+## Datadog API Examples
+
+### Totals request, aggregating by domain over the past 7 days:
+
+https://example.opencost.io/model/customCost/total?window=7d&aggregate=domain
+
+Response:
+```json
+{
+  "code": 200,
+  "data": {
+    "window": {
+      "start": "2024-03-14T00:00:00Z",
+      "end": "2024-03-21T00:00:00Z"
+    },
+    "totalBilledCost": 147.37999,
+    "totalListCost": 186.98547,
+    "customCosts": [
+      {
+        "id": "",
+        "zone": "us",
+        "account_name": "Kubecost",
+        "charge_category": "",
+        "description": "",
+        "resource_name": "",
+        "resource_type": "",
+        "provider_id": "",
+        "billedCost": 147.37999,
+        "listCost": 186.98547,
+        "list_unit_price": 0.082197905,
+        "usage_quantity": 120,
+        "usage_unit": "",
+        "domain": "datadog",
+        "cost_source": "observability",
+        "aggregate": "datadog"
+      }
+    ]
+  }
+}
+```
+
+### Totals request, aggregating by providerId over the past 7 days:
+
+https://example.opencost.io/model/customCost/total?window=7d&aggregate=providerId
+
+Response:
+```json
+{
+  "code": 200,
+  "data": {
+    "window": {
+      "start": "2024-03-14T00:00:00Z",
+      "end": "2024-03-21T00:00:00Z"
+    },
+    "totalBilledCost": 147.37999,
+    "totalListCost": 186.98546,
+    "customCosts": [
+      {
+        "id": "",
+        "zone": "us",
+        "account_name": "Kubecost",
+        "charge_category": "usage",
+        "description": "350+ integrations, alerting, custom metrics & unlimited user accounts",
+        "resource_name": "agent_host_count",
+        "resource_type": "infra_hosts",
+        "provider_id": "42c0ac62-8d80-11ed-96f3-da7ad0900005/agent_host_count",
+        "billedCost": 0,
+        "listCost": 8.876712,
+        "list_unit_price": 0.073972605,
+        "usage_quantity": 360,
+        "usage_unit": "Infra Host - hours",
+        "domain": "datadog",
+        "cost_source": "observability",
+        "aggregate": "42c0ac62-8d80-11ed-96f3-da7ad0900005/agent_host_count"
+      },
+      {
+        "id": "",
+        "zone": "us",
+        "account_name": "Kubecost",
+        "charge_category": "usage",
+        "description": "Centralize your monitoring of systems and services (Per Container)",
+        "resource_name": "container_count_excl_agent",
+        "resource_type": "infra_hosts",
+        "provider_id": "42c0ac62-8d80-11ed-96f3-da7ad0900005/container_count_excl_agent",
+        "billedCost": 0,
+        "listCost": 19.80274,
+        "list_unit_price": 0.0041095894,
+        "usage_quantity": 14456,
+        "usage_unit": "Container - hours",
+        "domain": "datadog",
+        "cost_source": "observability",
+        "aggregate": "42c0ac62-8d80-11ed-96f3-da7ad0900005/container_count_excl_agent"
+      }
+...
+    ]
+  }
+}
+```
