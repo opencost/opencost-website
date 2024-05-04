@@ -321,6 +321,107 @@ curl -G http://localhost:9003/cloudCost \
 }
 ```
 
+## `/customCost` Datadog External Costs Examples
+
+Please refer to the [OpenCost API](api#external-costs-api) for the full API specifics.
+
+### Totals request, aggregating by domain over the past 7 days:
+
+https://example.opencost.io/model/customCost/total?window=7d&aggregate=domain
+
+Response:
+```json
+{
+  "code": 200,
+  "data": {
+    "window": {
+      "start": "2024-03-14T00:00:00Z",
+      "end": "2024-03-21T00:00:00Z"
+    },
+    "totalBilledCost": 147.37999,
+    "totalListCost": 186.98547,
+    "customCosts": [
+      {
+        "id": "",
+        "zone": "us",
+        "account_name": "Kubecost",
+        "charge_category": "",
+        "description": "",
+        "resource_name": "",
+        "resource_type": "",
+        "provider_id": "",
+        "billedCost": 147.37999,
+        "listCost": 186.98547,
+        "list_unit_price": 0.082197905,
+        "usage_quantity": 120,
+        "usage_unit": "",
+        "domain": "datadog",
+        "cost_source": "observability",
+        "aggregate": "datadog"
+      }
+    ]
+  }
+}
+```
+
+### Totals request, aggregating by providerId over the past 7 days:
+
+https://example.opencost.io/model/customCost/total?window=7d&aggregate=providerId
+
+Response:
+```json
+{
+  "code": 200,
+  "data": {
+    "window": {
+      "start": "2024-03-14T00:00:00Z",
+      "end": "2024-03-21T00:00:00Z"
+    },
+    "totalBilledCost": 147.37999,
+    "totalListCost": 186.98546,
+    "customCosts": [
+      {
+        "id": "",
+        "zone": "us",
+        "account_name": "Kubecost",
+        "charge_category": "usage",
+        "description": "350+ integrations, alerting, custom metrics & unlimited user accounts",
+        "resource_name": "agent_host_count",
+        "resource_type": "infra_hosts",
+        "provider_id": "42c0ac62-8d80-11ed-96f3-da7ad0900005/agent_host_count",
+        "billedCost": 0,
+        "listCost": 8.876712,
+        "list_unit_price": 0.073972605,
+        "usage_quantity": 360,
+        "usage_unit": "Infra Host - hours",
+        "domain": "datadog",
+        "cost_source": "observability",
+        "aggregate": "42c0ac62-8d80-11ed-96f3-da7ad0900005/agent_host_count"
+      },
+      {
+        "id": "",
+        "zone": "us",
+        "account_name": "Kubecost",
+        "charge_category": "usage",
+        "description": "Centralize your monitoring of systems and services (Per Container)",
+        "resource_name": "container_count_excl_agent",
+        "resource_type": "infra_hosts",
+        "provider_id": "42c0ac62-8d80-11ed-96f3-da7ad0900005/container_count_excl_agent",
+        "billedCost": 0,
+        "listCost": 19.80274,
+        "list_unit_price": 0.0041095894,
+        "usage_quantity": 14456,
+        "usage_unit": "Container - hours",
+        "domain": "datadog",
+        "cost_source": "observability",
+        "aggregate": "42c0ac62-8d80-11ed-96f3-da7ad0900005/container_count_excl_agent"
+      }
+...
+    ]
+  }
+}
+```
+
 ## Postman
 
 A collection of OpenCost Postman queries: [opencost.postman_collection.json](https://raw.githubusercontent.com/opencost/opencost/develop/docs/opencost.postman_collection.json)
