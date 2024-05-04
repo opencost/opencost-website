@@ -7,7 +7,7 @@ title: Datadog
 
 :::note
 
-*** Support for the Datadog plugin is in the current `develop` branch and will be available in OpenCost 1.110. ***
+*** Support for the Datadog plugin is available in the current `1.110.0` release. ***
 
 :::
 
@@ -91,5 +91,3 @@ opencost:
      tag: plugin-spike-03062024
 ```
 3. Confirm that looking at the pod logs shows Datadog queries going through
-
-## Datadog External Costs API Examples
