@@ -199,6 +199,197 @@ QUERY PARAMETERS
 
 </table>
 
+## External Costs API
+
+### `customCost/timeseries`
+
+Samples of costs of third-party services. Essentially equivalent to calling `/total` over a range of time steps. For example, querying for the past 7 days will give you a `/total` response for each of those days, individually. All available aggregations and filters are the same as with `/total`
+
+QUERY PARAMETERS
+<table>
+
+  <tr>
+    <th id="window">window<a class="hash-link" href="#a_window" title="window">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td valign="top"><b>required</b></td>
+    <td>
+      Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>window=today</code> - The current day</li>
+        <li><code>window=month</code> - The month-to-date</li>
+        <li><code>window=lastweek</code> - The previous week</li>
+        <li><code>window=30m</code> - The last 30 minutes</li>
+        <li><code>window=12h</code> - The last 12 hours</li>
+        <li><code>window=7d</code> - The previous 7 days</li>
+        <li><code>window=2024-05-18T10:30:00Z,2024-05-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
+        <li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="aggregate">aggregate<a class="hash-link" href="#c_aggregate" title="aggregate">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Field by which to aggregate the results.
+      Accepts: <code>invoiceEntityID</code>, <code>accountID</code>, <code>provider</code>, <code>providerID</code>, <code>category</code>, and <code>service</code>.
+      Also accepts comma-separated lists for multi-aggregation, like <code>provider,service</code>.
+      If no value is provided, the entire list of items is returned.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>aggregate=accountID</code> - Aggregates by the Account.</li>
+        <li><code>aggregate=category</code> - Aggregates by the individual controllers within the cluster.</li>
+        <li><code>aggregate=invoiceEntityID</code> - Aggregates by the Invoice Entity.</li>
+        <li><code>aggregate=provider</code> - Aggregates by the Provider.</li>
+        <li><code>aggregate=providerID</code> - Aggregates by the Provider ID.</li>
+        <li><code>aggregate=service</code> - Aggregates by the Service.</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="accumulate">accumulate<a class="hash-link" href="#c_accumulate" title="accumulate">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Step size of the accumulation.
+      Accepts: <code>all</code>, <code>hour</code>, <code>day</code>, <code>week</code>, <code>month</code>, and <code>quarter</code>.
+      <br/><br/>
+      Default: <code>day</code>
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>accumulate=hour</code></li>
+        <li><code>accumulate=day</code></li>
+        <li><code>accumulate=week</code></li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="filter">filter<a class="hash-link" href="#c_filter" title="filter">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      The available filters are the same as the available aggregations. Accepts: <a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameters</a>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>filter=domain:"datadog"</code></li>
+        <li><code>filter=resourceType:"infra_hosts"</code></li>
+        <li><code>filter=zone:"us"</code></li>
+      </ul>
+      </td>
+  </tr>
+
+</table>
+
+### `customCost/total`
+
+Used to retrieve a summary of third-party costs over a window.
+
+<table>
+
+  <tr>
+    <th id="window">window<a class="hash-link" href="#a_window" title="window">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td valign="top"><b>required</b></td>
+    <td>
+      Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>window=today</code> - The current day</li>
+        <li><code>window=month</code> - The month-to-date</li>
+        <li><code>window=lastweek</code> - The previous week</li>
+        <li><code>window=30m</code> - The last 30 minutes</li>
+        <li><code>window=12h</code> - The last 12 hours</li>
+        <li><code>window=7d</code> - The previous 7 days</li>
+        <li><code>window=2024-05-18T10:30:00Z,2024-05-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
+        <li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="aggregate">aggregate<a class="hash-link" href="#c_aggregate" title="aggregate">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Field by which to aggregate the results.
+      Accepts: <code>invoiceEntityID</code>, <code>accountID</code>, <code>provider</code>, <code>providerID</code>, <code>category</code>, and <code>service</code>.
+      Also accepts comma-separated lists for multi-aggregation, like <code>provider,service</code>.
+      If no value is provided, the entire list of items is returned.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>aggregate=accountID</code> - Aggregates by the Account.</li>
+        <li><code>aggregate=category</code> - Aggregates by the individual controllers within the cluster.</li>
+        <li><code>aggregate=invoiceEntityID</code> - Aggregates by the Invoice Entity.</li>
+        <li><code>aggregate=provider</code> - Aggregates by the Provider.</li>
+        <li><code>aggregate=providerID</code> - Aggregates by the Provider ID.</li>
+        <li><code>aggregate=service</code> - Aggregates by the Service.</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="accumulate">accumulate<a class="hash-link" href="#c_accumulate" title="accumulate">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      Step size of the accumulation.
+      Accepts: <code>all</code>, <code>hour</code>, <code>day</code>, <code>week</code>, <code>month</code>, and <code>quarter</code>.
+      <br/><br/>
+      Default: <code>day</code>
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>accumulate=hour</code></li>
+        <li><code>accumulate=day</code></li>
+        <li><code>accumulate=week</code></li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <th id="filter">filter<a class="hash-link" href="#c_filter" title="filter">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td/>
+    <td>
+      The available filters are the same as the available aggregations. Accepts: <a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameters</a>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>filter=domain:"datadog"</code></li>
+        <li><code>filter=resourceType:"infra_hosts"</code></li>
+        <li><code>filter=zone:"us"</code></li>
+      </ul>
+      </td>
+  </tr>
+
+</table>
+
 ## OpenAPI Swagger
 
 The source for the OpenCost API is available as an OpenAPI [swagger.json](https://github.com/opencost/opencost/blob/develop/docs/swagger.json).

@@ -7,7 +7,7 @@ title: Datadog
 
 :::note
 
-*** Support for the Datadog plugin is in the current `develop` branch and will be available in OpenCost 1.110. ***
+*** Support for the Datadog plugin is available in the current `1.110.0` release. ***
 
 :::
 
