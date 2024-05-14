@@ -4,18 +4,20 @@ OpenCost is a [CNCF Sandbox project](https://www.cncf.io/projects/opencost/) and
 
 * CNCF Slack: https://slack.cncf.io/ #opencost
 * OpenCost Community Meetings
-  * [Calendar](https://bit.ly/opencost-calendar)
-  * [Community Meetings every other Thursday at 1pm Pacific](https://bit.ly/opencost-community-meeting)
-  * [Community Meeting Notes](https://bit.ly/opencost-meeting)
+  * [Calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/opencost)
+  * [Community Meetings every other Thursday at 1pm Pacific](https://bit.ly/opencost-community-meeting-cncf)
+  * [Community Meeting Notes](https://bit.ly/opencost-meeting-cncf)
 
 Contact us via email (<opencost@kubecost.com>)
 
 ## Get the Code
 
 * https://github.com/opencost/opencost
+* https://github.com/opencost/opencost-grafana-dashboard
 * https://github.com/opencost/opencost-helm-chart
 * https://github.com/opencost/opencost-parquet-exporter
 * https://github.com/opencost/opencost-plugins
+* https://github.com/opencost/opencost-ui
 * https://github.com/opencost/opencost-website
 
 ## Social Media
