@@ -74,12 +74,11 @@ Cluster Asset Costs can be further segmented into **Resource Allocation Costs** 
 
 The following chart shows these relationships:
 
-<img width="796" alt="image4" src="https://user-images.githubusercontent.com/453512/171577990-8f7c9a53-f5b1-4fbc-b2f6-75cd6ea67960.png"/>
+![image4](../static/img/image4.png)
 
 While billing models can differ by environment, below are common examples of segmentation by Allocation, Usage and Overhead Costs.
 
-<img width="292" alt="image1" src="https://user-images.githubusercontent.com/453512/171578190-d84dc3a7-1d20-4575-9bcc-2a5722de5eea.png"/>
-
+![image1](../static/img/image1.png)
 
 Once calculated, these Asset Costs can then be distributed to the tenants that consume them, where Workload Costs plus Idle Costs equals Asset Costs. **Workload costs** are expenses that can be directly attributed to a set of Kubernetes workloads, e.g. a container, pod, deployment, etc. **Cluster Idle Costs** are the portion of Resource Allocation Costs that are not allocated to any workload[^1].
 
@@ -105,8 +104,7 @@ Once calculated, these Asset Costs can then be distributed to the tenants that c
 
 The following chart shows these relationships:
 
-
-![image2](https://user-images.githubusercontent.com/453512/171578591-d58e3e23-8b4a-4b6e-8a40-9fe9fd384032.png)
+![image2](../static/img/image2.png)
 
 ## Cluster Asset Costs
 
@@ -286,7 +284,8 @@ Idle Costs can be calculated at both the Asset/Resource level as well as the Wor
 
 ##
 The following chart shows these relationships:
-![image3](https://user-images.githubusercontent.com/453512/171579570-055bebe8-cc97-4129-9238-c4bcda8e123c.png)
+
+![image3](../static/img/image3.png)
 
 
 Asset Idle Cost can be calculated by individual assets, groups of assets, cluster(s), and by individual resources, e.g. CPU. Resources that are strictly billed on usage can be viewed to have 100% efficiency but should not be included when measuring idle percentage of a cluster.
