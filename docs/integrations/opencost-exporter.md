@@ -75,7 +75,7 @@ Here’s an example dashboard using OpenCost Prometheus metrics:
 
 ![sample dashboard](https://grafana.com/api/dashboards/8670/images/5480/image)
 
-You can find other example dashboards at <https://grafana.com/orgs/kubecost>
+You can find other example dashboards at https://grafana.com/orgs/kubecost
 
 ## Example Queries
 

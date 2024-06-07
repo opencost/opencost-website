@@ -40,4 +40,4 @@ Join the [OpenCost Community](community) and follow along other community events
 
 Join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
 
-Contact us via email (<opencost@kubecost.com>) if there's anything else you need.
+Contact us via email (opencost@kubecost.com) if there's anything else you need.

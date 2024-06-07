@@ -41,9 +41,9 @@ The above query shows the **error percentage between manual hardcoded CPU+memory
 
 We have OpenCost deployed in every cluster in Grafana Cloud, sending to a single Grafana Mimir instance. OpenCost is designed to expect its storage having the same scope as its deployment. We deployed [prom-label-proxy](https://github.com/prometheus-community/prom-label-proxy) for filtering and subsetting, showing each OpenCost instance only the data it expects to see. Leveraging Grafana Mimir this way not only avoids the overhead of running one backend per OpenCost instance' we can also query across our whole fleet.
 
-| [![Architecture diagram showing how each OpenCost instance does the same metrics query (i.e. without {cluster=...} label) while getting results only for the cluster where it's deployed.](./img/image2.png)](./img/image2.png) |
+| [![Architecture diagram showing how each OpenCost instance does the same metrics query (i.e. without \{cluster=...\} label) while getting results only for the cluster where it's deployed.](./img/image2.png)](./img/image2.png) |
 | :--: |
-| *Architecture diagram showing how each OpenCost instance does the same metrics query (i.e. without {cluster=...} label) while getting results only for the cluster where it's deployed.* |
+| *Architecture diagram showing how each OpenCost instance does the same metrics query (i.e. without \{cluster=...\} label) while getting results only for the cluster where it's deployed.* |
 
 
 ## How Grafana Labs will contribute to the OpenCost OSS project
