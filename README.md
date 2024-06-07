@@ -1,3 +1,5 @@
+[![Check Links](https://github.com/org/repo/actions/workflows/links.yml/badge.svg)](https://github.com/org/repo/actions/workflows/links.yml)
+
 # OpenCost Website
 
 This repository hosts the [OpenCost website](https://opencost.io), documentation, and blog.
