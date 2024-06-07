@@ -40,3 +40,23 @@ The content for your cloud providers' configuration are listed on their specific
 <InstallCloudCosts/>
 
 Please note that the cloud costs become available as soon as they appear in the cloud service provider's billing data, with usually several hours to a 24-hour delay. There is currently no reconciliation of the on-demand pricing with the billing data's actual costs.
+
+## Custom Pricing
+
+In some cases users may need to override the pricing provided by their cloud service provider. They may have negotiated with their cloud service provider or may be acting as an intermediary with their own rates that do not follow list prices.
+
+If this is the case, you may provide overrides in your local OpenCost Helm values file to match the name of the cloud provider you are overriding. The current options are `alibaba`, `aws`, `azure`, `gcp`, `oracle`, or `default` for on-premises pricing. This example overrides GCP pricing:
+
+```yaml
+opencost:
+  customPricing:
+    enabled: true
+    provider: gcp
+    costModel:
+      description: Modified prices based on your internal pricing
+      CPU: 12.00
+      RAM: 10.50
+      storage: 40.25
+```
+
+These prices will be reflected in the UI and under `/tmp/custom-config/gcp.json` on the `opencost` container and in the UI and API as prices are adjusted.
