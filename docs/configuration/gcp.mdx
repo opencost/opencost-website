@@ -88,7 +88,7 @@ To configure OpenCost for your GCP account, create a GCP service key with the fo
 
 ```sh
 export PROJECT_ID=$(gcloud config get-value project)
-gcloud iam service-accounts create compute-viewer-opencost --display-name "Compute Read Only Account Created For Opencost" --format json
+gcloud iam service-accounts create compute-viewer-opencost --display-name "Compute Read Only Account Created For OpenCost" --format json
 gcloud projects add-iam-policy-binding $PROJECT_ID --member serviceAccount:compute-viewer-opencost@$PROJECT_ID.iam.gserviceaccount.com --role roles/compute.viewer
 gcloud projects add-iam-policy-binding $PROJECT_ID --member serviceAccount:compute-viewer-opencost@$PROJECT_ID.iam.gserviceaccount.com --role roles/bigquery.user
 gcloud projects add-iam-policy-binding $PROJECT_ID --member serviceAccount:compute-viewer-opencost@$PROJECT_ID.iam.gserviceaccount.com --role roles/bigquery.dataViewer
