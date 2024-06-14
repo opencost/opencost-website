@@ -8,6 +8,7 @@ hide_table_of_contents: true
 
 ---
 
+* The New Stack: [Node Overhead: The Hidden Cost Eating Your Kubernetes Spend](https://thenewstack.io/node-overhead-the-hidden-cost-eating-your-kubernetes-spend/) May 29, 2024
 * OpenSource.net: [What scaling startups need to understand about Open Source FinOps](https://opensource.net/startups-open-source-finops/) (March 19, 2024)
 * ITPro: [Five ways to reduce Kubernetes costs](https://www.itpro.com/development/containers/370050/how-to-reduce-kubernetes-costs) (March 5, 2024)
 * FLOSS Weekly: [Episode 769: OpenCost — We Spent How Much?](https://hackaday.com/2024/02/07/floss-weekly-episode-769-opencost-we-spent-how-much/) (February 7, 2024)
