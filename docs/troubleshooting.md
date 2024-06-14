@@ -127,4 +127,4 @@ helm upgrade prometheus --repo https://prometheus-community.github.io/helm-chart
 
 Please let us know if you run into any issues, we are here to help!
 
-Join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions or contact us via email (<opencost@kubecost.com>).
+Join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions or contact us via email (opencost@kubecost.com).

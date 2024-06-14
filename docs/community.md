@@ -8,7 +8,7 @@ OpenCost is a [CNCF Sandbox project](https://www.cncf.io/projects/opencost/) and
   * [Community Meetings every other Thursday at 1pm Pacific](https://bit.ly/opencost-community-meeting-cncf)
   * [Community Meeting Notes](https://bit.ly/opencost-meeting-cncf)
 
-Contact us via email (<opencost@kubecost.com>)
+Contact us via email (opencost@kubecost.com)
 
 ## Get the Code
 
