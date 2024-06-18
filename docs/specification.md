@@ -90,7 +90,7 @@ Attributes for measured Resource Allocation Costs:
 * [float] Duration - time between the start and end of the allocation period measured in hours, e.g. 24 hours
 * [string] Unit - the amount’s unit of measurement, e.g. CPU cores
 * [float] HourlyRate - cost per one unit hour, e.g. $0.2 per CPU hourly rate
-* [float] Total Cost - defined as Amount * Duration * HourlyRate
+* [float] Total Cost - defined as Amount \* Duration \* HourlyRate
 
 Attributes for measured Resource Usage Costs:
 
@@ -99,7 +99,7 @@ Attributes for measured Resource Usage Costs:
 * [float] Amount - the amount of resource used, e.g. 1GB of internet egress
 * [string] Unit - the amount’s unit of measurement, e.g. GB
 * [float] UnitRate - cost per unit, e.g $ per GB egressed
-* [float] TotalCost - defined as Amount * UnitRate
+* [float] TotalCost - defined as Amount \* UnitRate
 
 Below are example inputs when measuring asset costs over a designated time window (e.g. 24 hours) with common billing models:
 
@@ -110,12 +110,12 @@ Below are example inputs when measuring asset costs over a designated time windo
         * cores = avg_over_time(cpu) by (node) [cores]
         * duration = end running- start running [hrs]
         * price = provider defined or custom pricing sheet [$/core-hr] (see Appendix A for more details)
-        * total cost = cores * duration * price [$]
+        * total cost = cores \* duration \* price [$]
     * RAM allocation costs
         * ram bytes = avg_over_time(GB) by (node) [ram GBs]
         * duration = end running- start running [hrs]
         * price = provider defined or custom pricing sheet [$/GB-hr] (see Appendix A for more details)
-        * total cost = ram bytes * duration * price [$]
+        * total cost = ram bytes \* duration \* price [$]
 * **Persistent Volumes**
     * Disk Size = avg_over_time(GB) by (pv) [disk GBs]
     * Price = provider defined or custom pricing sheet [$/GB-hr] (see Appendix A for more details) typically a function of disk class, IOPS, backup size
