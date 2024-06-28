@@ -81,6 +81,141 @@ curl -G http://localhost:9003/allocation/compute \
 }
 ```
 
+## `/assets` Example
+
+The OpenCost `/assets` API has the `window` query parameter for retrieving the underlying asset data associated with the Kubernetes cluster.
+
+### Last 7 days of Assets request
+
+```sh
+curl -G http://localhost:9003/assets -d window=7d
+```
+
+```json
+{
+  "code": 200,
+  "status": "success",
+  "data": {
+    "GCP/__undefined__/testuser-opencost/Compute/gke-opencost/Node/Kubernetes/gke-opencost-1-default-pool-a30d4801-81dm/gke-opencost-1-default-pool-a30d4801-81dm": {
+      "type": "Node",
+      "properties": {
+        "category": "Compute",
+        "provider": "GCP",
+        "project": "testuser-opencost",
+        "service": "Kubernetes",
+        "cluster": "gke-opencost",
+        "name": "gke-opencost-1-default-pool-a30d4801-81dm",
+        "providerID": "gke-opencost-1-default-pool-a30d4801-81dm"
+      },
+      "labels": {
+        "beta_kubernetes_io_arch": "amd64",
+        "beta_kubernetes_io_instance_type": "e2-small",
+        "beta_kubernetes_io_os": "linux",
+        "cloud_google_com_gke_boot_disk": "pd-balanced",
+        "cloud_google_com_gke_container_runtime": "containerd",
+        "cloud_google_com_gke_cpu_scaling_level": "2",
+        "cloud_google_com_gke_logging_variant": "DEFAULT",
+        "cloud_google_com_gke_max_pods_per_node": "110",
+        "cloud_google_com_gke_nodepool": "default-pool",
+        "cloud_google_com_gke_os_distribution": "cos",
+        "cloud_google_com_gke_provisioning": "spot",
+        "cloud_google_com_gke_spot": "true",
+        "cloud_google_com_gke_stack_type": "IPV4",
+        "cloud_google_com_machine_family": "e2",
+        "cloud_google_com_private_node": "false",
+        "failure_domain_beta_kubernetes_io_region": "australia-southeast1",
+        "failure_domain_beta_kubernetes_io_zone": "australia-southeast1-c",
+        "kubernetes_io_arch": "amd64",
+        "kubernetes_io_hostname": "gke-opencost-1-default-pool-a30d4801-81dm",
+        "kubernetes_io_os": "linux",
+        "node_kubernetes_io_instance_type": "e2-small",
+        "providerID": "gce://testuser-opencost/australia-southeast1-c/gke-opencost-1-default-pool-a30d4801-81dm",
+        "topology_gke_io_zone": "australia-southeast1-c",
+        "topology_kubernetes_io_region": "australia-southeast1",
+        "topology_kubernetes_io_zone": "australia-southeast1-c"
+      },
+      "window": {
+        "start": "2024-06-22T00:00:00Z",
+        "end": "2024-06-29T00:00:00Z"
+      },
+      "start": "2024-06-22T00:00:00Z",
+      "end": "2024-06-24T18:10:00Z",
+      "minutes": 3970.000000,
+      "nodeType": "e2-small",
+      "pool": "default-pool",
+      "cpuCores": 0.500000,
+      "ramBytes": 2072743936.000000,
+      "cpuCoreHours": 33.083333,
+      "ramByteHours": 137146557098.666672,
+      "GPUHours": 0.000000,
+      "cpuBreakdown": {
+        "idle": 1,
+        "other": 0,
+        "system": 0,
+        "user": 0
+      },
+      "ramBreakdown": {
+        "idle": 1,
+        "other": 0,
+        "system": 0,
+        "user": 0
+      },
+      "preemptible": 1.000000,
+      "discount": 0.000000,
+      "cpuCost": 0.307185,
+      "gpuCost": 0.000000,
+      "gpuCount": 0.000000,
+      "ramCost": 0.158929,
+      "adjustment": 0.000000,
+      "overhead": {
+        "CpuOverheadFraction": 0.53,
+        "RamOverheadFraction": 0.30960337205878574,
+        "OverheadCostFraction": 0.45485239048108356
+      },
+      "totalCost": 0.466114
+    },
+...
+    "GCP/__undefined__/testuser-opencost/Storage/gke-opencost/Disk/Kubernetes/pvc-95211d76-7842-4182-bdb6-de4133f46b78/pvc-95211d76-7842-4182-bdb6-de4133f46b78": {
+      "type": "Disk",
+      "properties": {
+        "category": "Storage",
+        "provider": "GCP",
+        "project": "testuser-opencost",
+        "service": "Kubernetes",
+        "cluster": "gke-opencost",
+        "name": "pvc-95211d76-7842-4182-bdb6-de4133f46b78",
+        "providerID": "pvc-95211d76-7842-4182-bdb6-de4133f46b78"
+      },
+      "labels": {},
+      "window": {
+        "start": "2024-06-22T00:00:00Z",
+        "end": "2024-06-29T00:00:00Z"
+      },
+      "start": "2024-06-22T00:00:00Z",
+      "end": "2024-06-28T06:30:00Z",
+      "minutes": 9030.000000,
+      "byteHours": 1292785156096.000000,
+      "bytes": 8589934592.000000,
+      "byteHoursUsed": 260162444443.716248,
+      "byteUsageMax": 2246320128.000000,
+      "breakdown": {
+        "idle": 1,
+        "other": 0,
+        "system": 0,
+        "user": 0
+      },
+      "adjustment": 0.000000,
+      "totalCost": 0.065973,
+      "storageClass": "standard-rwo",
+      "volumeName": "pvc-95211d76-7842-4182-bdb6-de4133f46b78",
+      "claimName": "prometheus-server",
+      "claimNamespace": "prometheus-system"
+    }
+  }
+}
+
+```
+
 ## `/cloudCost` Examples
 
 The OpenCost `/cloudCost` API has query parameters for `window`, `aggregate`, and `filter`. Below are several examples of queries using this API. Please refer to the [OpenCost API](api#cloudcost) for the full API specifics.
@@ -184,11 +319,11 @@ curl -G http://localhost:9003/cloudCost \
       {
         "cloudCosts": {
           ...
-          "HDEAD-C6F51B-690123/mattray-opencost/GCP/__unallocated__/Management/Kubernetes Engine": {
+          "HDEAD-B6F51B-690123/testuser-opencost/GCP/__unallocated__/Management/Kubernetes Engine": {
             "properties": {
               "provider": "GCP",
-              "accountID": "mattray-opencost",
-              "invoiceEntityID": "HDEAD-C6F51B-690123",
+              "accountID": "testuser-opencost",
+              "invoiceEntityID": "HDEAD-B6F51B-690123",
               "service": "Kubernetes Engine",
               "category": "Management",
               "labels": {
@@ -223,11 +358,11 @@ curl -G http://localhost:9003/cloudCost \
               "kubernetesPercent": 1
             }
           },
-          "HDEAD-C6F51B-690123/mattray-opencost/GCP/__unallocated__/Network/Networking": {
+          "HDEAD-B6F51B-690123/testuser-opencost/GCP/__unallocated__/Network/Networking": {
             "properties": {
               "provider": "GCP",
-              "accountID": "mattray-opencost",
-              "invoiceEntityID": "HDEAD-C6F51B-690123",
+              "accountID": "testuser-opencost",
+              "invoiceEntityID": "HDEAD-B6F51B-690123",
               "service": "Networking",
               "category": "Network"
             },
@@ -257,12 +392,12 @@ curl -G http://localhost:9003/cloudCost \
             }
           },
           ...
-          "HDEAD-C6F51B-690123/mattray-opencost/GCP/gke-opencost-3-default-pool-123456f4-kbl5/Other/Compute Engine": {
+          "HDEAD-B6F51B-690123/testuser-opencost/GCP/gke-opencost-3-default-pool-123456f4-kbl5/Other/Compute Engine": {
             "properties": {
               "providerID": "gke-opencost-3-default-pool-123456f4-kbl5",
               "provider": "GCP",
-              "accountID": "mattray-opencost",
-              "invoiceEntityID": "HDEAD-C6F51B-690123",
+              "accountID": "testuser-opencost",
+              "invoiceEntityID": "HDEAD-B6F51B-690123",
               "service": "Compute Engine",
               "category": "Other",
               "labels": {
