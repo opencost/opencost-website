@@ -26,16 +26,11 @@ As Kubernetes adoption increases within an organization, these complexities beco
 
 <table>
   <tr>
-   <td><strong>Total Cluster Costs</strong>
-   </td>
-   <td><strong>=</strong>
-   </td>
-   <td><strong>Cluster Asset Costs</strong>
-   </td>
-   <td><strong>+</strong>
-   </td>
-   <td><strong>Cluster Overhead Costs</strong>
-   </td>
+   <td><strong>Total Cluster Costs</strong></td>
+   <td><strong>=</strong></td>
+   <td><strong>Cluster Asset Costs</strong></td>
+   <td><strong>+</strong></td>
+   <td><strong>Cluster Overhead Costs</strong></td>
   </tr>
 </table>
 
@@ -45,29 +40,13 @@ Cluster Asset Costs can be further segmented into **Resource Allocation Costs** 
 
 <table>
   <tr>
-   <td><strong>Total Cluster Costs</strong>
-   </td>
-   <td><strong>=</strong>
-   </td>
-   <td><strong>Resource Allocation Costs</strong>
-<p>
-(for all assets)
-</p>
-   </td>
-   <td><strong>+</strong>
-   </td>
-   <td><strong>Resource Usage Costs</strong>
-<p>
-(for all assets)
-</p>
-   </td>
-   <td><strong>+</strong>
-   </td>
-   <td><strong>Cluster Overhead Costs</strong>
-<p>
-(for cluster)
-</p>
-   </td>
+   <td><strong>Total Cluster Costs</strong></td>
+   <td><strong>=</strong></td>
+   <td><strong>Resource Allocation Costs</strong><p>(for all assets)</p></td>
+   <td><strong>+</strong></td>
+   <td><strong>Resource Usage Costs</strong><p>(for all assets)</p></td>
+   <td><strong>+</strong></td>
+   <td><strong>Cluster Overhead Costs</strong><p>(for cluster)</p></td>
   </tr>
 </table>
 
@@ -85,20 +64,13 @@ Once calculated, these Asset Costs can then be distributed to the tenants that c
 
 <table>
   <tr>
-   <td><strong>Total Cluster Costs</strong>
-   </td>
-   <td><strong>=</strong>
-   </td>
-   <td><strong>Workload Costs</strong>
-   </td>
-   <td><strong>+</strong>
-   </td>
-   <td><strong>Cluster Idle Costs</strong>
-   </td>
-   <td><strong>+</strong>
-   </td>
-   <td><strong>Cluster Overhead Costs</strong>
-   </td>
+   <td><strong>Total Cluster Costs</strong></td>
+   <td><strong>=</strong></td>
+   <td><strong>Workload Costs</strong></td>
+   <td><strong>+</strong></td>
+   <td><strong>Cluster Idle Costs</strong></td>
+   <td><strong>+</strong></td>
+   <td><strong>Cluster Overhead Costs</strong></td>
   </tr>
 </table>
 
@@ -118,7 +90,7 @@ Attributes for measured Resource Allocation Costs:
 * [float] Duration - time between the start and end of the allocation period measured in hours, e.g. 24 hours
 * [string] Unit - the amount’s unit of measurement, e.g. CPU cores
 * [float] HourlyRate - cost per one unit hour, e.g. $0.2 per CPU hourly rate
-* [float] Total Cost - defined as Amount * Duration * HourlyRate
+* [float] Total Cost - defined as Amount \* Duration \* HourlyRate
 
 Attributes for measured Resource Usage Costs:
 
@@ -127,7 +99,7 @@ Attributes for measured Resource Usage Costs:
 * [float] Amount - the amount of resource used, e.g. 1GB of internet egress
 * [string] Unit - the amount’s unit of measurement, e.g. GB
 * [float] UnitRate - cost per unit, e.g $ per GB egressed
-* [float] TotalCost - defined as Amount * UnitRate
+* [float] TotalCost - defined as Amount \* UnitRate
 
 Below are example inputs when measuring asset costs over a designated time window (e.g. 24 hours) with common billing models:
 
@@ -138,12 +110,12 @@ Below are example inputs when measuring asset costs over a designated time windo
         * cores = avg_over_time(cpu) by (node) [cores]
         * duration = end running- start running [hrs]
         * price = provider defined or custom pricing sheet [$/core-hr] (see Appendix A for more details)
-        * total cost = cores * duration * price [$]
+        * total cost = cores \* duration \* price [$]
     * RAM allocation costs
         * ram bytes = avg_over_time(GB) by (node) [ram GBs]
         * duration = end running- start running [hrs]
         * price = provider defined or custom pricing sheet [$/GB-hr] (see Appendix A for more details)
-        * total cost = ram bytes * duration * price [$]
+        * total cost = ram bytes \* duration \* price [$]
 * **Persistent Volumes**
     * Disk Size = avg_over_time(GB) by (pv) [disk GBs]
     * Price = provider defined or custom pricing sheet [$/GB-hr] (see Appendix A for more details) typically a function of disk class, IOPS, backup size
@@ -170,46 +142,32 @@ Workloads are defined as entities to which Asset Costs are committed. Some resou
 
 <table>
   <tr>
-   <td>Resource Type
-   </td>
-   <td>Measurement
-   </td>
+   <td>Resource Type</td>
+   <td>Measurement</td>
   </tr>
   <tr>
-   <td>CPU
-   </td>
-   <td>The greater of <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">requested</a> and used CPU resources measured in cores or millicores.
-   </td>
+   <td>CPU</td>
+   <td>The greater of <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container">requested</a> and used CPU resources measured in cores or millicores.</td>
   </tr>
   <tr>
-   <td>Memory
-   </td>
-   <td>The greater of requested resources and memory in use measured in bytes or gigabytes.
-   </td>
+   <td>Memory</td>
+   <td>The greater of requested resources and memory in use measured in bytes or gigabytes.</td>
   </tr>
   <tr>
-   <td>GPU
-   </td>
-   <td>The greater of requested resources and used resources measured in cores.
-   </td>
+   <td>GPU</td>
+   <td>The greater of requested resources and used resources measured in cores.</td>
   </tr>
   <tr>
-   <td>Storage Volume
-   </td>
-   <td>The storage capacity of Persistent Volume Claim (PVC) requests measured in bytes or gigabytes. Attached at the Kubernetes pod-level.
-   </td>
+   <td>Storage Volume</td>
+   <td>The storage capacity of Persistent Volume Claim (PVC) requests measured in bytes or gigabytes. Attached at the Kubernetes pod-level.</td>
   </tr>
   <tr>
-   <td>Network
-   </td>
-   <td>Amount of ingress or egress across zones, regions, or the wide internet measured in bytes or gigabytes (can vary by provider)
-   </td>
+   <td>Network</td>
+   <td>Amount of ingress or egress across zones, regions, or the wide internet measured in bytes or gigabytes (can vary by provider)</td>
   </tr>
   <tr>
-   <td>Load Balancer
-   </td>
-   <td>The number of load balancers used plus the volume of connections and bytes (can vary by provider).
-   </td>
+   <td>Load Balancer</td>
+   <td>The number of load balancers used plus the volume of connections and bytes (can vary by provider).</td>
   </tr>
 </table>
 
@@ -247,16 +205,11 @@ Idle Costs can be calculated at both the Asset/Resource level as well as the Wor
 
 <table>
   <tr>
-   <td><strong>Cluster Idle Cost</strong>
-   </td>
-   <td><strong>=</strong>
-   </td>
-   <td><strong>( Cluster Asset Costs</strong>
-   </td>
-   <td><strong>-</strong>
-   </td>
-   <td><strong>Workload Costs )</strong>
-   </td>
+   <td><strong>Cluster Idle Cost</strong></td>
+   <td><strong>=</strong></td>
+   <td><strong>( Cluster Asset Costs</strong></td>
+   <td><strong>-</strong></td>
+   <td><strong>Workload Costs )</strong></td>
   </tr>
 </table>
 
@@ -264,19 +217,11 @@ Idle Costs can be calculated at both the Asset/Resource level as well as the Wor
 
 <table>
   <tr>
-   <td><strong>Cluster </strong>
-<p>
-<strong>Idle %</strong>
-</p>
-   </td>
-   <td><strong>=</strong>
-   </td>
-   <td><strong>Idle Cost</strong>
-   </td>
-   <td><strong>/</strong>
-   </td>
-   <td><strong>Resource Allocation Costs</strong>
-   </td>
+   <td><strong>Cluster </strong><p><strong>Idle %</strong></p></td>
+   <td><strong>=</strong></td>
+   <td><strong>Idle Cost</strong></td>
+   <td><strong>/</strong></td>
+   <td><strong>Resource Allocation Costs</strong></td>
   </tr>
 </table>
 
