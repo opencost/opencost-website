@@ -54,7 +54,7 @@ curl -G http://localhost:9003/allocation \
 curl -G http://localhost:9003/allocation/compute \
   -d window=9d \
   -d step=3d \
-  -d resolution=10m
+  -d resolution=10m \
   -d aggregate=namespace
 ```
 
@@ -79,6 +79,26 @@ curl -G http://localhost:9003/allocation/compute \
     }
   ]
 }
+```
+
+
+### Allocation data with distributed idle costs
+
+Here's an example of an OpenCost API query that distributes cluster idle costs across all allocations in the cluster:
+
+```sh
+curl -G http://localhost:9003/allocation \
+  -d window=1d \
+  -d shareIdle=true
+```
+
+Here's the same query, but distributing the idle costs of each *node* across all allocations on that node:
+
+```sh
+curl -G http://localhost:9003/allocation \
+  -d window=1d \
+  -d shareIdle=true \
+  -d idleByNode=true
 ```
 
 ## `/cloudCost` Examples
