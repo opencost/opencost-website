@@ -13,7 +13,7 @@ Examples using the API endpoints are provided in the [API Examples](api-examples
 
 ## Allocation API
 
-The standard OpenCost API query for costs and resources allocated to Kubernetes workloads based on on-demand list pricing. You may specify the `window` date range, the Kubernetes primitive(s) to `aggregate` on, the `step` for the duration of returned sets, the `resolution` for the duration to use for Prometheus queries, `includeIdle` for whether to include the `__idle__` usage for the cluster, `shareIdle` for whether to distribute idle costs across non-idle allocations, and `idleByNode` for whether to calculate idle costs per node instead of per cluster.
+The standard OpenCost API query for costs and resources allocated to Kubernetes workloads based on on-demand list pricing. You may specify the `window` date range, the Kubernetes primitive(s) to `aggregate` on, the `step` for the duration of returned sets, the `resolution` for the duration to use for Prometheus queries, and `includeIdle` for whether to include the `__idle__` usage for the cluster.
 
 ### `/allocation`
 QUERY PARAMETERS
@@ -102,47 +102,11 @@ QUERY PARAMETERS
   <tr>
     <td/>
     <td>
-      Whether to return the calculated <code>\_\_idle\_\_</code> field for the query. Default is <code>false</code>.
+      Whether to return the calculated <code>__idle__</code> field for the query. Default is <code>false</code>.
       <br/><br/>
       Examples:<br/>
       <ul>
         <li><code>includeIdle=true</code></li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <th id="shareIdle">shareIdle<a class="hash-link" href="#a_shareidle" title="shareIdle">​</a></th>
-    <th align="left">boolean</th>
-  </tr>
-  <tr>
-    <td/>
-    <td>
-      Whether to distribute idle costs across non-idle allocations. Default is <code>false</code>.
-
-      When disabled, idle costs are allocated to a separate <code>\_\_idle\_\_</code> allocation.
-      When enabled, idle costs are distributed across non-idle allocations. This happens proportionally to the non-idle costs of each allocation. For example, if one allocation has twice as much non-idle costs as another, it also receives twice the amount of idle costs. This calculation happens separately for each resource (like CPU or RAM).
-
-      You can choose to distribute idle costs per cluster or per node using the <code>idleByNode</code> parameter.
-
-      <br/><br/>
-      Examples:<br/>
-      <ul>
-        <li><code>shareIdle=true</code></li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <th id="idleByNode">idleByNode<a class="hash-link" href="#a_idlebynode" title="idleByNode">​</a></th>
-    <th align="left">boolean</th>
-  </tr>
-  <tr>
-    <td/>
-    <td>
-      Whether to calculate idle costs per node instead of per cluster. Default is <code>false</code>.
-      <br/><br/>
-      Examples:<br/>
-      <ul>
-        <li><code>idleByNode=true</code></li>
       </ul>
     </td>
   </tr>
