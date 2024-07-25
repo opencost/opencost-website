@@ -52,7 +52,7 @@ services:
   ports:
    - "9090:9090"
   environment:
-   - API_SERVER=host.docker.internal
+   - API_SERVER=opencost-cost-model
 ```
 
 and run with
