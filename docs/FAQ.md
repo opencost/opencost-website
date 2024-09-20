@@ -64,6 +64,7 @@ OpenCost has core billing integrations with:
 - AWS/EKS
 - Azure/AKS
 - GCP/GKE
+- OCI/OKE
 - On-prem clusters via custom pricing sheets
 
 ### How can I contribute to OpenCost?
