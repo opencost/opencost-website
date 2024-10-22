@@ -62,4 +62,4 @@ You should now have access via http://HOSTNAME
 
 ## UI Development
 
-The source for the OpenCost UI is in [https://github.com/opencost/opencost/tree/develop/ui](https://github.com/opencost/opencost/tree/develop/ui) with instructions for developing locally.
+The source for the OpenCost UI is in [[https://github.com/opencost/opencost/tree/develop/ui](https://github.com/opencost/opencost-ui)]([https://github.com/opencost/opencost/tree/develop/ui](https://github.com/opencost/opencost-ui)) with instructions for developing locally.
