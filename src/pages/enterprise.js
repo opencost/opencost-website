@@ -4,6 +4,7 @@ import Layout from "@theme/Layout";
 
 import EnterpriseHero from "../components/EnterpriseHero";
 import Kubecost from "../components/Kubecost";
+import Randoli from "../components/Randoli";
 
 export default function Enterprise() {
   const { siteConfig } = useDocusaurusContext();
@@ -15,6 +16,8 @@ export default function Enterprise() {
         <h2 className="pb-6 text-5xl font-anek font-normal">Enterprise & Support</h2>
 
         <Kubecost />
+        <br></br>
+        <Randoli /> 
       </main>
     </Layout>
   );
