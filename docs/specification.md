@@ -21,7 +21,7 @@ As Kubernetes adoption increases within an organization, these complexities beco
 
 ## Foundational definitions
 
-**Total Cluster Costs** represent all costs required to operate a Kubernetes cluster. **Cluster Assets Costs** are the portion of these costs that are related to directly observable entities within a cluster; these include expenses from nodes, persistent volumes, attached disks, load balancers, and network ingress/egress costs. From a financial accounting perspective, these are equivalent to the Cost of Goods Sold when measuring product costs. **Cluster Overhead Costs** measure the overhead required to operate all of the Assets of a cluster, e.g. Cluster Management Fees. These are the equivalent to Selling, General and Administrative Expenses (SG&A), or indirect costs, when viewed from a financial accounting perspective.
+**Total Cluster Costs** represent all costs required to operate a Kubernetes cluster. **Cluster Assets Costs** are the portion of these costs that are related to directly observable entities within a cluster; these include expenses from nodes, persistent volumes, attached disks, load balancers, and network ingress/egress costs. From a financial accounting perspective, these are equivalent to the Cost of Goods Sold when measuring product costs. **Cluster Overhead Costs** measure the overhead required to operate all of the Assets of a cluster, e.g. Cluster Management Fees. These are the equivalent of Selling, General, and Administrative Expenses (SG&A), or indirect costs when viewed from a financial accounting perspective.
 
 
 <table>
@@ -55,7 +55,7 @@ The following chart shows these relationships:
 
 ![image4](../static/img/image4.png)
 
-While billing models can differ by environment, below are common examples of segmentation by Allocation, Usage and Overhead Costs.
+While billing models can differ by environment, below are common examples of segmentation by Allocation, Usage, and Overhead Costs.
 
 ![image1](../static/img/image1.png)
 
@@ -80,7 +80,7 @@ The following chart shows these relationships:
 
 ## Cluster Asset Costs
 
-Cluster Assets are observable entities within a Kubernetes cluster that directly incur costs related to their resources. Asset Costs consist of Resource Allocation Costs and Resource Usage Costs. Every Asset conforming to this specification MUST include at least one cost component with Amount, Unit and Rate attributes as well as a TotalCost value.
+Cluster Assets are observable entities within a Kubernetes cluster that directly incur costs related to their resources. Asset Costs consist of Resource Allocation Costs and Resource Usage Costs. Every Asset conforming to this specification MUST include at least one cost component with Amount, Unit, and Rate attributes as well as a TotalCost value.
 
 Attributes for measured Resource Allocation Costs:
 
@@ -89,7 +89,7 @@ Attributes for measured Resource Allocation Costs:
 * [float] Amount - the amount of resource reserved by the asset, e.g. 2 CPU cores
 * [float] Duration - time between the start and end of the allocation period measured in hours, e.g. 24 hours
 * [string] Unit - the amount’s unit of measurement, e.g. CPU cores
-* [float] HourlyRate - cost per one unit hour, e.g. $0.2 per CPU hourly rate
+* [float] HourlyRate - cost per one unit hour, e.g. $0.20 per CPU hourly rate
 * [float] Total Cost - defined as Amount \* Duration \* HourlyRate
 
 Attributes for measured Resource Usage Costs:
@@ -189,8 +189,6 @@ The following workload cost aggregations are supported in a complete implementat
 
 Shared Workload Costs, Cluster Idle Costs, and Overhead Costs are common examples of costs that organizations can optionally distribute amongst tenants. A common example would be system workload costs, e.g. kube-system pods, that benefit all tenants. Common methods for distributing these costs include the following:
 
-
-
 1. Uniformly across other tenants
 2. Proportionate to a tenant's consumption of Cluster Asset costs
 3. Custom metric, e.g. bytes of network egress
@@ -213,8 +211,6 @@ Idle Costs can be calculated at both the Asset/Resource level as well as the Wor
   </tr>
 </table>
 
-
-
 <table>
   <tr>
    <td><strong>Cluster </strong><p><strong>Idle %</strong></p></td>
@@ -225,15 +221,12 @@ Idle Costs can be calculated at both the Asset/Resource level as well as the Wor
   </tr>
 </table>
 
-
-
 ##
 The following chart shows these relationships:
 
 ![image3](../static/img/image3.png)
 
-
-Asset Idle Cost can be calculated by individual assets, groups of assets, cluster(s), and by individual resources, e.g. CPU. Resources that are strictly billed on usage can be viewed to have 100% efficiency but should not be included when measuring idle percentage of a cluster.
+Asset Idle Cost can be calculated by individual assets, groups of assets, cluster(s), and by individual resources, e.g. CPU. Resources that are strictly billed on usage can be viewed to have 100% efficiency but should not be included when measuring the idle percentage of a cluster.
 
 Workload Idle Costs is a cost-weighted measurement of [requested](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container) resources that are unused. Workload Idle Costs can be calculated on any grouping of Kubernetes workloads, e.g. containers, pods, labels, annotations, namespaces, etc.
 
@@ -248,21 +241,15 @@ The state of a pod will affect the ability to assign costs and whether a resourc
 
 ## Glossary
 
-
-**Cluster Assets** – Observable entities within a Kubernetes cluster that directly incur costs related to their resources. Examples include nodes, persistent volumes, attached disks, load balancers.
-
+**Cluster Assets** – Observable entities within a Kubernetes cluster that directly incur costs related to their resources. Examples include nodes, persistent volumes, attached disks, and load balancers.
 
 **Container** - An instance of a container image. You may have multiple copies of the same image running at the same time. [More info](https://kubernetes.io/docs/concepts/containers/)
 
-
 **Image** - A template of a container which contains software (usually microservices) that needs to be run. [More info](https://kubernetes.io/docs/concepts/containers/images/)
-
 
 **Server / Instance / Node / Node Pool** - A machine (possibly cloud or on-prem, physical or virtual) in this context used by Kubernetes [More info](https://kubernetes.io/docs/concepts/architecture/nodes/)
 
-
-**Pod** - A Kubernetes specific concept that consists of a group of containers. A pod is treated as a single block of resources that may be scheduled or scaled on a cluster. [More info](https://kubernetes.io/docs/concepts/workloads/pods/)
-
+**Pod** - A Kubernetes-specific concept that consists of a group of containers. A pod is treated as a single block of resources that may be scheduled or scaled on a cluster. [More info](https://kubernetes.io/docs/concepts/workloads/pods/)
 
 **Container Orchestration** - Manages the cluster of server instances and maintains the lifecycle of containers and pods. Scheduling is a function of the container orchestrator which schedules pods/containers to run on a server instance.
 
@@ -270,30 +257,30 @@ The state of a pod will affect the ability to assign costs and whether a resourc
 **Cluster** - A group of server instances
 
 
-**Namespace** - A Kubernetes concept which creates a ‘virtual’ cluster where pods/containers may be deployed and observed discreetly from other namespaces. [More info](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+**Namespace** - A Kubernetes concept that creates a ‘virtual’ cluster where pods/containers may be deployed and observed discreetly from other namespaces. [More info](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
 
 
-**Pod Labels** - Key / Value pairs which may be used to identify objects that are meaningful to the user. There is no semantic meaning to the core of the system. Labels are typically used where a grouping of multiple namespaces need to be associated with a workload. [More info](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+**Pod Labels** - Key / Value pairs that may be used to identify objects that are meaningful to the user. There is no semantic meaning to the core of the system. Labels are typically used where a grouping of multiple namespaces need to be associated with a workload. [More info](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 
 
 ## Appendix A
 
-Various cloud providers supply an hourly resource cost directly in their user billing model.The OpenCost model recommends utilizing the fully Amortized Net Cost for each resource as an input when this is the case. When explicit RAM, CPU or GPU prices are not provided by a cloud provider, the OpenCost model needs to derive these values. The recommendation is to use a scalable ratio of CPU, GPU, RAM and other price inputs. These default values should be based on the marginal resource rates of the provider by family.
+Various cloud providers supply an hourly resource cost directly in their user billing model. The OpenCost model recommends utilizing the fully Amortized Net Cost for each resource as an input when this is the case. When explicit RAM, CPU or GPU prices are not provided by a cloud provider, the OpenCost model needs to derive these values. The recommendation is to use a scalable ratio of CPU, GPU, RAM, and other price inputs. These default values should be based on the marginal resource rates of the provider by family.
 
 One approach for calculating is to ensure the sum of each component is equal to the total price of the Asset (e.g. node) based on billing rates from your provider. When the sum of resources (e.g. RAM/CPU/GPU) cost is greater (or less) than the price of the node, then the ratio between the input prices is held constant but the total value is adjusted.
 
-As an example, you have provisioned a node with 1 GPU, 1 CPU and 1 GB of RAM that costs $35/mo. If your base GPU price is $30, base CPU price is $30, and RAM GB price is $10, based on the average marginal costs across instances in this family class, then these inputs will be normalized to $15 for GPU, $15 for CPU and $5 for RAM so that the sum equals the cost of the node. Note that the price of a GPU, as well as the price of a CPU remain 3x the price of a Gb of RAM.
+As an example, you have provisioned a node with 1 GPU, 1 CPU, and 1 GB of RAM that costs $35/mo. If your base GPU price is $30, base CPU price is $30, and RAM GB price is $10, based on the average marginal costs across instances in this family class, then these inputs will be normalized to $15 for GPU, $15 for CPU and $5 for RAM so that the sum equals the cost of the node. Note that the price of a GPU, as well as the price of a CPU remain 3x the price of a GB of RAM.
 
 
 ## Appendix B
 
-Sampling Kubernetes resources is recommended with the following metrics / datasources:
+Sampling Kubernetes resources is recommended with the following metrics/data sources:
 
 
 
 * container_cpu_usage_seconds_total – sample from cAdvisor
 * container_memory_working_set_bytes –  sampled from cAdvisor
-* gpu_usage – sampled via chipset specific metrics
+* gpu_usage – sampled via chipset-specific metrics
 * cpu_requested – sampled from kube API
 * ram_requested – sampled from kube API
 * gpu_requested – sampled from kube API
@@ -307,7 +294,7 @@ Working examples of OpenCost data to come!
 ## Notes
 
 [^1]:
-     Resource **usage** costs cannot be part of idle cost because they are always used, the corresponding resource never "sits idle."
+     Resource **usage** costs cannot be part of the idle cost because they are always used, the corresponding resource never "sits idle."
 
 [^2]:
      This is because containers are the smallest identifiable unit of "thing that uses resources." For example, the lowest level of reliable CPU usage information is usually a container.
