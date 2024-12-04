@@ -3,25 +3,15 @@ sidebar_position: 9
 title: Datadog
 ---
 
-# Datadog/OpenCost Plugin Notes
+# Datadog Plugin 
 
 :::note
 
-*** Support for the Datadog plugin is available in the current `1.110.0` release. ***
+*** DataDog costs can take up to 72 hours to appear in OpenCost ***
 
 :::
 
-These instructions are _very_ rough and will continue to get revised as we approach release.
-
-Plugin Architecture: https://link.excalidraw.com/l/ABLQ24dkKai/CBEQtjH6Mr
-
-## Plugin Downloading
-
-The [OpenCost Helm chart](../installation/helm) uses an init container to install the plugins the user has configured. The init container downloads the plugins and puts them in a local `emptydir` that is mounted in the standard OpenCost container. The plugins themselves run in the existing OpenCost process.
-
-OpenCost uses this approach of dynamically downloading the plugins to avoid container bloat. A single plugin could double the base OpenCost container image size - this allows OpenCost to scale to support many plugins by only downloading and installing the ones the user selects. This does not increase the number of running containers in an OpenCost installation, it only adds an init container.
-
-## OpenCost Datadog Plugin Setup Guide
+## Setup Guide
 
 1. Obtain plugin binary
    1. Visit https://github.com/opencost/opencost-plugins/releases and choose the most recent release
@@ -33,8 +23,8 @@ OpenCost uses this approach of dynamically downloading the plugins to avoid cont
 ```json
 {
  "datadog_site": "us5.datadoghq.com",
- "datadog_api_key": "c508d4fd3d126abbbbdc2fe96b0f6613",
- "datadog_app_key": "f357b1f4efefb0870109e0d1aa0cb437b5f10ab9"
+ "datadog_api_key": "<datadog_api_key>",
+ "datadog_app_key": "<datadog_app_key>"
 }
 ```
 3. Ensure you set the following env vars:
@@ -62,32 +52,32 @@ plugins:
    fullImageName: curlimages/curl:latest
    folder: /opt/opencost/plugin
    # leave this commented to always download most recent version of plugins
-    #version: <INSERT_SPECIFIC_PLUGINS_VERSION>
+   #version: <INSERT_SPECIFIC_PLUGINS_VERSION>
    # leave this commented to always download most recent version of plugins
    # version: <INSERT_SPECIFIC_PLUGINS_VERSION>
-	# the list of enabled plugins
-	enabledPlugins: []
-  	# - datadog
+   # the list of enabled plugins
+   enabledPlugins:
+      - datadog
 	# pre-existing secret for plugin configuration
-	configSecret: ""
+   configSecret: ""
 
  configs:
    datadog: |
       {
       "datadog_site": "us5.datadoghq.com",
- "datadog_api_key": "c508d4fd3d126abbbbdc2fe96b0f6613",
- "datadog_app_key": "f357b1f4efefb0870109e0d1aa0cb437b5f10ab9"
+      "datadog_api_key": "<datadog_api_key>",
+      "datadog_app_key": "<datadog_app_key>"
       }
 
 opencost:
  exporter:
    cloudProviderApiKey: "AIzaSyDXQPG_MHUEy9neR7stolq6l0ujXmjJlvk"
-   image:
-     registry:  gcr.io
-     # -- Exporter container image name
-     repository: guestbook-227502/opencost
-     # -- Exporter container image tag
-     # @default -- `""` (use appVersion in Chart.yaml)
-     tag: plugin-spike-03062024
+
 ```
 3. Confirm that looking at the pod logs shows Datadog queries going through
+
+## Example UI
+
+Below is an example of visualizations from the DataDog plugin in the OpenCost external costs UI:
+
+![DD_screenshot](dd_plugin.png)
