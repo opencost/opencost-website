@@ -13,6 +13,22 @@ export default function EnterpriseHero({ className }) {
           costs in an environment that embraces community collaboration. With unified cost
           monitoring, customized alerts and so much more, we are on a mission to simplify cost
           management.
+
+          There are many downstream products that use OpenCost and vendors who provide enterprise level features 
+          and support of OpenCost itself, and also build products that use OpenCost directly. To be listed as an
+          OpenCost Enterprise Vendor, organizations must meet the following criteria:
+
+          <ul>
+              <li>List item one</li>
+              <li>List item two with subitems:
+                  <ul>
+                      <li>Subitem 1</li>
+                      <li>Subitem 2</li>
+                  </ul>
+              </li>
+              <li>Final list item</li>
+          </ul>
+
         </p>
       </hgroup>
 
