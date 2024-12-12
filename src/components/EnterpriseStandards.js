@@ -2,15 +2,14 @@ import React from "react";
 
 export default function EnterpriseStandards({ className }) {
   return (
-    <section className={`flex ${className}`}>
-      <hgroup className="px-4 sm:px-8 basis-3/5">
+    <section className={`flex flex-col-reverse lg:flex-row items-end lg:items-center ${className}`}>
+
+  
 
         <p className="text-xl sm:text-2xl leading-relaxed sm:leading-11.5">
 
-          There are many downstream products that use OpenCost and vendors who provide enterprise level features 
-          and support of OpenCost itself, and also build products that use OpenCost directly. To be listed as an
-          OpenCost Enterprise Vendor, organizations must meet the following criteria:
-
+         To be listed as an OpenCost Enterprise Vendor, organizations must meet the following criteria:
+          <p></p> 
           <ul>
               <li>Demonstrate a commitment to OpenCost’s maintenance and improvement
                   <ul>
@@ -45,7 +44,7 @@ export default function EnterpriseStandards({ className }) {
         </p>
 
 
-      </hgroup>
+
     </section>
 
 
