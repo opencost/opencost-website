@@ -1,9 +1,8 @@
 import React from "react";
-import EnterpriseStacksImage from "/img/enterprise-stack.svg";
 
 export default function EnterpriseStandards({ className }) {
   return (
-    <section className={`flex flex-col-reverse lg:flex-row items-end lg:items-center ${className}`}>
+    <section className={`flex ${className}`}>
       <hgroup className="px-4 sm:px-8 basis-3/5">
 
         <p className="text-xl sm:text-2xl leading-relaxed sm:leading-11.5">
