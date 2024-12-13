@@ -16,7 +16,7 @@ export default function CNCF() {
         >
           Cloud Native Computing Foundation
         </a>
-        &nbsp;sandbox project.
+        &nbsp;incubating project.
       </div>
     </div>
   );
