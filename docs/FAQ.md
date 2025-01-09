@@ -4,7 +4,7 @@
 
 OpenCost is a vendor-neutral open source project for measuring and allocating Kubernetes and cloud infrastructure costs.
 
-The project is a combination of the OpenCost core allocation engine with the community-driven [OpenCost Specification](specification) on how to monitor costs in Kubernetes land. The allocation engine is a Golang implementation that conforms to spec. Both have been submitted to the CNCF as a [sandbox project](https://www.cncf.io/sandbox-projects/).
+The project is a combination of the OpenCost core allocation engine with the community-driven [OpenCost Specification](specification) on how to monitor costs in Kubernetes land. The allocation engine is a Golang implementation that conforms to spec. Both are owned by CNCF as an [incubating project](https://www.cncf.io/projects/).
 
 ### How do I get started with the project?
 
@@ -16,11 +16,11 @@ No. OpenCost is open source (Apache 2.0) and free to use.
 
 ### How does OpenCost relate to Kubecost?
 
-The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in all versions of Kubecost for building a cost allocation model, to which they add additional features in their commercial offering. OpenCost is a CNCF sandbox project, so it is free to use and open to contributions from all community members.
+The OpenCost implementation is the cost allocation engine originally built by Kubecost. This implementation is actively used in all versions of Kubecost for building a cost allocation model, to which they add additional features in their commercial offering. OpenCost is a CNCF incubating project, so it is free to use and open to contributions from all community members.
 
 ### What's the difference between OpenCost and Kubecost?
 
-OpenCost provides real-time monitoring of your Kubernetes cluster and provides the on-demand list pricing for the cloud resources in use by your cluster. It integrates with cloud billing to provide visibility into the cost of cloud resources linked to your Kubernetes usage. OpenCost is a CNCF sandbox project, so it is free to use and open to contributions from all community members. OpenCost has a UI, but the goal of OpenCost is to become the "Prometheus of cloud cost monitoring" and allow other solutions to be built on top of that data.
+OpenCost provides real-time monitoring of your Kubernetes cluster and provides the on-demand list pricing for the cloud resources in use by your cluster. It integrates with cloud billing to provide visibility into the cost of cloud resources linked to your Kubernetes usage. OpenCost is a CNCF incubating project, so it is free to use and open to contributions from all community members. OpenCost has a UI, but the goal of OpenCost is to become the "Prometheus of cloud cost monitoring" and allow other solutions to be built on top of that data.
 
 OpenCost is the cost allocation engine for Kubecost. Kubecost provides more accurate cost numbers for your cluster after reconciling the differences between your published bill with any negotiated discounts and the on-demand pricing (if any). Kubecost also provides recommendations, governance, alerting, federated clusters, a SaaS platform, and support for their commercial offering.
 
@@ -64,6 +64,7 @@ OpenCost has core billing integrations with:
 - AWS/EKS
 - Azure/AKS
 - GCP/GKE
+- OCI/OKE
 - On-prem clusters via custom pricing sheets
 
 ### How can I contribute to OpenCost?

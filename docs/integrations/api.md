@@ -48,7 +48,7 @@ QUERY PARAMETERS
   <tr>
     <td/>
     <td>
-      Field by which to aggregate the results. Accepts: <code>cluster</code>, <code>node</code>, <code>namespace</code>, <code>controllerKind</code>, <code>controller</code>, <code>service</code>, <code>pod</code>, <code>container</code>, <code>label:LABEL_NAME</code>, and <code>annotation:name</code>. Also accepts comma-separated lists for multi-aggregation, like <code>namespace,label:app</code>.
+      Field by which to aggregate the results. Accepts: <code>cluster</code>, <code>node</code>, <code>namespace</code>, <code>controllerKind</code>, <code>controller</code>, <code>service</code>, <code>pod</code>, <code>container</code>, <code>label:LABEL_NAME</code>, and <code>annotation:name</code>. Also accepts comma-separated lists for multi-aggregation, like <code>aggregate=namespace,label:app</code>.
       <br/><br/>
       Examples:<br/>
       <ul>
@@ -149,6 +149,37 @@ QUERY PARAMETERS
   </tr>
 </table>
 
+## Assets API
+
+The Assets API retrieves backing cost data broken down by individual assets in your cluster. It is not yet exposed in the UI.
+
+### `/assets`
+QUERY PARAMETERS
+<table>
+  <tr>
+    <th id="window">window<a class="hash-link" href="#as_window" title="window">​</a></th>
+    <th align="left">string</th>
+  </tr>
+  <tr>
+    <td valign="top"><b>required</b></td>
+    <td>
+      Duration of time over which to query. Accepts: words like <code>today</code>, <code>week</code>, <code>month</code>, <code>yesterday</code>, <code>lastweek</code>, <code>lastmonth</code>; durations like <code>30m</code>, <code>12h</code>, <code>7d</code>; <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date pairs like <code>2021-01-02T15:04:05Z,2021-02-02T15:04:05Z</code>; <a href="https://www.unixtimestamp.com/">Unix timestamps</a> like <code>1578002645,1580681045</code>.
+      <br/><br/>
+      Examples:<br/>
+      <ul>
+        <li><code>window=today</code> - The current day</li>
+        <li><code>window=month</code> - The month-to-date</li>
+        <li><code>window=lastweek</code> - The previous week</li>
+        <li><code>window=30m</code> - The last 30 minutes</li>
+        <li><code>window=12h</code> - The last 12 hours</li>
+        <li><code>window=7d</code> - The previous 7 days</li>
+        <li><code>window=2023-01-18T10:30:00Z,2023-01-19T10:30:00Z</code> - <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a> date/time range</li>
+        <li><code>window=1674073869,1674193869</code> - <a href="https://www.unixtimestamp.com/">Unix timestamp</a> range</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
 ## Cloud Costs API
 
 The Cloud Costs API retrieves cloud cost data from cloud providers by reading cost and usage reports. You will need additional [configuration](../configuration/) for supporting the billing integration with your cloud provider.
@@ -188,7 +219,7 @@ QUERY PARAMETERS
     <td>
       Field by which to aggregate the results.
       Accepts: <code>invoiceEntityID</code>, <code>accountID</code>, <code>provider</code>, <code>providerID</code>, <code>category</code>, and <code>service</code>.
-      Also accepts comma-separated lists for multi-aggregation, like <code>provider,service</code>.
+      Also accepts comma-separated lists for multi-aggregation, like <code>aggregate=provider,service</code>.
       If no value is provided, the entire list of items is returned.
       <br/><br/>
       Examples:<br/>
