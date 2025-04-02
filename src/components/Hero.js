@@ -1,4 +1,5 @@
 import React from "react";
+import LiveDemoButton from '@theme/Navbar/Content/LiveDemoButton';
 
 export default function Hero() {
   return (
@@ -19,15 +20,7 @@ export default function Hero() {
               <span>Get started</span>
             </div>
           </a>
-          <a
-            href="https://demo.infra.opencost.io"
-            className="bg-green-400 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-md transition-colors relative no-underline hover:no-underline"
-          >
-            Live Demo
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
-              new
-            </span>
-          </a>
+          <LiveDemoButton href="https://demo.infra.opencost.io" />
         </div>
       </div>
       <div className="flex flex-col w-full md:w-4/5 lg:w-3/8 xl:w-4/8">
