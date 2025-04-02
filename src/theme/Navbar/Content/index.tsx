@@ -85,6 +85,17 @@ export default function NavbarContent(): JSX.Element {
         // Ask the user to add the respective navbar items => more flexible
         <>
           <NavbarItems items={rightItems} />
+          <div className="relative">
+            <a
+              href="https://demo.opencost.io"
+              className="bg-[#00B39F] hover:bg-[#009B8A] text-white font-semibold px-4 py-2 rounded-md transition-colors"
+            >
+              Demo
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                new
+              </span>
+            </a>
+          </div>
           <span className="mt-1">
               <GitHubButton
               href="https://github.com/opencost/opencost"
