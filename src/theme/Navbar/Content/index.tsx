@@ -90,13 +90,24 @@ export default function NavbarContent(): JSX.Element {
               href="https://demo.opencost.io"
               className="bg-[#00B39F] hover:bg-[#009B8A] text-white font-semibold px-4 py-2 rounded-md transition-colors"
             >
-              Demo
+              Live Demo
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
                 new
               </span>
             </a>
           </div>
           <span className="mt-1">
+              <div className="relative">
+                <a
+                  href="https://demo.opencost.io"
+                  className="bg-[#00B39F] hover:bg-[#009B8A] text-white font-semibold px-4 py-2 rounded-md transition-colors"
+                >
+                  Live Demo
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                    new
+                  </span>
+                </a>
+              </div>
               <GitHubButton
               href="https://github.com/opencost/opencost"
               data-color-scheme="no-preference: light_high_contrast; light: light; dark: light;"
