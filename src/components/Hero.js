@@ -17,6 +17,15 @@ export default function Hero() {
           <div className="text-white w-fit py-2 px-4 rounded-md bg-green-400 hover:bg-green-700 transition-colors duration-200">
             <span>Get started</span>
           </div>
+          <a
+              href="https://demo.infra.opencost.io"
+              className="bg-green-400 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-md transition-colors relative no-underline hover:no-underline"
+            >
+              Live Demo
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                new
+              </span>
+            </a>
         </a>
       </div>
       <div className="flex flex-col w-full md:w-4/5 lg:w-3/8 xl:w-4/8">
