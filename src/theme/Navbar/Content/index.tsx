@@ -87,7 +87,7 @@ export default function NavbarContent(): JSX.Element {
           <NavbarItems items={rightItems} />
           <div className="relative flex items-center gap-4">
             <a
-              href="https://demo.infraopencost.io"
+              href="https://demo.infra.opencost.io"
               className="bg-[#00B39F] hover:bg-[#009B8A] text-white font-semibold px-4 py-2 rounded-md transition-colors relative"
             >
               Live Demo
