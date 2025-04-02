@@ -17,9 +17,10 @@ import SearchBar from '@theme/SearchBar';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
+import GitHubButton from "react-github-btn";
+import LiveDemoButton from './LiveDemoButton';
 
 import styles from './styles.module.css';
-import GitHubButton from "react-github-btn";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -86,15 +87,7 @@ export default function NavbarContent(): JSX.Element {
         <>
           <NavbarItems items={rightItems} />
           <div className="relative flex items-center gap-4">
-            <a
-              href="https://demo.infra.opencost.io"
-              className="bg-green-400 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-md transition-colors relative no-underline hover:no-underline"
-            >
-              Live Demo
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">
-                new
-              </span>
-            </a>
+            <LiveDemoButton href="https://demo.infra.opencost.io" />
             <div className="flex-shrink-0">
               <GitHubButton
                 href="https://github.com/opencost/opencost"
