@@ -17,9 +17,10 @@ import SearchBar from '@theme/SearchBar';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
+import GitHubButton from "react-github-btn";
+import LiveDemoButton from './LiveDemoButton';
 
 import styles from './styles.module.css';
-import GitHubButton from "react-github-btn";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -85,17 +86,20 @@ export default function NavbarContent(): JSX.Element {
         // Ask the user to add the respective navbar items => more flexible
         <>
           <NavbarItems items={rightItems} />
-          <span className="mt-1">
+          <div className="relative flex items-center gap-4">
+            <LiveDemoButton href="https://demo.infra.opencost.io" />
+            <div className="flex-shrink-0">
               <GitHubButton
-              href="https://github.com/opencost/opencost"
-              data-color-scheme="no-preference: light_high_contrast; light: light; dark: light;"
-              data-size="large"
-              data-show-count="true"
-              aria-label="Star opencost/opencost on GitHub"
-            >
-              GitHub
-            </GitHubButton>
-          </span>
+                href="https://github.com/opencost/opencost"
+                data-color-scheme="no-preference: light_high_contrast; light: light; dark: light;"
+                data-size="large"
+                data-show-count="true"
+                aria-label="Star opencost/opencost on GitHub"
+              >
+                GitHub
+              </GitHubButton>
+            </div>
+          </div>
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           {!searchBarItem && (
             <NavbarSearch>
