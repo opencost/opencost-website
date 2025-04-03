@@ -86,7 +86,7 @@ export default function NavbarContent(): JSX.Element {
         // Ask the user to add the respective navbar items => more flexible
         <>
           <NavbarItems items={rightItems} />
-          <div className="relative flex items-center gap-4">
+          <div className="relative hidden md:flex items-center gap-4">
             <LiveDemoButton href="https://demo.infra.opencost.io" />
             <div className="flex-shrink-0">
               <GitHubButton
