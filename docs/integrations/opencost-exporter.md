@@ -12,24 +12,24 @@ The [Prometheus Opencost Exporter](https://github.com/prometheus-community/helm-
 
 ## Installing Manually
 
-> Note: all deployments of OpenCost function as a Prometheus metric exporter. [View recommended install](../installation/install).
+> Note: all deployments of OpenCost function as a Prometheus metric exporter. [View recommended install](/docs/installation/install).
 
 Follow these steps to set up OpenCost as exporter-only:
 
 1. Apply the combined YAML:
 
-    ```sh
-    kubectl apply --namespace opencost-exporter \
-    -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/exporter/opencost-exporter.yaml
-    ```
+   ```sh
+   kubectl apply --namespace opencost-exporter \
+   -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/exporter/opencost-exporter.yaml
+   ```
 
 2. To verify that metrics are available:
 
- ```sh
- kubectl port-forward --namespace opencost-exporter service/opencost 9003
- ```
+```sh
+kubectl port-forward --namespace opencost-exporter service/opencost 9003
+```
 
- `curl http://localhost:9003/metrics` to see exported metrics
+`curl http://localhost:9003/metrics` to see exported metrics
 
 Add OpenCost scrape config to your Prometheus ([more info](https://prometheus.io/docs/introduction/first_steps/#configuring-prometheus))
 
@@ -47,25 +47,25 @@ OpenCost is now exporting cost metrics. See the following sections for different
 
 ## Available Prometheus Metrics
 
-| Metric | Description |
-| ------------ | --------------------- |
-| container_cpu_allocation | Percent of a single CPU used in a minute |
-| container_gpu_allocation | GPU used |
-| container_memory_allocation_bytes | Bytes of RAM used |
-| kubecost_cluster_info | ClusterInfo |
-| kubecost_cluster_management_cost | Hourly cost paid as a cluster management fee. |
-| kubecost_load_balancer_cost | Hourly cost of load balancer |
-| kubecost_network_internet_egress_cost | Total cost per GB of internet egress. |
-| kubecost_network_region_egress_cost | Total cost per GB egress across regions |
-| kubecost_network_zone_egress_cost | Total cost per GB egress across zones |
-| kubecost_node_is_spot | Cloud provider info about node preemptibility |
-| node_cpu_hourly_cost | hourly cost for each cpu on this node |
-| node_gpu_count | count of gpu on this node |
-| node_gpu_hourly_cost | hourly cost for each gpu on this node |
-| node_ram_hourly_cost | hourly cost for each gb of ram on this node |
-| node_total_hourly_cost | Total node cost per hour |
-| pod_pvc_allocation | Bytes used by a PVC attached to a pod |
-| pv_hourly_cost | Cost per GB per hour on a persistent disk |
+| Metric                                | Description                                   |
+| ------------------------------------- | --------------------------------------------- |
+| container_cpu_allocation              | Percent of a single CPU used in a minute      |
+| container_gpu_allocation              | GPU used                                      |
+| container_memory_allocation_bytes     | Bytes of RAM used                             |
+| kubecost_cluster_info                 | ClusterInfo                                   |
+| kubecost_cluster_management_cost      | Hourly cost paid as a cluster management fee. |
+| kubecost_load_balancer_cost           | Hourly cost of load balancer                  |
+| kubecost_network_internet_egress_cost | Total cost per GB of internet egress.         |
+| kubecost_network_region_egress_cost   | Total cost per GB egress across regions       |
+| kubecost_network_zone_egress_cost     | Total cost per GB egress across zones         |
+| kubecost_node_is_spot                 | Cloud provider info about node preemptibility |
+| node_cpu_hourly_cost                  | hourly cost for each cpu on this node         |
+| node_gpu_count                        | count of gpu on this node                     |
+| node_gpu_hourly_cost                  | hourly cost for each gpu on this node         |
+| node_ram_hourly_cost                  | hourly cost for each gb of ram on this node   |
+| node_total_hourly_cost                | Total node cost per hour                      |
+| pod_pvc_allocation                    | Bytes used by a PVC attached to a pod         |
+| pv_hourly_cost                        | Cost per GB per hour on a persistent disk     |
 
 By default, all cost metrics are based on public billing APIs. See the [Limitations](#limitations) section below about reflecting your precise billing information. Supported platforms are AWS, Azure, and GCP. For on-prem clusters, prices are based on configurable defaults.
 
