@@ -216,7 +216,7 @@ type ComputeSource[T any] interface {
 - **CanCompute(start, end time.Time) bool**  
   Determines whether the source can effectively compute data for the given time range. This allows the system to check capability before attempting computation that might fail.
 
-- **Compute(start, end time.Time, resolution time.Duration) (*T, error)**  
+- **Compute(start, end time.Time, resolution time.Duration) (\*T, error)**  
   Computes and returns data of type `T` for the specified time range with the given resolution. Returns an error if computation fails.
 
 - **Name() string**  
