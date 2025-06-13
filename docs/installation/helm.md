@@ -26,6 +26,30 @@ The full list of installation options can be found [here](https://github.com/ope
 
 ```yaml
 opencost:
+  prometheus:
+    internal:
+      namespaceName: monitoring
+      serviceName: prometheus-kube-prometheus-prometheus
+      port: 9090
+
+  dataRetention:
+    dailyResolutionDays: 30  # default: 15
+
+  exporter:
+    defaultClusterId: <cluster name>
+    replicas: 1
+    resources:
+      requests:
+        cpu: "10m"
+        memory: "55Mi"
+      limits:
+        memory: "1Gi"
+    persistence:
+      enabled: true
+      storageClass: "csi-cinder-high-speed"  # adjust based on your environment
+      accessMode: ReadWriteOnce
+      size: 5Gi
+
   customPricing:
     enabled: true
     provider: aws
@@ -52,46 +76,57 @@ opencost:
       athenaDatabase: ""
       athenaTable: ""
       projectID: "${ACCOUNT_ID}"
-  exporter:
-    defaultClusterId: <cluster name>
-    extraEnv:
-      EMIT_KSM_V1_METRICS: "false"
-      EMIT_KSM_V1_METRICS_ONLY: "true"
-      LOG_LEVEL: warn #error
-  prometheus:
-    internal:
-      enabled: true
-      serviceName: kube-prometheus-stack-prometheus
-      namespaceName: <prometheus namespace>
-  ui:
-    enabled: true
+
   metrics:
+    kubeStateMetrics:
+      emitKsmV1Metrics: false
+      emitKsmV1MetricsOnly: false
     serviceMonitor:
       enabled: true
-      namespace: <prometheus namespace>
+      additionalLabels:
+        release: prometheus
+
+  ui:
+    enabled: true
 ```
 
-To avoid duplicate metrics from v2 KubeStateMetrics running in your cluster and v1 KubestateMetrics from OpenCost, we add these environment variables:
+### Important Configuration Notes
+
+1. **Metrics Configuration**: To avoid duplicate metrics from v2 KubeStateMetrics running in your cluster and v1 KubestateMetrics from OpenCost, configure the metrics settings as follows:
+```yaml
+opencost:
+  metrics:
+    kubeStateMetrics:
+      emitKsmV1Metrics: false
+      emitKsmV1MetricsOnly: false
+```
+
+2. **Persistence**: For production deployments, it's recommended to enable persistence with appropriate storage class and size:
 ```yaml
 opencost:
   exporter:
-    extraEnv:
-      EMIT_KSM_V1_METRICS: "false"
-      EMIT_KSM_V1_METRICS_ONLY: "true"
+    persistence:
+      enabled: true
+      storageClass: "your-storage-class"
+      accessMode: ReadWriteOnce
+      size: 5Gi
+```
+
+3. **Resource Management**: Configure appropriate resource requests and limits:
+```yaml
+opencost:
+  exporter:
+    resources:
+      requests:
+        cpu: "10m"
+        memory: "55Mi"
+      limits:
+        memory: "1Gi"
 ```
 
 Pricing information is provided through the helm chart values. The example above uses AWS default configuration. Documentation
 can be found for: [AWS](https://www.opencost.io/docs/configuration/aws), [Azure](https://www.opencost.io/docs/configuration/azure),
 [GCP](https://www.opencost.io/docs/configuration/gcp), and [Custom On Premise](https://www.opencost.io/docs/configuration/on-prem)
-
-```yaml
-opencost:
-  customPricing:
-    enabled: true
-    provider: aws
-    costModel:
-      <Configuration Options>
-```
 
 ### Upgrading OpenCost with Helm
 
