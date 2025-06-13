@@ -3,8 +3,10 @@ sidebar_position: 4
 title: Oracle Cloud Infrastructure
 ---
 import CloudCosts from './_cloud_costs.mdx';
+import CloudCostsInfo from './_cloud_costs_info.mdx';
 import CustomPrometheus from './_custom_prometheus.mdx';
 import Helm from './_helm.mdx';
+import InstallCloudCosts from './_install_cloud_costs.mdx';
 import InstallManifest from './_install_manifest.mdx';
 import InstallOpenCost from './_install_opencost.mdx';
 import InstallPrometheus from './_install_prometheus.mdx';
@@ -44,11 +46,39 @@ If your cluster is an OKE cluster, OpenCost will apply enhanced cluster pricing 
 
 ## OCI Cloud Costs
 
-:::note
+<CloudCostsInfo/>
 
-*** Cloud Costs are not currently supported for OCI. ***
+To configure OpenCost for your OCI account, use an existing or new OCI authorizer info for your account.
 
-:::
+* `<YOUR-TENANCY-OCID>` is the OCI Tenancy OCID for your account. A full example is `ocid1.tenancy.oc1..aaaaaaaaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxkguca`.
+* `<YOUR-HOME-REGION>` is the home region of your account. You should have chosen one region when creating your OCI account. A full example is `us-ashburn-1`.
+* `<YOUR-USER-OCID>` is the user OCID for your account. This user should have permissions to view all resources in your tenancy. A full example is `ocid1.user.oc1..aaaaaaaaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxeyra`.
+* `<YOUR-FINGERPRINT-OF-APIKEY>` is the fingerprint of the API key for the above user. A full example is `71:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:03`.
+* `<YOUR-PRIVATE-KEY-OF-APIKEY>` is the private key (.pem) of the API key for the above user. This line must be one line, including line breaks. A full example is `-----BEGIN PRIVATE KEY-----\~~~-----END PRIVATE KEY-----`.
+
+
+```json
+{
+    "oci": {
+      "usageApi": [
+        {
+          "tenancyID": "<YOUR-TENANCY-OCID>",
+          "region": "<YOUR-HOME-REGION>",
+          "authorizer": {
+            "authorizerType": "OCIRawConfigProvider",
+            "tenancyID": "<YOUR-TENANCY-OCID>",
+            "userID": "<YOUR-USER-OCID>",
+            "region": "<YOUR-HOME-REGION>",
+            "fingerprint": "<YOUR-FINGERPRINT-OF-APIKEY>",
+            "privateKey": "<YOUR-PRIVATE-KEY-OF-APIKEY>"
+          }
+        }
+      ]
+    }
+}
+```
+
+<InstallCloudCosts/>
 
 <CloudCosts/>
 
