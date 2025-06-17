@@ -8,7 +8,49 @@ Running OpenCost as a Prometheus metric exporter allows you to export various co
 
 ## Prometheus OpenCost Exporter Helm Chart
 
-The [Prometheus Opencost Exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-opencost-exporter) is available within the [Prometheus Community Kubernetes Helm Charts](https://github.com/prometheus-community/helm-charts) repository. This provides the Prometheus metric exporter capabilities without the OpenCost UI or any other additional capabilities. It is maintained as part of the regular OpenCost release process and regularly updated.
+The [Prometheus OpenCost Exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-opencost-exporter) is available within the [Prometheus Community Kubernetes Helm Charts](https://github.com/prometheus-community/helm-charts) repository. This provides the Prometheus metric exporter capabilities without the OpenCost UI or any other additional capabilities. It is maintained as part of the regular OpenCost release process and regularly updated.
+
+### Prerequisites
+
+- Kubernetes 1.23+
+- Helm 3+
+
+### Add Helm Chart Repository
+
+```sh
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+```
+
+### Install Chart
+
+```sh
+helm install [RELEASE_NAME] prometheus-community/prometheus-opencost-exporter
+```
+
+### Uninstall Chart
+
+```sh
+helm uninstall [RELEASE_NAME]
+```
+
+This removes all the Kubernetes components associated with the chart and deletes the release.
+
+### Upgrading Chart
+
+For minor version upgrades:
+
+```sh
+helm upgrade [RELEASE_NAME] [CHART] --install
+```
+
+### Configuration
+
+To see all configurable options with detailed comments, visit the chart's [values.yaml](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus-opencost-exporter/values.yaml), or run:
+
+```sh
+helm show values prometheus-community/prometheus-opencost-exporter
+```
 
 ## Installing Manually
 
@@ -31,7 +73,7 @@ Follow these steps to set up OpenCost as exporter-only:
 
  `curl http://localhost:9003/metrics` to see exported metrics
 
-Add OpenCost scrape config to your Prometheus ([more info](https://prometheus.io/docs/introduction/first_steps/#configuring-prometheus))
+Add OpenCost scrape config to your Prometheus ([more info](https://prometheus.io/docs/introduction/first_steps/#configuring-prometheus)):
 
 ```yaml
 - job_name: opencost
@@ -71,7 +113,7 @@ By default, all cost metrics are based on public billing APIs. See the [Limitati
 
 ## Dashboard examples
 
-Here’s an example dashboard using OpenCost Prometheus metrics:
+Here's an example dashboard using OpenCost Prometheus metrics:
 
 ![sample dashboard](https://grafana.com/api/dashboards/8670/images/5480/image)
 
@@ -79,7 +121,7 @@ You can find other example dashboards at https://grafana.com/orgs/kubecost
 
 ## Example Queries
 
-Once OpenCost’s cost model is running in your cluster and you have added it in your Prometheus scrape configuration, you can hit Prometheus with useful queries like these:
+Once OpenCost's cost model is running in your cluster and you have added it in your Prometheus scrape configuration, you can hit Prometheus with useful queries like these:
 
 ### Monthly cost of all nodes
 
@@ -93,7 +135,7 @@ sum(node_total_hourly_cost) * 730
 sum(kubecost_load_balancer_cost) by (namespace)
 ```
 
-### Monthly rate of each namespace’s CPU request
+### Monthly rate of each namespace's CPU request
 
 ```text
 sum(container_cpu_allocation * on (node) group_left node_cpu_hourly_cost) by (namespace) * 730
