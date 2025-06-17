@@ -1,0 +1,102 @@
+---
+sidebar_position: 4
+sidebar_label: Backstage
+---
+
+# Backstage Plugin
+
+The OpenCost plugin for Backstage provides a seamless integration of OpenCost's cost monitoring capabilities into your Backstage instance. This plugin is a port of the [OpenCost UI](https://github.com/opencost/opencost/tree/develop/ui) and is designed to work within the Backstage ecosystem.
+
+![OpenCost Plugin](@site/static/img/backstage-opencost.png)
+
+## Features
+
+- Cost allocation reporting
+- Resource utilization metrics
+- Cost breakdown by namespace, deployment, and service
+- Customizable time ranges
+- Integration with Backstage's existing UI components
+
+## Installation
+
+1. Add the OpenCost dependency to the `packages/app/package.json`:
+    ```sh
+    # From your Backstage root directory
+    yarn --cwd packages/app add @backstage-community/plugin-opencost
+    ```
+
+2. Add the `OpenCostPage` to your `packages/app/src/App.tsx`:
+
+    ```tsx
+    import { OpenCostPage } from '@backstage-community/plugin-opencost';
+    ```
+
+    and
+
+    ```tsx
+    <FlatRoutes>
+      …
+      <Route path="/opencost" element={<OpenCostPage />} />
+    </FlatRoutes>
+    ```
+
+3. Import the `MoneyIcon` and add link to OpenCost to your sidebar
+
+    ```typescript
+    // packages/app/src/components/Root/Root.tsx
+    import MoneyIcon from '@material-ui/icons/MonetizationOn';
+
+    ...
+
+    export const Root = ({ children }: PropsWithChildren<{}>) => (
+      <SidebarPage>
+        <Sidebar>
+          ...
+          <SidebarItem icon={MoneyIcon} to="opencost" text="OpenCost" />
+          ...
+        </Sidebar>
+      </SidebarPage>
+    );
+    ```
+
+## Configuration
+
+Since OpenCost doesn't have any authentication at this point, you just need to give API access to the plugin to access your data.
+
+If you haven't set up an ingress rule, you can port-forward the API with
+
+```bash
+kubectl -n opencost port-forward deployment/opencost 9003
+```
+
+Add the following to your `app-config.yaml`:
+
+```yaml
+opencost:
+  baseUrl: http://localhost:9003
+```
+
+If your OpenCost service is private and not directly accessible from the client side, consider using the Backstage proxy to communicate with it. To do so, add the following configs to your `app-config.yaml`:
+
+```yaml
+proxy:
+  endpoints:
+    /opencost: http://opencost-svc.opencost:9003
+---
+opencost:
+  baseUrl: http://your-backstage-instance:7007/api/proxy/opencost
+```
+
+## Future Enhancements
+
+- More testing
+- Use the OpenCost mascot for the sidebar logo
+- Convert AllocationReport.js to use the [Backstage Table](https://backstage.io/storybook/?path=/story/data-display-table--default-table)
+- Allow for user-provided default reports and/or disabling controls
+- Support multiple hard-coded reports
+- Clean up deprecation warnings and upgrade to all the latest React components
+- Fork(?) to support `Kubecost`, which could provide Alerts and Recommendations, similar to the Cost Explorer plugin
+
+## License
+
+This plugin is licensed under the Apache v2 License, consistent with the OpenCost project. 
