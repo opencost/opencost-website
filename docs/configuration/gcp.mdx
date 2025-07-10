@@ -137,6 +137,31 @@ Set these values into the to the GCP array in the `cloud-integration.json`:
 }
 ```
 
+### Using GCP Workload Identity
+
+If you're using GKE with Workload Identity, you can configure OpenCost to use Workload Identity instead of a service account key. This is a more secure approach as it eliminates the need to manage service account keys. To use Workload Identity, modify the `cloud-integration.json` configuration as follows:
+
+``` json
+{
+  "gcp": {
+    "bigQuery": [
+      {
+        "projectID": "<GCP_PROJECT_ID>",
+        "dataset": "detailedbilling",
+        "table": "gcp_billing_export_resource_v1_0121AC_C6F51B_690771",
+        "authorizer": {
+          "authorizerType": "GCPWorkloadIdentity"
+        }
+      }
+    ]
+  }
+}
+```
+
+When using Workload Identity, make sure that:
+1. Your GKE cluster has Workload Identity enabled
+2. The Kubernetes service account used by OpenCost is properly bound to a GCP service account with the necessary permissions (compute.viewer, bigquery.user, bigquery.dataViewer, and bigquery.jobUser roles)
+
 <InstallCloudCosts/>
 <CloudCosts/>
 

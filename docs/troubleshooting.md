@@ -72,6 +72,35 @@ Negative values for idle: ensure you added the scrape target (above) for OpenCos
 
 If you see this in the web interface, please step through the instructions for configuring [Cloud Costs](configuration/#cloud-costs) for your cloud provider(s). You can check the `opencost` container logs for error messages.
 
+## GCP Cloud Costs Not Working with Workload Identity
+
+If you're using GKE with Workload Identity and experiencing issues with GCP Cloud Costs integration, ensure that your `cloud-integration.json` is properly configured. When using Workload Identity, you need to specify `authorizerType: "GCPWorkloadIdentity"` in your configuration:
+
+```json
+{
+  "gcp": {
+    "bigQuery": [
+      {
+        "projectID": "<GCP_PROJECT_ID>",
+        "dataset": "detailedbilling",
+        "table": "gcp_billing_export_resource_v1_0121AC_C6F51B_690771",
+        "authorizer": {
+          "authorizerType": "GCPWorkloadIdentity"
+        }
+      }
+    ]
+  }
+}
+```
+
+Common issues when using Workload Identity:
+1. Missing or incorrect `authorizerType` in the configuration
+2. Workload Identity not enabled on the GKE cluster
+3. Missing or incorrect IAM bindings between the Kubernetes service account and GCP service account
+4. Insufficient permissions on the GCP service account (requires compute.viewer, bigquery.user, bigquery.dataViewer, and bigquery.jobUser roles)
+
+For more details, refer to the [GCP Configuration](configuration/gcp) documentation.
+
 ## "Address family not supported by protocol" error message
 
 If you receive this error message from the OpenCost container, there may be an issue with your default NGINX config.
