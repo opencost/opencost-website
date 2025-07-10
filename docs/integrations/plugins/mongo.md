@@ -15,7 +15,7 @@ title: MongoDB Atlas
 
 1. Obtain plugin binary
    1. Visit https://github.com/opencost/opencost-plugins/releases and choose the most recent release
-   1. Download the correct OpenAI binary for your architecture/OS
+   1. Download the correct MongoDB binary for your architecture/OS
    1. Create a sibling directory to OpenCost called `plugins`
    1. In plugins directory, create two sub directories: `bin` and `config`
    1. Put the plugin binary in the `bin` dir, ensure it is executable

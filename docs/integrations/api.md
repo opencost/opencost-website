@@ -261,7 +261,7 @@ QUERY PARAMETERS
   <tr>
     <td/>
     <td>
-      <a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameter</a>.
+      <a href="https://docs.kubecost.com/apis/filters-api">V2 filter parameter</a>.
     </td>
   </tr>
 
@@ -351,7 +351,7 @@ QUERY PARAMETERS
   <tr>
     <td/>
     <td>
-      The available filters are the same as the available aggregations. Accepts: <a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameters</a>.
+      The available filters are the same as the available aggregations. Accepts: <a href="https://docs.kubecost.com/apis/filters-api">V2 filter parameters</a>.
       <br/><br/>
       Examples:<br/>
       <ul>
@@ -445,7 +445,7 @@ Used to retrieve a summary of third-party costs over a window.
   <tr>
     <td/>
     <td>
-      The available filters are the same as the available aggregations. Accepts: <a href="https://docs.kubecost.com/apis/apis-overview/filters-api">V2 filter parameters</a>.
+      The available filters are the same as the available aggregations. Accepts: <a href="https://docs.kubecost.com/apis/filters-api">V2 filter parameters</a>.
       <br/><br/>
       Examples:<br/>
       <ul>
