@@ -87,6 +87,14 @@ These are the metrics that OpenCost generates for cost calculations and monitori
 | `kubecost_cluster_management_cost` | Hourly cluster management fee | cluster | USD/hour |
 | `kubecost_cluster_info` | Cluster information | cluster, provider | info |
 
+### Label Metrics
+
+| Metric | Description | Labels | Unit |
+|--------|-------------|---------|------|
+| `service_selector_labels` | Service Selector Labels | namespace, service | labels |
+| `deployment_match_labels` | Deployment Match Labels | namespace, deployment | labels |
+| `statefulSet_match_labels` | StatefulSet Match Labels | namespace, statefulset | labels |
+
 ### Internal Operation Metrics
 
 | Metric | Description | Labels | Unit |
@@ -94,6 +102,7 @@ These are the metrics that OpenCost generates for cost calculations and monitori
 | `kubecost_http_requests_total` | Total HTTP requests | endpoint, method, status | count |
 | `kubecost_http_response_time_seconds` | Response time | endpoint, method | seconds |
 | `kubecost_http_response_size_bytes` | Response size | endpoint, method | bytes |
+| `kubecost_cluster_memory_working_set_bytes` | Created by recording rule | cluster | bytes |
 
 ## Metric Labels
 
@@ -144,6 +153,102 @@ metricRelabelConfigs:
 | Total Cluster Cost | `sum(node_total_hourly_cost) * 730` | Monthly cost of all nodes |
 | Cost by Namespace | `sum by (namespace) (container_cpu_allocation * on (node) group_left node_cpu_hourly_cost + container_memory_allocation_bytes * on (node) group_left node_ram_hourly_cost / (1024 * 1024 * 1024))` | CPU and memory cost by namespace |
 | Storage Cost | `sum by (namespace) (pod_pvc_allocation * on (persistentvolume) group_left pv_hourly_cost / (1024 * 1024 * 1024))` | Storage cost by namespace |
+
+### Advanced Cost Queries
+
+#### Total cost of the cluster workload the last 30 days
+
+```promql
+sort_desc(
+  sum by (type, namespace) (
+          sum_over_time(
+            (
+                    label_replace(
+                      (
+                          (
+                              avg by (container, node, namespace, pod) (container_memory_allocation_bytes)
+                            * on (node) group_left ()
+                              avg by (node) (node_ram_hourly_cost)
+                          )
+                        /
+                          (1024 * 1024 * 1024)
+                      ),
+                      "type",
+                      "ram",
+                      "",
+                      ""
+                    )
+                  or
+                    label_replace(
+                      (
+                          avg by (container, node, namespace, pod) (container_cpu_allocation)
+                        * on (node) group_left ()
+                          avg by (node) (node_cpu_hourly_cost)
+                      ),
+                      "type",
+                      "cpu",
+                      "",
+                      ""
+                    )
+                or
+                  label_replace(
+                    (
+                        avg by (container, node, namespace, pod) (container_gpu_allocation)
+                      * on (node) group_left ()
+                        avg by (node) (node_gpu_hourly_cost)
+                    ),
+                    "type",
+                    "gpu",
+                    "",
+                    ""
+                  )
+              
+                label_replace(
+                  (
+                      (
+                          avg by (persistentvolume, namespace, pod) (pod_pvc_allocation)
+                        * on (persistentvolume) group_left ()
+                          avg by (persistentvolume) (pv_hourly_cost)
+                      )
+                    /
+                      (1024 * 1024 * 1024)
+                  ),
+                  "type",
+                  "storage",
+                  "",
+                  ""
+                )
+            )[30d:5m]
+          )
+        /
+          scalar(count_over_time(vector(1)[30d:5m]))
+      * 24 * 30
+  )
+)
+```
+
+**Query Parameters:**
+- `30` Represents the duration over which the data is aggregated, which is 30 days in this case.
+- `5m` Defines the accuracy of the data. Modify this to adjust precision:
+  - **Decrease** (e.g., to `1m`): Enhances accuracy. It's typically not recommended to set it below the Prometheus scraping interval (`1m` by default)
+  - **Increase** Enhances the performance of the query.
+- `sum by (type, namespace)` controls the grouping, available options are `container, namespace, node, pod, type`
+
+#### Hourly memory cost for the default namespace
+
+```promql
+sum(
+  avg(container_memory_allocation_bytes{namespace="default"}) by (instance) / 1024 / 1024 / 1024
+  *
+  on(instance) group_left() avg(node_ram_hourly_cost) by (instance)
+)
+```
+
+#### Monthly cost of provisioned nodes
+
+```promql
+sum(sum_over_time(node_total_hourly_cost[30d:1h]))
+```
 
 ## Troubleshooting
 
