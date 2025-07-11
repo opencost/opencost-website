@@ -29,3 +29,4 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 * [Kubefirst](https://kubefirst.io/blog/release2-2/)
 * [Port](https://docs.getport.io/build-your-software-catalog/sync-data-to-catalog/cloud-cost/opencost/#cost)
 * [Vantage](https://docs.vantage.sh/opencost/)
+* [Carbon Costs](./carbon-costs)
