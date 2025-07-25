@@ -28,40 +28,60 @@ OpenCost may be installed on-prem and provides default pricing that may be overr
 
 ## On-Prem Configuration
 
-On-prem cluster pricing is supported in OpenCost by providing default prices for node data via the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json). Here are the include default prices:
+On-prem cluster pricing is supported in OpenCost by providing default prices for node data via the [aws.json](https://github.com/opencost/opencost/blob/develop/configs/aws.json). Here are the included default prices:
 
 ```json
 {
     "provider": "custom",
-    "description": "Default prices based on GCP us-central1",
+    "description": "Default prices used to compute allocation between RAM, CPU and GPU. AWS pricing API data still used for total node cost.",
     "CPU": "0.031611",
     "spotCPU": "0.006655",
     "RAM": "0.004237",
-    "spotRAM": "0.000892",
     "GPU": "0.95",
+    "spotRAM": "0.000892",
     "storage": "0.00005479452",
     "zoneNetworkEgress": "0.01",
     "regionNetworkEgress": "0.01",
-    "internetNetworkEgress": "0.12"
+    "internetNetworkEgress": "0.143",
+    "spotLabel": "kops.k8s.io/instancegroup",
+    "spotLabelValue": "spotinstance-nodes",
+    "awsServiceKeyName": "",
+    "awsServiceKeySecret": "",
+    "awsSpotDataRegion":"",
+    "awsSpotDataBucket": "",
+    "awsSpotDataPrefix": "",
+    "athenaBucketName": "",
+    "athenaRegion": "",
+    "athenaDatabase": "",
+    "athenaTable": "",
+    "projectID": ""
 }
 ```
 
 ### Custom pricing using the OpenCost Helm Chart
 
-Custom pricing may be applied by updating your local OpenCost Helm values file. Any values not overridden will default to the values provided by the Helm chart, which match those in the [default.json](https://github.com/opencost/opencost/blob/develop/configs/default.json).
+Custom pricing may be applied by updating your local OpenCost Helm values file. Any values not overridden will default to the values provided by the Helm chart, which match those in the [aws.json](https://github.com/opencost/opencost/blob/develop/configs/aws.json).
 
 ```yaml
 opencost:
   customPricing:
     enabled: true
     costModel:
-      description: Modified prices based on your internal pricing
-      CPU: 1.25
-      RAM: 0.50
-      storage: 0.25
+      description: "Default prices used to compute allocation between RAM, CPU and GPU. AWS pricing API data still used for total node cost."
+      CPU: "0.031611"
+      spotCPU: "0.006655"
+      RAM: "0.004237"
+      GPU: "0.95"
+      spotRAM: "0.000892"
+      storage: "0.00005479452"
+      zoneNetworkEgress: "0.01"
+      regionNetworkEgress: "0.01"
+      internetNetworkEgress: "0.143"
+      spotLabel: "kops.k8s.io/instancegroup"
+      spotLabelValue: "spotinstance-nodes"
 ```
 
-The values in the example above will be reflected in the OpenCost with substantially higher CPU, RAM, and PV costs compared to the default pricing.
+The values in the example above will be reflected in the OpenCost with the specified pricing configuration while still using AWS pricing API for total node costs.
 
 ## On-Prem Cloud Costs
 
