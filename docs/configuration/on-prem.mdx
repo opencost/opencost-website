@@ -28,7 +28,7 @@ OpenCost may be installed on-prem and provides default pricing that may be overr
 
 ## On-Prem Configuration
 
-On-prem cluster pricing is supported in OpenCost by providing default prices for node data via the [aws.json](https://github.com/opencost/opencost/blob/develop/configs/aws.json). Here are the included default prices:
+On-prem cluster pricing is supported in OpenCost by providing default prices for node data. Here are the included default prices:
 
 ```json
 {
@@ -60,13 +60,14 @@ On-prem cluster pricing is supported in OpenCost by providing default prices for
 
 ### Custom pricing using the OpenCost Helm Chart
 
-Custom pricing may be applied by updating your local OpenCost Helm values file. Any values not overridden will default to the values provided by the Helm chart, which match those in the [aws.json](https://github.com/opencost/opencost/blob/develop/configs/aws.json).
+Custom pricing may be applied by updating your local OpenCost Helm values file. Any values not overridden will default to the values provided by the Helm chart.
 
 ```yaml
 opencost:
   customPricing:
     enabled: true
     costModel:
+      provider: "aws"
       description: "Default prices used to compute allocation between RAM, CPU and GPU. AWS pricing API data still used for total node cost."
       CPU: "0.031611"
       spotCPU: "0.006655"
