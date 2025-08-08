@@ -1,12 +1,12 @@
 # Community
 
-OpenCost is a [CNCF Sandbox project](https://www.cncf.io/projects/opencost/) and we want to build and expand our community of users and contributors. The best way to get involved or to ask questions is to reach out on:
+OpenCost is a [CNCF Incubating project](https://www.cncf.io/projects/opencost/) and we want to build and expand our community of users and contributors. The best way to get involved or to ask questions is to reach out on:
 
 * CNCF Slack: https://slack.cncf.io/ #opencost
 * OpenCost Community Meetings
   * [Calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/opencost)
   * [Community Meetings every other Thursday at 1pm Pacific](https://bit.ly/opencost-community-meeting-cncf)
-  * [Community Meeting Notes](https://bit.ly/opencost-meeting-cncf)
+  * [Community Meeting Notes](https://docs.google.com/document/d/1hDl-t7hCNN4MlDoloojTsVH0Mso-9H2p1TYPlmMeSUM/edit?tab=t.0)
 
 Contact us via email (opencost-kubecost@wwpdl.vnet.ibm.com)
 
