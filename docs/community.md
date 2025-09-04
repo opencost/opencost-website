@@ -8,7 +8,13 @@ OpenCost is a [CNCF Incubating project](https://www.cncf.io/projects/opencost/) 
   * [Community Meetings every other Thursday at 1pm Pacific](https://bit.ly/opencost-community-meeting-cncf)
   * [Community Meeting Notes](https://docs.google.com/document/d/1hDl-t7hCNN4MlDoloojTsVH0Mso-9H2p1TYPlmMeSUM/edit?tab=t.0)
 
-Contact us via email (opencost-kubecost@wwpdl.vnet.ibm.com)
+Contact us via email (opencost-kubecost@wwpdl.vnet.ibm.com) 
+
+## Community Roles and Members
+* [Governance](https://github.com/opencost/opencost/blob/develop/GOVERNANCE.md) outlines the project community's participation structure and expectations.
+* [Maintainers](https://github.com/opencost/opencost/blob/develop/MAINTAINERS.md) lists OpenCost's Maintainers and Committers.
+* [Adopters]( https://github.com/opencost/opencost/blob/develop/ADOPTERS.MD) lists organizations that use OpenCost.
+* [Contributing](https://github.com/opencost/opencost/blob/develop/CONTRIBUTING.md) describes ways to contribute to the project.
 
 ## Get the Code
 
