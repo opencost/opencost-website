@@ -28,4 +28,3 @@ Specific guides on how to install plugins are linked below:
 - [Datadog](./datadog.md)
 - [OpenAI](./openai.md)
 - [MongoDB Atlas](./mongo.md)
-- [Backstage](./backstage.md)
