@@ -7,11 +7,14 @@ import InstallCloudCosts from './_install_cloud_costs.mdx';
 
 Accessing cloud service provider billing and pricing APIs may require additional configuration, depending on the provider. Please refer to the specific provider pages for the cloud-specific configurations:
 
+* Alibaba \(documentation needed\)
 * [Amazon Web Services](aws)
-* [Microsoft Azure](azure)
 * [Google Cloud Platform](gcp)
-* [Oracle Cloud Infrastructure](oracle)
+* [Microsoft Azure](azure)
 * [On-Premises](on-prem)
+* [Open Telekom Cloud](otc)
+* [Oracle Cloud Infrastructure](oracle)
+* Scaleway \(documentation needed\)
 
 ## Cloud Costs
 
