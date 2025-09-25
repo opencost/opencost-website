@@ -84,6 +84,6 @@ Here is a function that builds a podPVC map. The PodPVC map represents all the P
 
 The most fulfilling part of this summer is that my tests are now run on the OpenCost pipeline. I'm thrilled to think that everyone who wants to make a new change will now have to pass my tests before merging code. My tests run in the context of the OpenCost Integration Testing Pipeline, here: 
 
-![pipeline](https://github.com/opencost/opencost/blob/develop/docs/testing/OC%20Test%20Arch.png)
+![pipeline](https://github.com/opencost/opencost/blob/develop/docs/testing/OC%20Test%20Arch.png?raw=true)
 
 I want to keep contributing to OpenCost and work my way up to a maintainer. I'm grateful for being given this opportunity and for my mentors, [@ameijer](https://github.com/ameijer) and [@mbolt35](https://github.com/mbolt35).
