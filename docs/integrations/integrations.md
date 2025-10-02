@@ -24,7 +24,6 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 * [Grafana Cloud](https://grafana.com/blog/2023/06/26/rein-in-spending-with-kubernetes-cost-monitoring-in-grafana-cloud/)
 
 ## Miscellaneous
-* [Backstage](https://github.com/backstage/backstage/tree/master/plugins/opencost)
 * [Prometheus OpenCost Exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-opencost-exporter)
 * [Kubefirst](https://kubefirst.io/blog/release2-2/)
 * [Port](https://docs.getport.io/build-your-software-catalog/sync-data-to-catalog/cloud-cost/opencost/#cost)
