@@ -12,7 +12,7 @@ The OpenCost UI is included in the default installation of OpenCost and provides
 Once your OpenCost has been [installed](install), wait for the pod to be ready and port forward with:
 
 ```
-kubectl port-forward --namespace opencost service/opencost 9003 9090
+kubectl port-forward --namespace opencost service/opencost 9090 9090
 ```
 
 To verify that the UI and server are running, you may access the OpenCost UI at [http://localhost:9090](http://localhost:9090).

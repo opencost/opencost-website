@@ -1,4 +1,5 @@
 import React from "react";
+import LiveDemoButton from '@theme/Navbar/Content/LiveDemoButton';
 
 export default function Hero() {
   return (
@@ -13,11 +14,14 @@ export default function Hero() {
           Built by Kubernetes experts and supported by Kubernetes practitioners,
           OpenCost shines a light into the black box of Kubernetes spend.
         </p>
-        <a href="/docs/installation/install" className="hover:no-underline">
-          <div className="text-white w-fit py-2 px-4 rounded-md bg-green-400 hover:bg-green-700 transition-colors duration-200">
-            <span>Get started</span>
-          </div>
-        </a>
+        <div className="flex gap-4">
+          <a href="/docs/installation/install" className="hover:no-underline">
+            <div className="text-white w-fit py-2 px-4 rounded-md bg-green-400 hover:bg-green-700 transition-colors duration-200">
+              <span>Get started</span>
+            </div>
+          </a>
+          <LiveDemoButton href="https://demo.infra.opencost.io" />
+        </div>
       </div>
       <div className="flex flex-col w-full md:w-4/5 lg:w-3/8 xl:w-4/8">
         <img className="w-full h-auto" src="/img/hero.png" alt="OpenCost" />
