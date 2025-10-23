@@ -23,6 +23,9 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 * [Grafana](https://grafana.com/orgs/kubecost)
 * [Grafana Cloud](https://grafana.com/blog/2023/06/26/rein-in-spending-with-kubernetes-cost-monitoring-in-grafana-cloud/)
 
+## AI and Automation
+* [MCP Server](./mcp) - Model Context Protocol server for AI agents
+
 ## Miscellaneous
 * [Prometheus OpenCost Exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-opencost-exporter)
 * [Kubefirst](https://kubefirst.io/blog/release2-2/)
