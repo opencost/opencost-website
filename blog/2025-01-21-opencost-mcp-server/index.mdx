@@ -9,6 +9,8 @@ tags: [MCP, AI, cost management, Kubernetes, automation]
 
 The future of Kubernetes cost management is here, and it's powered by AI. We're excited to announce that OpenCost now includes a built-in **Model Context Protocol (MCP) server** that enables AI agents to directly access and analyze your Kubernetes cost data. This groundbreaking integration brings intelligent automation to cost optimization, making it easier than ever to understand, predict, and optimize your cloud spending.
 
+> Note: This is available as of OpenCost v1.118.
+
 <!--truncate-->
 
 ## What is Model Context Protocol (MCP)?
@@ -28,14 +30,7 @@ For OpenCost, this means AI agents can now:
 
 The best part? OpenCost's MCP server is **enabled by default** in every deployment. No additional setup, no complex configuration—just intelligent cost management out of the box.
 
-### Key Features
-
-- **🚀 Enabled by Default**: MCP server starts automatically with OpenCost
-- **🔧 Full User Control**: Easy to disable or configure ports and settings
-- **📊 Comprehensive Data Access**: Query allocation, asset, and cloud cost data
-- **🌐 HTTP Transport**: Reliable communication with MCP clients
-- **☸️ Helm Integration**: Built into the official Helm chart for production deployments
-- **🔍 Advanced Filtering**: Filter by provider, service, region, and more
+- **⚙️ Full-Featured**: Supports all the filters and features of our battle-tested APIs.
 
 
 ## Available MCP Tools
@@ -71,6 +66,15 @@ Access comprehensive asset information including nodes, disks, load balancers, a
 **Parameters:**
 - `window` (required): Time window for cost analysis
 
+**Supported Asset Types:**
+
+- **🖥️ Node**: Compute instances with CPU, RAM, GPU details
+- **💾 Disk**: Storage volumes with usage and cost breakdown
+- **⚖️ LoadBalancer**: Load balancer instances with IP and private status
+- **🌐 Network**: Network-related costs and usage
+- **☁️ Cloud**: Cloud service costs with credit information
+- **☸️ ClusterManagement**: Kubernetes cluster management costs
+
 ### 3. `get_cloud_costs`
 Query cloud cost data with provider, service, and region filtering.
 
@@ -87,17 +91,23 @@ Query cloud cost data with provider, service, and region filtering.
 - `region` (optional): Filter by geographic regions
 
 
-## Supported Asset Types
+## Example Interaction
 
-The OpenCost MCP server provides comprehensive coverage of your infrastructure:
+Here's a glimpse of what's possible when you connect an AI agent to OpenCost's MCP server.
 
-- **🖥️ Node**: Compute instances with CPU, RAM, GPU details
-- **💾 Disk**: Storage volumes with usage and cost breakdown
-- **⚖️ LoadBalancer**: Load balancer instances with IP and private status
-- **🌐 Network**: Network-related costs and usage
-- **☁️ Cloud**: Cloud service costs with credit information
-- **☸️ ClusterManagement**: Kubernetes cluster management costs
+### Allocation Costs
 
+A simple prompt asking for "allocation costs for the last 7 days aggregated by namespace" yields a detailed breakdown:
+
+![Allocation Costs](./img/allocation-costs-by-namespace.png)
+
+### Saving Insights
+
+The MCP server can also provide actionable saving insights.
+
+![Saving Insights 1](./img/saving-insights-1.png)
+
+![Saving Insights 2](./img/saving-insights-2.png)
 
 ---
 
