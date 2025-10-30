@@ -15,7 +15,7 @@ export default function Hero() {
           OpenCost shines a light into the black box of Kubernetes spend.
         </p>
         <div className="flex gap-4">
-          <a href="/docs/installation/install" className="hover:no-underline">
+          <a href="/docs/" className="hover:no-underline">
             <div className="text-white w-fit py-2 px-4 rounded-md bg-green-400 hover:bg-green-700 transition-colors duration-200">
               <span>Get started</span>
             </div>
