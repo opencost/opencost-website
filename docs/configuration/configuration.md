@@ -28,16 +28,17 @@ The documentation for each cloud service provider covers the specifics of config
 {
   "aws": [],
   "azure": [],
-  "gcp": []
+  "gcp": [],
+  "oci": [],
 }
 ```
 
 The content for your cloud providers' configuration are listed on their specific pages:
 
-* [AWS](aws#aws-cloud-cost-configuration)
-* [Azure](azure#azure-cloud-cost-configuration)
-* [GCP](gcp#gcp-cloud-cost-configuration)
-* Cloud Costs are not currently supported on OCI and on-premises
+* [AWS](aws#aws-cloud-costs)
+* [Azure](azure#azure-cloud-costs)
+* [GCP](gcp#gcp-cloud-costs)
+* [OCI](oracle#oci-cloud-costs)
 
 <InstallCloudCosts/>
 
