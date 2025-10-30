@@ -11,7 +11,6 @@ Accessing cloud service provider billing and pricing APIs may require additional
 * [Amazon Web Services](aws)
 * [Google Cloud Platform](gcp)
 * [Microsoft Azure](azure)
-* [On-Premises](on-prem)
 * [Open Telekom Cloud](otc)
 * [Oracle Cloud Infrastructure](oracle)
 * Scaleway \(documentation needed\)
