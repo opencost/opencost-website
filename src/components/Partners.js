@@ -57,6 +57,10 @@ export default function Partners() {
           <div className="w-72 h-52 items-center flex">
             <img src="/img/suse.png" alt="Suse" />
           </div></a>
+        <a href="https://www.oracle.com/" target="_blank" rel="noopener noreferrer">
+          <div className="w-72 h-52 items-center flex">
+            <img src="/img/oracle.svg" alt="Oracle" />
+          </div></a>
       </div>
     </div>
     </div>
