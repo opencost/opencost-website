@@ -14,15 +14,12 @@ Check out our [Installation guide](installation/install) to start monitoring and
 
 ## Integrating Cloud Costs and Configuration
 
-If you want more accurate results or Cloud Costs from your provider's bill please refer to the [Integrating Cloud Costs and Configuration](configuration/) page or jump directly to your cloud-specific configuration:
+If you want more accurate results or Cloud Costs from your provider's bill, refer to the [Integrating Cloud Costs and Configuration](configuration/).
 
-* [Amazon Web Services](configuration/aws)
-* [Microsoft Azure](configuration/azure)
-* [Google Cloud Platform](configuration/gcp)
-* [Oracle Cloud Infrastructure](configuration/oracle)
-* [On-Premises](configuration/on-prem)
-* Alibaba - **documentation needed**
-* Scaleway - **documentation needed**
+## On-Premises
+
+For on-premises configuration, see [On Premises](https://opencost.io/docs/configuration/on-prem/).
+
 
 ## Specification
 
