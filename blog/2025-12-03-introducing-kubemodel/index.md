@@ -5,6 +5,8 @@ authors: [sparshraj]
 tags: [kubemodel, Data Model 2.0, Kubernetes, UID, mentorship, OpenCost]
 ---
 
+*This project was initiated as part of the LFX Fall 2025 mentorship program at OpenCost and development is ongoing.*
+
 OpenCost is evolving. As Kubernetes environments grow in complexity with pods being recreated, names being reused, and resources constantly shifting, the need for a more robust, scalable data model has become clear. Today, we're excited to introduce **KubeModel**, the foundation of OpenCost's Data Model 2.0, designed to bring precision, efficiency, and reliability to Kubernetes cost tracking.
 
 <!--truncate-->
@@ -119,3 +121,7 @@ KubeModel is being developed in the open, and we welcome contributions. Check ou
 ---
 
 *KubeModel is the next evolution of OpenCost's data infrastructure. As we continue building out Data Model 2.0, we're excited to deliver more accurate, efficient, and reliable Kubernetes cost tracking for the community.*
+
+## Acknowledgments
+
+A special thanks to my mentors for their guidance and support throughout this project: [Alex Meijer](https://github.com/ameijer), [Sean Holcomb](https://github.com/Sean-Holcomb), and [Niko Kovacevic](https://github.com/nikovacevic).
