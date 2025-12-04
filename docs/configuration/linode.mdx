@@ -1,0 +1,182 @@
+---
+sidebar_position: 1
+title: Linode
+---
+import CloudCosts from './_cloud_costs.mdx';
+import CloudCostsInfo from './_cloud_costs_info.mdx';
+import CustomPrometheus from './_custom_prometheus.mdx';
+import Helm from './_helm.mdx';
+import InstallCloudCosts from './_install_cloud_costs.mdx';
+import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
+import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
+
+# Installing on Linode
+
+OpenCost may be installed on Kubernetes clusters running on Linode Kubernetes Service (LKS).
+
+<Installing/>
+
+## Install Prometheus
+
+<InstallPrometheus/>
+<CustomPrometheus/>
+
+## Create the OpenCost Namespace
+
+<Namespace/>
+
+## Linode Configuration
+
+### Cost Allocation
+
+OpenCost will automatically read the node information `node.spec.providerID` to determine the cloud service provider (CSP) in use. If it detects the CSP is LKE, it will attempt to pull the Linode on-demand pricing with no further configuration required.
+
+For clusters with a High Availability Control Plane, there's an additional step required. Please refer to the [Security for Linode integration](#security-for-linode-integration) section.
+
+To accurately allocate costs for Linode, you need to enable monitoring.coreos.com/v1.ServiceMonitor. This is necessary because the default node prices are replaced by the provider, and without metrics data, the provider can't calculate the prices correctly.
+### Custom Pricing
+
+Custom Pricing is not fully supported by the Linode provider. You can only modify the following values.
+
+```yaml
+opencost:
+  customPricing:
+    enabled: true
+    configmapName: pricing-configs
+    provider: linode
+    costModel:
+      description: Modified Linode prices
+      linodeTokenSecret: Modified token secret namespaced name
+      zoneNetworkEgress: 0.0
+      regionNetworkEgress: 0.0
+      internetNetworkEgress: 0.0
+      defaultLBPrice: 0.15
+      controlPlaneCosts: 0.0
+      HaControlPlaneCosts: 0.9
+```
+
+#### Security for Linode integration
+
+OpenCost uses the [Linode SDK for Go](https://github.com/linode/linodego) to pull price data.
+
+Linode integration works out of the box and uses the default token located at kube-system/linode, but OpenCost does not have the necessary permissions to use it.
+
+Without the required permissions, the Linode provider cannot detect High Availability Control Plane clusters, which means it won't be able to calculate pricing correctly. To resolve this, please create the following role and binding to grant the necessary permissions.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: get-secret-linode
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["linode"]
+    verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: opencost-secret-access-linode
+subjects:
+  - kind: ServiceAccount
+    name: opencost
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: get-secret-linode
+  apiGroup: rbac.authorization.k8s.io
+```
+
+Sometimes, it's beneficial to maintain a separate token or manage token rotation to ensure proper security and functionality.
+
+First create [Linode API token](https://cloud.linode.com/profile/tokens) with Read-Only Kubernetes access.
+
+Create your own secret.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: linode
+  namespace: opencost
+type: Opaque
+data:
+  token: $(echo -n "$LINODE_TOKEN" | base64 -w0)
+EOF
+```
+
+Ensure permissions to read secret.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: get-secret-linode
+  namespace: opencost
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["linode"]
+    verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: opencost-secret-access-linode
+  namespace: opencost
+subjects:
+  - kind: ServiceAccount
+    name: opencost
+    namespace: opencost
+roleRef:
+  kind: Role
+  name: get-secret-linode
+  apiGroup: rbac.authorization.k8s.io
+```
+
+Configure custom pricing.
+
+```yaml
+opencost:
+  customPricing:
+    enabled: true
+    configmapName: pricing-configs
+    provider: linode
+    costModel:
+      linodeTokenSecret: opencost/linode
+```
+
+> Alternatively, you can override the secret by setting the Helm value opencost.exporter.linode.tokenSecret.
+
+## Linode Cloud Costs
+
+<!-- CloudCostsInfo/ -->
+
+Cloud Cost integration is not supported at this time.
+
+<!-- InstallCloudCosts/ -->
+<!-- CloudCosts/ -->
+
+## Install OpenCost
+
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>
+
+### Installing with the OpenCost Manifest
+
+Installing from the OpenCost manifest is supported on Linode.
+
+<InstallManifest/>
