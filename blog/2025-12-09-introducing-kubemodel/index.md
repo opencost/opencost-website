@@ -152,18 +152,21 @@ The **metric hydration** system populates KubeModelSet instances with data from 
 
 This creates a unified view of resource metrics that can be serialized, stored, and analyzed efficiently.
 
-## The Road Ahead
+## Implemented So Far
 
-KubeModel represents a significant step forward for OpenCost. The foundation is being laid through several contributions:
+KubeModel represents a significant step forward for OpenCost. The foundation has been laid through several contributions:
 
 1. **Core resource types and KubeModelSet** - The fundamental data structures
 2. **UID support across all metrics** - Stable resource identification
 3. **Binary serialization pipeline** - Efficient storage and transmission
-4. **ResourceQuota integration** - Tracking namespace-level resource constraints
-5. **Comprehensive integration tests** - Ensuring reliability at scale
-6. **S3 storage support** - Storing compressed KubeModel entries in S3 for scalable, durable, and cost-effective long-term data retention
 
-This work is part of a broader effort to modernize OpenCost's architecture, making it more capable of handling the demands of enterprise Kubernetes environments.
+## The Road Ahead
+
+This work is part of a broader effort to modernize OpenCost's architecture, making it more capable of handling the demands of enterprise Kubernetes environments. Upcoming features include:
+
+1. **ResourceQuota integration** - Tracking namespace-level resource constraints
+2. **Comprehensive integration tests** - Ensuring reliability at scale
+3. **S3 storage support** - Storing compressed KubeModel entries in S3 for scalable, durable, and cost-effective long-term data retention
 
 ## Get Involved
 
