@@ -69,10 +69,8 @@ Each resource type is stored in a flat map keyed by UID, enabling O(1) lookups w
 
 The cornerstone of KubeModel is comprehensive **UID (Unique Identifier) support** across all Kubernetes resources. Every resource in Kubernetes has a UID - a stable, unique identifier that persists for the lifetime of that specific resource instance.
 
-<figure>
-  <img src="./img/uid_tracking_metrics.jpg" alt="UID Tracking Metrics" />
-  <figcaption><em>Figure 1: Prometheus metrics showing UID labels for precise resource identification across queries.</em></figcaption>
-</figure>
+![UID Tracking Metrics](./img/uid_tracking_metrics.jpg)
+*Figure 1: Prometheus metrics showing UID labels for precise resource identification across queries.*
 
 ### Enhanced Metric Tracking
 
