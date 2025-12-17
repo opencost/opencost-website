@@ -5,10 +5,13 @@ authors: [mewzherder]
 tags: [opencost, MCP, AI, cost management, Kubernetes, mentorship]
 ---
 
-The OpenCost project has had a fruitful year in terms of releases, our wonderful mentees and contributors, and fun gatherings at KubeCons. If you’re new to OpenCost, it is an open-source cost and resources management tool that is an Incubating project in the Cloud Native Computing Foundation (CNCF). It was created by Kubecost (acquired by IBM) and continues to be maintained and supported by IBM Kubecost, Randoli, and a wider community of partners, including the major cloud providers. Aside from AWS, Microsoft, and Google, who have been contributing companies since OpenCost’s inception, we’ll also call out Oracle and DigitalOcean below. If you have further questions, you can find us on Slack or at the regular [OpenCost meetings](https://opencost.io/docs/community).  
+The OpenCost project has had a fruitful year in terms of releases, our wonderful mentees and contributors, and fun gatherings at KubeCons. 
+
+![opencost-2025](./img/OpenCost_Blog_Header_12172025.png "OpenCost 2025")
 
 <!--truncate-->
 
+If you’re new to OpenCost, it is an open-source cost and resources management tool that is an Incubating project in the Cloud Native Computing Foundation (CNCF). It was created by Kubecost (acquired by IBM) and continues to be maintained and supported by IBM Kubecost, Randoli, and a wider community of partners, including the major cloud providers. Aside from AWS, Microsoft, and Google, who have been contributing companies since OpenCost’s inception, we’ll also call out Oracle and DigitalOcean below. If you have further questions, you can find us on Slack or at the regular [OpenCost meetings](https://opencost.io/docs/community).
 
 ## OpenCost Releases
 At this point in the year, the OpenCost project has had [11 releases in 2025](https://github.com/opencost/opencost/releases). It has released more features and capabilities for improved experiences for both users and contributors. Here are a few highlights:  
