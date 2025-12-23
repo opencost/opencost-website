@@ -24,12 +24,13 @@ The Cloud Costs feature is included in the stable releases as of 1.108.0. Please
 :::
 
 The documentation for each cloud service provider covers the specifics of configuring their Cloud Costs, but you may access Cloud Costs for multiple accounts across different cloud service providers regardless of which cloud service provider you are running OpenCost on (including on-premises). You may enter your account details and credentials for each cloud service provider in the `cloud-integration.json` secret file with the following format (only containing applicable CSPs for your installation):
-```
+
+```json
 {
-  "aws": [],
-  "azure": [],
-  "gcp": [],
-  "oci": [],
+  "aws": {},
+  "azure": {},
+  "gcp": {},
+  "oci": {},
 }
 ```
 
