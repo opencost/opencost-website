@@ -26,7 +26,9 @@ The OpenCost project has had [11 releases in 2025](https://github.com/opencost/o
 Thanks to our maintainers and contributors who make these releases possible and successful, including our mentees and community contributors as well. 
 
 ## Mentorship and Community management 
-Our project has been committed to mentorship through the Linux Foundation for a while, and we continue to have fantastic mentees who bring innovation and support to the community. Manas Sivakumar was a summer 2025 mentee and worked on writing Integration tests for OpenCost’s Enterprise readiness. Manas’ work is now part of the OpenCost Integration Testing Pipeline for all future contributions.  
+Our project has been committed to mentorship through the Linux Foundation for a while, and we continue to have fantastic mentees who bring innovation and support to the community. 
+
+- **Manas Sivakumar** was a summer 2025 mentee and worked on writing Integration tests for OpenCost’s Enterprise readiness. Manas’ work is now part of the OpenCost Integration Testing Pipeline for all future contributions. Manas has been voted in as a Maintainer of the OpenCost Integration Tests sub project! 
 
 - **Adesh Pal** also menteed with us and made a big splash with the [OpenCost MCP server](../blog/opencost-mcp-server). The MCP server is powerful because it now comes by default and needs no configuration. It outputs easily readable markdown on your metrics as well as step-by-step suggestions to make improvements.   
 
