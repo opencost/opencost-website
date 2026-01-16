@@ -33,7 +33,7 @@ The OpenCost UI provides a visualization of the Kubernetes allocations and the r
 
 ## Stay in the Loop
 
-Join the [OpenCost Community](community) and follow along other community events using our [calendar](https://calendar.google.com/calendar/u/0/embed?src=c_c0f7q56e5eeod3j89bb320fvjg@group.calendar.google.com&ctz=America/Los_Angeles).
+Join the [OpenCost Community](/community) and follow along other community events using our [calendar](https://calendar.google.com/calendar/u/0/embed?src=c_c0f7q56e5eeod3j89bb320fvjg@group.calendar.google.com&ctz=America/Los_Angeles).
 
 Join us on [CNCF Slack](https://slack.cncf.io/) in the [#opencost](https://cloud-native.slack.com/archives/C03D56FPD4G) channel if you have questions!
 
