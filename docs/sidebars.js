@@ -43,7 +43,6 @@ const sidebars = {
       ],
     },
     'specification',
-    'community',
     'FAQ',
     'troubleshooting',
   ],
