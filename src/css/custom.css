@@ -45,6 +45,23 @@ html[data-theme="dark"] {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+/* Update icon colors for better visibility in dark mode */
+.feature-icon{
+  filter: brightness(0) saturate(100%) invert(39%) sepia(91%) saturate(2000%) hue-rotate(200deg) brightness(100%) contrast(90%);
+}
+
+[data-theme='dark'] .feature-icon {
+  filter: brightness(0) saturate(100%) invert(60%) sepia(100%) saturate(2000%) hue-rotate(200deg) brightness(100%) contrast(90%);
+}
+/* Style for Randoli component's "App Insights Platform" text */
+.max-w-xs text {
+  fill: #2563eb !important; /* Force the SVG text color */
+}
+
+[data-theme='dark'] .max-w-xs text {
+  fill: #60a5fa !important; /* Lighter blue for dark mode */
+}
+
 .navbar__logo img {
   height: 100%;
   margin-top: -4px;
