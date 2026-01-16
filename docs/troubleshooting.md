@@ -2,7 +2,7 @@
 
 ## Reporting Issues
 
-When asking a question in [Slack](community) or raising an issue in [GitHub](https://github.com/opencost/opencost/issues), make sure you can answer the following questions:
+When asking a question in [Slack](https://cloud-native.slack.com/archives/C03D56FPD4G) or raising an issue in [GitHub](https://github.com/opencost/opencost/issues), make sure you can answer the following questions:
 * Where are you running Kubernetes and which version are you using?
 * [What version of OpenCost are you running](#getting-the-opencost-version)?
 * How did you install OpenCost and what configurations did you apply?
