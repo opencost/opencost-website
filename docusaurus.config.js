@@ -83,17 +83,8 @@ const config = {
         },
         items: [
           { to: "/blog", label: "Blog", position: "left" },
-          {
-            to: "/docs/community",
-            label: "Community",
-            position: "left",
-          },
-          {
-            type: "doc",
-            docId: "index",
-            position: "left",
-            label: "Documentation",
-          },
+          { type: "doc", docId: "index",position: "left",label: "Documentation"},
+          { to: "/community",label: "Community",position: "left"},
           { to: "/enterprise", label: "Enterprise", position: "left" },
           { to: "/press", label: "Press", position: "left" },
         ],
