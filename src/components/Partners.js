@@ -49,6 +49,10 @@ export default function Partners() {
           <div className="w-64 h-52 items-center flex">
             <img src="/img/newrelic.png" alt="New Relic" />
           </div></a>
+        <a href="https://www.oracle.com/" target="_blank" rel="noopener noreferrer">
+          <div className="w-72 h-52 items-center flex">
+            <img src="/img/oracle.svg" alt="Oracle" />
+          </div></a>
         <a href="https://www.pixielabs.ai/" target="_blank" rel="noopener noreferrer">
           <div className="w-52 h-52 items-center flex">
             <img src="/img/pixie.png" alt="Pixie" />
@@ -56,10 +60,6 @@ export default function Partners() {
         <a href="https://www.suse.com/" target="_blank" rel="noopener noreferrer">
           <div className="w-72 h-52 items-center flex">
             <img src="/img/suse.png" alt="Suse" />
-          </div></a>
-        <a href="https://www.oracle.com/" target="_blank" rel="noopener noreferrer">
-          <div className="w-72 h-52 items-center flex">
-            <img src="/img/oracle.svg" alt="Oracle" />
           </div></a>
       </div>
     </div>
