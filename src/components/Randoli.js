@@ -7,7 +7,7 @@ export default function Randoli() {
       <div className="px-8 py-4 sm:col-span-2 row-span-2 rounded-xl border border-solid border-gray-200 dark:border-gray-800 group/card">
         <h3 className="my-4">
           <RandoliLogo className="max-w-xs" />
-          <span className="sr-only">Randoli App Insights Platform</span>
+          <span className="sr-only">Randoli</span>
         </h3>
 
         <p className="pb-4">
@@ -16,14 +16,18 @@ export default function Randoli() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-4">
           <figure className="flex items-center gap-4 m-0">
-            <img src="/img/randoli/cost-visibility.png" alt="Cost Visibility" className="w-10" />
+            <img 
+              src="/img/randoli/cost-visibility.png" 
+              alt="Cost Visibility" 
+              className="w-10 feature-icon" 
+            />
             <figcaption>Cost Visibility</figcaption>
           </figure>
           <figure className="flex items-center gap-4 m-0">
             <img
               src="/img/randoli/cost-alerts.png"
               alt="Cost Alerts"
-              className="w-10"
+              className="w-10 feature-icon"
             />
             <figcaption>Cost Alerts</figcaption>
           </figure>
@@ -31,7 +35,7 @@ export default function Randoli() {
             <img
               src="/img/randoli/rightsizing.png"
               alt="Workload & Cluster RightSizing"
-              className="w-10"
+              className="w-10 feature-icon"
             />
             <figcaption>Workload & Cluster RightSizing</figcaption>
           </figure>
@@ -39,7 +43,7 @@ export default function Randoli() {
             <img
               src="/img/randoli/cost-report.png"
               alt="Chageback Reports & Analytics"
-              className="w-10"
+              className="w-10 feature-icon"
             />
             <figcaption>Chageback Reports & Analytics</figcaption>
           </figure>
@@ -47,7 +51,9 @@ export default function Randoli() {
 
         <a
           href="https://www.randoli.io"
-          className="underline block pt-8 text-black dark:text-white group-hover/card:text-blue-500 group-hover/card:font-black"
+          className="underline block pt-8 text-black dark:text-white group-hover/card:text-purple-500 group-hover/card:font-black"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Learn more about how Randoli AppInsights Platform can help you save costs
         </a>
@@ -56,11 +62,13 @@ export default function Randoli() {
       <div className="px-8 py-4 rounded-xl border border-solid border-gray-200 dark:border-gray-800 group/card">
         <h4 className="text-3xl sm:text-2xl font-anek font-normal leading-snug">Getting Started</h4>
         <p>
-          Get started in a few easy steps .
+          Get started in a few easy steps.
         </p>
         <a
           href="https://docs.insights.randoli.io/"
-          className="underline text-black dark:text-white group-hover/card:text-blue-500 group-hover/card:font-black"
+          className="underline text-black dark:text-white group-hover/card:text-purple-500 group-hover/card:font-black"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Check it out
         </a>
@@ -71,7 +79,9 @@ export default function Randoli() {
         <p>Learn how to setup & configure cost management features</p>
         <a
           href="https://docs.insights.randoli.io/cost-management/"
-          className="underline text-black dark:text-white group-hover/card:text-blue-500 group-hover/card:font-black"
+          className="underline text-black dark:text-white group-hover/card:text-purple-500 group-hover/card:font-black"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Check it out
         </a>

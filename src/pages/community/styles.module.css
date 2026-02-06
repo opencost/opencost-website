@@ -1,0 +1,36 @@
+.communityContainer {
+  padding: 2rem 0;
+  max-width: 1240px; 
+  margin: 0 auto; 
+}
+
+.communityContent {
+  padding: 0 1rem; 
+  width: 100%;
+}
+
+
+@media (max-width: 996px) {
+  .communityContent {
+    padding: 0 1rem;
+  }
+}
+.communityContainer h1 {
+  font-size: 2.5rem; 
+  font-weight: 800; 
+  margin-bottom: 1.5rem; 
+  color: var(--ifm-heading-color);
+}
+.communityContent h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--ifm-heading-color);
+}
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;       
+  gap: 0.75rem;           
+  margin-top: 1rem;
+}
