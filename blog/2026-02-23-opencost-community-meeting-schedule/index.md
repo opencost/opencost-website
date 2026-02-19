@@ -13,8 +13,8 @@ On March 5, 2026, we’re updating the OpenCost community meeting schedule so th
 
 **Every 2nd Thursday at 10:00 AM EST**, we hold an OpenCost community meeting. To support collaboration across time zones, **starting March 5, 2026 we will alternate between two sessions each month:**
 
-- **One EMEA/APAC-focused meeting** at 10:00 AM EST (15:00 UTC) (best for Europe, Middle East, Africa, and Asia-Pacific) <- **This meeting will be held March 5, and every 4 weeks after that** 
-- **One Americas-focused meeting** at 4:00 PM EST (21:00 UTC) (best for Americas) <- **This meeting will be held March 19, and every 4 weeks after that** 
+- **One EMEA/APAC-focused meeting** at 10:00 AM EST (15:00 UTC) (best for Europe, Middle East, Africa, and Asia-Pacific): **This meeting will be held March 5, and every 4 weeks after that** 
+- **One Americas-focused meeting** at 4:00 PM EST (21:00 UTC) (best for Americas):  **This meeting will be held March 19, and every 4 weeks after that** 
 
 So each month there will be one meeting optimized for NA and one for EMEA/APAC, making it easier to attend from your region.
 
