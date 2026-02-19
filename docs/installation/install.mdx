@@ -4,15 +4,15 @@ sidebar_position: 1
 # OpenCost Setup
 
 There are several supported ways of deploying OpenCost, depending on your use case and environment. Each cloud provider has different configuration requirements depending on your deployment. For full OpenCost functionality (Kubernetes Cost Allocations, Cloud Costs, and the web UI), we recommend deploying with Helm and following the instructions specific to your cloud provider:
-* [Cloud service provider configuration](https://opencost.io/docs/configuration/)
-* [On-premises deployments](../configuration/on-prem)
-* [Docker (no Kubernetes support)](docker)
+* [Cloud service provider configuration](/docs/configuration)
+* [On-premises deployments](/docs/configuration/on-prem)
+* [Docker (no Kubernetes support)](/docs/installation/docker)
 
 ## Requirements
 
 OpenCost requires a Kubernetes cluster to be deployed. Users should be running Kubernetes 1.21+ and Kubernetes 1.28 is officially supported as of v1.105.
 
-OpenCost requires [Prometheus](prometheus) for scraping metrics and data storage.
+OpenCost requires [Prometheus](/docs/installation/prometheus) for scraping metrics and data storage.
 
 ## Accessing OpenCost
 
@@ -29,15 +29,15 @@ To verify that the server is running, access [http://localhost:9003/allocation/c
 ### Accessing OpenCost Data
 
 Beyond the OpenCost UI, you may access the cost monitoring data for OpenCost through:
-* [OpenCost API](../integrations/api) and [API examples](../integrations/api-examples)
-* [kubectl cost](../integrations/kubectl-cost) plugin
-* [MCP Server](../integrations/mcp) for AI agents and automation
-* [CSV Exports](../integrations/csv-export)
-* [Parquet Exports](../integrations/parquet-export)
+* [OpenCost API](/docs/integrations/api) and [API examples](/docs/integrations/api-examples)
+* [kubectl cost](/docs/integrations/kubectl-cost) plugin
+* [MCP Server](/docs/integrations/mcp) for AI agents and automation
+* [CSV Exports](/docs/integrations/csv-export)
+* [Parquet Exports](/docs/integrations/parquet-export)
 
 ## Updating OpenCost
 
-Depending on how you installed OpenCost, it may be a matter of updating the [Helm chart](helm) to the latest version or updating the version number in your `values.yaml` or manifest. Data is stored in Prometheus, so upgrading/downgrading should not impact the recorded data.
+Depending on how you installed OpenCost, it may be a matter of updating the [Helm chart](/docs/installation/helm) to the latest version or updating the version number in your `values.yaml` or manifest. Data is stored in Prometheus, so upgrading/downgrading should not impact the recorded data.
 
 ## Uninstalling OpenCost
 
