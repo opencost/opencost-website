@@ -34,6 +34,6 @@ So each month there will be one meeting optimized for NA and one for EMEA/APAC, 
 
 ## Why are we splitting the meetings?
 
-OpenCost is used and contributed to from many regions. Holding one NA and one EMEA/APAC meeting per month at 10:00 AM EST gives each region a slot that’s more workable locally, so more people can join, share feedback, and collaborate without staying up late or getting up very early.
+OpenCost is used and contributed to from many regions. Holding one NA and one EMEA/APAC meeting per month gives each region a slot that’s more workable locally, so more people can join, share feedback, and collaborate without staying up late or getting up very early.
 
 We hope to see you in an upcoming meeting. For more ways to connect, see the [Community](/community) page.
