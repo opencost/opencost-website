@@ -13,6 +13,7 @@ Accessing cloud service provider billing and pricing APIs may require additional
 * [Microsoft Azure](azure)
 * [Open Telekom Cloud](otc)
 * [Oracle Cloud Infrastructure](oracle)
+* [OVHcloud](ovh)
 * Scaleway \(documentation needed\)
 
 ## Cloud Costs
@@ -49,7 +50,7 @@ Please note that the cloud costs become available as soon as they appear in the 
 
 In some cases users may need to override the pricing provided by their cloud service provider. They may have negotiated with their cloud service provider or may be acting as an intermediary with their own rates that do not follow list prices.
 
-If this is the case, you may provide overrides in your local OpenCost Helm values file to match the name of the cloud provider you are overriding. The current options are `alibaba`, `aws`, `azure`, `gcp`, `oracle`, or `default` for on-premises pricing. This example overrides GCP pricing:
+If this is the case, you may provide overrides in your local OpenCost Helm values file to match the name of the cloud provider you are overriding. The current options are `alibaba`, `aws`, `azure`, `gcp`, `oracle`, `ovh`, or `default` for on-premises pricing. This example overrides GCP pricing:
 
 ```yaml
 opencost:

@@ -1,0 +1,152 @@
+---
+sidebar_position: 7
+title: OVHcloud
+---
+import CustomPrometheus from './_custom_prometheus.mdx';
+import Helm from './_helm.mdx';
+import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
+import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
+
+# Installing on OVHcloud
+
+OpenCost may be installed on Kubernetes clusters running on OVHcloud, including Managed Kubernetes Service (MKS) clusters.
+<Installing/>
+
+:::info
+
+OVHcloud support is available starting from the next release after 1.119.2. If you need it before the official release, you may use the `develop-latest` image tag.
+
+:::
+
+## Install Prometheus
+
+<InstallPrometheus/>
+<CustomPrometheus/>
+
+:::tip
+
+If you are using kube-prometheus-stack (Prometheus Operator), you can skip the `extraScrapeConfigs` and enable the ServiceMonitor in the OpenCost Helm chart instead:
+
+```yaml
+opencost:
+  metrics:
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        release: <your-prometheus-stack-release-name>
+```
+
+:::
+
+## Create the OpenCost Namespace
+
+<Namespace/>
+
+## OVHcloud Configuration
+
+### Cost Allocation
+
+OpenCost will automatically detect OVHcloud as the cloud service provider (CSP) by reading node labels. When the label `node.k8s.ovh/type` is present, OpenCost identifies the cluster as running on OVHcloud.
+
+Once detected, OpenCost retrieves real-time pricing data from the [OVH Public Cloud Catalog API](https://eu.api.ovh.com/v1/order/catalog/public/cloud?ovhSubsidiary=FR). This includes:
+
+- **Instance pricing**: hourly and monthly rates for all Public Cloud flavors (general purpose, CPU, RAM, GPU, discovery, IOPS)
+- **Volume pricing**: per-GB/hour rates for all Cinder volume types (classic, high-speed, high-speed-gen2)
+
+No API key is required to retrieve the public pricing data.
+
+#### Environment Variables
+
+The following optional environment variables may be used to customize OVHcloud pricing behavior:
+
+| Variable                 | Default | Description                                                                                                        |
+|--------------------------|---------|--------------------------------------------------------------------------------------------------------------------|
+| `OVH_SUBSIDIARY`         | `FR`    | OVH subsidiary for catalog pricing (e.g., `FR`, `DE`, `US`, `GB`). Determines the currency and regional pricing. |
+| `OVH_MONTHLY_NODEPOOLS`  | (empty) | Comma-separated list of nodepool names that use monthly billing instead of hourly consumption pricing.             |
+| `REGION_OVERRIDE_LIST`   | (empty) | Comma-separated list of OVH regions to query. Overrides the built-in region list if set.                          |
+
+#### Monthly vs. Hourly Pricing
+
+OVHcloud offers both hourly (consumption) and monthly billing for Public Cloud instances. By default, OpenCost uses hourly pricing for all nodes. If some of your nodepools use monthly billing, set the `OVH_MONTHLY_NODEPOOLS` environment variable:
+
+```yaml
+opencost:
+  exporter:
+    extraEnv:
+      OVH_MONTHLY_NODEPOOLS: "my-monthly-pool,another-monthly-pool"
+```
+
+Monthly prices are converted to an equivalent hourly rate (monthly price / 730 hours) for consistent cost allocation.
+
+Alternatively, you can override billing mode per node using the `ovh.opencost.io/billing` label with a value of `monthly` or `hourly`:
+
+```sh
+kubectl label node <node-name> ovh.opencost.io/billing=monthly
+```
+
+This label takes precedence over the `OVH_MONTHLY_NODEPOOLS` environment variable for the labeled node.
+
+#### Persistent Volume Pricing
+
+OpenCost automatically prices Persistent Volumes backed by OVHcloud Cinder CSI. The volume type is resolved from:
+
+1. A built-in mapping of StorageClass names to OVH volume types
+2. The `type` parameter in the StorageClass specification (fallback)
+
+Supported volume types include `classic`, `high-speed`, and `high-speed-gen2` (plus their `-luks` encrypted variants).
+
+### Custom Pricing
+
+If you need to override the default OVHcloud pricing retrieved from the catalog API, you may provide custom pricing in your Helm values:
+
+```yaml
+opencost:
+  customPricing:
+    enabled: true
+    provider: ovh
+    costModel:
+      description: Custom OVH pricing overrides
+      CPU: "0.03405"
+      RAM: "0.009729"
+      GPU: "1.80"
+      storage: "0.000119"
+```
+
+## OVHcloud Cloud Costs
+
+:::note
+
+Cloud Costs are not currently supported for OVHcloud. Support is planned for a future release.
+
+:::
+
+## Install OpenCost
+
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+To enable the OVHcloud provider explicitly (e.g., when running outside an MKS cluster), set the `CLOUD_PROVIDER` environment variable:
+
+```yaml
+opencost:
+  exporter:
+    extraEnv:
+      CLOUD_PROVIDER: "OVH"
+```
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>
+
+### Installing with the OpenCost Manifest
+
+Installing from the OpenCost manifest is supported on OVHcloud.
+
+<InstallManifest/>
