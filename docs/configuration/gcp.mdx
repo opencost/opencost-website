@@ -1,3 +1,4 @@
+
 ---
 sidebar_position: 3
 title: Google Cloud Platform
@@ -104,36 +105,31 @@ cat compute-viewer-opencost-key.json
 
 * `<KEY_JSON>` is the GCP service key created above. This value should be left as a JSON when inserted into the configuration object
 * `<PROJECT_ID>` is the Project ID in the GCP service key.
-* `<BILLING_DATA_DATASET>` requires a BigQuery dataset prefix (e.g. billing_data) in addition to the BigQuery table name. A full example is `billing_data.gcp_billing_export_v1_018AIF_74KD1D_534A2`.
+* `<BILLING_DATA_DATASET>` requires the full BigQuery table name in the format `dataset.table_name`. For example: `billing_dataset.gcp_billing_export_resource_v1_018AIF_74KD1D_534A2`.
 
-Set these values into the to the GCP array in the `cloud-integration.json`:
+Set these values into the GCP array in the `cloud-integration.json`:
 
 ``` json
 {
-  "gcp": {
-    "bigQuery": [
-      {
-        "projectID": "<GCP_PROJECT_ID>",
-        "dataset": "detailedbilling",
-        "table": "gcp_billing_export_resource_v1_0121AC_C6F51B_690771",
-        "authorizer": {
-          "authorizerType": "GCPServiceAccountKey",
-          "key": {
-            "type": "service_account",
-            "project_id": "<GCP_PROJECT_ID>",
-            "private_key_id": "<PRIVATE_KEY_ID>",
-            "private_key": "<PRIVATE_KEY>",
-            "client_email": "<CLIENT_EMAIL>",
-            "client_id": "<CLIENT_ID>",
-            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-            "token_uri": "https://oauth2.googleapis.com/token",
-            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/<CERT_NAME>"
-          }
-        }
+  "gcp": [
+    {
+      "projectID": "<GCP_PROJECT_ID>",
+      "billingDataDataset": "<BILLING_DATA_DATASET>",
+      "key": {
+        "type": "service_account",
+        "project_id": "<GCP_PROJECT_ID>",
+        "private_key_id": "<PRIVATE_KEY_ID>",
+        "private_key": "<PRIVATE_KEY>",
+        "client_email": "<CLIENT_EMAIL>",
+        "client_id": "<CLIENT_ID>",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/<CERT_NAME>",
+        "universe_domain": "googleapis.com"
       }
-    ]
-  }
+    }
+  ]
 }
 ```
 
@@ -143,18 +139,13 @@ If you're using GKE with Workload Identity, you can configure OpenCost to use Wo
 
 ``` json
 {
-  "gcp": {
-    "bigQuery": [
-      {
-        "projectID": "<GCP_PROJECT_ID>",
-        "dataset": "detailedbilling",
-        "table": "gcp_billing_export_resource_v1_0121AC_C6F51B_690771",
-        "authorizer": {
-          "authorizerType": "GCPWorkloadIdentity"
-        }
-      }
-    ]
-  }
+  "gcp": [
+    {
+      "projectID": "<GCP_PROJECT_ID>",
+      "billingDataDataset": "billing_dataset.gcp_billing_export_resource_v1_018AIF_74KD1D_534A2",
+      "authorizerType": "GCPWorkloadIdentity"
+    }
+  ]
 }
 ```
 
