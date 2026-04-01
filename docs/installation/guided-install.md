@@ -22,7 +22,7 @@ title: Guided Install with KubeStellar Console
 3. Follow the step-by-step instructions
 
 The mission definition is open source and available on GitHub:
-[install-opencost.json](https://github.com/kubestellar/console-kb/blob/master/solutions/cncf-install/install-opencost.json)
+[install-opencost.json](https://github.com/kubestellar/console-kb/blob/master/fixes/cncf-install/install-opencost.json)
 
 ## When to use the guided install
 
