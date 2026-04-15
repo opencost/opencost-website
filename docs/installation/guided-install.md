@@ -21,6 +21,7 @@ title: Guided Install with KubeStellar Console
 2. Connect your kubeconfig context
 3. Follow the step-by-step instructions
 
+> **Security note:** Before connecting a kubeconfig context to a browser-based third-party tool, verify the tool and source you are using, prefer least-privilege credentials or a dedicated context, avoid production clusters when possible, and understand what cluster data, command output, or credentials metadata may be transmitted to or stored by the service.
 The mission definition is open source and available on GitHub:
 [install-opencost.json](https://github.com/kubestellar/console-kb/blob/master/fixes/cncf-install/install-opencost.json)
 
