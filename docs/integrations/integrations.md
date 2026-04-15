@@ -10,6 +10,7 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 * [AWS](../configuration/aws.mdx)
 * [GCP](../configuration/gcp.mdx)
 * [Oracle Cloud Infrastructure](../configuration/oracle.mdx)
+* [OVHcloud](../configuration/ovh.mdx)
 * [Alibaba](https://alibabacloud.com/)
 * [Scaleway](https://www.scaleway.com/en/)
 
