@@ -1,0 +1,73 @@
+---
+sidebar_position: 3
+---
+
+# Multi-Cluster with a Single Source of Data
+
+This guide explains one way to run OpenCost in a multi-cluster setup where metrics are centralized in a single query layer (for example, Thanos, Cortex, or Mimir).
+
+In this pattern:
+
+- Deploy one OpenCost instance per Kubernetes cluster.
+- Send cluster metrics to a shared backend.
+- Configure each OpenCost instance to query the shared backend.
+- Apply a cluster filter so each instance reads only its own cluster's data.
+
+## Why this matters
+
+Without cluster scoping, an OpenCost instance can query data from multiple clusters in the same backend. That can cause:
+
+- Mixed allocations that are hard to interpret
+- Slower queries and timeouts due to larger result sets
+- Confusing cluster-level output (for example, synthetic/default cluster IDs)
+
+## Prerequisites
+
+1. A centralized Prometheus-compatible query endpoint (`PROMETHEUS_SERVER_ENDPOINT`) such as Thanos Query or Query Frontend.
+2. A consistent cluster label present in your metric source data. A common setup is Prometheus `externalLabels` with a key like `cluster`.
+3. One OpenCost deployment per cluster.
+
+## Configuration for this pattern
+
+Set these environment variables in each OpenCost deployment:
+
+```yaml
+opencost:
+  exporter:
+    extraEnv:
+      CURRENT_CLUSTER_ID_FILTER_ENABLED: "true"
+      PROM_CLUSTER_ID_LABEL: "cluster"
+      CLUSTER_ID: "<this-cluster-label-value>"
+```
+
+### Variable meaning
+
+- `CURRENT_CLUSTER_ID_FILTER_ENABLED=true` enables cluster-scoped filtering on OpenCost Prometheus queries.
+- `PROM_CLUSTER_ID_LABEL` is the metric label key OpenCost should use for cluster matching (for example, `cluster` or `cluster_id`).
+- `CLUSTER_ID` is the label value for the current cluster. It should match the value used in the backend metrics.
+
+## Example (Thanos)
+
+If your Prometheus instances write to Thanos and use:
+
+```yaml
+externalLabels:
+  cluster: qa
+```
+
+Then the OpenCost instance running in that cluster should use:
+
+- `PROM_CLUSTER_ID_LABEL=cluster`
+- `CLUSTER_ID=qa`
+- `CURRENT_CLUSTER_ID_FILTER_ENABLED=true`
+
+## Common pitfalls
+
+- Leaving `PROM_CLUSTER_ID_LABEL` at default when your backend uses a different label key.
+- Setting `CLUSTER_ID` to a value that does not match metric labels.
+- Assuming one OpenCost instance should automatically provide complete multi-cluster attribution from a shared backend.
+
+## Additional notes
+
+- If you intentionally want one OpenCost instance to read all clusters from a shared backend, do not enable the current-cluster filter. Be aware this can increase query cost and may not match per-cluster operational expectations.
+- For sharded/high-availability Prometheus backends, use a global query endpoint as documented in the Prometheus installation docs.
