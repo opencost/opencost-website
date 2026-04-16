@@ -27,6 +27,9 @@ OpenCost may be integrated with a wide variety of technologies. Below is a list 
 ## AI and Automation
 * [MCP Server](./mcp) - Model Context Protocol server for AI agents
 
+## Community Tools
+* [KubeStellar Console Guided Install](https://console.kubestellar.io/missions/install-opencost) - Community-maintained third-party guided installation for OpenCost with pre-flight checks, validation, and rollback; not an official OpenCost integration
+
 ## Miscellaneous
 * [Prometheus OpenCost Exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-opencost-exporter)
 * [Kubefirst](https://kubefirst.io/blog/release2-2/)
