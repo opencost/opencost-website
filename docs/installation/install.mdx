@@ -60,9 +60,7 @@ $ helm uninstall prometheus
 $ kubectl delete namespace prometheus-system
 ```
 
-If you installed with the manifest, enter the following command:
-
-`kubectl delete -f https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/opencost.yaml`
+If you previously installed using an older standalone manifest, uninstall those resources based on the manifest content you originally applied. New installations should use Helm.
 
 ## Help
 
