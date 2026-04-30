@@ -15,6 +15,7 @@ Accessing cloud service provider billing and pricing APIs may require additional
 * [Oracle Cloud Infrastructure](oracle.mdx)
 * [OVHcloud](ovh.mdx)
 * Scaleway \(documentation needed\)
+* [STACKIT](stackit.mdx)
 
 ## Cloud Costs
 
