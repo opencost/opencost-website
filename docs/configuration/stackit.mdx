@@ -1,0 +1,117 @@
+---
+sidebar_position: 6
+title: STACKIT
+---
+import CloudCosts from './_cloud_costs.mdx';
+import CloudCostsInfo from './_cloud_costs_info.mdx';
+import CustomPrometheus from './_custom_prometheus.mdx';
+import Helm from './_helm.mdx';
+import InstallCloudCosts from './_install_cloud_costs.mdx';
+import InstallManifest from './_install_manifest.mdx';
+import InstallOpenCost from './_install_opencost.mdx';
+import InstallPrometheus from './_install_prometheus.mdx';
+import Installing from './_installing.mdx';
+import Namespace from './_namespace.mdx';
+import UpdateOpenCost from './_update_opencost.mdx';
+
+# Installing on STACKIT
+
+OpenCost may be installed on Kubernetes clusters running on [STACKIT](https://stackit.com/), including the STACKIT Kubernetes Engine (SKE).
+<Installing/>
+
+## Install Prometheus
+
+<InstallPrometheus/>
+<CustomPrometheus/>
+
+## Create the OpenCost Namespace
+
+<Namespace/>
+
+## STACKIT Configuration
+
+### Cost Allocation
+
+OpenCost will automatically detect STACKIT as the cloud service provider (CSP) on SKE clusters by detecting the node label `node.stackit.cloud/ske`. You can also set the `CLOUD_PROVIDER` environment variable to `STACKIT` to force detection.
+
+When STACKIT is detected as the CSP, OpenCost retrieves VM, GPU, and storage pricing from the [STACKIT PIM API](https://pim-service.pim.stackit.cloud). No API key is required to retrieve the public pricing data.
+
+Pricing is fetched at startup and includes:
+
+- **VM flavors** with per-hour cost, vCPU, and RAM
+- **GPU instances** (NVIDIA A100, L40S, H100 HGX) with per-GPU cost
+- **Block storage** with per-GB/hour cost by storage class
+
+## STACKIT Cloud Costs
+
+<CloudCostsInfo/>
+
+To configure Cloud Costs for your STACKIT account, you need a STACKIT service account with cost reader permissions.
+
+* `<YOUR-CUSTOMER-ACCOUNT-ID>` is your STACKIT organization (customer account) ID.
+* `<YOUR-PROJECT-ID>` is the STACKIT project ID for the project you want to monitor.
+* The service account key file provides authentication to the [STACKIT Cost API](https://docs.api.stackit.cloud/documentation/cost/version/v3api).
+
+### Create the service account secret
+
+```sh
+kubectl create secret generic stackit-sa-key \
+  -n opencost \
+  --from-file=sa_key.json=/path/to/your/sa_key.json
+```
+
+### Configure `cloud-integration.json`
+
+```json
+{
+  "stackit": {
+    "costApi": [
+      {
+        "customerAccountId": "<YOUR-CUSTOMER-ACCOUNT-ID>",
+        "projectId": "<YOUR-PROJECT-ID>",
+        "serviceAccountKeyPath": "/var/secrets/sa_key.json"
+      }
+    ]
+  }
+}
+```
+
+<InstallCloudCosts/>
+
+### Mount the service account key
+
+Add the following to your Helm values to make the key available to OpenCost:
+
+```yaml
+extraVolumes:
+  - name: stackit-sa-key
+    secret:
+      secretName: stackit-sa-key
+
+opencost:
+  exporter:
+    extraVolumeMounts:
+      - name: stackit-sa-key
+        mountPath: /var/secrets
+        readOnly: true
+```
+
+<CloudCosts/>
+
+## Install OpenCost
+
+<Helm/>
+
+### Using the OpenCost Helm Chart
+
+<InstallOpenCost/>
+
+### Updating OpenCost via Helm
+
+<UpdateOpenCost/>
+
+### Installing with the OpenCost Manifest
+
+Installing from the OpenCost manifest is supported on STACKIT.
+
+<InstallManifest/>
