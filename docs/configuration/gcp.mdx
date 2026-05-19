@@ -106,6 +106,8 @@ cat compute-viewer-opencost-key.json
 * `<PROJECT_ID>` is the Project ID in the GCP service key.
 * `<BILLING_DATA_DATASET>` requires a BigQuery dataset prefix (e.g. billing_data) in addition to the BigQuery table name. A full example is `billing_data.gcp_billing_export_v1_018AIF_74KD1D_534A2`.
 
+Additionally, you can configure the BigQuery location via `<BIGQUERY_LOCATION>` (e.g. `US`, `EU`, `us-central1`). If left empty, the default location will be determined as described in ["Default location"](https://docs.cloud.google.com/bigquery/docs/locations#default_location).
+
 Set these values into the to the GCP array in the `cloud-integration.json`:
 
 ``` json
@@ -116,6 +118,7 @@ Set these values into the to the GCP array in the `cloud-integration.json`:
         "projectID": "<GCP_PROJECT_ID>",
         "dataset": "detailedbilling",
         "table": "gcp_billing_export_resource_v1_0121AC_C6F51B_690771",
+        "location": "<BIGQUERY_LOCATION>",
         "authorizer": {
           "authorizerType": "GCPServiceAccountKey",
           "key": {
@@ -149,6 +152,7 @@ If you're using GKE with Workload Identity, you can configure OpenCost to use Wo
         "projectID": "<GCP_PROJECT_ID>",
         "dataset": "detailedbilling",
         "table": "gcp_billing_export_resource_v1_0121AC_C6F51B_690771",
+        "location": "<BIGQUERY_LOCATION>",
         "authorizer": {
           "authorizerType": "GCPWorkloadIdentity"
         }
