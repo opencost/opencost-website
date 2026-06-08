@@ -25,6 +25,15 @@
     "styled-components": "^6.4.1",
     "tailwindcss": "^4.3.0"
   },
+  "overrides": {
+    "serialize-javascript": "^7.0.5",
+    "ajv@6": "^6.15.0",
+    "ajv@>=7.0.0-alpha.0 <8.18.0": "^8.18.0",
+    "ws@>=8.0.0 <8.20.1": "^8.20.1",
+    "path-to-regexp@<0.1.13": "0.1.13",
+    "brace-expansion": "^1.1.13",
+    "uuid@<11.1.1": "^11.1.1"
+  },
   "devDependencies": {
     "@docusaurus/core": "^3.9.2",
     "@docusaurus/module-type-aliases": "^3.10.1",
@@ -51,6 +60,6 @@
     ]
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=20.0"
   }
 }

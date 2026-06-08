@@ -52,11 +52,8 @@ export default function Community() {
 
                 <h2>Social Media</h2>
                 <div className={styles.socialLinks}>
-                  <a href="https://bsky.app/profile/opencost.bsky.social" target="_blank" rel="noopener noreferrer" className="button button--outline button--primary">Bluesky</a>
                   <a href="https://www.linkedin.com/showcase/opencost/" target="_blank" rel="noopener noreferrer" className="button button--outline button--primary">LinkedIn</a>
-                  <a href="https://hachyderm.io/@opencost" target="_blank" rel="noopener noreferrer" className="button button--outline button--primary">Mastodon</a>
-                  <a href="https://twitter.com/open_cost" target="_blank" rel="noopener noreferrer" className="button button--outline button--primary">Twitter</a>
-                  <a href="https://www.youtube.com/@OpenCost" target="_blank" rel="noopener noreferrer" className="button button--outline button--primary">YouTube</a>
+                  <a href="https://www.youtube.com/@CNCFOpenCost" target="_blank" rel="noopener noreferrer" className="button button--outline button--primary">YouTube</a>
                 </div>
               </div>
             </div>
