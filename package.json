@@ -43,7 +43,7 @@
     "@mdx-js/react": "^3.1.1",
     "autoprefixer": "^10.5.0",
     "core-js": "^3.49.0",
-    "eslint": "^9.39.2",
+    "eslint": "^10.4.0",
     "eslint-plugin-react": "^7.37.5",
     "postcss": "^8.5.10"
   },
