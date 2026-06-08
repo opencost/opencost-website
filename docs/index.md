@@ -6,6 +6,14 @@ slug: /
 
 OpenCost is a vendor-neutral open source project for measuring and allocating cloud infrastructure and container costs. It’s built for Kubernetes cost monitoring to power real-time cost monitoring, showback, and chargeback.
 
+## Choose your setup path
+
+Select the guidance that best matches your environment:
+
+* For cloud-provider billing integration, see [Integrating Cloud Costs and Configuration](#integrating-cloud-costs-and-configuration).
+* For on-premises environments, see [On-Premises](#on-premises).
+* To run OpenCost outside Kubernetes, see the [Docker installation guide](./installation/docker).
+
 Below are common documentation pages for the OpenCost Project:
 
 ## Installation
