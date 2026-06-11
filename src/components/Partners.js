@@ -33,6 +33,10 @@ export default function Partners() {
           <div className="w-72 h-52 items-center flex">
             <img src="/img/grafana_logo-web.svg" alt="Grafana" />
           </div></a>
+        <a href="https://www.ibm.com/" target="_blank" rel="noopener noreferrer">
+          <div className="w-40 h-52 items-center flex">
+            <img src="/img/ibm.png" alt="IBM" />
+          </div></a>
         <a href="https://www.kubecost.com/" target="_blank" rel="noopener noreferrer">
           <div className="w-72 h-52 items-center flex">
             <img src="/img/kubecost.png" alt="Kubecost" />
