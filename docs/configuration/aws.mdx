@@ -179,16 +179,109 @@ serviceAccount:
 
 <CloudCostsInfo/>
 
-To configure OpenCost for your AWS account, create an Access Key for the OpenCost user who has access to the Cost and Usage Report (CUR). Navigate to the [IAM Management Console dashboard](https://console.aws.amazon.com/iam), and select *Access Management > Users*. Find the OpenCost user and select *Security Credentials > Create Access Key*. Note the Access Key ID and Secret access key.
+### Prerequisites: Cost and Usage Report with Athena
 
-* `<ATHENA_BUCKET_NAME>` is the S3 bucket storing Athena query results which OpenCost has permission to access. The name of the bucket should match `s3://aws-athena-query-results-*`, so the IAM roles defined above will automatically allow access to it. The bucket can have a canned ACL set to Private or other permissions as needed.
-* `<ATHENA_REGION>` is the AWS region Athena is running in
-* `<ATHENA_DATABASE>` is the name of the database created by the Athena setup. The Athena database name is available as the value (physical id) of `AWSCURDatabase` in the CloudFormation stack created above.
-* `<ATHENA_TABLE>` is the name of the table created by the Athena setup The table name is typically the database name with the leading `athenacurcfn_` removed (but is not available as a CloudFormation stack resource).
+Before OpenCost can query your AWS Cloud Costs, you must have a Cost and Usage Report (CUR) exported to S3 and made queryable through Amazon Athena. AWS publishes a CloudFormation template that creates the S3 bucket, Glue database, Glue crawler, and Athena workgroup for you. Follow [Setting up Athena using AWS CloudFormation templates](https://docs.aws.amazon.com/cur/latest/userguide/use-athena-cf.html) before continuing.
+
+When the CloudFormation stack finishes, take note of the following — you will need them below:
+
+* The CUR S3 bucket name (the bucket the CUR is written to)
+* The Athena query-results S3 bucket name (created by the stack, typically matching `aws-athena-query-results-*`)
+* The Athena/Glue database name (the `AWSCURDatabase` output of the stack)
+* The Athena table name (typically the database name with the leading `athenacurcfn_` removed)
+* The AWS region Athena is running in
+* The AWS account ID
+
+:::note
+
+The legacy CUR export format ("CUR" / "Legacy CUR Export") is what the CloudFormation template above provisions and what this guide covers. AWS also offers a newer "Data Exports" / CUR 2.0 format; if you are using CUR 2.0 you will need to confirm field and table-name compatibility with your OpenCost version separately.
+
+:::
+
+### Choose an authentication method
+
+OpenCost supports several ways to authenticate against AWS for Cloud Costs. Pick **one**:
+
+* **IAM Role for Service Account (IRSA)** or **EKS Pod Identity** — recommended on EKS. The role is attached to the OpenCost service account (see the [IAM Roles for Service Accounts](#iam-roles-for-service-accounts) and [EKS Pod Identities](#eks-pod-identities) sections above). The `authorizer` block in `cloud-integration.json` can use `AWSAssumeRole` (with a `roleARN`) when crossing accounts, or be omitted/left to the default SDK credential chain when the pod's own role has the required permissions.
+* **IAM User with Access Key** — works anywhere but requires managing a long-lived secret. Create an IAM user dedicated to OpenCost, attach the policy below to it, then create an Access Key (IAM Console → *Access Management > Users > Security Credentials > Create Access Key*) and use the `AWSAccessKey` authorizer shown in the example.
+
+You do **not** need both an IAM user and a role — choose whichever fits your environment.
+
+### IAM permissions for CUR / Athena
+
+Attach a policy similar to the following to the IAM user **or** role that OpenCost will use. Replace `<CUR_BUCKET>` with the bucket holding your CUR data and `<ATHENA_RESULTS_BUCKET>` with the bucket Athena writes query results to.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AthenaQueryAccess",
+            "Effect": "Allow",
+            "Action": [
+                "athena:GetQueryExecution",
+                "athena:GetQueryResults",
+                "athena:GetWorkGroup",
+                "athena:StartQueryExecution",
+                "athena:StopQueryExecution"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "GlueCatalogAccess",
+            "Effect": "Allow",
+            "Action": [
+                "glue:GetDatabase",
+                "glue:GetDatabases",
+                "glue:GetTable",
+                "glue:GetTables",
+                "glue:GetPartition",
+                "glue:GetPartitions"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "CURBucketRead",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<CUR_BUCKET>",
+                "arn:aws:s3:::<CUR_BUCKET>/*"
+            ]
+        },
+        {
+            "Sid": "AthenaResultsBucketReadWrite",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:ListBucket",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<ATHENA_RESULTS_BUCKET>",
+                "arn:aws:s3:::<ATHENA_RESULTS_BUCKET>/*"
+            ]
+        }
+    ]
+}
+```
+
+### `cloud-integration.json` configuration
+
+Fill in the values you captured in the prerequisites step:
+
+* `<ATHENA_BUCKET_NAME>` is the S3 bucket Athena writes query results to (typically matches `s3://aws-athena-query-results-*`). The bucket can have a canned ACL set to Private or other permissions as needed.
+* `<ATHENA_REGION>` is the AWS region Athena is running in.
+* `<ATHENA_DATABASE>` is the name of the database created by the Athena setup. The Athena database name is available as the value (physical id) of `AWSCURDatabase` in the CloudFormation stack you created in the prerequisites step.
+* `<ATHENA_TABLE>` is the name of the table created by the Athena setup. The table name is typically the database name with the leading `athenacurcfn_` removed (but is not available as a CloudFormation stack resource).
 * `<ATHENA_WORKGROUP>` is the workgroup assigned to be used with Athena. Default value is `primary`.
-* `<ACCOUNT_NUMBER>` is the AWS AccountID where the Athena CUR is. For example: `530337586277`.
-* `<ACCESS_KEY_ID>` is the ID of the Access Key created in the previous step.
-* `<ACCESS_KEY_SECRET>` is the secret of the Access Key created in the
+* `<ACCOUNT_NUMBER>` is the AWS Account ID where the Athena CUR is. For example: `530337586277`.
+* `<ACCESS_KEY_ID>` is the ID of the Access Key created in the previous step (only required if you chose the IAM User authentication method).
+* `<ACCESS_KEY_SECRET>` is the secret of the Access Key created in the previous step (only required if you chose the IAM User authentication method).
 
 Set these values into the AWS array in the `cloud-integration.json`:
 
