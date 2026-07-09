@@ -61,6 +61,10 @@ export default function Partners() {
           <div className="w-52 h-52 items-center flex">
             <img src="/img/pixie.png" alt="Pixie" />
           </div></a>
+        <a href="https://randoli.ca/" target="_blank" rel="noopener noreferrer">
+          <div className="w-72 h-52 items-center flex">
+            <img src="/img/randoli.svg" alt="Randoli" />
+          </div></a>
         <a href="https://www.suse.com/" target="_blank" rel="noopener noreferrer">
           <div className="w-72 h-52 items-center flex">
             <img src="/img/suse.png" alt="Suse" />
