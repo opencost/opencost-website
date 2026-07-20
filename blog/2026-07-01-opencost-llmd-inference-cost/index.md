@@ -1,6 +1,6 @@
 ---
 slug: opencost-llmd-inference-cost
-title: "Clueless About The Cost of AI Model Usage? OpenCost + llm-d = First of a Kind Kubernetes Inference Cost Tracking"
+title: "OpenCost 1.121.0: First-of-a-Kind Kubernetes Inference Cost Tracking"
 authors: [simanadler, ameijer]
 tags: [AI, GPU, inference, llm-d, cost management, Kubernetes, FinOps]
 ---
@@ -115,7 +115,9 @@ A finance team running chargeback can query costs by namespace and team label, g
 
 ## Where things stand
 
-A POC was implemented and tested on a cluster with 109 GPUs and 30 deployed AI models, and the generated metrics validated.
+** This feature is available in OpenCost 1.121.0!**
+
+A proof-of-concept was implemented and tested on a cluster with 109 GPUs and 30 deployed AI models, and the generated metrics were validated.
 
 AI Inference costs metrics and APIs have been added to OpenCost, including measurement of KV cache hits. And a guide for deploying OpenCost as part of llm-d has been created.
 
