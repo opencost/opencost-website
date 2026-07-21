@@ -23,13 +23,15 @@ The result is a large monthly bill with no clear explanation, while executives a
 
 To close this gap, we are integrating [OpenCost](https://opencost.io), a CNCF incubating project, with [llm-d](https://llm-d.ai), a CNCF sandbox project for distributed LLM inference on Kubernetes. This post explains how the integration works, what metrics it produces, and how platform teams can use them to make data-driven decisions.
 
+Note: vLLM users who do not use llm-d can also benefit from these capabilities, since the core metrics used to calculate model and per-token costs come from vLLM.
+
 ## GPUs are just CPUs with a bigger price tag and a worse visibility story
 
 OpenCost's existing Kubernetes cost allocation logic already handles CPU, RAM, and general GPU costs. What was missing was the inference layer: the ability to connect infrastructure costs to the token stream flowing through vLLM and expose those costs in terms that are meaningful for AI platform decisions.
 
 Kubernetes resource allocation has always had an efficiency problem. Teams size CPU and memory requests based on estimates, which often leads to overprovisioned workloads and silently accumulating idle capacity. With GPUs, the cost of getting this wrong is an order of magnitude higher. Measurement tooling hasn't kept up, making it difficult to measure efficiency or ROI.
 
-A GPU actively serving a loaded LLM is expensive. A GPU sitting idle with a model loaded but no requests arriving is equally expensive, because the model's weights occupy VRAM whether or not inference is happening. For example, a low-traffic model might spend 95% of its time in this "warm but idle" state, burning through your budget while contributing zero productive tokens.
+A GPU actively serving a loaded LLM is expensive. A GPU sitting idle with a model loaded but no requests arriving is equally expensive, because the model's weights occupy VRAM whether or not inference is happening. For example, a low-traffic model might spend 95% of its time in this "warm but idle" state, burning through your budget while contributing zero productive tokens. In addition, KV cache hits directly impact the cost of processing input tokens and thus must be measured as well.
 
 ## Two costs, two questions
 
@@ -80,7 +82,7 @@ This framing also gives you an optimization target: increasing utilization throu
 
 The integration uses metrics already present in an llm-d deployment: token throughput from vLLM (`vllm:prompt_tokens_total`, `vllm:generation_tokens_total`), GPU costs from OpenCost's existing allocation engine, and processing-time metrics that support separate cost calculations for input and output tokens.
 
-The result is a new set of inference cost metrics published to Prometheus and available via OpenCost's REST API and MCP server:
+The result is a new set of inference cost metrics published to Prometheus and available via OpenCost's REST API:
 
 | Metric | What it measures |
 |---|---|
