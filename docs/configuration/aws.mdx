@@ -179,34 +179,39 @@ serviceAccount:
 
 <CloudCostsInfo/>
 
-To configure OpenCost for your AWS account, create an Access Key for the OpenCost user who has access to the Cost and Usage Report (CUR). Navigate to the [IAM Management Console dashboard](https://console.aws.amazon.com/iam), and select *Access Management > Users*. Find the OpenCost user and select *Security Credentials > Create Access Key*. Note the Access Key ID and Secret access key.
+Cloud Costs reads your AWS [Cost and Usage Report](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html) (CUR) through Amazon Athena. You need:
 
-* `<ATHENA_BUCKET_NAME>` is the S3 bucket storing Athena query results which OpenCost has permission to access. The name of the bucket should match `s3://aws-athena-query-results-*`, so the IAM roles defined above will automatically allow access to it. The bucket can have a canned ACL set to Private or other permissions as needed.
-* `<ATHENA_REGION>` is the AWS region Athena is running in
-* `<ATHENA_DATABASE>` is the name of the database created by the Athena setup. The Athena database name is available as the value (physical id) of `AWSCURDatabase` in the CloudFormation stack created above.
-* `<ATHENA_TABLE>` is the name of the table created by the Athena setup The table name is typically the database name with the leading `athenacurcfn_` removed (but is not available as a CloudFormation stack resource).
-* `<ATHENA_WORKGROUP>` is the workgroup assigned to be used with Athena. Default value is `primary`.
-* `<ACCOUNT_NUMBER>` is the AWS AccountID where the Athena CUR is. For example: `530337586277`.
-* `<ACCESS_KEY_ID>` is the ID of the Access Key created in the previous step.
-* `<ACCESS_KEY_SECRET>` is the secret of the Access Key created in the
+1. A CUR delivered to S3, either:
+   * **CUR 2.0** (recommended), from *Billing and Cost Management > Data Exports*, or
+   * **CUR 1.0** (legacy), from *Billing and Cost Management > Cost and Usage Reports*.
+2. An Athena database and table over that bucket. Both export types can create these for you.
+3. An S3 bucket for Athena query results, named `aws-athena-query-results-*`.
 
-Set these values into the AWS array in the `cloud-integration.json`:
+### CUR 2.0
 
-``` json
+OpenCost detects the version automatically: a table with any of `resource_tags`, `line_item_usage_account_name`, or `bill_payer_account_name` is treated as CUR 2.0. For CUR 2.0, OpenCost reads tags from the `resource_tags` map (`resource_tags['user_team']`) instead of per-tag columns, and filters on the `billing_period` partition instead of `year`/`month`.
+
+When defining a CUR 2.0 export, **include `resource_tags` and resource IDs**. Without `resource_tags`, OpenCost falls back to CUR 1.0 handling and attributes no spend to Kubernetes beyond `AmazonEKS` line items.
+
+### Configuration file
+
+Cloud Costs are configured with a `cloud-integration.json` file containing one or more Athena integrations:
+
+```json
 {
   "aws": {
     "athena": [
       {
-        "bucket": "<ATHENA_BUCKET_NAME>",
-        "region": "<ATHENA_REGION>",
-        "database": "<ATHENA_DATABASE>",
-        "table": "<ATHENA_TABLE>",
-        "workgroup": "<ATHENA_WORKGROUP>",
-        "account": "<ACCOUNT_NUMBER>",
+        "bucket": "s3://aws-athena-query-results-my-cur",
+        "region": "us-east-1",
+        "database": "athenacurcfn_my_cur",
+        "table": "my_cur_2_0",
+        "workgroup": "primary",
+        "account": "123456789012",
         "authorizer": {
           "authorizerType": "AWSAccessKey",
-          "id": "<ACCESS_KEY_ID>",
-          "secret": "<ACCESS_KEY_SECRET>"
+          "id": "AKIAIOSFODNN7EXAMPLE",
+          "secret": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
         }
       }
     ]
@@ -214,8 +219,195 @@ Set these values into the AWS array in the `cloud-integration.json`:
 }
 ```
 
+| Field | Required | Description |
+|---|---|---|
+| `bucket` | Yes | `s3://` URI of the Athena query results bucket. OpenCost reads and writes it. |
+| `region` | Yes | AWS region Athena runs in. |
+| `database` | Yes | Athena database. For a CloudFormation-created legacy CUR, the physical ID of `AWSCURDatabase` in the stack. |
+| `table` | Yes | Athena table. For a legacy CUR, usually the database name without the `athenacurcfn_` prefix. |
+| `account` | Yes | AWS account ID that holds the CUR. |
+| `authorizer` | Yes | How OpenCost authenticates. See [Authorization](#authorization). |
+| `workgroup` | No | Athena workgroup. Defaults to `primary`. |
+| `catalog` | No | Athena data catalog. Defaults to `AwsDataCatalog`. |
+| `resultReuseMaxAgeMinutes` | No | Reuse Athena query results for this many minutes. Useful when many clusters run the same query. |
+
+### Authorization
+
+The `authorizer` block accepts one of four `authorizerType` values. Whichever you choose, attach the [Cloud Costs IAM policy](#cloud-costs-iam-policy) to the resulting identity.
+
+#### Access Key
+
+`AWSAccessKey` uses a long-lived IAM user access key. In the [IAM console](https://console.aws.amazon.com/iam), open *Access Management > Users*, select the OpenCost user, and choose *Security Credentials > Create Access Key*:
+
+```json
+{
+  "authorizerType": "AWSAccessKey",
+  "id": "AKIAIOSFODNN7EXAMPLE",
+  "secret": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+}
+```
+
+#### IAM Roles for Service Accounts (recommended)
+
+`AWSServiceAccount` uses the pod's ambient credentials — an [IRSA](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) role, [EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html), or EC2 instance profile — so no secrets are stored in the file:
+
+```json
+{
+  "authorizerType": "AWSServiceAccount"
+}
+```
+
+To set up IRSA:
+
+1. Register an IAM OIDC provider for the cluster, if you have not already:
+
+   ```sh
+   eksctl utils associate-iam-oidc-provider --cluster my-cluster --approve
+   ```
+
+2. Create an IAM role the OpenCost ServiceAccount can assume. The OIDC host is the cluster's OIDC issuer URL without `https://`.
+
+   <details>
+   <summary>Trust policy</summary>
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "Federated": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE"
+         },
+         "Action": "sts:AssumeRoleWithWebIdentity",
+         "Condition": {
+           "StringEquals": {
+             "oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE:sub": "system:serviceaccount:opencost:opencost",
+             "oidc.eks.us-east-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE:aud": "sts.amazonaws.com"
+           }
+         }
+       }
+     ]
+   }
+   ```
+
+   </details>
+
+3. Annotate the OpenCost ServiceAccount in your Helm values:
+
+   ```yaml
+   serviceAccount:
+     create: true
+     annotations:
+       eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/OpenCostRole
+   ```
+
+#### Assume Role
+
+`AWSAssumeRole` assumes `roleARN` using another authorizer — use it to read a CUR in a different AWS account. The wrapped identity needs `sts:AssumeRole` on `roleARN`:
+
+```json
+{
+  "authorizerType": "AWSAssumeRole",
+  "roleARN": "arn:aws:iam::123456789012:role/OpenCostRole",
+  "authorizer": {
+    "authorizerType": "AWSServiceAccount"
+  }
+}
+```
+
+#### Web Identity
+
+`AWSWebIdentity` exchanges an OIDC token from outside AWS for AWS credentials — use it when OpenCost runs on another cloud:
+
+```json
+{
+  "authorizerType": "AWSWebIdentity",
+  "roleARN": "arn:aws:iam::123456789012:role/OpenCostRole",
+  "identityProvider": "Google",
+  "tokenRetriever": {
+    "aud": "sts.amazonaws.com"
+  }
+}
+```
+
+### Cloud Costs IAM policy
+
+The identity needs to run Athena queries, read Glue table metadata, read and write the query results bucket, and read the CUR bucket (`my-cur-bucket` below). The `Glue` statement is required: OpenCost queries `information_schema.columns` to detect the CUR version, and without it no Cloud Costs are returned.
+
+<details>
+<summary>IAM policy</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Athena",
+      "Effect": "Allow",
+      "Action": [
+        "athena:StartQueryExecution",
+        "athena:GetQueryExecution",
+        "athena:GetQueryResults",
+        "athena:StopQueryExecution",
+        "athena:GetWorkGroup"
+      ],
+      "Resource": "arn:aws:athena:us-east-1:123456789012:workgroup/primary"
+    },
+    {
+      "Sid": "Glue",
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetDatabase",
+        "glue:GetDatabases",
+        "glue:GetTable",
+        "glue:GetTables",
+        "glue:GetPartitions"
+      ],
+      "Resource": [
+        "arn:aws:glue:us-east-1:123456789012:catalog",
+        "arn:aws:glue:us-east-1:123456789012:database/athenacurcfn_my_cur",
+        "arn:aws:glue:us-east-1:123456789012:table/athenacurcfn_my_cur/my_cur_2_0"
+      ]
+    },
+    {
+      "Sid": "QueryResultsBucket",
+      "Effect": "Allow",
+      "Action": ["s3:GetBucketLocation", "s3:ListBucket"],
+      "Resource": "arn:aws:s3:::aws-athena-query-results-my-cur"
+    },
+    {
+      "Sid": "QueryResultsObjects",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::aws-athena-query-results-my-cur/*"
+    },
+    {
+      "Sid": "CurBucket",
+      "Effect": "Allow",
+      "Action": ["s3:GetBucketLocation", "s3:ListBucket"],
+      "Resource": "arn:aws:s3:::my-cur-bucket"
+    },
+    {
+      "Sid": "CurObjects",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::my-cur-bucket/*"
+    }
+  ]
+}
+```
+
+</details>
+
+### Deploy the configuration
+
 <InstallCloudCosts/>
 <CloudCosts/>
+
+### Verifying
+
+Look for `AthenaIntegration[...]: GetCloudCost:` in the OpenCost logs, then check that `/model/cloudCost` returns data. If nothing is attributed to Kubernetes, confirm your CUR 2.0 export includes `resource_tags`.
 
 ## Install OpenCost
 
