@@ -69,6 +69,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: "kubecon_na_2026",
+        content:
+          'Join us at <a target="_blank" rel="noopener noreferrer" href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/?utm_source=opencost&utm_medium=ribbon-banner&utm_campaign=KubeCon-CloudNativeCon-NA-2026&utm_content=hero">KubeCon + CloudNativeCon North America</a> on Nov 9-12 🎉',
+        isCloseable: true,
+      },
       colorMode: {
         defaultMode: "light",
         disableSwitch: false,
