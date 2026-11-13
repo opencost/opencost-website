@@ -34,7 +34,7 @@ OpenCost may be installed on Kubernetes clusters running on [STACKIT](https://st
 
 OpenCost will automatically detect STACKIT as the cloud service provider (CSP) on SKE clusters by detecting the node label `node.stackit.cloud/ske`. You can also set the `CLOUD_PROVIDER` environment variable to `STACKIT` to force detection.
 
-When STACKIT is detected as the CSP, OpenCost retrieves VM, GPU, and storage pricing from the [STACKIT PIM API](https://pim-service.pim.stackit.cloud). No API key is required to retrieve the public pricing data.
+When STACKIT is detected as the CSP, OpenCost retrieves VM, GPU, and storage pricing from the STACKIT PIM API (`https://pim.api.stackit.cloud`). No API key is required to retrieve the public pricing data.
 
 Pricing is fetched at startup and includes:
 
