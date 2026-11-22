@@ -71,7 +71,7 @@ The [Cloud Cost API](https://www.opencost.io/docs/integrations/api#cloudcost) pr
 
 ### Using the OpenCost UI from Docker
 
-The OpenCost UI can be used to view Cloud Costs from Docker as well. You can pull down the image from from [ghcr.io/opencost/opencost-ui:1.109.0](https://github.com/opencost/opencost/pkgs/container/opencost-ui)
+The OpenCost UI can be used to view Cloud Costs from Docker as well. You can pull down the image from [ghcr.io/opencost/opencost-ui:1.109.0](https://github.com/opencost/opencost/pkgs/container/opencost-ui)
 
 `docker pull ghcr.io/opencost/opencost-ui:1.109.0` (or `latest`)
 
