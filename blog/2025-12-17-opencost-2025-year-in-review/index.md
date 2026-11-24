@@ -11,7 +11,7 @@ The OpenCost project has had a fruitful year in terms of releases, our wonderful
 
 <!--truncate-->
 
-If you’re new to OpenCost, it is an open-source cost and resources management tool that is an Incubating project in the Cloud Native Computing Foundation (CNCF). It was created by IBM Kubecost and continues to be maintained and supported by IBM Kubecost, Randoli, and a wider community of partners, including the major cloud providers. Aside from AWS, Microsoft, and Google, who have been contributing companies since OpenCost’s inception, we’ll also call out Oracle and DigitalOcean below. If you have further questions, you can find us on Slack or at the regular [OpenCost meetings](https://opencost.io/docs/community).
+If you’re new to OpenCost, it is an open-source cost and resources management tool that is an Incubating project in the Cloud Native Computing Foundation (CNCF). It was created by IBM Kubecost and continues to be maintained and supported by IBM Kubecost, Randoli, and a wider community of partners, including the major cloud providers. Aside from AWS, Microsoft, and Google, who have been contributing companies since OpenCost’s inception, we’ll also call out Oracle and DigitalOcean below. If you have further questions, you can find us on Slack or at the regular [OpenCost meetings](https://opencost.io/community).
 
 ## OpenCost Releases
 The OpenCost project has had [11 releases in 2025](https://github.com/opencost/opencost/releases). These include new features and capabilities that improve the experience for both users and contributors. Here are a few highlights:  
