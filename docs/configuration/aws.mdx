@@ -80,26 +80,31 @@ The location should be automatically detected, but this URL can be overwritten u
 
 AWS [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html) from the configured S3 bucket
 * Set up [Spot Instance Data Feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html).
-* Create a role for OpenCost with access to the spot feed bucket. Attach the policy below to the role and replace CHANGE-ME with your spot bucket name.
+* Create a role for OpenCost with access to the spot feed bucket. Attach the policy below to the role and replace CHANGE-ME with your spot bucket name. OpenCost lists the data feed files in the bucket (`s3:ListBucket` on the bucket) and then downloads them (`s3:GetObject` on the objects in the bucket).
 
 ```json
 {
     "Version": "2012-10-17",
     "Statement": [
         {
+            "Sid": "SpotDataFeedList",
+            "Effect": "Allow",
             "Action": [
-                "s3:ListAllMyBuckets",
-                "s3:ListBucket",
-                "s3:HeadBucket",
-                "s3:HeadObject",
-                "s3:List*",
-                "s3:Get*"
+                "s3:ListBucket"
             ],
             "Resource": [
                 "arn:aws:s3:::CHANGE-ME"
-            ],
+            ]
+        },
+        {
+            "Sid": "SpotDataFeedRead",
             "Effect": "Allow",
-            "Sid": "SpotDataAccess"
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::CHANGE-ME/*"
+            ]
         }
     ]
 }
