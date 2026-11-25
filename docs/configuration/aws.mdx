@@ -146,6 +146,39 @@ OpenCost uses the [AWS SDK for Go](https://aws.amazon.com/sdk-for-go/) to pull S
 
 The recommended setup is to leverage [IAM roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) or [EKS Pod Identities](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html).
 
+### Spot Price History Fallback
+
+When the Spot Instance Data Feed is not configured or has no pricing data for a node, OpenCost falls back to the [EC2 Spot Price History API](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-price-history.html) to retrieve per-instance pricing. If that also fails, OpenCost falls back to on-demand pricing and logs a warning.
+
+The pricing lookup order for Spot nodes is:
+
+1. **Spot Instance Data Feed** — hourly per-instance prices from the configured S3 bucket (most accurate)
+2. **EC2 Spot Price History API** — real-time spot prices queried via `ec2:DescribeSpotPriceHistory`
+3. **On-demand pricing** — used as a last resort when neither source is available
+
+#### Required IAM permission
+
+The Spot Price History fallback requires the `ec2:DescribeSpotPriceHistory` permission. This action does not support resource-level restrictions, so `"Resource": "*"` is required:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "ec2:DescribeSpotPriceHistory",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Add this statement to the IAM policy attached to OpenCost's service account. Without it, OpenCost will log an authorization warning and silently fall back to on-demand pricing for affected Spot nodes, which may cause cost estimates to be higher than actual Spot prices.
+
+:::note
+The `ec2:DescribeSpotPriceHistory` permission is only needed for the Spot Price History fallback. If you have the Spot Instance Data Feed configured and it provides pricing data for all your Spot nodes, this permission is not required.
+:::
+
 ### IAM Roles for Service Accounts
 
 After creating the role and policy, attach the role as an annotation on the service account in your local OpenCost Helm values file:
